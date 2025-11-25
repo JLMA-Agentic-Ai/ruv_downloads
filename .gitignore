@@ -1,0 +1,31 @@
+# Downloaded package/crate archives (can be large, not needed in git)
+*.tgz
+*.crate
+
+# OS files
+.DS_Store
+.env
+*.log
+
+# Node/npm cache
+node_modules/
+.npm
+
+# Optional: extracted directories (unless you want to version them)
+# agentic-*
+# neural-*
+# qudag-*
+# ruvector-*
+
+# But DO track:
+# - *dynamic.txt (manifests)
+# - *.sh (scripts)
+# - README.md (docs)
+# - MANIFEST.md (architecture docs)
+
+# Git-tracked files patterns (use `git add -f` to override ignore)
+!*.sh
+!*dynamic.txt
+!README.md
+!MANIFEST.md
+!.gitignore
