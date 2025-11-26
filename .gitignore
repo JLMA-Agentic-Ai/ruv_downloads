@@ -1,6 +1,6 @@
 # Downloaded package/crate archives (can be large, not needed in git)
-*.tgz
-*.crate
+#*.tgz
+#*.crate
 
 # OS files
 .DS_Store

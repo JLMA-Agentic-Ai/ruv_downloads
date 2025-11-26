@@ -36,6 +36,7 @@ geometric-langlands
 geometric-langlands-cli
 goalie
 governance
+intrinsic-dim
 kimi-expert-analyzer
 kimi-fann-core
 lean-agentic
@@ -88,4 +89,10 @@ qudag-network
 qudag-protocol
 qudag-vault-core
 qudag-wasm
+ruvector-core
+ruvector-node
+ruvector-router-ffi
+ruvector-router-wasm
+ruvector-wasm
+temporal-compare
 temporal-neural-solver

@@ -84,6 +84,9 @@ dspy.ts
 flow-nexus
 foxruv-agent-learning-core
 foxruv-iris
+foxruv-iris-agentic-synth
+foxruv-iris-core
+foxruv-iris-ultrathink
 foxruv-nova-medicina
 goalie
 lean-agentic
@@ -137,6 +140,8 @@ research-swarm
 ruv-sparc-ui
 ruv-swarm
 ruvector
+ruvector-agentic-synth
+ruvector-agentic-synth-examples
 ruvector-core
 ruvector-core-darwin-arm64
 ruvector-core-darwin-x64
