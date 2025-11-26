@@ -1,9 +1,19 @@
 #!/bin/bash
 set -e
+set -o pipefail
 
 # NPM user/profile URL to indicate the source of the packages
 NPM_USER_URL="https://www.npmjs.com/~ruvnet"
 MANIFEST_FILE="packagelist.dynamic.txt"
+
+# Basic runtime checks to fail fast and provide helpful errors
+required_cmds=(curl npm grep sed sort mktemp)
+for _cmd in "${required_cmds[@]}"; do
+  if ! command -v "$_cmd" >/dev/null 2>&1; then
+    echo "Error: required command '$_cmd' not found in PATH. Please install it and retry." >&2
+    exit 1
+  fi
+done
 
 echo "Checking packages from: $NPM_USER_URL"
 

@@ -1,9 +1,19 @@
 #!/bin/bash
 set -e
+set -o pipefail
 
 # Crates.io user/profile URL (source of crates)
 CRATES_IO_USER_URL="https://crates.io/users/ruvnet"
 MANIFEST_FILE="crates.dynamic.txt"
+
+# Basic runtime checks to fail fast and provide helpful errors
+required_cmds=(curl grep sed sort mktemp)
+for _cmd in "${required_cmds[@]}"; do
+  if ! command -v "$_cmd" >/dev/null 2>&1; then
+    echo "Error: required command '$_cmd' not found in PATH. Please install it and retry." >&2
+    exit 1
+  fi
+done
 
 echo "Checking crates from: $CRATES_IO_USER_URL"
 
@@ -30,9 +40,18 @@ fi
 DISCOVERED_CRATES=()
 if [ "$DISCOVER" -eq 1 ]; then
   echo "Discovering crates from crates.io for user: ruvnet ..."
-  user_json=$(curl -s "https://crates.io/api/v1/users/ruvnet")
-  IFS=$'\n' DISCOVERED_CRATES=( $(echo "$user_json" | grep -o '"id":"[^"]\+' | sed -E 's/"id":"//' | sort -u) )
-  unset IFS
+    user_json=$(curl -s "https://crates.io/api/v1/users/ruvnet")
+    # Use the crates.io search API to find crates related to the user/login.
+    # This is more reliable than trying to parse the user id and then using
+    # another API path. Handle empty results safely so `set -e` doesn't abort.
+    search_json=$(curl -s "https://crates.io/api/v1/crates?page=1&per_page=250&q=ruvnet")
+    names=$(echo "$search_json" | grep -o '"name":"[^\"]\+' | sed -E 's/"name":"//' | sort -u || true)
+    if [ -n "$names" ]; then
+      IFS=$'\n' DISCOVERED_CRATES=( $names )
+      unset IFS
+    else
+      DISCOVERED_CRATES=()
+    fi
 
   # If empty, fallback to search API and HTML parsing
   if [ ${#DISCOVERED_CRATES[@]} -eq 0 ]; then
@@ -67,7 +86,7 @@ trap "rm -f $TEMP_MERGED" EXIT
       echo "$crate_file" | sed 's/-[0-9.]*\.crate$//'
     fi
   done
-} | grep -v '^$' | sort -u > "$TEMP_MERGED"
+} | grep -v '^$' | grep -v '^[0-9]\+$' | sort -u > "$TEMP_MERGED"
 
 MERGED_CRATES=()
 while IFS= read -r line; do
@@ -119,10 +138,14 @@ do
   fi
 
   echo "  Downloading: $crate@$latest_version"
-  # Download the specific crate version via crates.io API
+  # Download the specific crate version via crates.io API. If download fails
+  # (e.g. 403 for yanked or restricted crates), skip and continue.
   download_url="https://crates.io/api/v1/crates/${crate}/${latest_version}/download"
   out_file="${crate}-${latest_version}.crate"
-  curl -L --fail -o "$out_file" "$download_url"
+  if ! curl -L --fail -o "$out_file" "$download_url"; then
+    echo "  Warning: failed to download $crate@$latest_version (HTTP error) -- skipping"
+    continue
+  fi
   echo "  Saved: $out_file"
 done
 
