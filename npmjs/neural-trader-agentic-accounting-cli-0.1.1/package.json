@@ -1,0 +1,63 @@
+{
+  "name": "@neural-trader/agentic-accounting-cli",
+  "version": "0.1.1",
+  "description": "Command-line interface for neural-trader's agentic accounting system with interactive tax calculators, transaction management, compliance reports, and cryptocurrency accounting automation",
+  "homepage": "https://neural-trader.ruv.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/neural-trader.git",
+    "directory": "packages/agentic-accounting-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/ruvnet/neural-trader/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "accounting": "./bin/accounting-cli.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "command-line",
+    "cli-tool",
+    "tax-calculator",
+    "accounting-cli",
+    "cryptocurrency",
+    "crypto-tax",
+    "neural-trader",
+    "typescript",
+    "terminal-app",
+    "tax-automation",
+    "cost-basis-calculator",
+    "capital-gains",
+    "compliance-reports",
+    "interactive-cli",
+    "ruv-io"
+  ],
+  "author": "Neural Trader Team <team@ruv.io>",
+  "license": "MIT OR Apache-2.0",
+  "dependencies": {
+    "@neural-trader/agentic-accounting-core": "workspace:*",
+    "@neural-trader/agentic-accounting-types": "workspace:*",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "chalk": "^5.6.2",
+    "ora": "^9.0.0",
+    "cli-table3": "^0.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "@types/inquirer": "^9.0.7",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0"
+  }
+}

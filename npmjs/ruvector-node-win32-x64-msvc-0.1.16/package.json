@@ -1,0 +1,35 @@
+{
+  "name": "@ruvector/node-win32-x64-msvc",
+  "version": "0.1.16",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "ruvector.win32-x64-msvc.node",
+  "files": [
+    "ruvector.win32-x64-msvc.node"
+  ],
+  "description": "High-performance Rust vector database for Node.js - win32-x64-msvc platform",
+  "keywords": [
+    "ruvector",
+    "vector",
+    "database",
+    "hnsw",
+    "napi-rs"
+  ],
+  "author": "Ruvector Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/ruvector"
+  },
+  "engines": {
+    "node": ">= 18"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

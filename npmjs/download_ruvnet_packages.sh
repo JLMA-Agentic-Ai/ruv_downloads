@@ -61,11 +61,11 @@ trap "rm -f $TEMP_MERGED" EXIT
 {
   printf "%s\n" "${EXISTING_PACKAGES[@]}"
   printf "%s\n" "${DISCOVERED_PACKAGES[@]}"
-  # Also auto-discover packages that are already present as *.tgz files in folder
-  for tgz_file in *.tgz; do
+  # Also auto-discover packages that are already present as *.tgz files in folder or 00_tgz/ subfolder
+  for tgz_file in *.tgz 00_tgz/*.tgz; do
     if [ -e "$tgz_file" ]; then
       # Extract package name from tarball (format varies: scoped @org/pkg or plain pkg)
-      echo "$tgz_file" | sed 's/-[0-9.]*\.tgz$//'
+      basename "$tgz_file" | sed 's/-[0-9.]*\.tgz$//'
     fi
   done
 } | grep -v '^$' | sort -u > "$TEMP_MERGED"
@@ -89,6 +89,11 @@ fi
 
 PACKAGES=("${MERGED_PACKAGES[@]}")
 
+# Create 00_tgz directory if it doesn't exist
+mkdir -p 00_tgz
+# Create legacy directory
+mkdir -p 00_tgz/legacy_tgz
+
 for pkg in "${PACKAGES[@]}"
 do
   echo "Checking: $pkg"
@@ -102,11 +107,49 @@ do
   # Build a few candidate filename patterns that npm pack may produce
   name_no_at=${pkg//@/}
   name_dash=${name_no_at//\//-}
+  # Check if we have a newer version locally (e.g. manual download of alpha/beta)
+  # This prevents downgrading if registry 'latest' is older than what we have
+  newer_found=0
   name_underscore=${name_no_at//\//_}
+  for local_file in 00_tgz/${name_dash}-*.tgz 00_tgz/${name_underscore}-*.tgz; do
+    if [ -e "$local_file" ]; then
+      # Extract version from filename
+      # Remove path
+      local_filename=$(basename "$local_file")
+      # Remove extension
+      local_ver_str="${local_filename%.tgz}"
+      # Remove package name prefix (handle both dash and underscore variants)
+      if [[ "$local_ver_str" == "${name_dash}-"* ]]; then
+        local_ver="${local_ver_str#${name_dash}-}"
+      elif [[ "$local_ver_str" == "${name_underscore}-"* ]]; then
+        local_ver="${local_ver_str#${name_underscore}-}"
+      else
+        continue
+      fi
+      
+      # Check if version is valid (starts with number)
+      if [[ "$local_ver" =~ ^[0-9] ]]; then
+        # Compare versions using sort -V
+        if [ "$(printf "%s\n%s" "$latest_version" "$local_ver" | sort -V | tail -n1)" == "$local_ver" ] && [ "$local_ver" != "$latest_version" ]; then
+          echo "  Up-to-date: $pkg@$local_ver (local is newer than registry $latest_version)"
+          newer_found=1
+          found=1
+          break
+        fi
+      fi
+    fi
+  done
 
+  if [ "$newer_found" -eq 1 ]; then
+    continue
+  fi
+
+  # Candidate file patterns that might already be present (exact match)
   candidates=(
     "${name_dash}-${latest_version}.tgz"
     "${name_underscore}-${latest_version}.tgz"
+    "00_tgz/${name_dash}-${latest_version}.tgz"
+    "00_tgz/${name_underscore}-${latest_version}.tgz"
   )
 
   found=0
@@ -124,6 +167,68 @@ do
 
   echo "  Downloading: $pkg@$latest_version"
   npm pack "$pkg"
+  
+  # Find the downloaded tarball (npm pack creates it in current directory)
+  downloaded_tgz=""
+  for candidate in "${candidates[@]}"; do
+    candidate_basename=$(basename "$candidate")
+    if [ -e "$candidate_basename" ]; then
+      downloaded_tgz="$candidate_basename"
+      break
+    fi
+  done
+  
+  if [ -n "$downloaded_tgz" ] && [ -e "$downloaded_tgz" ]; then
+    echo "  Extracting: $downloaded_tgz"
+    if tar -xzf "$downloaded_tgz"; then
+      # Rename the extracted 'package/' directory to a unique name
+      # Remove .tgz extension to get the package directory name
+      pkg_dir_name="${downloaded_tgz%.tgz}"
+      if [ -d "package" ]; then
+        mv "package" "$pkg_dir_name"
+        echo "  Extracted: $pkg_dir_name/"
+      else
+        echo "  Warning: package/ directory not found after extraction"
+      fi
+    else
+      echo "  Warning: failed to extract $downloaded_tgz"
+    fi
+    
+    # Move the .tgz file to 00_tgz/ directory
+    echo "  Moving: $downloaded_tgz -> 00_tgz/"
+    mv "$downloaded_tgz" "00_tgz/"
+    
+    # CLEANUP: Now that we have the latest version, move any older versions to legacy
+    # We know the exact filename pattern, so this is safe
+    for old_file in 00_tgz/${name_dash}-*.tgz 00_tgz/${name_underscore}-*.tgz; do
+      if [ -e "$old_file" ]; then
+        old_filename=$(basename "$old_file")
+        # Skip if it's the file we just moved
+        if [ "$old_filename" != "$downloaded_tgz" ]; then
+          # Check if it matches our package name pattern exactly
+          # Extract version from filename and compare
+          if [[ "$old_filename" =~ ^${name_dash}-[0-9]+\.[0-9]+\.[0-9]+.*\.tgz$ ]] || [[ "$old_filename" =~ ^${name_underscore}-[0-9]+\.[0-9]+\.[0-9]+.*\.tgz$ ]]; then
+            echo "  Cleanup: Moving older version $old_filename to legacy_tgz/"
+            mv "$old_file" "00_tgz/legacy_tgz/"
+          fi
+        fi
+      fi
+    done
+    
+    # Also cleanup old decompressed directories
+    for old_dir in ${name_dash}-*/ ${name_underscore}-*/; do
+      if [ -d "$old_dir" ]; then
+        old_dirname=${old_dir%/}
+        # Skip if it's the directory we just created
+        if [ "$old_dirname" != "$pkg_dir_name" ]; then
+          echo "  Cleanup: Removing older decompressed version $old_dirname"
+          rm -rf "$old_dirname"
+        fi
+      fi
+    done
+  else
+    echo "  Warning: could not find downloaded tarball for $pkg@$latest_version"
+  fi
 done
 
 echo "All npm package downloads complete! Only missing/new packages were downloaded."

@@ -1,0 +1,16 @@
+{
+  "name": "@ruvector/graph-node-darwin-x64",
+  "version": "0.1.15",
+  "os": ["darwin"],
+  "cpu": ["x64"],
+  
+  "main": "ruvector-graph.darwin-x64.node",
+  "files": ["ruvector-graph.darwin-x64.node"],
+  "description": "RuVector Graph Node.js bindings - darwin-x64 platform",
+  "keywords": ["ruvector", "graph", "hypergraph", "napi-rs", "cypher"],
+  "author": "ruv.io Team <info@ruv.io>",
+  "license": "MIT",
+  "repository": {"type": "git", "url": "https://github.com/ruvnet/ruvector"},
+  "engines": {"node": ">= 18"},
+  "publishConfig": {"registry": "https://registry.npmjs.org/", "access": "public"}
+}
