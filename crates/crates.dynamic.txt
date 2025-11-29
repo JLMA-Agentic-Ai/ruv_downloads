@@ -11,8 +11,8 @@ aimds-detection
 aimds-response
 bit-parallel-search
 bitchat-qudag
-claude_market
 claude-parser
+claude_market
 code-mesh-cli
 code-mesh-core
 code-mesh-tui
