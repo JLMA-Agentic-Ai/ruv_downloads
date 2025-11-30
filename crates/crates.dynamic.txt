@@ -120,6 +120,7 @@ ruvector-router-cli
 ruvector-router-core
 ruvector-router-ffi
 ruvector-router-wasm
+ruvector-scipix
 ruvector-server
 ruvector-snapshot
 ruvector-tiny-dancer-core
