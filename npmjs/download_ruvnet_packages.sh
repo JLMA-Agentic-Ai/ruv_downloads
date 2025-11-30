@@ -60,18 +60,11 @@ fi
 TEMP_MERGED=$(mktemp)
 trap "rm -f $TEMP_MERGED" EXIT
 
-# Build merged list: existing + discovered + already-downloaded tarball files
-{
-  printf "%s\n" "${EXISTING_PACKAGES[@]}"
-  printf "%s\n" "${DISCOVERED_PACKAGES[@]}"
-  # Also auto-discover packages that are already present as *.tgz files in folder or 00_tgz/ subfolder
-  for tgz_file in *.tgz 00_tgz/*.tgz; do
-    if [ -e "$tgz_file" ]; then
-      # Extract package name from tarball (format varies: scoped @org/pkg or plain pkg)
-      basename "$tgz_file" | sed 's/-[0-9.]*\.tgz$//'
-    fi
-  done
-} | grep -v '^$' | sort -u > "$TEMP_MERGED"
+  # Build merged list: existing + discovered
+  {
+    printf "%s\n" "${EXISTING_PACKAGES[@]}"
+    printf "%s\n" "${DISCOVERED_PACKAGES[@]}"
+  } | grep -v '^$' | sort -u > "$TEMP_MERGED"
 
 MERGED_PACKAGES=()
 while IFS= read -r line; do
