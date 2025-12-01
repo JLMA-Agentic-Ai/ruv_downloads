@@ -101,6 +101,7 @@ ruv-swarm-ml-training
 ruv-swarm-persistence
 ruv-swarm-transport
 ruv-swarm-wasm
+ruvector-attention
 ruvector-cli
 ruvector-cluster
 ruvector-collections
