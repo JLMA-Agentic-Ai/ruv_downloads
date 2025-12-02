@@ -108,6 +108,7 @@ goalie
 lean-agentic
 midstreamer
 neural-trader
+psycho-symbolic-integration
 psycho-symbolic-reasoner
 qudag
 research-swarm
@@ -123,6 +124,7 @@ ruvector-core-win32-x64-msvc
 ruvector-extensions
 ruvi
 ruvnet
+spiking-neural
 strange-loops
 strange-loops-mcp
 sublinear-time-solver

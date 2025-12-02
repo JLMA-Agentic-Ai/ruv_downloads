@@ -30,6 +30,15 @@ daa-prime-core
 daa-prime-dht
 daa-prime-trainer
 daa-rules
+exo-backend-classical
+exo-core
+exo-exotic
+exo-federation
+exo-hypergraph
+exo-manifold
+exo-node
+exo-temporal
+exo-wasm
 fact-tools
 fact-wasm-core
 geometric-langlands
@@ -42,6 +51,7 @@ kimi-fann-core
 lean-agentic
 leanr-rag-gateway
 leanr-wasm
+micro-hnsw-wasm
 micro_cartan_attn
 micro_core
 micro_metrics
