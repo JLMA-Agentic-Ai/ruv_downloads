@@ -61,13 +61,16 @@
 @ruvector/attention-darwin-x64
 @ruvector/attention-linux-arm64-gnu
 @ruvector/attention-linux-x64-gnu
+@ruvector/attention-wasm
 @ruvector/attention-win32-x64-msvc
+@ruvector/cluster
 @ruvector/core
 @ruvector/gnn
 @ruvector/gnn-darwin-arm64
 @ruvector/gnn-darwin-x64
 @ruvector/gnn-linux-arm64-gnu
 @ruvector/gnn-linux-x64-gnu
+@ruvector/gnn-wasm
 @ruvector/gnn-win32-x64-msvc
 @ruvector/graph-node
 @ruvector/graph-node-darwin-arm64
@@ -75,6 +78,7 @@
 @ruvector/graph-node-linux-arm64-gnu
 @ruvector/graph-node-linux-x64-gnu
 @ruvector/graph-node-win32-x64-msvc
+@ruvector/graph-wasm
 @ruvector/node
 @ruvector/node-darwin-arm64
 @ruvector/node-darwin-x64
@@ -83,8 +87,12 @@
 @ruvector/node-win32-x64-msvc
 @ruvector/router
 @ruvector/router-linux-x64-gnu
+@ruvector/router-wasm
+@ruvector/server
 @ruvector/tiny-dancer
 @ruvector/tiny-dancer-linux-x64-gnu
+@ruvector/tiny-dancer-wasm
+@ruvector/wasm
 @ruvnet/bmssp
 @ruvnet/strange-loop
 agent-booster
