@@ -85,10 +85,13 @@
 @ruvector/node-linux-arm64-gnu
 @ruvector/node-linux-x64-gnu
 @ruvector/node-win32-x64-msvc
+@ruvector/postgres-cli
 @ruvector/router
 @ruvector/router-linux-x64-gnu
 @ruvector/router-wasm
 @ruvector/server
+@ruvector/sona
+@ruvector/sona-linux-x64-gnu
 @ruvector/tiny-dancer
 @ruvector/tiny-dancer-linux-x64-gnu
 @ruvector/tiny-dancer-wasm

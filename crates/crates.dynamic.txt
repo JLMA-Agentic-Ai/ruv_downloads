@@ -125,6 +125,7 @@ ruvector-graph-node
 ruvector-graph-wasm
 ruvector-metrics
 ruvector-node
+ruvector-postgres
 ruvector-raft
 ruvector-replication
 ruvector-router-cli
@@ -134,6 +135,7 @@ ruvector-router-wasm
 ruvector-scipix
 ruvector-server
 ruvector-snapshot
+ruvector-sona
 ruvector-tiny-dancer-core
 ruvector-tiny-dancer-node
 ruvector-tiny-dancer-wasm
