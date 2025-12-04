@@ -1,0 +1,9 @@
+# Ignore configuration file
+config.yaml
+
+# Ignore log file
+qspace.log
+dist
+qspace.egg-info
+build
+.env

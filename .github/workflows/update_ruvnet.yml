@@ -27,12 +27,17 @@ jobs:
         run: |
           chmod +x crates/download_ruvnet_crates.sh
           chmod +x npmjs/download_ruvnet_packages.sh
+          chmod +x github/download_ruvnet_repos.sh
+          chmod +x github/scripts/organize_repos.sh
 
       - name: Update Crates
         run: ./crates/download_ruvnet_crates.sh --discover
 
       - name: Update NPM Packages
         run: ./npmjs/download_ruvnet_packages.sh --discover
+
+      - name: Update GitHub Repos
+        run: ./github/download_ruvnet_repos.sh --discover
 
       - name: Commit and Push changes
         run: |

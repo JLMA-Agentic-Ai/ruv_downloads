@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "a803d316dff76e194a91c7a2db84253007e057bd"
+  },
+  "path_in_vcs": "crates/ruvector-postgres"
+}
