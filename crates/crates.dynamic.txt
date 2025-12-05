@@ -30,6 +30,15 @@ daa-prime-core
 daa-prime-dht
 daa-prime-trainer
 daa-rules
+exo-backend-classical
+exo-core
+exo-exotic
+exo-federation
+exo-hypergraph
+exo-manifold
+exo-node
+exo-temporal
+exo-wasm
 fact-tools
 fact-wasm-core
 geometric-langlands
@@ -42,6 +51,7 @@ kimi-fann-core
 lean-agentic
 leanr-rag-gateway
 leanr-wasm
+micro-hnsw-wasm
 micro_cartan_attn
 micro_core
 micro_metrics
@@ -101,6 +111,7 @@ ruv-swarm-ml-training
 ruv-swarm-persistence
 ruv-swarm-transport
 ruv-swarm-wasm
+ruvector-attention
 ruvector-cli
 ruvector-cluster
 ruvector-collections
@@ -114,6 +125,7 @@ ruvector-graph-node
 ruvector-graph-wasm
 ruvector-metrics
 ruvector-node
+ruvector-postgres
 ruvector-raft
 ruvector-replication
 ruvector-router-cli
@@ -123,6 +135,7 @@ ruvector-router-wasm
 ruvector-scipix
 ruvector-server
 ruvector-snapshot
+ruvector-sona
 ruvector-tiny-dancer-core
 ruvector-tiny-dancer-node
 ruvector-tiny-dancer-wasm
