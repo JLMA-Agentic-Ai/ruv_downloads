@@ -12,9 +12,10 @@
 2. [Repository Structure](#repository-structure)
 3. [Complete Rust Crates Directory](#complete-rust-crates-directory)
 4. [Complete NPM Packages Directory](#complete-npm-packages-directory)
-5. [Usage Instructions](#usage-instructions)
-6. [Integration Patterns](#integration-patterns)
-7. [Performance Characteristics](#performance-characteristics)
+5. [Complete GitHub Repositories Directory](#complete-github-repositories-directory)
+6. [Usage Instructions](#usage-instructions)
+7. [Integration Patterns](#integration-patterns)
+8. [Performance Characteristics](#performance-characteristics)
 
 ---
 
@@ -50,22 +51,7 @@ ruv_downloads/
 │   ├── crates.dynamic.txt                 # Dynamic manifest (auto-maintained)
 │   │
 │   ├── agentic-jujutsu-1.0.1/            # Version-specific directories
-│   │   ├── Cargo.toml
-│   │   ├── README.md
-│   │   └── src/
-│   ├── agentic-payments-0.1.0/
-│   ├── agentic-robotics-core-0.1.2/
 │   ├── ... [140+ more crates] ...
-│   │
-│   └── [Organized by functionality]
-│       ├── Agentic Systems (8 crates)
-│       ├── AI Security (4 crates)
-│       ├── Vector Database (12 crates)
-│       ├── Neural Trading (16 crates)
-│       ├── Distributed Systems (12 crates)
-│       ├── Swarm Intelligence (9 crates)
-│       ├── Temporal Analysis (8 crates)
-│       └── [Other specialized] (94 crates)
 │
 ├── npmjs/                                 # 155 NPM packages
 │   ├── README.md                          # Package management documentation
@@ -73,21 +59,21 @@ ruv_downloads/
 │   ├── packagelist.dynamic.txt            # Dynamic manifest (auto-maintained)
 │   │
 │   ├── agentic-jujutsu-2.3.6/            # Version-specific directories
-│   │   ├── package.json
-│   │   ├── README.md
-│   │   └── dist/
-│   ├── neural-trader-2.6.3/
-│   ├── ruvector-0.1.24/
 │   ├── ... [152+ more packages] ...
+│
+├── github/                                # 160+ GitHub Repositories
+│   ├── download_ruvnet_repos.sh           # Download script (incremental updates)
+│   ├── repos.dynamic.txt                  # Dynamic manifest
 │   │
-│   └── [Organized by functionality]
-│       ├── Agentic Systems (12 packages)
-│       ├── Trading (40+ packages)
-│       ├── Vector Systems (10 packages)
-│       ├── Distributed Systems (8 packages)
-│       ├── Swarm Intelligence (5 packages)
-│       ├── ML Frameworks (8 packages)
-│       └── [Other specialized] (72+ packages)
+│   ├── by-tier/                           # Organized by tier
+│   │   ├── tier-1-active/
+│   │   ├── tier-2-stable/
+│   │   ├── tier-3-maintenance/
+│   │   └── tier-4-archive/
+│   │
+│   ├── agentic-flow/                      # Cloned repositories (latest code)
+│   ├── ruvector/
+│   └── ... [160+ more repos] ...
 │
 ├── 00_crates/                             # Rust crate archives
 │   ├── *.crate                            # Downloaded .crate files
@@ -1642,7 +1628,32 @@ ruv_downloads/
 
 ---
 
+
+---
+
+#### 5. COMPLETE GITHUB REPOSITORIES DIRECTORY (160+ total)
+
+The `github/` directory contains repositories cloned directly from the `ruvnet` GitHub user. These are managed by `github/download_ruvnet_repos.sh`.
+
+##### **Key Characteristics**
+- **Source**: `https://github.com/ruvnet/*`
+- **Format**: Shallow clones (depth=1) with `.git` directory removed.
+- **Organization**:
+  - `by-tier/`: Repositories organized by stability tier (Active, Stable, Maintenance, Archive).
+  - Root `github/`: Flat list of all repositories (symlinked or direct).
+- **Update Mechanism**: Incremental updates based on remote commit hash.
+
+##### **Notable Repositories**
+- **agentic-flow**: Core workflow engine for agentic systems.
+- **ruvector**: Vector database implementation.
+- **sparc**: System for Parallel Agentic Research and Computation.
+- **neural-trader**: AI-driven trading platform components.
+- **... and 150+ others**: Covering diverse topics from quantum computing to web plugins.
+
+---
+
 ## Usage Instructions
+
 
 ### Quick Start: Downloading Everything
 

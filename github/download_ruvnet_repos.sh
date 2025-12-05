@@ -173,7 +173,8 @@ find_repo() {
   return 1
 }
 
-for repo in "${REPOS[@]}"; do
+# Step 4: Download/Update
+for repo in "${MERGED_REPOS[@]}"; do
   echo "Checking: $repo"
 
   # Check if repo exists in any tier
@@ -182,28 +183,55 @@ for repo in "${REPOS[@]}"; do
   # Determine target directory
   if [ -n "$existing_path" ] && [ -d "$existing_path" ]; then
       target_dir="$existing_path"
-      echo "  Updating: $repo (at $target_dir)"
   else
       # Clone new repo to tier-1-active (will be re-tiered by organize script)
       target_dir="$BY_TIER_DIR/tier-1-active/$repo"
-      echo "  Cloning: $repo (to $target_dir)"
   fi
 
-  # Clean and Re-clone Strategy
-  # We remove the existing directory to ensure a clean state (no nested git issues)
-  # and then clone with depth 1 and remove .git
-  if [ -d "$target_dir" ]; then
-      rm -rf "$target_dir"
-  fi
-  
   # URL Encode the repo name for the URL
   encoded_repo=$(url_encode "$repo")
   repo_url="https://github.com/${GITHUB_USER}/${encoded_repo}.git"
+
+  # --- Smart Sync Logic ---
   
+  # 1. Get Remote HEAD Commit Hash
+  # We use git ls-remote to check the latest commit without downloading
+  # This might fail if the repo doesn't exist or is private/auth fails
+  remote_hash=$(git ls-remote "$repo_url" HEAD 2>/dev/null | awk '{print $1}' || true)
+
+  if [ -z "$remote_hash" ]; then
+      echo "  Warning: Could not fetch remote hash for $repo (Repo not found or auth error). Skipping."
+      continue
+  fi
+
+  # 2. Check Local Commit Hash
+  local_hash=""
+  commit_file="$target_dir/.ruv_commit"
+  if [ -f "$commit_file" ]; then
+      local_hash=$(cat "$commit_file")
+  fi
+
+  # 3. Compare and Decide
+  if [ -d "$target_dir" ] && [ "$remote_hash" == "$local_hash" ]; then
+      echo "  Up-to-date: $repo ($remote_hash)"
+      continue
+  fi
+
+  if [ -d "$target_dir" ]; then
+      echo "  Updating: $repo (New commit: $remote_hash)"
+      # Remove existing to ensure clean state
+      rm -rf "$target_dir"
+  else
+      echo "  Cloning: $repo"
+  fi
+
+  # 4. Clone and Update State
   if git clone --depth 1 --quiet "$repo_url" "$target_dir"; then
       echo "  Cloned: $repo"
-      # Remove .git directory to prevent submodule issues and reduce size
+      # Remove .git directory
       rm -rf "$target_dir/.git"
+      # Save the remote hash to mark this version
+      echo "$remote_hash" > "$target_dir/.ruv_commit"
   else
       echo "  Warning: failed to clone $repo"
   fi
