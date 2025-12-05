@@ -66,14 +66,13 @@ ruv_downloads/
 │   ├── repos.dynamic.txt                  # Dynamic manifest
 │   │
 │   ├── by-tier/                           # Organized by tier
-│   │   ├── tier-1-active/
-│   │   ├── tier-2-stable/
-│   │   ├── tier-3-maintenance/
-│   │   └── tier-4-archive/
+│   │   ├── tier-1-active/                 # Active development
+│   │   ├── tier-2-stable/                 # Stable releases
+│   │   ├── tier-3-maintenance/            # Maintenance mode
+│   │   └── tier-4-archive/                # Archived projects
 │   │
-│   ├── agentic-flow/                      # Cloned repositories (latest code)
-│   ├── ruvector/
-│   └── ... [160+ more repos] ...
+│   └── scripts/                           # Helper scripts
+
 │
 ├── 00_crates/                             # Rust crate archives
 │   ├── *.crate                            # Downloaded .crate files
@@ -1640,7 +1639,7 @@ The `github/` directory contains repositories cloned directly from the `ruvnet` 
 - **Format**: Shallow clones (depth=1) with `.git` directory removed.
 - **Organization**:
   - `by-tier/`: Repositories organized by stability tier (Active, Stable, Maintenance, Archive).
-  - Root `github/`: Flat list of all repositories (symlinked or direct).
+  - **Note**: The root `github/` directory is kept clean; all repositories reside within `by-tier/`.
 - **Update Mechanism**: Incremental updates based on remote commit hash.
 
 ##### **Notable Repositories**

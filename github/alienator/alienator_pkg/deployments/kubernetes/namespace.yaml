@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: anomaly-detector
-  labels:
-    name: anomaly-detector
-    app: anomaly-detector
-    version: v1.0.0

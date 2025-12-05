@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-pydantic
-httpx
-sqlite3
-litellm

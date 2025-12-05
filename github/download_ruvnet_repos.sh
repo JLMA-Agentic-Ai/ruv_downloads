@@ -239,6 +239,35 @@ done
 
 echo "All repository checks complete."
 
+# Step 5: Cleanup Root Directory (Enforce Strict Tiered Structure)
+echo "Cleaning up root directory to enforce strict tiered organization..."
+# Loop through all directories in the script's directory (github root)
+for item in */ ; do
+    # Skip the by-tier directory itself and the scripts directory
+    if [[ "$item" == "$BY_TIER_DIR/" ]] || [[ "$item" == "scripts/" ]]; then
+        continue
+    fi
+    
+    # Remove trailing slash
+    repo_name="${item%/}"
+    
+    # Check if it's a directory (repo)
+    if [ -d "$repo_name" ]; then
+        # Check if it exists in any tier
+        existing_tier_path=$(find_repo "$repo_name" || true)
+        
+        if [ -n "$existing_tier_path" ] && [ -d "$existing_tier_path" ]; then
+            # Case 1: Duplicate exists in tier -> Delete root copy
+            echo "  Removing duplicate from root: $repo_name (exists in $existing_tier_path)"
+            rm -rf "$repo_name"
+        else
+            # Case 2: Only in root -> Move to tier-1-active
+            echo "  Moving untiered repo to active: $repo_name -> $BY_TIER_DIR/tier-1-active/"
+            mv "$repo_name" "$BY_TIER_DIR/tier-1-active/"
+        fi
+    fi
+done
+
 # Step 6: Re-organize repos (update tiers and index)
 ORGANIZE_SCRIPT="$(dirname "$0")/scripts/organize_repos.sh"
 if [ -x "$ORGANIZE_SCRIPT" ]; then

@@ -1,4 +1,0 @@
-files:
-  - source: /locales/base.json
-    translation: /locales/%two_letters_code%.json
-    type: i18next_json

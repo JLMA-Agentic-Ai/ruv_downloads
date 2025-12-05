@@ -1,7 +1,0 @@
-.claude-flow/
-.swarm/
-.hive-mind/
-*.log
-src/
-tsconfig.json
-node_modules/
