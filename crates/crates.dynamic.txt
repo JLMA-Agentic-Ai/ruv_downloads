@@ -11,8 +11,8 @@ aimds-detection
 aimds-response
 bit-parallel-search
 bitchat-qudag
-claude-parser
 claude_market
+claude-parser
 code-mesh-cli
 code-mesh-core
 code-mesh-tui
@@ -51,12 +51,12 @@ kimi-fann-core
 lean-agentic
 leanr-rag-gateway
 leanr-wasm
-micro-hnsw-wasm
 micro_cartan_attn
 micro_core
 micro_metrics
 micro_routing
 micro_swarm
+micro-hnsw-wasm
 midstreamer-attractor
 midstreamer-neural-solver
 midstreamer-quic
