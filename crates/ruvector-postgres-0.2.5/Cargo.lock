@@ -1762,7 +1762,7 @@ dependencies = [
 
 [[package]]
 name = "ruvector-postgres"
-version = "0.2.3"
+version = "0.2.5"
 dependencies = [
  "approx",
  "bincode",

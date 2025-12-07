@@ -12,7 +12,7 @@
 [package]
 edition = "2021"
 name = "ruvector-postgres"
-version = "0.2.3"
+version = "0.2.5"
 authors = ["ruv.io Team <info@ruv.io>"]
 build = "build.rs"
 exclude = [
