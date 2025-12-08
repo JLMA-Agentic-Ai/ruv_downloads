@@ -11,6 +11,11 @@
 node_modules/
 .npm
 
+# Python virtual environments
+**/venv/
+**/.venv/
+
+
 # Optional: extracted directories (unless you want to version them)
 # agentic-*
 # neural-*

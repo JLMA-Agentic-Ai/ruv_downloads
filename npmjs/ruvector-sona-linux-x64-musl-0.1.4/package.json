@@ -1,0 +1,1 @@
+{"name":"@ruvector/sona-linux-x64-musl","version":"0.1.4","os":["linux"],"cpu":["x64"],"libc":["musl"],"main":"sona.linux-x64-musl.node","files":["sona.linux-x64-musl.node"],"license":"MIT OR Apache-2.0","repository":{"type":"git","url":"https://github.com/ruvnet/ruvector.git"}}

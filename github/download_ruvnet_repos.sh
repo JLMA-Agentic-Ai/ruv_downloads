@@ -10,6 +10,24 @@ GITHUB_USER="ruvnet"
 MANIFEST_FILE="repos.dynamic.txt"
 BY_TIER_DIR="by-tier"
 
+# Function to URL encode strings (handles spaces, etc.)
+url_encode() {
+    local string="${1}"
+    local strlen=${#string}
+    local encoded=""
+    local pos c o
+
+    for (( pos=0 ; pos<strlen ; pos++ )); do
+        c=${string:$pos:1}
+        case "$c" in
+            [-_.~a-zA-Z0-9] ) o="${c}" ;;
+            * )               printf -v o '%%%02x' "'$c"
+        esac
+        encoded+="${o}"
+    done
+    echo "${encoded}"
+}
+
 # Basic runtime checks
 required_cmds=(gh git grep sed sort mktemp)
 for _cmd in "${required_cmds[@]}"; do
@@ -48,48 +66,58 @@ if [ "$DISCOVER" -eq 1 ]; then
   # Try gh cli first
   if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
     echo "  Using gh CLI..."
-    repo_list=$(gh repo list "$GITHUB_USER" --limit 1000 --json name --jq '.[].name' | sort -u)
+    # Get list of repos (limit 1000 to be safe)
+    gh_repos=$(gh repo list "$GITHUB_USER" --limit 1000 --json name --jq '.[].name')
+    if [ -n "$gh_repos" ]; then
+        IFS=$'\n'
+        for name in $gh_repos; do
+            DISCOVERED_REPOS+=("$name")
+        done
+        unset IFS
+    fi
   else
     echo "  gh CLI not authenticated or not found. Falling back to public API via curl..."
-    # Fetch all pages
     page=1
-    repo_list=""
     while true; do
-      echo "    Fetching page $page..."
-      response=$(curl -s "https://api.github.com/users/${GITHUB_USER}/repos?page=${page}&per_page=100")
-
-      # Check for empty array or error
-      if echo "$response" | grep -q "\[\]"; then
-        break
-      fi
-
-      # Extract names using grep/sed (avoiding jq dependency if possible, though jq is better)
-      # API returns "name": "repo-name",
-      page_names=$(echo "$response" | grep -o '"name": "[^"]\+"' | sed -E 's/"name": "([^"]+)"/\1/' | sort -u || true)
-
-      if [ -z "$page_names" ]; then
-        break
-      fi
-
-      repo_list="${repo_list}
-${page_names}"
-
-      ((page++))
-      if [ "$page" -gt 10 ]; then break; fi # Safety break
+        echo "    Fetching page $page..."
+        # GitHub API (public) - rate limited to 60/hr without token
+        AUTH_HEADER=""
+        if [ -n "$GITHUB_TOKEN" ]; then
+            AUTH_HEADER="-H \"Authorization: token $GITHUB_TOKEN\""
+        fi
+        
+        response=$(eval curl -s $AUTH_HEADER "https://api.github.com/users/$GITHUB_USER/repos?per_page=100\&page=$page")
+        
+        # Check for errors or empty list
+        if echo "$response" | grep -q "\"message\":"; then
+             echo "    API Error or Rate Limit: $(echo "$response" | grep -o '"message": "[^"]*"' | cut -d'"' -f4)"
+             break
+        fi
+        
+        # Extract names
+        page_names=$(echo "$response" | grep -o '"name": "[^"]*"' | cut -d'"' -f4 | sort -u || true)
+        
+        if [ -z "$page_names" ]; then
+            break
+        fi
+        
+        IFS=$'\n'
+        for name in $page_names; do
+            DISCOVERED_REPOS+=("$name")
+        done
+        unset IFS
+        
+        # Simple pagination check: if we got less than 100, we are done
+        count=$(echo "$page_names" | wc -l)
+        if [ "$count" -lt 100 ]; then
+            break
+        fi
+        ((page++))
+        if [ "$page" -gt 20 ]; then break; fi # Safety break
     done
   fi
-
-  if [ -n "$repo_list" ]; then
-    IFS=$'\n'
-    for name in $repo_list; do
-      [ -z "$name" ] && continue
-      DISCOVERED_REPOS+=("$name")
-    done
-    unset IFS
-    echo "  Discovered ${#DISCOVERED_REPOS[@]} repositories from GitHub"
-  else
-    echo "  Warning: no repositories discovered from GitHub API"
-  fi
+  
+  echo "  Discovered ${#DISCOVERED_REPOS[@]} repositories from GitHub"
 fi
 
 # Step 3: Merge - also auto-discover repos from existing tier directories
@@ -145,13 +173,16 @@ find_repo() {
   return 1
 }
 
-for repo in "${REPOS[@]}"; do
+# Step 4: Download/Update
+for repo in "${MERGED_REPOS[@]}"; do
   echo "Checking: $repo"
 
   # Check if repo exists in any tier
   existing_path=$(find_repo "$repo" || true)
-
+  
+  # Determine target directory
   if [ -n "$existing_path" ] && [ -d "$existing_path" ]; then
+<<<<<<< HEAD
     # Validation: Check if it's actually a git repo
     if [ ! -d "$existing_path/.git" ]; then
       echo "  Warning: $existing_path exists but is not a git repository (missing .git). Removing and re-cloning..."
@@ -169,20 +200,93 @@ for repo in "${REPOS[@]}"; do
     else
       echo "  Warning: failed to update $repo"
     fi
+=======
+      target_dir="$existing_path"
+>>>>>>> 75f44ba53f5f041fb89aef7d2eb62c09c1b0de5b
   else
-    # Clone new repo to tier-1-active (will be re-tiered by organize script)
-    target_dir="$BY_TIER_DIR/tier-1-active/$repo"
-    echo "  Cloning: $repo"
-    repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
-    if git clone --quiet "$repo_url" "$target_dir"; then
+      # Clone new repo to tier-1-active (will be re-tiered by organize script)
+      target_dir="$BY_TIER_DIR/tier-1-active/$repo"
+  fi
+
+  # URL Encode the repo name for the URL
+  encoded_repo=$(url_encode "$repo")
+  repo_url="https://github.com/${GITHUB_USER}/${encoded_repo}.git"
+
+  # --- Smart Sync Logic ---
+  
+  # 1. Get Remote HEAD Commit Hash
+  # We use git ls-remote to check the latest commit without downloading
+  # This might fail if the repo doesn't exist or is private/auth fails
+  remote_hash=$(git ls-remote "$repo_url" HEAD 2>/dev/null | awk '{print $1}' || true)
+
+  if [ -z "$remote_hash" ]; then
+      echo "  Warning: Could not fetch remote hash for $repo (Repo not found or auth error). Skipping."
+      continue
+  fi
+
+  # 2. Check Local Commit Hash
+  local_hash=""
+  commit_file="$target_dir/.ruv_commit"
+  if [ -f "$commit_file" ]; then
+      local_hash=$(cat "$commit_file")
+  fi
+
+  # 3. Compare and Decide
+  if [ -d "$target_dir" ] && [ "$remote_hash" == "$local_hash" ]; then
+      echo "  Up-to-date: $repo ($remote_hash)"
+      continue
+  fi
+
+  if [ -d "$target_dir" ]; then
+      echo "  Updating: $repo (New commit: $remote_hash)"
+      # Remove existing to ensure clean state
+      rm -rf "$target_dir"
+  else
+      echo "  Cloning: $repo"
+  fi
+
+  # 4. Clone and Update State
+  if git clone --depth 1 --quiet "$repo_url" "$target_dir"; then
       echo "  Cloned: $repo"
-    else
+      # Remove .git directory
+      rm -rf "$target_dir/.git"
+      # Save the remote hash to mark this version
+      echo "$remote_hash" > "$target_dir/.ruv_commit"
+  else
       echo "  Warning: failed to clone $repo"
-    fi
   fi
 done
 
 echo "All repository checks complete."
+
+# Step 5: Cleanup Root Directory (Enforce Strict Tiered Structure)
+echo "Cleaning up root directory to enforce strict tiered organization..."
+# Loop through all directories in the script's directory (github root)
+for item in */ ; do
+    # Skip the by-tier directory itself and the scripts directory
+    if [[ "$item" == "$BY_TIER_DIR/" ]] || [[ "$item" == "scripts/" ]]; then
+        continue
+    fi
+    
+    # Remove trailing slash
+    repo_name="${item%/}"
+    
+    # Check if it's a directory (repo)
+    if [ -d "$repo_name" ]; then
+        # Check if it exists in any tier
+        existing_tier_path=$(find_repo "$repo_name" || true)
+        
+        if [ -n "$existing_tier_path" ] && [ -d "$existing_tier_path" ]; then
+            # Case 1: Duplicate exists in tier -> Delete root copy
+            echo "  Removing duplicate from root: $repo_name (exists in $existing_tier_path)"
+            rm -rf "$repo_name"
+        else
+            # Case 2: Only in root -> Move to tier-1-active
+            echo "  Moving untiered repo to active: $repo_name -> $BY_TIER_DIR/tier-1-active/"
+            mv "$repo_name" "$BY_TIER_DIR/tier-1-active/"
+        fi
+    fi
+done
 
 # Step 6: Re-organize repos (update tiers and index)
 ORGANIZE_SCRIPT="$(dirname "$0")/scripts/organize_repos.sh"

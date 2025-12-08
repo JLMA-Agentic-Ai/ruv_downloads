@@ -41,6 +41,21 @@ To discover new crates from crates.io and update the manifest:
 ./crates/download_ruvnet_crates.sh --discover
 ```
 
+### GitHub Repositories
+
+To download and update GitHub repositories (clones latest code without .git history):
+```bash
+./github/download_ruvnet_repos.sh
+```
+
+To discover new repositories from the `ruvnet` user:
+```bash
+./github/download_ruvnet_repos.sh --discover
+```
+
+**Note**: This script uses an incremental update strategy. It checks the remote commit hash and only re-downloads if the repository has changed.
+
+
 ## Output
 
 - **Archives**: Downloaded `.tgz` (NPM) and `.crate` (Rust) files are stored in `00_tgz/` and `00_crates/` respectively.
