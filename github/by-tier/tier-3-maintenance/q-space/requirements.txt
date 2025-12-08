@@ -1,6 +1,0 @@
-azure-cli
-pip
-jq
-azure-quantum
-qsharp
-asyncclick

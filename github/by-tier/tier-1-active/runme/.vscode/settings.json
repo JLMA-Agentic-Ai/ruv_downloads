@@ -1,0 +1,21 @@
+{
+    "go.testTimeout": "10s",
+    "go.buildFlags": [
+        "-ldflags=-X=github.com/stateful/runme/v3/internal/version.BuildVersion=99.9.9",
+    ],
+    "go.testFlags": [
+        "-ldflags=-X=github.com/stateful/runme/v3/internal/version.BuildVersion=99.9.9",
+    ],
+    "protoc": {
+        "options": [
+            // It's not a typical location, you likely need to symlink it
+            // from a location where you installed protoc.
+            "--proto_path=/usr/local/include/protoc"
+        ]
+    },
+    "go.buildTags": "test_with_docker"
+    // Uncomment if you want to work on files in ./web.
+    // "go.buildTags": "js,wasm",
+    // Uncomment if you want to check compilation errors on Windows.
+    // "go.buildTags": "windows"
+}

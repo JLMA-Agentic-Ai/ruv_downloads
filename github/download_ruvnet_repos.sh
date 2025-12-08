@@ -152,9 +152,19 @@ for repo in "${REPOS[@]}"; do
   existing_path=$(find_repo "$repo" || true)
 
   if [ -n "$existing_path" ] && [ -d "$existing_path" ]; then
+    # Validation: Check if it's actually a git repo
+    if [ ! -d "$existing_path/.git" ]; then
+      echo "  Warning: $existing_path exists but is not a git repository (missing .git). Removing and re-cloning..."
+      rm -rf "$existing_path"
+      existing_path=""
+    fi
+  fi
+
+  if [ -n "$existing_path" ] && [ -d "$existing_path" ]; then
     # Update existing repo
     echo "  Updating: $repo"
-    if (cd "$existing_path" && git pull --quiet); then
+    # Use stash to handle local changes/dirty state safely
+    if (cd "$existing_path" && git stash >/dev/null 2>&1 && git pull --quiet); then
       echo "  Updated: $repo"
     else
       echo "  Warning: failed to update $repo"

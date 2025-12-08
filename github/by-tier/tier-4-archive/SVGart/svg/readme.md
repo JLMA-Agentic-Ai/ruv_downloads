@@ -1,2 +1,0 @@
-
-Various SVG Art Works
