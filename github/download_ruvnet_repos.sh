@@ -182,7 +182,6 @@ for repo in "${MERGED_REPOS[@]}"; do
   
   # Determine target directory
   if [ -n "$existing_path" ] && [ -d "$existing_path" ]; then
-<<<<<<< HEAD
     # Validation: Check if it's actually a git repo
     if [ ! -d "$existing_path/.git" ]; then
       echo "  Warning: $existing_path exists but is not a git repository (missing .git). Removing and re-cloning..."
@@ -200,9 +199,6 @@ for repo in "${MERGED_REPOS[@]}"; do
     else
       echo "  Warning: failed to update $repo"
     fi
-=======
-      target_dir="$existing_path"
->>>>>>> 75f44ba53f5f041fb89aef7d2eb62c09c1b0de5b
   else
       # Clone new repo to tier-1-active (will be re-tiered by organize script)
       target_dir="$BY_TIER_DIR/tier-1-active/$repo"

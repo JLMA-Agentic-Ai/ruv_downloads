@@ -23,21 +23,21 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+
       - name: Make scripts executable
         run: |
+          chmod +x ruv_world.sh
           chmod +x crates/download_ruvnet_crates.sh
           chmod +x npmjs/download_ruvnet_packages.sh
           chmod +x github/download_ruvnet_repos.sh
           chmod +x github/scripts/organize_repos.sh
 
-      - name: Update Crates
-        run: ./crates/download_ruvnet_crates.sh --discover
-
-      - name: Update NPM Packages
-        run: ./npmjs/download_ruvnet_packages.sh --discover
-
-      - name: Update GitHub Repos
-        run: ./github/download_ruvnet_repos.sh --discover
+      - name: Run RUV WORLD - Centralized Downloader
+        run: ./ruv_world.sh
 
       - name: Commit and Push changes
         run: |
@@ -46,8 +46,9 @@ jobs:
           git add .
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
-            git commit -m "chore: update ruvnet packages [skip ci]"
+            git commit -m "chore: update ruvnet ecosystem [skip ci]"
             git push
           else
             echo "No changes to commit"
           fi
+

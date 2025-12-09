@@ -63,6 +63,7 @@
 @ruvector/attention-linux-x64-gnu
 @ruvector/attention-wasm
 @ruvector/attention-win32-x64-msvc
+@ruvector/cli
 @ruvector/cluster
 @ruvector/core
 @ruvector/gnn
@@ -87,8 +88,11 @@
 @ruvector/node-win32-x64-msvc
 @ruvector/postgres-cli
 @ruvector/router
+@ruvector/router-darwin-arm64
+@ruvector/router-linux-arm64-gnu
 @ruvector/router-linux-x64-gnu
 @ruvector/router-wasm
+@ruvector/router-win32-x64-msvc
 @ruvector/ruvllm
 @ruvector/ruvllm-darwin-arm64
 @ruvector/ruvllm-darwin-x64

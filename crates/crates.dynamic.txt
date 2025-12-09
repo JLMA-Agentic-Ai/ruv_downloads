@@ -112,6 +112,8 @@ ruv-swarm-persistence
 ruv-swarm-transport
 ruv-swarm-wasm
 ruvector-attention
+ruvector-attention-node
+ruvector-attention-wasm
 ruvector-cli
 ruvector-cluster
 ruvector-collections

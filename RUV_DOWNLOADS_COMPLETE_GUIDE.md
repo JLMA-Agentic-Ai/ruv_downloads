@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **298 total artifacts**: **155 NPM packages** and **143 Rust crates** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
+**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **484 total artifacts**: **158 Rust crates**, **161 NPM packages**, and **165 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Repository Information
 - **Type**: Package discovery and distribution system
-- **Scope**: 298 artifacts (143 Rust crates + 155 NPM packages)
+- **Scope**: 484 artifacts (158 Rust crates + 161 NPM packages + 165 GitHub repositories)
 - **Maintained by**: Ruvnet Community
 - **Update Frequency**: Automatic discovery and versioning
 - **Storage**: Organized archives with legacy support
@@ -45,21 +45,21 @@ ruv_downloads/
 ├── README.md                              # Main overview
 ├── RUV_DOWNLOADS_COMPLETE_GUIDE.md       # This document
 │
-├── crates/                                # 143 Rust crates
+├── crates/                                # 158 Rust crates
 │   ├── README.md                          # Crate management documentation
 │   ├── download_ruvnet_crates.sh          # Download script with --discover flag
 │   ├── crates.dynamic.txt                 # Dynamic manifest (auto-maintained)
 │   │
 │   ├── agentic-jujutsu-1.0.1/            # Version-specific directories
-│   ├── ... [140+ more crates] ...
+│   ├── ... [155+ more crates] ...
 │
-├── npmjs/                                 # 155 NPM packages
+├── npmjs/                                 # 161 NPM packages
 │   ├── README.md                          # Package management documentation
 │   ├── download_ruvnet_packages.sh        # Download script with --discover flag
 │   ├── packagelist.dynamic.txt            # Dynamic manifest (auto-maintained)
 │   │
 │   ├── agentic-jujutsu-2.3.6/            # Version-specific directories
-│   ├── ... [152+ more packages] ...
+│   ├── ... [156+ more packages] ...
 │
 ├── github/                                # 160+ GitHub Repositories
 │   ├── download_ruvnet_repos.sh           # Download script (incremental updates)
@@ -92,7 +92,7 @@ ruv_downloads/
 
 ## Complete Rust Crates Directory
 
-### Total: 143 Rust Crates
+### Total: 158 Rust Crates
 
 #### 1. AGENTIC SYSTEMS CRATES (8 total)
 
@@ -1431,6 +1431,31 @@ ruv_downloads/
 ##### **neural-trader-brokers** (v2.1.1) - Broker Integration
 - **Brokers**: Interactive Brokers, Alpaca, E*TRADE
 
+##### **@neural-trader/agentic-accounting-agents** (v0.1.1) - Multi-Agent Accounting Swarm
+- **Installation**: `npm install @neural-trader/agentic-accounting-agents`
+- **Purpose**: Multi-agent swarm orchestration for autonomous accounting operations with crypto trading integration
+- **Key Features**:
+  - **Multi-Agent Coordination**: Distributed task coordination using BullMQ and Redis
+  - **ReasoningBank Self-Learning**: Agents learn from past experiences and improve over time
+  - **Autonomous Operations**: Self-directed accounting workflows without human intervention
+  - **Compliance Automation**: Intelligent compliance checks for cryptocurrency trading
+  - **Swarm Intelligence**: Multiple agents collaborate on complex accounting tasks
+  - **AgentDB Integration**: Persistent agent state and experience storage (13,000x faster)
+  - **Agentic-Flow Orchestration**: Coordinate workflow execution across agent pools
+- **Architecture**:
+  - Task queue management with BullMQ
+  - Redis-backed distributed coordination
+  - TypeScript/Node.js runtime
+  - Modular agent design
+- **Dependencies**:
+  - `agentic-flow` (v1.10.2) - Workflow orchestration
+  - `agentdb` (v1.6.1) - Agent memory database
+  - `bullmq` (v5.1.9) - Task queue
+  - `ioredis` (v5.8.2) - Redis client
+- **Keywords**: multi-agent, autonomous, swarm, self-learning, reasoningbank, distributed-systems, neural-trader, crypto-accounting, compliance
+- **License**: MIT OR Apache-2.0
+- **Related Packages**:
+
 ##### **neural-trader-agentic-accounting-cli** (v0.1.1) - CLI
 ##### **neural-trader-agentic-accounting-core** (v0.1.1) - Core Logic
 ##### **neural-trader-agentic-accounting-mcp** (v0.1.1) - MCP Integration
@@ -1593,6 +1618,38 @@ ruv_downloads/
 ##### **foxruv-iris** (v1.8.19) - Vision System
 ##### **foxruv-iris-core** (v1.0.0) - Vision Core
 ##### **foxruv-iris-ultrathink** (v1.0.0) - Advanced Vision
+
+##### **@foxruv/iris-agentic-synth** (v1.0.5) - Synthetic Prompt Generation
+- **Installation**: `npm install @foxruv/iris-agentic-synth`
+- **CLI**: `npx agentic-synth`
+- **Purpose**: High-performance synthetic prompt generation with genetic evolution, streaming, and multi-model routing
+- **Key Features**:
+  - **Genetic Evolution**: Evolve prompts using genetic algorithms with fitness evaluation
+  - **Real-Time Streaming**: Async generators for streaming prompt generation
+  - **Multi-Model Routing**: Intelligent routing across multiple LLM providers
+  - **High Performance**: 90%+ cache hit rate, <15ms P99 latency
+  - **No Redis Required**: In-memory caching with zero external dependencies
+  - **Cache Optimization**: Efficient semantic similarity caching
+  - **Vector Search Integration**: Optional Ruvector integration for semantic search
+  - **Zod Validation**: Type-safe prompt schemas with runtime validation
+- **Performance Metrics**:
+  - P99 Latency: <15ms
+  - Cache Hit Rate: 90%+
+  - No external cache dependencies
+  - Memory-efficient design
+- **Algorithms**:
+  - Mutation strategies for prompt variation
+  - Crossover algorithms for combining prompts
+  - Fitness evaluation for quality assessment
+  - Population-based evolution
+- **Integration**:
+  - Works with `agentic-robotics` for robot control prompts
+  - `midstreamer` for streaming operations
+  - Optional `ruvector` for vector-based similarity
+- **Keywords**: synthetic-prompts, genetic-algorithm, prompt-engineering, streaming, multi-model, llm, ai, prompt-optimization, high-performance, no-redis
+- **Engine Requirements**: Node.js >=18.0.0
+- **License**: MIT
+
 ##### **foxruv-e2b-runner** (v2.0.1) - E2B Execution
 
 ---
@@ -1667,8 +1724,9 @@ cd ruv_downloads
 ./npmjs/download_ruvnet_packages.sh --discover
 
 # Step 4: Check what was downloaded
-cat crates/crates.dynamic.txt | wc -l      # Should be ~147
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~155
+cat crates/crates.dynamic.txt | wc -l      # Should be ~158
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~161
+cat github/repos.dynamic.txt | wc -l       # Should be ~165
 ```
 
 ### Using Individual Crates
@@ -1805,9 +1863,10 @@ swarm.route_message(msg, "agent")?;
 
 ## Summary Statistics
 
-- **Total Crates**: 143 (Rust)
-- **Total Packages**: 155 (NPM/TypeScript)
-- **Total Artifacts**: 298
+- **Total Crates**: 158 (Rust)
+- **Total Packages**: 161 (NPM/TypeScript)
+- **Total GitHub Repositories**: 165
+- **Total Artifacts**: 484
 - **Documentation Pages**: 300+ README files
 - **Code Size**: ~50,000+ lines of documentation
 - **Performance Tested**: Yes, 95%+ of packages
@@ -1817,7 +1876,7 @@ swarm.route_message(msg, "agent")?;
 
 ---
 
-**Last Updated**: December 2024
+**Last Updated**: December 9, 2025
 **Repository**: ruv_downloads
 **Maintained by**: Ruvnet Community
 **License**: MIT/Apache-2.0 (dual)
