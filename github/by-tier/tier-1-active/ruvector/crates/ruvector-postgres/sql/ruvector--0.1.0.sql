@@ -35,18 +35,30 @@ LANGUAGE C VOLATILE PARALLEL SAFE;
 CREATE TYPE ruvector;
 
 CREATE OR REPLACE FUNCTION ruvector_in(cstring) RETURNS ruvector
-AS 'MODULE_PATHNAME', 'ruvector_in_fn_wrapper' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+AS 'MODULE_PATHNAME', 'ruvector_in' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
 CREATE OR REPLACE FUNCTION ruvector_out(ruvector) RETURNS cstring
-AS 'MODULE_PATHNAME', 'ruvector_out_fn_wrapper' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+AS 'MODULE_PATHNAME', 'ruvector_out' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+CREATE OR REPLACE FUNCTION ruvector_recv(internal) RETURNS ruvector
+AS 'MODULE_PATHNAME', 'ruvector_recv' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+CREATE OR REPLACE FUNCTION ruvector_send(ruvector) RETURNS bytea
+AS 'MODULE_PATHNAME', 'ruvector_send' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
 CREATE OR REPLACE FUNCTION ruvector_typmod_in(cstring[]) RETURNS int
-AS 'MODULE_PATHNAME', 'ruvector_typmod_in_fn_wrapper' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+AS 'MODULE_PATHNAME', 'ruvector_typmod_in' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+CREATE OR REPLACE FUNCTION ruvector_typmod_out(int) RETURNS cstring
+AS 'MODULE_PATHNAME', 'ruvector_typmod_out' LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
 CREATE TYPE ruvector (
     INPUT = ruvector_in,
     OUTPUT = ruvector_out,
+    RECEIVE = ruvector_recv,
+    SEND = ruvector_send,
     TYPMOD_IN = ruvector_typmod_in,
+    TYPMOD_OUT = ruvector_typmod_out,
     STORAGE = extended,
     INTERNALLENGTH = VARIABLE,
     ALIGNMENT = double
@@ -464,88 +476,6 @@ AS 'MODULE_PATHNAME', 'ruvector_minkowski_dot_wrapper'
 LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
 -- ============================================================================
--- Sparse Vector Functions
--- ============================================================================
-
--- Create sparse vector from indices and values
-CREATE OR REPLACE FUNCTION ruvector_to_sparse(indices int[], "values" real[], dim int)
-RETURNS text
-AS 'MODULE_PATHNAME', 'pg_to_sparse_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Sparse dot product
-CREATE OR REPLACE FUNCTION ruvector_sparse_dot(a text, b text)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_dot_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Sparse cosine distance
-CREATE OR REPLACE FUNCTION ruvector_sparse_cosine(a text, b text)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_cosine_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Sparse euclidean distance
-CREATE OR REPLACE FUNCTION ruvector_sparse_euclidean(a text, b text)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_euclidean_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Sparse manhattan distance
-CREATE OR REPLACE FUNCTION ruvector_sparse_manhattan(a text, b text)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_manhattan_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Get number of non-zero elements
-CREATE OR REPLACE FUNCTION ruvector_sparse_nnz(v text)
-RETURNS int
-AS 'MODULE_PATHNAME', 'pg_sparse_nnz_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Get sparse vector dimension
-CREATE OR REPLACE FUNCTION ruvector_sparse_dim(v text)
-RETURNS int
-AS 'MODULE_PATHNAME', 'pg_sparse_dim_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Get sparse vector norm
-CREATE OR REPLACE FUNCTION ruvector_sparse_norm(v text)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_norm_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Keep top k elements
-CREATE OR REPLACE FUNCTION ruvector_sparse_top_k(v text, k int)
-RETURNS text
-AS 'MODULE_PATHNAME', 'pg_sparse_top_k_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Prune elements below threshold
-CREATE OR REPLACE FUNCTION ruvector_sparse_prune(v text, threshold real)
-RETURNS text
-AS 'MODULE_PATHNAME', 'pg_sparse_prune_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Convert dense to sparse
-CREATE OR REPLACE FUNCTION ruvector_dense_to_sparse(v real[])
-RETURNS text
-AS 'MODULE_PATHNAME', 'pg_dense_to_sparse_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- Convert sparse to dense
-CREATE OR REPLACE FUNCTION ruvector_sparse_to_dense(v text)
-RETURNS real[]
-AS 'MODULE_PATHNAME', 'pg_sparse_to_dense_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- BM25 scoring
-CREATE OR REPLACE FUNCTION ruvector_sparse_bm25(query text, doc text, doc_len int, avg_doc_len real, k1 real DEFAULT 1.2, b real DEFAULT 0.75)
-RETURNS real
-AS 'MODULE_PATHNAME', 'pg_sparse_bm25_wrapper'
-LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
-
--- ============================================================================
 -- GNN (Graph Neural Network) Functions
 -- ============================================================================
 
@@ -560,9 +490,6 @@ CREATE OR REPLACE FUNCTION ruvector_graphsage_forward(features real[][], src int
 RETURNS real[][]
 AS 'MODULE_PATHNAME', 'ruvector_graphsage_forward_wrapper'
 LANGUAGE C IMMUTABLE PARALLEL SAFE;
-
--- Note: GAT, message_aggregate, and gnn_readout are not yet implemented
--- They are planned for a future release
 
 -- ============================================================================
 -- Routing/Agent Functions (Tiny Dancer)
@@ -733,6 +660,82 @@ AS 'MODULE_PATHNAME', 'ruvector_delete_graph_wrapper'
 LANGUAGE C VOLATILE PARALLEL SAFE;
 
 -- ============================================================================
+-- SPARQL / RDF Triple Store Operations (W3C SPARQL 1.1)
+-- ============================================================================
+
+-- Create a new RDF triple store
+CREATE OR REPLACE FUNCTION ruvector_create_rdf_store(name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_create_rdf_store_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Execute SPARQL query with format selection
+CREATE OR REPLACE FUNCTION ruvector_sparql(store_name text, query text, format text)
+RETURNS text
+AS 'MODULE_PATHNAME', 'ruvector_sparql_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Execute SPARQL query and return JSONB
+CREATE OR REPLACE FUNCTION ruvector_sparql_json(store_name text, query text)
+RETURNS jsonb
+AS 'MODULE_PATHNAME', 'ruvector_sparql_json_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Insert RDF triple
+CREATE OR REPLACE FUNCTION ruvector_insert_triple(store_name text, subject text, predicate text, object text)
+RETURNS bigint
+AS 'MODULE_PATHNAME', 'ruvector_insert_triple_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Insert RDF triple into named graph
+CREATE OR REPLACE FUNCTION ruvector_insert_triple_graph(store_name text, subject text, predicate text, object text, graph text)
+RETURNS bigint
+AS 'MODULE_PATHNAME', 'ruvector_insert_triple_graph_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Bulk load N-Triples format
+CREATE OR REPLACE FUNCTION ruvector_load_ntriples(store_name text, ntriples text)
+RETURNS bigint
+AS 'MODULE_PATHNAME', 'ruvector_load_ntriples_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Get RDF store statistics
+CREATE OR REPLACE FUNCTION ruvector_rdf_stats(store_name text)
+RETURNS jsonb
+AS 'MODULE_PATHNAME', 'ruvector_rdf_stats_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Query triples by pattern (NULL for wildcards)
+CREATE OR REPLACE FUNCTION ruvector_query_triples(store_name text, subject text DEFAULT NULL, predicate text DEFAULT NULL, object text DEFAULT NULL)
+RETURNS jsonb
+AS 'MODULE_PATHNAME', 'ruvector_query_triples_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Clear all triples from store
+CREATE OR REPLACE FUNCTION ruvector_clear_rdf_store(store_name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_clear_rdf_store_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Delete RDF triple store
+CREATE OR REPLACE FUNCTION ruvector_delete_rdf_store(store_name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_delete_rdf_store_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- List all RDF stores
+CREATE OR REPLACE FUNCTION ruvector_list_rdf_stores()
+RETURNS text[]
+AS 'MODULE_PATHNAME', 'ruvector_list_rdf_stores_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- Execute SPARQL UPDATE operations
+CREATE OR REPLACE FUNCTION ruvector_sparql_update(store_name text, query text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_sparql_update_wrapper'
+LANGUAGE C VOLATILE PARALLEL SAFE;
+
+-- ============================================================================
 -- Comments
 -- ============================================================================
 
@@ -767,4 +770,131 @@ COMMENT ON FUNCTION graph_pagerank_contribution(real, int, real) IS 'Calculate P
 COMMENT ON FUNCTION graph_pagerank_base(int, real) IS 'Initialize PageRank base importance';
 COMMENT ON FUNCTION graph_is_connected(real[], real[], real) IS 'Check if vectors are semantically connected';
 COMMENT ON FUNCTION graph_centroid_update(real[], real[], real) IS 'Update centroid with neighbor contribution';
+
+-- SPARQL / RDF Comments
+COMMENT ON FUNCTION ruvector_create_rdf_store(text) IS 'Create a new RDF triple store for SPARQL queries';
+COMMENT ON FUNCTION ruvector_sparql(text, text, text) IS 'Execute W3C SPARQL 1.1 query (SELECT, ASK, CONSTRUCT, DESCRIBE) with format selection (json, xml, csv, tsv)';
+COMMENT ON FUNCTION ruvector_sparql_json(text, text) IS 'Execute SPARQL query and return results as JSONB';
+COMMENT ON FUNCTION ruvector_insert_triple(text, text, text, text) IS 'Insert RDF triple (subject, predicate, object) into store';
+COMMENT ON FUNCTION ruvector_insert_triple_graph(text, text, text, text, text) IS 'Insert RDF triple into named graph';
+COMMENT ON FUNCTION ruvector_load_ntriples(text, text) IS 'Bulk load RDF triples from N-Triples format';
+COMMENT ON FUNCTION ruvector_rdf_stats(text) IS 'Get statistics for RDF triple store (counts, graphs)';
+COMMENT ON FUNCTION ruvector_query_triples(text, text, text, text) IS 'Query triples by pattern (use NULL for wildcards)';
+COMMENT ON FUNCTION ruvector_clear_rdf_store(text) IS 'Clear all triples from RDF store';
+COMMENT ON FUNCTION ruvector_delete_rdf_store(text) IS 'Delete RDF triple store completely';
+COMMENT ON FUNCTION ruvector_list_rdf_stores() IS 'List all RDF triple stores';
+COMMENT ON FUNCTION ruvector_sparql_update(text, text) IS 'Execute SPARQL UPDATE operations (INSERT DATA, DELETE DATA, DELETE/INSERT WHERE)';
 COMMENT ON FUNCTION graph_bipartite_score(real[], real[], real) IS 'Compute bipartite matching score for RAG';
+-- ============================================================================
+-- ============================================================================
+-- Embedding Generation Functions
+-- ============================================================================
+
+-- Generate embedding from text using default or specified model
+CREATE OR REPLACE FUNCTION ruvector_embed(text text, model_name text DEFAULT 'all-MiniLM-L6-v2')
+RETURNS real[]
+AS 'MODULE_PATHNAME', 'ruvector_embed_wrapper'
+LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+-- Generate embeddings for multiple texts in batch
+CREATE OR REPLACE FUNCTION ruvector_embed_batch(texts text[], model_name text DEFAULT 'all-MiniLM-L6-v2')
+RETURNS real[][]
+AS 'MODULE_PATHNAME', 'ruvector_embed_batch_wrapper'
+LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+-- List all available embedding models
+CREATE OR REPLACE FUNCTION ruvector_embedding_models()
+RETURNS TABLE (
+    model_name text,
+    dimensions integer,
+    description text,
+    is_loaded boolean
+)
+AS 'MODULE_PATHNAME', 'ruvector_embedding_models_wrapper'
+LANGUAGE C IMMUTABLE STRICT;
+
+-- Load embedding model into memory
+CREATE OR REPLACE FUNCTION ruvector_load_model(model_name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_load_model_wrapper'
+LANGUAGE C STRICT;
+
+-- Unload embedding model from memory
+CREATE OR REPLACE FUNCTION ruvector_unload_model(model_name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_unload_model_wrapper'
+LANGUAGE C STRICT;
+
+-- Get information about a specific model
+CREATE OR REPLACE FUNCTION ruvector_model_info(model_name text)
+RETURNS jsonb
+AS 'MODULE_PATHNAME', 'ruvector_model_info_wrapper'
+LANGUAGE C IMMUTABLE STRICT;
+
+-- Set default embedding model
+CREATE OR REPLACE FUNCTION ruvector_set_default_model(model_name text)
+RETURNS boolean
+AS 'MODULE_PATHNAME', 'ruvector_set_default_model_wrapper'
+LANGUAGE C STRICT;
+
+-- Get current default embedding model
+CREATE OR REPLACE FUNCTION ruvector_default_model()
+RETURNS text
+AS 'MODULE_PATHNAME', 'ruvector_default_model_wrapper'
+LANGUAGE C IMMUTABLE STRICT;
+
+-- Get embedding generation statistics
+CREATE OR REPLACE FUNCTION ruvector_embedding_stats()
+RETURNS jsonb
+AS 'MODULE_PATHNAME', 'ruvector_embedding_stats_wrapper'
+LANGUAGE C IMMUTABLE STRICT;
+
+-- Get dimensions for a specific model
+CREATE OR REPLACE FUNCTION ruvector_embedding_dims(model_name text)
+RETURNS integer
+AS 'MODULE_PATHNAME', 'ruvector_embedding_dims_wrapper'
+LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+
+-- ============================================================================
+-- HNSW Access Method
+-- ============================================================================
+
+-- HNSW Access Method Handler
+CREATE OR REPLACE FUNCTION hnsw_handler(internal)
+RETURNS index_am_handler
+AS 'MODULE_PATHNAME', 'hnsw_handler_wrapper'
+LANGUAGE C STRICT;
+
+-- Create HNSW Access Method
+CREATE ACCESS METHOD hnsw TYPE INDEX HANDLER hnsw_handler;
+
+-- ============================================================================
+-- Operator Classes for HNSW
+-- ============================================================================
+
+-- HNSW Operator Class for L2 (Euclidean) distance
+CREATE OPERATOR CLASS ruvector_l2_ops
+    DEFAULT FOR TYPE ruvector USING hnsw AS
+    OPERATOR 1 <-> (ruvector, ruvector) FOR ORDER BY float_ops,
+    FUNCTION 1 ruvector_l2_distance(ruvector, ruvector);
+
+COMMENT ON OPERATOR CLASS ruvector_l2_ops USING hnsw IS
+'ruvector HNSW operator class for L2/Euclidean distance';
+
+-- HNSW Operator Class for Cosine distance
+CREATE OPERATOR CLASS ruvector_cosine_ops
+    FOR TYPE ruvector USING hnsw AS
+    OPERATOR 1 <=> (ruvector, ruvector) FOR ORDER BY float_ops,
+    FUNCTION 1 ruvector_cosine_distance(ruvector, ruvector);
+
+COMMENT ON OPERATOR CLASS ruvector_cosine_ops USING hnsw IS
+'ruvector HNSW operator class for cosine distance';
+
+-- HNSW Operator Class for Inner Product
+CREATE OPERATOR CLASS ruvector_ip_ops
+    FOR TYPE ruvector USING hnsw AS
+    OPERATOR 1 <#> (ruvector, ruvector) FOR ORDER BY float_ops,
+    FUNCTION 1 ruvector_inner_product(ruvector, ruvector);
+
+COMMENT ON OPERATOR CLASS ruvector_ip_ops USING hnsw IS
+'ruvector HNSW operator class for inner product (max similarity)';

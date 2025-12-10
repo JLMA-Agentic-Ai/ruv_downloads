@@ -5,8 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14--17-blue.svg)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-available-blue.svg)](https://hub.docker.com/r/ruvnet/ruvector-postgres)
+[![npm](https://img.shields.io/npm/v/@ruvector/core.svg)](https://www.npmjs.com/package/@ruvector/core)
 
-**The most advanced PostgreSQL vector database extension.** A drop-in pgvector replacement with 53+ SQL functions, SIMD acceleration, 39 attention mechanisms, GNN layers, hyperbolic embeddings, and self-learning capabilities.
+**The most advanced PostgreSQL vector database extension.** A drop-in pgvector replacement with 77+ SQL functions, SIMD acceleration, 39 attention mechanisms, GNN layers, hyperbolic embeddings, SPARQL/RDF support, and self-learning capabilities.
 
 ## Why RuVector?
 
@@ -14,6 +15,7 @@
 |---------|----------|-------------------|
 | Vector Search | HNSW, IVFFlat | HNSW, IVFFlat (optimized) |
 | Distance Metrics | 3 | 8+ (including hyperbolic) |
+| **Local Embeddings** | - | **6 models (fastembed)** |
 | **Attention Mechanisms** | - | **39 types** |
 | **Graph Neural Networks** | - | **GCN, GraphSAGE, GAT** |
 | **Hyperbolic Embeddings** | - | **Poincare, Lorentz** |
@@ -21,6 +23,7 @@
 | **Self-Learning** | - | **ReasoningBank** |
 | **Agent Routing** | - | **Tiny Dancer** |
 | **Graph/Cypher** | - | **Full support** |
+| **SPARQL/RDF** | - | **W3C SPARQL 1.1** |
 | AVX-512/NEON SIMD | Partial | **Full** |
 | Quantization | No | **Scalar, Product, Binary** |
 
@@ -29,14 +32,33 @@
 ### Docker (Recommended)
 
 ```bash
-# Using Docker Hub
 docker run -d --name ruvector-pg \
   -e POSTGRES_PASSWORD=secret \
   -p 5432:5432 \
   ruvnet/ruvector-postgres:latest
+```
 
-# Or using the CLI
-npx @ruvector/postgres-cli install --method docker
+### npm (Node.js Bindings)
+
+```bash
+# Install the core package with native bindings
+npm install @ruvector/core
+
+# Or install the full ruvector package
+npm install ruvector
+```
+
+```javascript
+const { VectorDB, cosineDistance } = require('@ruvector/core');
+
+// Create a vector database
+const db = new VectorDB({ dimensions: 384 });
+
+// Add vectors
+db.add([0.1, 0.2, 0.3, ...]);
+
+// Search
+const results = db.search(queryVector, { k: 10 });
 ```
 
 ### From Source
@@ -81,7 +103,7 @@ ORDER BY distance
 LIMIT 10;
 ```
 
-## 53+ SQL Functions
+## 67+ SQL Functions
 
 RuVector exposes all advanced AI capabilities as native PostgreSQL functions.
 
@@ -228,6 +250,67 @@ SELECT ruvector_adaptive_route(query, context, learning_rate);
 SELECT ruvector_fastgrnn_forward(input, hidden, weights);
 ```
 
+### Local Embeddings (6 functions)
+
+Generate embeddings directly in PostgreSQL - no external API calls needed.
+
+```sql
+-- Generate embedding from text (default: all-MiniLM-L6-v2)
+SELECT ruvector_embed('Hello, world!');
+
+-- Use specific model
+SELECT ruvector_embed('Hello, world!', 'bge-small-en-v1.5');
+
+-- Batch embedding (efficient for multiple texts)
+SELECT ruvector_embed_batch(ARRAY['First doc', 'Second doc', 'Third doc']);
+
+-- List available models
+SELECT ruvector_list_models();
+
+-- Get model information (dimensions, description)
+SELECT ruvector_model_info('all-MiniLM-L6-v2');
+
+-- Preload model into cache for faster subsequent calls
+SELECT ruvector_preload_model('bge-base-en-v1.5');
+```
+
+**Supported Models:**
+
+| Model | Dimensions | Use Case |
+|-------|------------|----------|
+| `all-MiniLM-L6-v2` | 384 | Fast, general-purpose (default) |
+| `bge-small-en-v1.5` | 384 | MTEB #1, English |
+| `bge-base-en-v1.5` | 768 | Higher accuracy, English |
+| `bge-large-en-v1.5` | 1024 | Highest accuracy, English |
+| `nomic-embed-text-v1` | 768 | Long context (8192 tokens) |
+| `nomic-embed-text-v1.5` | 768 | Updated long context |
+
+**Example: Automatic Embedding on Insert**
+
+```sql
+-- Create table with trigger for auto-embedding
+CREATE TABLE articles (
+    id SERIAL PRIMARY KEY,
+    title TEXT,
+    content TEXT,
+    embedding ruvector(384)
+);
+
+-- Insert with automatic embedding generation
+INSERT INTO articles (title, content, embedding)
+VALUES (
+    'Introduction to AI',
+    'Artificial intelligence is transforming...',
+    ruvector_embed('Artificial intelligence is transforming...')
+);
+
+-- Semantic search
+SELECT title, embedding <=> ruvector_embed('machine learning basics') AS distance
+FROM articles
+ORDER BY distance
+LIMIT 5;
+```
+
 ### Self-Learning / ReasoningBank (7 functions)
 
 Adaptive search parameter optimization.
@@ -278,6 +361,72 @@ SELECT ruvector_graph_traverse(start_node, direction, max_depth);
 -- Similarity search on graph
 SELECT ruvector_graph_similarity_search(query_embedding, node_type, top_k);
 ```
+
+### SPARQL & RDF (14 functions)
+
+W3C-standard SPARQL 1.1 query language for RDF data.
+
+```sql
+-- Create RDF triple store
+SELECT ruvector_create_rdf_store('knowledge_graph');
+
+-- Insert triples
+SELECT ruvector_insert_triple(
+    'knowledge_graph',
+    '<http://example.org/person/1>',
+    '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>',
+    '<http://example.org/Person>'
+);
+
+-- Bulk load N-Triples
+SELECT ruvector_load_ntriples('knowledge_graph', '
+    <http://example.org/person/1> <http://xmlns.com/foaf/0.1/name> "Alice" .
+    <http://example.org/person/1> <http://xmlns.com/foaf/0.1/knows> <http://example.org/person/2> .
+');
+
+-- SPARQL SELECT query
+SELECT ruvector_sparql('knowledge_graph', '
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+    SELECT ?person ?name
+    WHERE {
+        ?person a <http://example.org/Person> .
+        ?person foaf:name ?name .
+    }
+', 'json');
+
+-- SPARQL ASK query
+SELECT ruvector_sparql('knowledge_graph',
+    'ASK { <http://example.org/person/1> ?p ?o }',
+    'json'
+);
+
+-- Get store statistics
+SELECT ruvector_rdf_stats('knowledge_graph');
+
+-- Query triples by pattern (NULL = wildcard)
+SELECT ruvector_query_triples('knowledge_graph',
+    NULL, -- any subject
+    '<http://xmlns.com/foaf/0.1/name>', -- predicate
+    NULL  -- any object
+);
+
+-- SPARQL UPDATE operations
+SELECT ruvector_sparql_update('knowledge_graph', '
+    INSERT DATA {
+        <http://example.org/person/3> <http://xmlns.com/foaf/0.1/name> "Charlie" .
+    }
+');
+```
+
+**SPARQL Features:**
+- SELECT, CONSTRUCT, ASK, DESCRIBE query forms
+- Property paths (sequence `/`, alternative `|`, inverse `^`, transitive `*`, `+`)
+- FILTER expressions with 50+ built-in functions
+- Aggregates (COUNT, SUM, AVG, MIN, MAX, GROUP_CONCAT)
+- OPTIONAL, UNION, MINUS graph patterns
+- Named graphs support
+- Result formats: JSON, XML, CSV, TSV
+- **~198K triples/sec** insertion, **~5.5M queries/sec** lookups
 
 ## Vector Types
 
@@ -415,8 +564,7 @@ Install the CLI for easy management:
 npm install -g @ruvector/postgres-cli
 
 # Commands
-ruvector-pg install                    # Install via source (requires Rust)
-ruvector-pg install --method docker    # Install via Docker (recommended)
+ruvector-pg install                    # Install extension
 ruvector-pg vector create table --dim 384 --index hnsw
 ruvector-pg hyperbolic poincare-distance --a "[0.1,0.2]" --b "[0.3,0.4]"
 ruvector-pg gnn gcn --features "[[...]]" --adj "[[...]]"
