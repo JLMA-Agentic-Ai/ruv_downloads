@@ -142,6 +142,7 @@ ruvector-tiny-dancer-core
 ruvector-tiny-dancer-node
 ruvector-tiny-dancer-wasm
 ruvector-wasm
+ruvllm
 strange-loop
 subjective-time-expansion
 sublinear

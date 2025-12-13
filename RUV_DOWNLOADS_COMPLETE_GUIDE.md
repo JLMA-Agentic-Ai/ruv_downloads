@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **484 total artifacts**: **158 Rust crates**, **161 NPM packages**, and **165 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
+**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **486 total artifacts**: **159 Rust crates**, **162 NPM packages**, and **165 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Repository Information
 - **Type**: Package discovery and distribution system
-- **Scope**: 484 artifacts (158 Rust crates + 161 NPM packages + 165 GitHub repositories)
+- **Scope**: 486 artifacts (159 Rust crates + 162 NPM packages + 165 GitHub repositories)
 - **Maintained by**: Ruvnet Community
 - **Update Frequency**: Automatic discovery and versioning
 - **Storage**: Organized archives with legacy support
@@ -45,7 +45,7 @@ ruv_downloads/
 ├── README.md                              # Main overview
 ├── RUV_DOWNLOADS_COMPLETE_GUIDE.md       # This document
 │
-├── crates/                                # 158 Rust crates
+├── crates/                                # 159 Rust crates
 │   ├── README.md                          # Crate management documentation
 │   ├── download_ruvnet_crates.sh          # Download script with --discover flag
 │   ├── crates.dynamic.txt                 # Dynamic manifest (auto-maintained)
@@ -53,7 +53,7 @@ ruv_downloads/
 │   ├── agentic-jujutsu-1.0.1/            # Version-specific directories
 │   ├── ... [155+ more crates] ...
 │
-├── npmjs/                                 # 161 NPM packages
+├── npmjs/                                 # 162 NPM packages
 │   ├── README.md                          # Package management documentation
 │   ├── download_ruvnet_packages.sh        # Download script with --discover flag
 │   ├── packagelist.dynamic.txt            # Dynamic manifest (auto-maintained)
@@ -92,7 +92,7 @@ ruv_downloads/
 
 ## Complete Rust Crates Directory
 
-### Total: 158 Rust Crates
+### Total: 159 Rust Crates
 
 #### 1. AGENTIC SYSTEMS CRATES (8 total)
 
@@ -1724,8 +1724,8 @@ cd ruv_downloads
 ./npmjs/download_ruvnet_packages.sh --discover
 
 # Step 4: Check what was downloaded
-cat crates/crates.dynamic.txt | wc -l      # Should be ~158
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~161
+cat crates/crates.dynamic.txt | wc -l      # Should be ~159
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~162
 cat github/repos.dynamic.txt | wc -l       # Should be ~165
 ```
 
@@ -1863,10 +1863,10 @@ swarm.route_message(msg, "agent")?;
 
 ## Summary Statistics
 
-- **Total Crates**: 158 (Rust)
-- **Total Packages**: 161 (NPM/TypeScript)
+- **Total Crates**: 159 (Rust)
+- **Total Packages**: 162 (NPM/TypeScript)
 - **Total GitHub Repositories**: 165
-- **Total Artifacts**: 484
+- **Total Artifacts**: 486
 - **Documentation Pages**: 300+ README files
 - **Code Size**: ~50,000+ lines of documentation
 - **Performance Tested**: Yes, 95%+ of packages
@@ -1876,7 +1876,7 @@ swarm.route_message(msg, "agent")?;
 
 ---
 
-**Last Updated**: December 9, 2025
+**Last Updated**: December 13, 2025
 **Repository**: ruv_downloads
 **Maintained by**: Ruvnet Community
 **License**: MIT/Apache-2.0 (dual)

@@ -99,6 +99,7 @@
 @ruvector/ruvllm-linux-arm64-gnu
 @ruvector/ruvllm-linux-x64-gnu
 @ruvector/ruvllm-win32-x64-msvc
+@ruvector/rvlite
 @ruvector/server
 @ruvector/sona
 @ruvector/sona-darwin-arm64
