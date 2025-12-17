@@ -1,0 +1,62 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug CLI",
+            "type": "go",
+            "mode": "auto",
+            "debugAdapter": "dlv-dap",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.go",
+            "buildFlags": "-ldflags=-X=github.com/stateful/runme/v3/internal/version.BuildVersion=99.9.9",
+            "args": [
+                "list",
+            ]
+        },
+        {
+            "name": "Debug CLI beta run",
+            "type": "go",
+            "mode": "auto",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.go",
+            "buildFlags": "-ldflags=-X=github.com/stateful/runme/internal/version.BuildVersion=99.9.9",
+            "args": [
+                "--filename=test.md",
+                "beta",
+                "run",
+                "echo-env",
+                "--category=echo",
+            ]
+        },
+        {
+            "name": "Debug server",
+            "type": "go",
+            "mode": "auto",
+            "debugAdapter": "dlv-dap",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.go",
+            "buildFlags": "-ldflags=-X=github.com/stateful/runme/v3/internal/version.BuildVersion=99.9.9",
+            "args": [
+                "server",
+                "--dev",
+                "--address",
+                "127.0.0.1:9999",
+                "--tls",
+                "/tmp/runme/tls",
+            ]
+        },
+        {
+            "name": "Connect to dlv",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "debugAdapter": "dlv-dap",
+            "remotePath": "${workspaceFolder}/main.go",
+            "port": 56379,
+            "host": "127.0.0.1"
+        },
+    ]
+}
