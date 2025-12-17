@@ -148,39 +148,66 @@ do
     "00_tgz/${name_underscore}-${latest_version}.tgz"
   )
 
-  found=0
+  # Check for existing tgz AND directory to decide if we need to restore or download
+  found_tgz=""
+  found_dir=0
+
   for candidate in "${candidates[@]}"; do
     if [ -e "$candidate" ]; then
-      echo "  Up-to-date: $pkg@$latest_version"
-      found=1
-      break
+      # We found the tarball. Now check if the decompressed directory exists.
+      # The directory name is the tarball name without the .tgz extension and 00_tgz prefix.
+      candidate_base=$(basename "$candidate")
+      dir_name="${candidate_base%.tgz}"
+      
+      if [ -d "$dir_name" ]; then
+        echo "  Up-to-date: $pkg@$latest_version"
+        found_dir=1
+        break
+      else
+         echo "  Restoring: Found archive $candidate but directory $dir_name is missing..."
+         found_tgz="$candidate"
+         # We found the tgz, so we don't need to download, but we DO need to proceed to extraction.
+         break
+      fi
     fi
   done
 
-  if [ "$found" -eq 1 ]; then
+  if [ "$found_dir" -eq 1 ]; then
     continue
   fi
 
-  echo "  Downloading: $pkg@$latest_version"
-  npm pack "$pkg"
+  # If we didn't find the tgz at all (found_tgz is empty), we need to download it
+  if [ -z "$found_tgz" ]; then
+      echo "  Downloading: $pkg@$latest_version"
+      npm pack "$pkg"
+      
+      # Find the downloaded tarball (it will be in the current directory)
+      for candidate in "${candidates[@]}"; do
+        candidate_basename=$(basename "$candidate")
+        if [ -e "$candidate_basename" ]; then
+          found_tgz="$candidate_basename"
+          break
+        fi
+      done
+  fi
   
-  # Find the downloaded tarball (npm pack creates it in current directory)
-  downloaded_tgz=""
-  for candidate in "${candidates[@]}"; do
-    candidate_basename=$(basename "$candidate")
-    if [ -e "$candidate_basename" ]; then
-      downloaded_tgz="$candidate_basename"
-      break
-    fi
-  done
+  # Set compatibility variable for the extraction block below
+  downloaded_tgz="$found_tgz"
   
   if [ -n "$downloaded_tgz" ] && [ -e "$downloaded_tgz" ]; then
     echo "  Extracting: $downloaded_tgz"
     if tar -xzf "$downloaded_tgz"; then
       # Rename the extracted 'package/' directory to a unique name
       # Remove .tgz extension to get the package directory name
-      pkg_dir_name="${downloaded_tgz%.tgz}"
+      # Use basename to ensure we don't include paths like 00_tgz/
+      tgz_basename=$(basename "$downloaded_tgz")
+      pkg_dir_name="${tgz_basename%.tgz}"
+      
       if [ -d "package" ]; then
+        # Check if the destination already exists (edge case in restoration), remove it if so
+        if [ -d "$pkg_dir_name" ]; then
+             rm -rf "$pkg_dir_name"
+        fi
         mv "package" "$pkg_dir_name"
         echo "  Extracted: $pkg_dir_name/"
       else
@@ -190,17 +217,23 @@ do
       echo "  Warning: failed to extract $downloaded_tgz"
     fi
     
-    # Move the .tgz file to 00_tgz/ directory
-    echo "  Moving: $downloaded_tgz -> 00_tgz/"
-    mv "$downloaded_tgz" "00_tgz/"
+    # Move the .tgz file to 00_tgz/ directory ONLY if it's not already there
+    if [[ "$downloaded_tgz" != "00_tgz/"* ]]; then
+        echo "  Moving: $downloaded_tgz -> 00_tgz/"
+        mv "$downloaded_tgz" "00_tgz/"
+    fi
     
     # CLEANUP: Now that we have the latest version, move any older versions to legacy
     # We know the exact filename pattern, so this is safe
     for old_file in 00_tgz/${name_dash}-*.tgz 00_tgz/${name_underscore}-*.tgz; do
       if [ -e "$old_file" ]; then
         old_filename=$(basename "$old_file")
-        # Skip if it's the file we just moved
-        if [ "$old_filename" != "$downloaded_tgz" ]; then
+        # Skip if it's the file we just moved/downloaded (compare basenames)
+        # downloaded_tgz might contain path if it came from restoration logic, or might not if from npm pack
+        # let's normalize to basename for comparison
+        downloaded_basename=$(basename "$downloaded_tgz")
+        
+        if [ "$old_filename" != "$downloaded_basename" ]; then
           # Check if it matches our package name pattern exactly
           # Extract version from filename and compare
           if [[ "$old_filename" =~ ^${name_dash}-[0-9]+\.[0-9]+\.[0-9]+.*\.tgz$ ]] || [[ "$old_filename" =~ ^${name_underscore}-[0-9]+\.[0-9]+\.[0-9]+.*\.tgz$ ]]; then
