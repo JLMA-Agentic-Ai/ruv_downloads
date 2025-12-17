@@ -1,0 +1,43 @@
+# Downloaded package/crate archives and directories (large files)
+crates/*
+github/*
+npmjs/*
+
+# Whitelist rules to track manifests, scripts, and docs inside those dirs
+!crates/*.sh
+!crates/*.txt
+!crates/*.json
+!crates/*.md
+!crates/README.md
+
+!github/*.sh
+!github/*.txt
+!github/*.json
+!github/*.md
+!github/README.md
+
+!npmjs/*.sh
+!npmjs/*.txt
+!npmjs/*.json
+!npmjs/*.md
+!npmjs/README.md
+
+# OS files
+.DS_Store
+.env
+*.log
+
+# Node/npm cache
+node_modules/
+.npm
+
+# Python virtual environments
+**/venv/
+**/.venv/
+
+# But DO track root files
+!*.sh
+!*dynamic.txt
+!README.md
+!MANIFEST.md
+!.gitignore
