@@ -183,12 +183,29 @@ do
     "00_crates/${crate}-${latest_version}.crate"
   )
 
-  found=0
+  # Check for existing tgz AND directory to decide if we need to restore or download
+  found_crate=""
+  found_dir=0
+
   for candidate in "${candidates[@]}"; do
     if [ -e "$candidate" ]; then
-      echo "  Up-to-date: $crate@$latest_version"
-      found=1
-      break
+      # We found the crate archive. Now check if the decompressed directory exists.
+      # The directory name is usually just the crate name and version
+      
+      # Since we don't know the EXACT directory name without extracting (though it's standard),
+      # we can check for ${crate}-${latest_version}/
+      dir_name="${crate}-${latest_version}"
+      
+      if [ -d "$dir_name" ]; then
+        echo "  Up-to-date: $crate@$latest_version"
+        found_dir=1
+        break
+      else
+         echo "  Restoring: Found archive $candidate but directory $dir_name is missing..."
+         found_crate="$candidate"
+         # We found the crate, so we don't need to download, but we DO need to proceed to extraction.
+         break
+      fi
     fi
   done
 
@@ -199,6 +216,7 @@ do
   for dir in ${crate}-[0-9]*/; do
     if [ -d "$dir" ]; then
       dirname=${dir%/}
+      # Skip if it's the directory we are about to restore/verify
       if [ "$dirname" != "${crate}-${latest_version}" ]; then
         echo "  Cleanup: Removing older version $dirname"
         rm -rf "$dirname"
@@ -218,32 +236,53 @@ do
     fi
   done
 
-  if [ "$found" -eq 1 ]; then
+  if [ "$found_dir" -eq 1 ]; then
     continue
   fi
 
-  echo "  Downloading: $crate@$latest_version"
-  # Download the specific crate version via crates.io API using -L to follow redirects.
-  # This works even for yanked crates.
-  download_url="https://crates.io/api/v1/crates/${crate}/${latest_version}/download"
-  out_file="${crate}-${latest_version}.crate"
-  if ! curl -L -A "ruvnet-downloader (github-actions)" -o "$out_file" "$download_url"; then
-    echo "  Warning: failed to download $crate@$latest_version (HTTP error) -- skipping"
-    continue
+  # If we didn't find the crate at all (found_crate is empty), we need to download it
+  if [ -z "$found_crate" ]; then
+      echo "  Downloading: $crate@$latest_version"
+      # Download the specific crate version via crates.io API using -L to follow redirects.
+      # This works even for yanked crates.
+      download_url="https://crates.io/api/v1/crates/${crate}/${latest_version}/download"
+      out_file="${crate}-${latest_version}.crate"
+      if ! curl -L -A "ruvnet-downloader (github-actions)" -o "$out_file" "$download_url"; then
+        echo "  Warning: failed to download $crate@$latest_version (HTTP error) -- skipping"
+        continue
+      fi
+      echo "  Saved: $out_file"
+      found_crate="$out_file"
   fi
-  echo "  Saved: $out_file"
+  
+  if [ -z "$found_crate" ]; then
+      continue
+  fi
+  
+  # Set compatibility variable
+  out_file="$found_crate"
   
   # Extract the crate to have both the .crate file and the extracted folder
   echo "  Extracting: $out_file"
+  # Attempt to extract. Note: Some crates might extract to a different folder name, 
+  # but standard cargo package behavior is name-version.
   if tar -xzf "$out_file"; then
     echo "  Extracted: ${crate}-${latest_version}/"
   else
     echo "  Warning: failed to extract $out_file"
   fi
   
-  # Move the .crate file to 00_crates/ directory
-  echo "  Moving: $out_file -> 00_crates/"
-  mv "$out_file" "00_crates/"
+  # Move the .crate file to 00_crates/ directory ONLY if it's not already there
+  if [[ "$out_file" != "00_crates/"* ]]; then
+      echo "  Moving: $out_file -> 00_crates/"
+      mv "$out_file" "00_crates/"
+  fi
+  
+  # Skip the loop continue since we handled logic inline above
+  continue
+
+  # Redundant code removed
+
 done
 
 echo "All crate checks complete. Only missing/new versions were downloaded."

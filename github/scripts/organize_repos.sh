@@ -34,15 +34,27 @@ for tier_path in "$BY_TIER_DIR"/tier-*/; do
   for repo_path in "$tier_path"*/; do
     [ ! -d "$repo_path" ] && continue
     repo_name=$(basename "$repo_path")
-    [ ! -d "$repo_path/.git" ] && continue
+    # .git check removed as we now rely on ruv_metadata.json
+    # [ ! -d "$repo_path/.git" ] && continue
 
     cd "$repo_path"
 
     # === Gather Metadata ===
-    last_commit_date=$(git log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
-    last_commit_ts=$(git log -1 --format="%ct" 2>/dev/null || echo "0")
-    first_commit_date=$(git log --reverse --format="%ci" 2>/dev/null | head -1 | cut -d' ' -f1 || echo "unknown")
-    commit_count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+    # Check for metadata file
+    if [ -f "ruv_metadata.json" ]; then
+        # Parse JSON manually to avoid jq dependency if possible, or just use grep/sed/awk
+        # Format is simple key-value
+        last_commit_date=$(grep "lastCommitDate" ruv_metadata.json | cut -d'"' -f4)
+        last_commit_ts=$(grep "lastCommitTs" ruv_metadata.json | grep -o '[0-9]*')
+        first_commit_date=$(grep "firstCommitDate" ruv_metadata.json | cut -d'"' -f4)
+        commit_count=$(grep "commitCount" ruv_metadata.json | grep -o '[0-9]*')
+    else
+        # Fallback if git exists (legacy/dev support)
+        last_commit_date=$(git log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+        last_commit_ts=$(git log -1 --format="%ct" 2>/dev/null || echo "0")
+        first_commit_date=$(git log --reverse --format="%ci" 2>/dev/null | head -1 | cut -d' ' -f1 || echo "unknown")
+        commit_count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+    fi
 
     # Get description
     description=""
@@ -57,7 +69,18 @@ for tier_path in "$BY_TIER_DIR"/tier-*/; do
     [ -f "Cargo.toml" ] && techs+=("rust")
     [ -f "tsconfig.json" ] && techs+=("typescript")
     [ -f "go.mod" ] && techs+=("go")
-    tech_json=$(printf '%s\n' "${techs[@]}" | jq -R . | jq -s . 2>/dev/null || echo "[]")
+    # Simple JSON array construction without jq
+    tech_json="["
+    first_tech=true
+    for t in "${techs[@]}"; do
+        if [ "$first_tech" = true ]; then
+            tech_json="$tech_json\"$t\""
+            first_tech=false
+        else
+            tech_json="$tech_json, \"$t\""
+        fi
+    done
+    tech_json="$tech_json]"
 
     cd - > /dev/null
 

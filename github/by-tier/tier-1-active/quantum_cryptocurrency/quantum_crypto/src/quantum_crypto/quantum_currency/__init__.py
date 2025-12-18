@@ -1,1 +1,0 @@
-# Quantum currency package initialization

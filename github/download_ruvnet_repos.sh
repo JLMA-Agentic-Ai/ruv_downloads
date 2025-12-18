@@ -94,8 +94,16 @@ if [ "$DISCOVER" -eq 1 ]; then
              break
         fi
         
-        # Extract names
-        page_names=$(echo "$response" | grep -o '"name": "[^"]*"' | cut -d'"' -f4 | sort -u || true)
+        # Extract names - filter out non-repo lines and potential false matches like License definitions
+        # GitHub API returns "name": "repo-name"
+        # We want to avoid matching nested objects like "license": { "name": "Apache License 2.0" }
+        # grep -o '"name": "[^"]*"' matches both.
+        # We can rely on the fact that repo name is usually near the top or check full line context if possible.
+        # Better approach: Use sed to parse ONLY top-level name or filter out known license strings.
+        
+        # Simple fix: exclude "License" and "license" from results if they appear to be license names
+        # Also, repo names in our context surely won't have spaces usually, but let's be safe.
+        page_names=$(echo "$response" | grep -o '"name": "[^"]*"' | cut -d'"' -f4 | grep -v -i "license" | sort -u || true)
         
         if [ -z "$page_names" ]; then
             break
@@ -242,11 +250,35 @@ for repo in "${MERGED_REPOS[@]}"; do
   fi
 
   # 4. Clone and Update State
-  if git clone --depth 1 --quiet "$repo_url" "$target_dir"; then
+  if git clone --quiet "$repo_url" "$target_dir"; then
       echo "  Cloned: $repo"
-      # Remove .git directory
+      
+      # Extract Metadata for organization script (to allow deleting .git)
+      if [ -d "$target_dir/.git" ]; then
+          pushd "$target_dir" >/dev/null
+          
+          # Extract metadata
+          last_commit_date=$(git log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+          last_commit_ts=$(git log -1 --format="%ct" 2>/dev/null || echo "0")
+          first_commit_date=$(git log --reverse --format="%ci" 2>/dev/null | head -1 | cut -d' ' -f1 || echo "unknown")
+          commit_count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
+          
+          # Write to JSON
+          cat <<EOF > ruv_metadata.json
+{
+  "lastCommitDate": "$last_commit_date",
+  "lastCommitTs": $last_commit_ts,
+  "firstCommitDate": "$first_commit_date",
+  "commitCount": $commit_count
+}
+EOF
+          popd >/dev/null
+      fi
+
+      # Remove .git directory to save disk space
       rm -rf "$target_dir/.git"
-      # Save the remote hash to mark this version
+      
+      # Save the remote hash to mark this version for fast checking
       echo "$remote_hash" > "$target_dir/.ruv_commit"
   else
       echo "  Warning: failed to clone $repo"

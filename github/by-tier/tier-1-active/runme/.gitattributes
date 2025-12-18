@@ -1,2 +1,0 @@
-internal/gen/**/* -diff
-pkg/api/gen/**/* -diff
