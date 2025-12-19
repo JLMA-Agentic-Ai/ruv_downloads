@@ -1,24 +1,33 @@
 # Downloaded package/crate archives and directories (large files)
-crates/*
-github/*
-npmjs/*
+# Ignore everything recursively
+crates/**
+github/**
+npmjs/**
 
-# Whitelist rules to track manifests, scripts, and docs inside those dirs
-!crates/*.sh
-!crates/*.txt
-!crates/*.json
+# Whitelist directory structures only so git can traverse them
+!crates/**/
+!github/**/
+!npmjs/**/
+
+# Whitelist specific scripts (recursive - needed if they are deep)
+!crates/**/*.sh
+!github/**/*.sh
+!npmjs/**/*.sh
+
+# Whitelist specific manifests and meta files (recursive)
+!crates/**/*.dynamic.txt
+!github/**/*.dynamic.txt
+!npmjs/**/*.dynamic.txt
+
+!github/repo-index.json
+!github/**/ruv_metadata.json
+!crates/**/ruv_metadata.json
+
+# Whitelist READMEs and specific docs (ONLY top level of the download dirs)
 !crates/*.md
 !crates/README.md
-
-!github/*.sh
-!github/*.txt
-!github/*.json
 !github/*.md
 !github/README.md
-
-!npmjs/*.sh
-!npmjs/*.txt
-!npmjs/*.json
 !npmjs/*.md
 !npmjs/README.md
 
@@ -27,17 +36,16 @@ npmjs/*
 .env
 *.log
 
-# Node/npm cache
-node_modules/
-.npm
+# Node/npm cache - explicitly ignore these recursively
+node_modules/**
+.npm/**
 
 # Python virtual environments
-**/venv/
-**/.venv/
+**/venv/**
+**/.venv/**
 
-# But DO track root files
+# Root files
 !*.sh
-!*dynamic.txt
 !README.md
 !MANIFEST.md
 !.gitignore
