@@ -1,35 +1,66 @@
-# Downloaded package/crate archives and directories (large files)
-# Ignore everything recursively
-crates/**
-github/**
-npmjs/**
+# Strict Ignore all
+*
 
-# Whitelist directory structures only so git can traverse them
-!crates/**/
-!github/**/
-!npmjs/**/
+# Whitelist root files
+!.gitignore
+!README.md
+!*.sh
+!MANIFEST.md
+!RUV_DOWNLOADS_COMPLETE_GUIDE.md
 
-# Whitelist specific scripts (recursive - needed if they are deep)
-!crates/**/*.sh
-!github/**/*.sh
-!npmjs/**/*.sh
+# Whitelist directory structure
+!crates/
+!github/
+!npmjs/
 
-# Whitelist specific manifests and meta files (recursive)
-!crates/**/*.dynamic.txt
-!github/**/*.dynamic.txt
-!npmjs/**/*.dynamic.txt
-
-!github/repo-index.json
-!github/**/ruv_metadata.json
-!crates/**/ruv_metadata.json
-
-# Whitelist READMEs and specific docs (ONLY top level of the download dirs)
+# Ignore everything in category dirs by default
+# But allow the first level of scripts/manifests
+crates/*
+!crates/*.sh
+!crates/*.dynamic.txt
+!crates/*.json
 !crates/*.md
 !crates/README.md
-!github/*.md
-!github/README.md
+
+npmjs/*
+!npmjs/*.sh
+!npmjs/*.dynamic.txt
+!npmjs/*.json
 !npmjs/*.md
 !npmjs/README.md
+
+github/*
+!github/*.sh
+!github/*.dynamic.txt
+!github/repo-index.json
+!github/*.md
+!github/README.md
+
+# GitHub Scripts
+!github/scripts/
+github/scripts/*
+!github/scripts/*.sh
+
+# Whitelist Package Entries (level 2)
+!crates/*/
+crates/*/*
+!crates/*/ruv_metadata.json
+!crates/*/README.md
+
+!npmjs/*/
+npmjs/*/*
+!npmjs/*/ruv_metadata.json
+!npmjs/*/README.md
+
+# GitHub by tier entries (nested depths)
+!github/by-tier/
+github/by-tier/*
+!github/by-tier/*/
+github/by-tier/*/*
+!github/by-tier/*/*/
+github/by-tier/*/*/*
+!github/by-tier/*/*/ruv_metadata.json
+!github/by-tier/*/*/README.md
 
 # OS files
 .DS_Store
@@ -43,9 +74,3 @@ node_modules/**
 # Python virtual environments
 **/venv/**
 **/.venv/**
-
-# Root files
-!*.sh
-!README.md
-!MANIFEST.md
-!.gitignore
