@@ -3,6 +3,7 @@
 
 # Whitelist root files
 !.gitignore
+!.github/
 !README.md
 !*.sh
 !MANIFEST.md
@@ -13,54 +14,27 @@
 !github/
 !npmjs/
 
-# Ignore everything in category dirs by default
-# But allow the first level of scripts/manifests
-crates/*
-!crates/*.sh
-!crates/*.dynamic.txt
-!crates/*.json
-!crates/*.md
-!crates/README.md
+# Allow everything inside release directories
+!crates/**
+!npmjs/**
+!github/**
 
-npmjs/*
-!npmjs/*.sh
-!npmjs/*.dynamic.txt
-!npmjs/*.json
-!npmjs/*.md
-!npmjs/README.md
+# ... But re-ignore build artifacts and large files
+crates/**/target/
+crates/**/*.crate
+npmjs/**/node_modules/
+npmjs/**/*.tgz
+github/**/node_modules/
+github/**/target/
+github/**/dist/
+github/**/.git/
 
-github/*
-!github/*.sh
-!github/*.dynamic.txt
-!github/repo-index.json
-!github/*.md
-!github/README.md
+# Ignore metadata files that we don't want tracked (if any, previous file ignored some json/md)
+# Re-adding specific whitelists for metadata if they were previously strictly controlled
+# The user wants "all full files", so we err on the side of including everything.
+# We will keep the specific script ignores if they were important?
+# Previous file: !crates/*.sh, !crates/*.dynamic.txt - These are now covered by !crates/**
 
-# GitHub Scripts
-!github/scripts/
-github/scripts/*
-!github/scripts/*.sh
-
-# Whitelist Package Entries (level 2)
-!crates/*/
-crates/*/*
-!crates/*/ruv_metadata.json
-!crates/*/README.md
-
-!npmjs/*/
-npmjs/*/*
-!npmjs/*/ruv_metadata.json
-!npmjs/*/README.md
-
-# GitHub by tier entries (nested depths)
-!github/by-tier/
-github/by-tier/*
-!github/by-tier/*/
-github/by-tier/*/*
-!github/by-tier/*/*/
-github/by-tier/*/*/*
-!github/by-tier/*/*/ruv_metadata.json
-!github/by-tier/*/*/README.md
 
 # OS files
 .DS_Store

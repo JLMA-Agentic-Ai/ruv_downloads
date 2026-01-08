@@ -1,0 +1,43 @@
+{
+  "name": "@neural-trader/example-dynamic-pricing",
+  "version": "1.0.0",
+  "description": "Self-learning dynamic pricing with RL optimization and swarm strategy exploration",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint src tests --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "dynamic-pricing",
+    "reinforcement-learning",
+    "price-optimization",
+    "swarm-intelligence",
+    "neural-trader"
+  ],
+  "author": "Neural Trader",
+  "license": "MIT",
+  "dependencies": {
+    "@neural-trader/predictor": "workspace:*",
+    "agentdb": "^1.0.0",
+    "agentic-flow": "^2.0.0",
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/jest": "^29.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

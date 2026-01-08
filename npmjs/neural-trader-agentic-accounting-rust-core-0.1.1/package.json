@@ -1,0 +1,91 @@
+{
+  "name": "@neural-trader/agentic-accounting-rust-core",
+  "version": "0.1.1",
+  "description": "High-performance Rust native addon (NAPI) for cryptocurrency tax calculations with FIFO, LIFO, HIFO cost basis methods and optimized transaction processing for neural-trader accounting system",
+  "homepage": "https://neural-trader.ruv.io",
+  "bugs": {
+    "url": "https://github.com/ruvnet/neural-trader/issues"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "napi": {
+    "name": "agentic-accounting-rust-core",
+    "triples": {
+      "additional": [
+        "aarch64-apple-darwin",
+        "aarch64-linux-android",
+        "aarch64-unknown-linux-gnu",
+        "aarch64-unknown-linux-musl",
+        "aarch64-pc-windows-msvc",
+        "armv7-unknown-linux-gnueabihf",
+        "x86_64-unknown-linux-musl",
+        "x86_64-unknown-freebsd",
+        "i686-pc-windows-msvc",
+        "armv7-linux-androideabi",
+        "universal-apple-darwin"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "bench": "cargo bench",
+    "build": "napi build --platform --release",
+    "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "cargo test --all-features",
+    "universal": "napi universal",
+    "version": "napi version"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^2.18.0"
+  },
+  "license": "MIT OR Apache-2.0",
+  "author": "Neural Trader Team <team@ruv.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/neural-trader.git",
+    "directory": "packages/agentic-accounting-rust-core"
+  },
+  "keywords": [
+    "rust",
+    "napi",
+    "high-performance",
+    "native-addon",
+    "fifo",
+    "lifo",
+    "hifo",
+    "cryptocurrency",
+    "cost-basis",
+    "neural-trader",
+    "crypto-tax",
+    "tax-calculator",
+    "transaction-processing",
+    "rust-napi",
+    "ruv-io"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "*.node",
+    "README.md"
+  ],
+  "optionalDependencies": {
+    "@neural-trader/agentic-accounting-rust-core-win32-x64-msvc": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-darwin-x64": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-linux-x64-gnu": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-darwin-arm64": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-android-arm64": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-linux-arm64-gnu": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-linux-arm64-musl": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-win32-arm64-msvc": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-linux-arm-gnueabihf": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-linux-x64-musl": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-freebsd-x64": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-win32-ia32-msvc": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-android-arm-eabi": "0.1.1",
+    "@neural-trader/agentic-accounting-rust-core-darwin-universal": "0.1.1"
+  }
+}

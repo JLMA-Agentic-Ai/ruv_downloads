@@ -54,7 +54,7 @@ Query → HNSW Index → GNN Layer → Enhanced Results
 ```
 
 The GNN layer:
-1. Takes your query and its nearest neighborsa
+1. Takes your query and its nearest neighbors
 2. Applies multi-head attention to weigh which neighbors matter
 3. Updates representations based on graph structure
 4. Returns better-ranked results
@@ -65,7 +65,16 @@ Over time, frequently-accessed paths get reinforced, making common queries faste
 ## Quick Start
 
 ### One-Line Install
- 
+
+```bash
+# Vector database
+npm install ruvector
+npx ruvector
+
+# Self-learning hooks for Claude Code
+npx @ruvector/cli hooks init
+npx @ruvector/cli hooks install
+```
 
 ### Node.js / Browser
 
@@ -85,13 +94,16 @@ npx ruvector
 | **Latency (p50)** | **61µs** | ~2ms | ~1ms | ~5ms | ~50ms |
 | **Memory (1M vec)** | 200MB* | 2GB | 1.5GB | 1GB | 3GB |
 | **Graph Queries** | ✅ Cypher | ❌ | ❌ | ❌ | ❌ |
+| **SPARQL/RDF** | ✅ W3C 1.1 | ❌ | ❌ | ❌ | ❌ |
 | **Hyperedges** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Dynamic Min-Cut** | ✅ n^0.12 | ❌ | ❌ | ❌ | ❌ |
 | **Self-Learning (GNN)** | ✅ | ❌ | ❌ | ❌ | ❌ |
 | **Runtime Adaptation (SONA)** | ✅ LoRA+EWC++ | ❌ | ❌ | ❌ | ❌ |
 | **AI Agent Routing** | ✅ Tiny Dancer | ❌ | ❌ | ❌ | ❌ |
 | **Attention Mechanisms** | ✅ 39 types | ❌ | ❌ | ❌ | ❌ |
-| **Hyperbolic Embeddings** | ✅ Poincaré | ❌ | ❌ | ❌ | ❌ |
-| **PostgreSQL Extension** | ✅ pgvector drop-in | ❌ | ❌ | ❌ | ❌ |
+| **Hyperbolic Embeddings** | ✅ Poincaré+Lorentz | ❌ | ❌ | ❌ | ❌ |
+| **Local Embeddings** | ✅ 6 models | ❌ | ❌ | ❌ | ❌ |
+| **PostgreSQL Extension** | ✅ 77+ functions | ❌ | ❌ | ❌ | ❌ |
 | **SIMD Optimization** | ✅ AVX-512/NEON | Partial | ✅ | ✅ | ❌ |
 | **Metadata Filtering** | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Sparse Vectors** | ✅ BM25/TF-IDF | ✅ | ✅ | ✅ | ❌ |
@@ -101,6 +113,7 @@ npx ruvector
 | **Auto-Compression** | ✅ 2-32x | ❌ | ❌ | ✅ | ❌ |
 | **Snapshots/Backups** | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Browser/WASM** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Standalone Edge DB** | ✅ rvLite | ❌ | ❌ | ❌ | ❌ |
 | **Differentiable** | ✅ | ❌ | ❌ | ❌ | ❌ |
 | **Multi-Tenancy** | ✅ Collections | ✅ | ✅ | ✅ | ✅ |
 | **Open Source** | ✅ MIT | ❌ | ✅ | ✅ | ✅ |
@@ -387,6 +400,85 @@ All crates are published to [crates.io](https://crates.io) under the `ruvector-*
 | [ruvector-router-ffi](./crates/ruvector-router-ffi) | FFI bindings for other languages | [![crates.io](https://img.shields.io/crates/v/ruvector-router-ffi.svg)](https://crates.io/crates/ruvector-router-ffi) |
 | [ruvector-router-wasm](./crates/ruvector-router-wasm) | WASM bindings for browser routing | [![crates.io](https://img.shields.io/crates/v/ruvector-router-wasm.svg)](https://crates.io/crates/ruvector-router-wasm) |
 
+### Dynamic Min-Cut (December 2025 Breakthrough)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [ruvector-mincut](./crates/ruvector-mincut) | Subpolynomial fully-dynamic min-cut ([arXiv:2512.13105](https://arxiv.org/abs/2512.13105)) | [![crates.io](https://img.shields.io/crates/v/ruvector-mincut.svg)](https://crates.io/crates/ruvector-mincut) |
+| [ruvector-mincut-node](./crates/ruvector-mincut-node) | Node.js bindings for min-cut | [![crates.io](https://img.shields.io/crates/v/ruvector-mincut-node.svg)](https://crates.io/crates/ruvector-mincut-node) |
+| [ruvector-mincut-wasm](./crates/ruvector-mincut-wasm) | WASM bindings for browser min-cut | [![crates.io](https://img.shields.io/crates/v/ruvector-mincut-wasm.svg)](https://crates.io/crates/ruvector-mincut-wasm) |
+
+**First deterministic exact fully-dynamic min-cut** with verified **n^0.12 subpolynomial** update scaling:
+
+- **Brain connectivity** — Detect Alzheimer's markers by tracking neural pathway changes in milliseconds
+- **Network resilience** — Predict outages before they happen, route around failures instantly
+- **AI agent coordination** — Find communication bottlenecks in multi-agent systems
+- **Neural network pruning** — Identify which connections can be removed without losing accuracy
+- **448+ tests**, 256-core parallel optimization, 8KB per core (compile-time verified)
+
+```rust
+use ruvector_mincut::{DynamicMinCut, Graph};
+
+let mut graph = Graph::new();
+graph.add_edge(0, 1, 10.0);
+graph.add_edge(1, 2, 5.0);
+
+let mincut = DynamicMinCut::new(&graph);
+let (value, cut_edges) = mincut.compute();
+// Updates in subpolynomial time as edges change
+```
+
+### Self-Learning Query DAG (ruvector-dag)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [ruvector-dag](./crates/ruvector-dag) | Neural self-learning DAG for automatic query optimization | [![crates.io](https://img.shields.io/crates/v/ruvector-dag.svg)](https://crates.io/crates/ruvector-dag) |
+| [ruvector-dag-wasm](./crates/ruvector-dag-wasm) | WASM bindings for browser DAG optimization (58KB gzipped) | [![crates.io](https://img.shields.io/crates/v/ruvector-dag-wasm.svg)](https://crates.io/crates/ruvector-dag-wasm) |
+
+**Make your queries faster automatically.** RuVector DAG learns from every query execution and continuously optimizes performance—no manual tuning required.
+
+- **7 Attention Mechanisms**: Automatically selects the best strategy (Topological, Causal Cone, Critical Path, MinCut Gated, etc.)
+- **SONA Learning**: Self-Optimizing Neural Architecture adapts in <100μs per query
+- **MinCut Control**: Rising "tension" triggers automatic strategy switching and predictive healing
+- **50-80% Latency Reduction**: Queries improve over time without code changes
+
+```rust
+use ruvector_dag::{QueryDag, OperatorNode};
+use ruvector_dag::attention::{AttentionSelector, SelectionPolicy};
+
+let mut dag = QueryDag::new();
+let scan = dag.add_node(OperatorNode::hnsw_scan(0, "vectors_idx", 64));
+let filter = dag.add_node(OperatorNode::filter(1, "score > 0.5"));
+dag.add_edge(scan, filter).unwrap();
+
+// System learns which attention mechanism works best
+let selector = AttentionSelector::new();
+let scores = selector.select_and_apply(SelectionPolicy::Adaptive, &dag)?;
+```
+
+See [ruvector-dag README](./crates/ruvector-dag/README.md) for full documentation.
+
+### Standalone Vector Database (rvLite)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [rvlite](./crates/rvlite) | SQLite-style vector database for browsers & edge | [![crates.io](https://img.shields.io/crates/v/rvlite.svg)](https://crates.io/crates/rvlite) |
+
+**Runs anywhere JavaScript runs** — browsers, Node.js, Deno, Bun, Cloudflare Workers, Vercel Edge:
+
+- **SQL + SPARQL + Cypher** unified query interface
+- **Zero dependencies** — thin orchestration over existing WASM crates
+- **Self-learning** via SONA ReasoningBank integration
+
+```typescript
+import { RvLite } from '@rvlite/wasm';
+
+const db = await RvLite.create();
+await db.sql(`CREATE TABLE docs (id SERIAL, embedding VECTOR(384))`);
+await db.sparql(`SELECT ?s WHERE { ?s rdf:type ex:Document }`);
+await db.cypher(`MATCH (d:Doc)-[:SIMILAR]->(r) RETURN r`);
+```
+
 ### Self-Optimizing Neural Architecture (SONA)
 
 | Crate | Description | crates.io | npm |
@@ -435,7 +527,7 @@ engine.endTrajectory(trajId, 0.95);
 |-------|-------------|-----------|-----|
 | [ruvector-postgres](./crates/ruvector-postgres) | pgvector-compatible PostgreSQL extension with SIMD optimization | [![crates.io](https://img.shields.io/crates/v/ruvector-postgres.svg)](https://crates.io/crates/ruvector-postgres) | [![npm](https://img.shields.io/npm/v/@ruvector/postgres-cli.svg)](https://www.npmjs.com/package/@ruvector/postgres-cli) |
 
-**v0.2.0** — Drop-in replacement for pgvector with **53+ SQL functions**, full **AVX-512/AVX2/NEON SIMD** acceleration (~2x faster than AVX2), HNSW and IVFFlat indexes, 39 attention mechanisms, GNN layers, hyperbolic embeddings, sparse vectors/BM25, and self-learning capabilities.
+**v0.2.0** — Drop-in replacement for pgvector with **77+ SQL functions**, full **AVX-512/AVX2/NEON SIMD** acceleration (~2x faster than AVX2), HNSW and IVFFlat indexes, 39 attention mechanisms, GNN layers, hyperbolic embeddings (Poincaré + Lorentz), sparse vectors/BM25, **W3C SPARQL 1.1** with 50+ RDF functions, **local embeddings** (6 fastembed models), and self-learning capabilities.
 
 ```bash
 # Docker (recommended)
@@ -460,6 +552,740 @@ See [ruvector-postgres README](./crates/ruvector-postgres/README.md) for full SQ
 | [ruvector-bench](./crates/ruvector-bench) | Benchmarking suite for vector operations | [![crates.io](https://img.shields.io/crates/v/ruvector-bench.svg)](https://crates.io/crates/ruvector-bench) |
 | [profiling](./crates/profiling) | Performance profiling and analysis tools | [![crates.io](https://img.shields.io/crates/v/ruvector-profiling.svg)](https://crates.io/crates/ruvector-profiling) |
 | [micro-hnsw-wasm](./crates/micro-hnsw-wasm) | Lightweight HNSW implementation for WASM | [![crates.io](https://img.shields.io/crates/v/micro-hnsw-wasm.svg)](https://crates.io/crates/micro-hnsw-wasm) |
+
+## WASM Packages
+
+Specialized WebAssembly modules for browser and edge deployment. These packages bring advanced AI and distributed computing primitives to JavaScript/TypeScript with near-native performance.
+
+### Installation
+
+```bash
+# Install individual packages
+npm install @ruvector/learning-wasm
+npm install @ruvector/economy-wasm
+npm install @ruvector/exotic-wasm
+npm install @ruvector/nervous-system-wasm
+npm install @ruvector/attention-unified-wasm
+
+# Or build from source
+cd crates/ruvector-learning-wasm
+wasm-pack build --target web
+```
+
+### ruvector-learning-wasm
+
+**MicroLoRA, BTSP, and HDC for self-learning AI systems.**
+
+Ultra-fast Low-Rank Adaptation (LoRA) optimized for WASM execution with <100us adaptation latency. Designed for real-time per-operator learning in query optimization and AI agent systems.
+
+| Feature | Performance | Description |
+|---------|-------------|-------------|
+| **MicroLoRA** | <100us latency | Rank-2 LoRA matrices for instant weight adaptation |
+| **Per-Operator Scoping** | Zero-allocation hot paths | Separate adapters for different operator types |
+| **Trajectory Tracking** | Lock-free buffers | Record learning trajectories for replay |
+
+**Architecture:**
+
+```
+Input Embedding (256-dim)
+       |
+       v
+  +---------+
+  | A: d x 2 |  Down projection
+  +---------+
+       |
+       v
+  +---------+
+  | B: 2 x d |  Up projection
+  +---------+
+       |
+       v
+Delta W = alpha * (A @ B)
+       |
+       v
+Output = Input + Delta W
+```
+
+**JavaScript/TypeScript Example:**
+
+```typescript
+import init, { WasmMicroLoRA } from '@ruvector/learning-wasm';
+
+await init();
+
+// Create MicroLoRA engine (256-dim, alpha=0.1, lr=0.01)
+const lora = new WasmMicroLoRA(256, 0.1, 0.01);
+
+// Forward pass with adaptation
+const input = new Float32Array(256).fill(0.5);
+const output = lora.forward_array(input);
+
+// Adapt based on gradient signal
+const gradient = new Float32Array(256).fill(0.1);
+lora.adapt_array(gradient);
+
+// Adapt with reward signal for RL
+lora.adapt_with_reward(0.8);  // 80% improvement
+
+console.log(`Adaptations: ${lora.adapt_count()}`);
+console.log(`Delta norm: ${lora.delta_norm()}`);
+```
+
+### ruvector-economy-wasm
+
+**CRDT-based autonomous credit economy for distributed compute networks.**
+
+P2P-safe concurrent transactions using Conflict-free Replicated Data Types (CRDTs). Features a 10x-to-1x early adopter contribution curve and stake/slash mechanisms for participation incentives.
+
+| Feature | Description |
+|---------|-------------|
+| **CRDT Ledger** | G-Counter (earned) + PN-Counter (spent) for P2P consistency |
+| **Contribution Curve** | 10x early adopter multiplier decaying to 1x baseline |
+| **Stake/Slash** | Participation requirements with slashing for bad actors |
+| **Reputation Scoring** | Multi-factor: accuracy * uptime * stake_weight |
+| **Merkle Verification** | SHA-256 state root for quick ledger verification |
+
+**Architecture:**
+
+```
++------------------------+
+|     CreditLedger       |  <-- CRDT-based P2P-safe ledger
+|  +------------------+  |
+|  | G-Counter: Earned|  |  <-- Monotonically increasing
+|  | PN-Counter: Spent|  |  <-- Can handle disputes/refunds
+|  | Stake: Locked    |  |  <-- Participation requirement
+|  | State Root       |  |  <-- Merkle root for verification
+|  +------------------+  |
++------------------------+
+          |
+          v
++------------------------+
+|  ContributionCurve     |  <-- Exponential decay: 10x -> 1x
++------------------------+
+          |
+          v
++------------------------+
+|   ReputationScore      |  <-- accuracy * uptime * stake_weight
++------------------------+
+```
+
+**JavaScript/TypeScript Example:**
+
+```typescript
+import init, {
+  CreditLedger,
+  ReputationScore,
+  contribution_multiplier
+} from '@ruvector/economy-wasm';
+
+await init();
+
+// Create a new ledger for a node
+const ledger = new CreditLedger("node-123");
+
+// Earn credits (with early adopter multiplier)
+ledger.creditWithMultiplier(100, "task:abc");
+console.log(`Balance: ${ledger.balance()}`);
+console.log(`Multiplier: ${ledger.currentMultiplier()}x`);
+
+// Stake for participation
+ledger.stake(50);
+console.log(`Staked: ${ledger.stakedAmount()}`);
+
+// Check multiplier for network compute hours
+const mult = contribution_multiplier(50000.0);  // 50K hours
+console.log(`Network multiplier: ${mult}x`);  // ~8.5x
+
+// Track reputation
+const rep = new ReputationScore(0.95, 0.98, 1000);
+console.log(`Composite score: ${rep.composite_score()}`);
+
+// P2P merge with another ledger (CRDT operation)
+const otherEarned = new Uint8Array([/* serialized earned counter */]);
+const otherSpent = new Uint8Array([/* serialized spent counter */]);
+const mergedCount = ledger.merge(otherEarned, otherSpent);
+```
+
+### ruvector-exotic-wasm
+
+**Exotic AI mechanisms for emergent behavior in distributed systems.**
+
+Novel coordination primitives inspired by decentralized governance, developmental biology, and quantum physics.
+
+| Mechanism | Inspiration | Use Case |
+|-----------|-------------|----------|
+| **Neural Autonomous Organization (NAO)** | DAOs + oscillatory sync | Decentralized AI agent governance |
+| **Morphogenetic Network** | Developmental biology | Emergent network topology |
+| **Time Crystal Coordinator** | Quantum time crystals | Robust distributed coordination |
+
+**NAO Features:**
+- Stake-weighted quadratic voting
+- Oscillatory synchronization for coherence
+- Quorum-based consensus (configurable threshold)
+
+**Morphogenetic Network Features:**
+- Cellular differentiation through morphogen gradients
+- Emergent network topology via growth/pruning
+- Synaptic pruning for optimization
+
+**Time Crystal Features:**
+- Period-doubled oscillations for stable coordination
+- Floquet engineering for noise resilience
+- Phase-locked agent synchronization
+
+**JavaScript/TypeScript Example:**
+
+```typescript
+import init, {
+  WasmNAO,
+  WasmMorphogeneticNetwork,
+  WasmTimeCrystal,
+  ExoticEcosystem
+} from '@ruvector/exotic-wasm';
+
+await init();
+
+// Neural Autonomous Organization
+const nao = new WasmNAO(0.7);  // 70% quorum
+nao.addMember("agent_1", 100);  // 100 stake
+nao.addMember("agent_2", 50);
+
+const propId = nao.propose("Upgrade memory backend");
+nao.vote(propId, "agent_1", 0.9);  // 90% approval weight
+nao.vote(propId, "agent_2", 0.6);
+
+if (nao.execute(propId)) {
+  console.log("Proposal executed!");
+}
+
+// Morphogenetic Network
+const net = new WasmMorphogeneticNetwork(100, 100);  // 100x100 grid
+net.seedSignaling(50, 50);  // Seed signaling cell at center
+
+for (let i = 0; i < 1000; i++) {
+  net.grow(0.1);  // 10% growth rate
+}
+net.differentiate();
+net.prune(0.1);  // 10% pruning threshold
+
+// Time Crystal Coordinator
+const crystal = new WasmTimeCrystal(10, 100);  // 10 oscillators, 100ms period
+crystal.crystallize();
+
+for (let i = 0; i < 200; i++) {
+  const pattern = crystal.tick();
+  // Use pattern for coordination decisions
+}
+
+console.log(`Synchronization: ${crystal.orderParameter()}`);
+
+// Combined Ecosystem (all three working together)
+const eco = new ExoticEcosystem(5, 50, 8);  // 5 agents, 50x50 grid, 8 oscillators
+eco.crystallize();
+
+for (let i = 0; i < 100; i++) {
+  eco.step();
+}
+
+console.log(eco.summaryJson());
+```
+
+### ruvector-nervous-system-wasm
+
+**Bio-inspired neural system components for browser execution.**
+
+| Component | Performance | Description |
+|-----------|-------------|-------------|
+| **BTSP** | Immediate | Behavioral Timescale Synaptic Plasticity for one-shot learning |
+| **HDC** | <50ns bind, <100ns similarity | Hyperdimensional Computing with 10,000-bit vectors |
+| **WTA** | <1us | Winner-Take-All for instant decisions |
+| **K-WTA** | <10us | K-Winner-Take-All for sparse distributed coding |
+| **Global Workspace** | <10us | 4-7 item attention bottleneck (Miller's Law) |
+
+**Hyperdimensional Computing:**
+- 10,000-bit binary hypervectors
+- 10^40 representational capacity
+- XOR binding (associative, commutative, self-inverse)
+- Hamming distance similarity with SIMD optimization
+
+**Biological References:**
+- BTSP: Bittner et al. 2017 - Hippocampal place fields
+- HDC: Kanerva 1988, Plate 2003 - Hyperdimensional computing
+- WTA: Cortical microcircuits - Lateral inhibition
+- Global Workspace: Baars 1988, Dehaene 2014 - Consciousness
+
+**JavaScript/TypeScript Example:**
+
+```typescript
+import init, {
+  BTSPLayer,
+  Hypervector,
+  HdcMemory,
+  WTALayer,
+  KWTALayer,
+  GlobalWorkspace,
+  WorkspaceItem,
+} from '@ruvector/nervous-system-wasm';
+
+await init();
+
+// One-shot learning with BTSP
+const btsp = new BTSPLayer(100, 2000.0);  // 100 dim, 2000ms tau
+const pattern = new Float32Array(100).fill(0.1);
+btsp.one_shot_associate(pattern, 1.0);  // Immediate association
+const output = btsp.forward(pattern);
+
+// Hyperdimensional Computing
+const apple = Hypervector.random();
+const orange = Hypervector.random();
+const fruit = apple.bind(orange);  // XOR binding
+
+const similarity = apple.similarity(orange);  // ~0.0 (orthogonal)
+console.log(`Similarity: ${similarity}`);  // Random vectors are orthogonal
+
+// HDC Memory
+const memory = new HdcMemory();
+memory.store("apple", apple);
+memory.store("orange", orange);
+
+const results = memory.retrieve(apple, 0.9);  // threshold 0.9
+const topK = memory.top_k(fruit, 3);  // top-3 similar
+
+// Instant decisions with WTA
+const wta = new WTALayer(1000, 0.5, 0.8);  // 1000 neurons, threshold, inhibition
+const activations = new Float32Array(1000);
+// ... fill activations ...
+const winner = wta.compete(activations);
+
+// Sparse coding with K-WTA
+const kwta = new KWTALayer(1000, 50);  // 1000 neurons, k=50 winners
+const winners = kwta.select(activations);
+
+// Attention bottleneck with Global Workspace
+const workspace = new GlobalWorkspace(7);  // Miller's Law: 7 +/- 2
+const item = new WorkspaceItem(
+  new Float32Array([1, 2, 3]),  // content
+  0.9,  // salience
+  1,    // source
+  Date.now()  // timestamp
+);
+workspace.broadcast(item);
+```
+
+### ruvector-attention-unified-wasm
+
+**Unified API for 18+ attention mechanisms across Neural, DAG, Graph, and SSM domains.**
+
+A single WASM interface that routes to the appropriate attention implementation based on your data structure and requirements.
+
+| Category | Mechanisms | Best For |
+|----------|------------|----------|
+| **Neural** | Scaled Dot-Product, Multi-Head, Hyperbolic, Linear, Flash, Local-Global, MoE | Transformers, sequences |
+| **DAG** | Topological, Causal Cone, Critical Path, MinCut-Gated, Hierarchical Lorentz, Parallel Branch, Temporal BTSP | Query DAGs, workflows |
+| **Graph** | GAT, GCN, GraphSAGE | GNNs, knowledge graphs |
+| **SSM** | Mamba | Long sequences, streaming |
+
+**Mechanism Selection:**
+
+```
++------------------+     +-------------------+
+|   Your Data      | --> | UnifiedAttention  | --> Optimal Mechanism
++------------------+     +-------------------+
+                               |
+        +----------------------+----------------------+
+        |                      |                      |
+   +----v----+           +-----v-----+          +-----v----+
+   | Neural  |           |    DAG    |          |  Graph   |
+   +---------+           +-----------+          +----------+
+   | dot_prod|           | topological|         | gat      |
+   | multi_hd|           | causal_cone|         | gcn      |
+   | flash   |           | mincut_gtd |         | graphsage|
+   +---------+           +-----------+          +----------+
+```
+
+**JavaScript/TypeScript Example:**
+
+```typescript
+import init, {
+  UnifiedAttention,
+  availableMechanisms,
+  getStats,
+  softmax,
+  temperatureSoftmax,
+  cosineSimilarity,
+  // Neural attention
+  ScaledDotProductAttention,
+  MultiHeadAttention,
+  // DAG attention
+  TopologicalAttention,
+  MinCutGatedAttention,
+  // Graph attention
+  GraphAttention,
+  // SSM
+  MambaSSM,
+} from '@ruvector/attention-unified-wasm';
+
+await init();
+
+// List all available mechanisms
+console.log(availableMechanisms());
+// { neural: [...], dag: [...], graph: [...], ssm: [...] }
+
+console.log(getStats());
+// { total_mechanisms: 18, neural_count: 7, dag_count: 7, ... }
+
+// Unified selector - routes to appropriate implementation
+const attention = new UnifiedAttention("multi_head");
+console.log(`Category: ${attention.category}`);  // "neural"
+console.log(`Supports sequences: ${attention.supportsSequences()}`);  // true
+console.log(`Supports graphs: ${attention.supportsGraphs()}`);  // false
+
+// For DAG structures
+const dagAttention = new UnifiedAttention("topological");
+console.log(`Category: ${dagAttention.category}`);  // "dag"
+console.log(`Supports graphs: ${dagAttention.supportsGraphs()}`);  // true
+
+// Hyperbolic attention for hierarchical data
+const hypAttention = new UnifiedAttention("hierarchical_lorentz");
+console.log(`Supports hyperbolic: ${hypAttention.supportsHyperbolic()}`);  // true
+
+// Utility functions
+const logits = [1.0, 2.0, 3.0, 4.0];
+const probs = softmax(logits);
+console.log(`Probabilities sum to: ${probs.reduce((a, b) => a + b)}`);  // 1.0
+
+// Temperature-scaled softmax (lower = more peaked)
+const sharperProbs = temperatureSoftmax(logits, 0.5);
+
+// Cosine similarity
+const vecA = [1.0, 0.0, 0.0];
+const vecB = [1.0, 0.0, 0.0];
+console.log(`Similarity: ${cosineSimilarity(vecA, vecB)}`);  // 1.0
+```
+
+### WASM Package Summary
+
+| Package | Size Target | Key Features |
+|---------|-------------|--------------|
+| `@ruvector/learning-wasm` | <50KB | MicroLoRA (<100us), trajectory tracking |
+| `@ruvector/economy-wasm` | <100KB | CRDT ledger, 10x->1x curve, stake/slash |
+| `@ruvector/exotic-wasm` | <150KB | NAO, Morphogenetic, Time Crystal |
+| `@ruvector/nervous-system-wasm` | <100KB | BTSP, HDC (10K-bit), WTA, Global Workspace |
+| `@ruvector/attention-unified-wasm` | <200KB | 18+ attention mechanisms, unified API |
+
+**Common Patterns:**
+
+```typescript
+// All packages follow the same initialization pattern
+import init, { /* exports */ } from '@ruvector/<package>-wasm';
+await init();
+
+// Version check
+import { version } from '@ruvector/<package>-wasm';
+console.log(`Version: ${version()}`);
+
+// Feature discovery
+import { available_mechanisms } from '@ruvector/<package>-wasm';
+console.log(available_mechanisms());
+```
+
+### Self-Learning Intelligence Hooks
+
+**Make your AI assistant smarter over time.**
+
+When you use Claude Code (or any AI coding assistant), it starts fresh every session. It doesn't remember which approaches worked, which files you typically edit together, or what errors you've seen before.
+
+**RuVector Hooks fixes this.** It's a lightweight intelligence layer that:
+
+1. **Remembers what works** — Tracks which agent types succeed for different tasks
+2. **Learns from mistakes** — Records error patterns and suggests fixes you've used before
+3. **Predicts your workflow** — Knows that after editing `api.rs`, you usually edit `api_test.rs`
+4. **Coordinates teams** — Manages multi-agent swarms for complex tasks
+
+Think of it as giving your AI assistant a memory and intuition about your codebase.
+
+#### How It Works
+
+```
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Claude Code    │────▶│  RuVector Hooks  │────▶│   Intelligence  │
+│  (PreToolUse)   │     │   (pre-edit)     │     │      Layer      │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+                                                         │
+         ┌───────────────────────────────────────────────┘
+         ▼
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│   Q-Learning    │     │  Vector Memory   │     │  Swarm Graph    │
+│   α=0.1 γ=0.95  │     │  64-dim embed    │     │  Coordination   │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+```
+
+The hooks integrate with Claude Code's event system:
+- **PreToolUse** → Provides guidance before edits (agent routing, related files)
+- **PostToolUse** → Records outcomes for learning (success/failure, patterns)
+- **SessionStart/Stop** → Manages session state and metrics export
+
+#### Technical Specifications
+
+| Component | Implementation | Details |
+|-----------|----------------|---------|
+| **Q-Learning** | Temporal Difference | α=0.1, γ=0.95, ε=0.1 (ε-greedy exploration) |
+| **Embeddings** | Hash-based vectors | 64 dimensions, normalized, cosine similarity |
+| **LRU Cache** | `lru` crate | 1000 entries, ~10x faster Q-value lookups |
+| **Compression** | `flate2` gzip | 70-83% storage reduction, fast compression |
+| **Storage** | JSON / PostgreSQL | Auto-fallback, 5000 memory entry limit |
+| **Cross-platform** | Rust + TypeScript | Windows (USERPROFILE), Unix (HOME) |
+
+#### Performance
+
+| Metric | Value |
+|--------|-------|
+| Q-value lookup (cached) | <1µs |
+| Q-value lookup (uncached) | ~50µs |
+| Memory search (1000 entries) | <5ms |
+| Storage compression ratio | 70-83% |
+| Session start overhead | <10ms |
+
+| Crate/Package | Description | Status |
+|---------------|-------------|--------|
+| [ruvector-cli hooks](./crates/ruvector-cli) | Rust CLI with 34 hooks commands | [![crates.io](https://img.shields.io/crates/v/ruvector-cli.svg)](https://crates.io/crates/ruvector-cli) |
+| [@ruvector/cli hooks](./npm/packages/cli) | npm CLI with 29 hooks commands | [![npm](https://img.shields.io/npm/v/@ruvector/cli.svg)](https://www.npmjs.com/package/@ruvector/cli) |
+
+#### Quick Start
+
+```bash
+# Rust CLI
+cargo install ruvector-cli
+ruvector hooks init
+ruvector hooks install
+
+# npm CLI
+npx @ruvector/cli hooks init
+npx @ruvector/cli hooks install
+```
+
+#### Core Capabilities
+
+| Feature | Description | Technical Details |
+|---------|-------------|-------------------|
+| **Q-Learning Routing** | Routes tasks to best agent with learned confidence scores | TD learning with α=0.1, γ=0.95, ε-greedy exploration |
+| **Semantic Memory** | Vector-based memory with embeddings for context retrieval | 64-dim hash embeddings, cosine similarity, top-k search |
+| **Error Learning** | Records error patterns and suggests fixes | Pattern matching for E0308, E0433, TS2322, etc. |
+| **File Sequences** | Predicts next files to edit based on historical patterns | Markov chain transitions, frequency-weighted suggestions |
+| **Swarm Coordination** | Registers agents, tracks coordination edges, optimizes | Graph-based topology, weighted edges, task assignment |
+| **LRU Cache** | 1000-entry cache for faster Q-value lookups | ~10x speedup, automatic eviction, RefCell for interior mutability |
+| **Gzip Compression** | Storage savings with automatic compression | flate2 fast mode, 70-83% reduction, transparent load/save |
+| **Batch Saves** | Dirty flag tracking to reduce disk I/O | Only writes when data changes, force_save() override |
+| **Shell Completions** | Tab completion for all commands | bash, zsh, fish, PowerShell support |
+
+#### Supported Error Codes
+
+The intelligence layer has built-in knowledge for common error patterns:
+
+| Language | Error Codes | Auto-Suggested Fixes |
+|----------|-------------|---------------------|
+| **Rust** | E0308, E0433, E0425, E0277, E0382 | Type mismatches, missing imports, borrow checker |
+| **TypeScript** | TS2322, TS2339, TS2345, TS7006 | Type assignments, property access, argument types |
+| **Python** | ImportError, AttributeError, TypeError | Module imports, attribute access, type errors |
+| **Go** | undefined, cannot use, not enough arguments | Variable scope, type conversion, function calls |
+
+#### Commands Reference
+
+```bash
+# Setup
+ruvector hooks init [--force] [--postgres]  # Initialize hooks (--postgres for DB schema)
+ruvector hooks install                   # Install into Claude settings
+
+# Core
+ruvector hooks stats                     # Show intelligence statistics
+ruvector hooks session-start [--resume]  # Start/resume a session
+ruvector hooks session-end               # End session with metrics
+
+# Memory
+ruvector hooks remember -t edit "content"  # Store in semantic memory
+ruvector hooks recall "query" -k 5         # Search memory semantically
+
+# Learning
+ruvector hooks learn <state> <action> --reward 0.8  # Record trajectory
+ruvector hooks suggest <state> --actions "a,b,c"    # Get action suggestion
+ruvector hooks route "implement caching" --file src/cache.rs  # Route to agent
+
+# Claude Code Hooks
+ruvector hooks pre-edit <file>           # Pre-edit intelligence hook
+ruvector hooks post-edit <file> --success  # Post-edit learning hook
+ruvector hooks pre-command <cmd>         # Pre-command hook
+ruvector hooks post-command <cmd> --success  # Post-command hook
+ruvector hooks suggest-context           # UserPromptSubmit context injection
+ruvector hooks track-notification        # Track notification patterns
+ruvector hooks pre-compact [--auto]      # Pre-compact hook (auto/manual)
+
+# Claude Code v2.0.55+ Features
+ruvector hooks lsp-diagnostic --file <f> --severity error  # LSP diagnostics
+ruvector hooks suggest-ultrathink "complex task"  # Recommend extended reasoning
+ruvector hooks async-agent --action spawn --agent-id <id>  # Async sub-agents
+
+# Intelligence
+ruvector hooks record-error <cmd> <stderr>  # Record error pattern
+ruvector hooks suggest-fix E0308           # Get fix for error code
+ruvector hooks suggest-next <file> -n 3    # Predict next files
+ruvector hooks should-test <file>          # Check if tests needed
+
+# Swarm
+ruvector hooks swarm-register <id> <type>  # Register agent
+ruvector hooks swarm-coordinate <src> <tgt>  # Record coordination
+ruvector hooks swarm-optimize "task1,task2"  # Optimize distribution
+ruvector hooks swarm-recommend "rust"      # Recommend agent for task
+ruvector hooks swarm-heal <agent-id>       # Handle agent failure
+ruvector hooks swarm-stats                 # Show swarm statistics
+
+# Optimization (Rust only)
+ruvector hooks compress                   # Compress storage (70-83% savings)
+ruvector hooks cache-stats                # Show LRU cache statistics
+ruvector hooks completions bash           # Generate shell completions
+```
+
+#### Tutorial: Claude Code Integration
+
+**1. Initialize and install hooks:**
+
+```bash
+ruvector hooks init
+ruvector hooks install --settings-dir .claude
+```
+
+This creates `.claude/settings.json` with hook configurations:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Edit|Write|MultiEdit", "hooks": ["ruvector hooks pre-edit \"$TOOL_INPUT_FILE_PATH\""] },
+      { "matcher": "Bash", "hooks": ["ruvector hooks pre-command \"$TOOL_INPUT_COMMAND\""] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write|MultiEdit", "hooks": ["ruvector hooks post-edit ... --success"] },
+      { "matcher": "Bash", "hooks": ["ruvector hooks post-command ... --success"] }
+    ],
+    "SessionStart": ["ruvector hooks session-start"],
+    "Stop": ["ruvector hooks session-end --export-metrics"],
+    "PreCompact": ["ruvector hooks pre-compact"]
+  }
+}
+```
+
+**All 7 Claude Code hooks covered:**
+| Hook | When It Fires | What RuVector Does |
+|------|---------------|-------------------|
+| `PreToolUse` | Before file edit, command, or Task | Suggests agent, shows related files, validates agent assignments |
+| `PostToolUse` | After file edit or command | Records outcome, updates Q-values, injects context |
+| `SessionStart` | When session begins/resumes | Loads intelligence, shows stats (startup vs resume) |
+| `Stop` | When session ends | Saves state, exports metrics |
+| `PreCompact` | Before context compaction | Preserves critical memories (auto vs manual) |
+| `UserPromptSubmit` | Before processing user prompt | Injects learned patterns as context |
+| `Notification` | On system notifications | Tracks notification patterns |
+
+**Advanced Features:**
+- **Stdin JSON Parsing**: Hooks receive full JSON via stdin (session_id, tool_input, tool_response)
+- **Context Injection**: PostToolUse returns `additionalContext` to inject into Claude's context
+- **Timeout Optimization**: All hooks have optimized timeouts (1-5 seconds vs 60s default)
+
+**2. Use routing for intelligent agent selection:**
+
+```bash
+# Route a task to the best agent
+$ ruvector hooks route "implement vector search" --file src/lib.rs
+{
+  "recommended": "rust-developer",
+  "confidence": 0.85,
+  "reasoning": "learned from 47 similar edits"
+}
+```
+
+**3. Learn from outcomes:**
+
+```bash
+# Record successful outcome
+ruvector hooks learn "edit-rs-lib" "rust-developer" --reward 1.0
+
+# Record failed outcome
+ruvector hooks learn "edit-rs-lib" "typescript-dev" --reward -0.5
+```
+
+**4. Get error fix suggestions:**
+
+```bash
+$ ruvector hooks suggest-fix E0308
+{
+  "code": "E0308",
+  "type": "type_mismatch",
+  "fixes": [
+    "Check return type matches function signature",
+    "Use .into() or .as_ref() for type conversion",
+    "Verify generic type parameters"
+  ]
+}
+```
+
+#### Tutorial: Swarm Coordination
+
+**1. Register agents:**
+
+```bash
+ruvector hooks swarm-register agent-1 rust-developer --capabilities "rust,async,testing"
+ruvector hooks swarm-register agent-2 typescript-dev --capabilities "ts,react,node"
+ruvector hooks swarm-register agent-3 reviewer --capabilities "review,security,performance"
+```
+
+**2. Record coordination patterns:**
+
+```bash
+# Agent-1 hands off to Agent-3 for review
+ruvector hooks swarm-coordinate agent-1 agent-3 --weight 0.9
+```
+
+**3. Optimize task distribution:**
+
+```bash
+$ ruvector hooks swarm-optimize "implement-api,write-tests,code-review"
+{
+  "assignments": {
+    "implement-api": "agent-1",
+    "write-tests": "agent-1",
+    "code-review": "agent-3"
+  }
+}
+```
+
+**4. Handle failures with self-healing:**
+
+```bash
+# Mark agent as failed and redistribute
+ruvector hooks swarm-heal agent-2
+```
+
+#### PostgreSQL Storage (Optional)
+
+For production deployments, use PostgreSQL instead of JSON files:
+
+```bash
+# Set connection URL
+export RUVECTOR_POSTGRES_URL="postgres://user:pass@localhost/ruvector"
+
+# Initialize PostgreSQL schema (automatic)
+ruvector hooks init --postgres
+
+# Or apply schema manually
+psql $RUVECTOR_POSTGRES_URL -f crates/ruvector-cli/sql/hooks_schema.sql
+
+# Build CLI with postgres feature
+cargo build -p ruvector-cli --features postgres
+```
+
+The PostgreSQL backend provides:
+- Vector embeddings with native `ruvector` type
+- Q-learning functions (`ruvector_hooks_update_q`, `ruvector_hooks_best_action`)
+- Swarm coordination tables with foreign key relationships
+- Automatic memory cleanup (keeps last 5000 entries)
 
 ### Scientific OCR (SciPix)
 
@@ -525,6 +1351,7 @@ async fn main() -> anyhow::Result<()> {
 |-------|-------------|-----------|
 | [ruvector-node](./crates/ruvector-node) | Main Node.js bindings (napi-rs) | [![crates.io](https://img.shields.io/crates/v/ruvector-node.svg)](https://crates.io/crates/ruvector-node) |
 | [ruvector-wasm](./crates/ruvector-wasm) | Main WASM bindings for browsers | [![crates.io](https://img.shields.io/crates/v/ruvector-wasm.svg)](https://crates.io/crates/ruvector-wasm) |
+| [ruvllm-wasm](./crates/ruvllm-wasm) | LLM integration WASM bindings | [![crates.io](https://img.shields.io/crates/v/ruvllm-wasm.svg)](https://crates.io/crates/ruvllm-wasm) |
 | [ruvector-cli](./crates/ruvector-cli) | Command-line interface | [![crates.io](https://img.shields.io/crates/v/ruvector-cli.svg)](https://crates.io/crates/ruvector-cli) |
 | [ruvector-server](./crates/ruvector-server) | HTTP/gRPC server | [![crates.io](https://img.shields.io/crates/v/ruvector-server.svg)](https://crates.io/crates/ruvector-server) |
 
@@ -534,8 +1361,12 @@ Production-ready examples demonstrating RuVector integration patterns, from cogn
 
 | Example | Description | Type |
 |---------|-------------|------|
-| [exo-ai-2025](./examples/exo-ai-2025) | Cognitive substrate with 9 neural-symbolic crates for AI reasoning | Rust |
+| [mincut](./examples/mincut) | 6 self-organizing network demos: strange loops, time crystals, causal discovery | Rust |
+| [exo-ai-2025](./examples/exo-ai-2025) | Cognitive substrate with 9 neural-symbolic crates + 11 research experiments | Rust |
+| [ruvLLM](./examples/ruvLLM) | LLM integration patterns for RAG and AI agents | Rust |
+| [apify](./examples/apify) | 13 Apify actors: trading, memory engine, synth data, market research | npm |
 | [google-cloud](./examples/google-cloud) | GCP deployment templates for Cloud Run, GKE, and Vertex AI | Rust |
+| [ultra-low-latency-sim](./examples/ultra-low-latency-sim) | 13+ quadrillion meta-simulations/sec with SIMD | Rust |
 | [meta-cognition-spiking-neural-network](./examples/meta-cognition-spiking-neural-network) | Spiking neural network with meta-cognitive learning | npm |
 | [onnx-embeddings](./examples/onnx-embeddings) | Production ONNX embedding generation without Python | Rust |
 | [refrag-pipeline](./examples/refrag-pipeline) | RAG pipeline with vector search and document processing | Rust |

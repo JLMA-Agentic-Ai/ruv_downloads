@@ -1,0 +1,237 @@
+{
+  "env": {
+    "CLAUDE_FLOW_AUTO_COMMIT": "false",
+    "CLAUDE_FLOW_AUTO_PUSH": "false",
+    "CLAUDE_FLOW_HOOKS_ENABLED": "true",
+    "CLAUDE_FLOW_TELEMETRY_ENABLED": "true",
+    "CLAUDE_FLOW_REMOTE_EXECUTION": "true",
+    "CLAUDE_FLOW_CHECKPOINTS_ENABLED": "true",
+    "RUVECTOR_MEMORY_BACKEND": "rvlite",
+    "RUVECTOR_WASM_SIZE_LIMIT_KB": "3072",
+    "RUVECTOR_INTELLIGENCE_ENABLED": "true",
+    "RUVECTOR_LEARNING_RATE": "0.1",
+    "INTELLIGENCE_MODE": "treatment",
+    "RUVECTOR_TELEMETRY_ENDPOINT": "",
+    "RUVECTOR_RETENTION_DAYS": "30",
+    "RUVECTOR_PERMISSION_MODE": "acceptEdits",
+    "RUVECTOR_SDK_INTEGRATION": "true"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npx claude-flow:*)",
+      "Bash(npx ruvector:*)",
+      "Bash(npx agentic-flow:*)",
+      "Bash(npm run:*)",
+      "Bash(npm test:*)",
+      "Bash(cargo:*)",
+      "Bash(wasm-pack:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git config:*)",
+      "Bash(git tag:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+      "Bash(jq:*)",
+      "Bash(node:*)",
+      "Bash(which:*)",
+      "Bash(pwd)",
+      "Bash(ls:*)",
+      "Bash(.claude/hooks:*)",
+      "Bash(.claude/intelligence:*)",
+      "Bash(.claude/ruvector-fast.sh:*)",
+      "Bash(.claude/agentic-flow-fast.sh:*)",
+      "Bash(ruvector:*)",
+      "Bash(ruvector-cli:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks pre-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks coedit-suggest --file \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks pre-command \"$TOOL_INPUT_command\" 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 300,
+            "command": ".claude/ruvector-fast.sh hooks remember \"Reading: $TOOL_INPUT_file_path\" -t file_access 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 300,
+            "command": ".claude/ruvector-fast.sh hooks remember \"Search: $TOOL_INPUT_pattern\" -t search_pattern 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 300,
+            "command": ".claude/ruvector-fast.sh hooks remember \"Agent: $TOOL_INPUT_subagent_type\" -t agent_spawn 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks post-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks post-command \"$TOOL_INPUT_command\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 1000,
+            "command": ".claude/ruvector-fast.sh hooks session-start 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks trajectory-begin -c \"claude-session\" -a \"claude\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks trajectory-end --success --quality 0.8 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks session-end 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "auto",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 1000,
+            "command": ".claude/ruvector-fast.sh hooks pre-compact --auto 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 1000,
+            "command": ".claude/ruvector-fast.sh hooks compress 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "matcher": "manual",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 1000,
+            "command": ".claude/ruvector-fast.sh hooks pre-compact 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 500,
+            "command": ".claude/ruvector-fast.sh hooks suggest-context 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 2000,
+            "command": ".claude/agentic-flow-fast.sh workers dispatch-prompt \"$CLAUDE_USER_PROMPT\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "timeout": 1000,
+            "command": ".claude/agentic-flow-fast.sh workers inject-context \"$CLAUDE_USER_PROMPT\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 300,
+            "command": ".claude/ruvector-fast.sh hooks track-notification 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredBy": true,
+  "enabledMcpjsonServers": [
+    "claude-flow",
+    "ruv-swarm"
+  ],
+  "statusLine": {
+    "type": "command",
+    "command": ".claude/statusline-command.sh"
+  }
+}

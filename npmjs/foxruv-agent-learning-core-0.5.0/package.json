@@ -1,0 +1,115 @@
+{
+  "name": "@foxruv/agent-learning-core",
+  "version": "0.5.0",
+  "description": "Shared DSPy + AgentDB + LLM infrastructure for self-improving agents (NFL, microbiome, etc.)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.js",
+      "default": "./dist/index.js"
+    },
+    "./tools": {
+      "types": "./dist/tools/index.d.js",
+      "default": "./dist/tools/index.js"
+    }
+  },
+  "bin": {
+    "iris": "./bin/iris",
+    "iris-generate-wrappers": "./bin/iris-generate-wrappers.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "typecheck": "tsc --noEmit",
+    "iris:discover": "npx -y tsx src/scripts/iris/iris-discover.ts",
+    "iris:evaluate": "npx -y tsx src/scripts/iris/iris-evaluate.ts",
+    "iris:evaluate-batch": "npx -y tsx src/scripts/iris/iris-evaluate-batch.ts",
+    "iris:auto-invoke": "npx -y tsx src/scripts/iris/iris-auto-invoke.ts",
+    "iris:evaluate:all": "tsx scripts/iris/evaluate-all-projects.js",
+    "iris:retrain": "tsx scripts/iris/auto-retrain.js",
+    "iris:patterns": "tsx scripts/patterns/discover-cross-project.js",
+    "iris:health": "tsx scripts/iris/health-check.js",
+    "consensus:analyze": "tsx scripts/consensus/analyze-lineage.js",
+    "consensus:rotation": "tsx scripts/consensus/rotation-report.js",
+    "reflexion:search": "tsx scripts/reflexion/search-similar.js",
+    "reflexion:stats": "tsx scripts/reflexion/get-stats.js",
+    "telemetry:drift": "tsx scripts/telemetry/drift-report.js",
+    "telemetry:stats": "tsx scripts/telemetry/expert-stats.js",
+    "supabase:sync": "tsx scripts/supabase/sync-all.js",
+    "supabase:migrate": "tsx scripts/supabase/run-migration.js",
+    "supabase:health": "tsx scripts/supabase/health-check.js",
+    "notify:test": "tsx scripts/notifications/test-whatsapp.js",
+    "notify:digest": "tsx scripts/notifications/send-digest.js",
+    "quick-start": "tsx scripts/quick-start.js",
+    "generate:mcp-wrappers": "tsx src/mcp/generate-wrapper.js",
+    "hooks:pre-edit": "tsx scripts/hooks/pre-edit.js",
+    "hooks:post-edit": "tsx scripts/hooks/post-edit.js",
+    "hooks:session-end": "tsx scripts/hooks/session-end.js",
+    "mcp:server": "tsx src/mcp/iris-prime-mcp-server.js",
+    "mcp:client": "tsx scripts/iris-mcp-client.js",
+    "mcp:list-tools": "tsx scripts/iris-mcp-client.js list",
+    "mcp:health": "tsx scripts/iris-mcp-client.js iris_health_check"
+  },
+  "keywords": [
+    "dspy",
+    "agent",
+    "llm",
+    "agentdb",
+    "training",
+    "optimization"
+  ],
+  "author": "FoxRuv",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "bin",
+    "src"
+  ],
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@types/cli-progress": "^3.11.6",
+    "@types/inquirer": "^9.0.9",
+    "agentdb": "^1.6.1",
+    "claude-flow": "^2.7.31",
+    "cli-progress": "^3.12.0",
+    "inquirer": "^13.0.1",
+    "twilio": "^5.10.5"
+  },
+  "peerDependencies": {
+    "@foxruv/agent-orchestration": "*",
+    "@foxruv/e2b-runner": "*",
+    "agentdb": "^1.6.1",
+    "claude-flow": "^2.7.31"
+  },
+  "peerDependenciesMeta": {
+    "agentdb": {
+      "optional": true
+    },
+    "claude-flow": {
+      "optional": true
+    },
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "openai": {
+      "optional": true
+    },
+    "@foxruv/agent-orchestration": {
+      "optional": true
+    },
+    "@foxruv/e2b-runner": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

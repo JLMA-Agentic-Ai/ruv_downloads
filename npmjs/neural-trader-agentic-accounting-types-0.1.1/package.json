@@ -1,0 +1,57 @@
+{
+  "name": "@neural-trader/agentic-accounting-types",
+  "version": "0.1.1",
+  "description": "Comprehensive TypeScript type definitions and interfaces for neural-trader's agentic accounting system with cryptocurrency tax calculations, cost basis tracking, and capital gains reporting",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "homepage": "https://neural-trader.ruv.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/neural-trader.git",
+    "directory": "packages/agentic-accounting-types"
+  },
+  "bugs": {
+    "url": "https://github.com/ruvnet/neural-trader/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [
+    "types",
+    "definitions",
+    "interfaces",
+    "typescript-types",
+    "neural-trader",
+    "typescript",
+    "cryptocurrency",
+    "trading",
+    "accounting",
+    "tax-types",
+    "cost-basis-types",
+    "transaction-types",
+    "capital-gains",
+    "crypto-tax",
+    "ruv-io"
+  ],
+  "author": "Neural Trader Team <team@ruv.io>",
+  "license": "MIT OR Apache-2.0",
+  "dependencies": {
+    "decimal.js": "^10.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "ts-jest": "^29.1.1"
+  }
+}
