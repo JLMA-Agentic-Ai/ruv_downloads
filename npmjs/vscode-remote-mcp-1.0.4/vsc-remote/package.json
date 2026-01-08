@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/ruvnet/vsc-remote-mcp#readme",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@modelcontextprotocol/sdk": "^1.25.2",
     "commander": "^11.0.0",
     "dotenv": "^16.0.3",
     "inquirer": "^8.2.5",

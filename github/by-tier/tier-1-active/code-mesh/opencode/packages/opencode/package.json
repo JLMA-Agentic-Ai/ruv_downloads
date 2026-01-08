@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@clack/prompts": "0.11.0",
-    "@modelcontextprotocol/sdk": "1.15.1",
+    "@modelcontextprotocol/sdk": "1.25.2",
     "@openauthjs/openauth": "0.4.3",
     "ai": "catalog:",
     "decimal.js": "10.5.0",

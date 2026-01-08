@@ -46,7 +46,7 @@
     "@types/compression": "^1.7.5",
     "typescript": "^5.3.3",
     "tsx": "^4.7.0",
-    "vitest": "^1.1.0",
+    "vitest": "^4.0.16",
     "eslint": "^8.56.0",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
