@@ -1,0 +1,1718 @@
+# @ruvector/edge-net
+
+**The Decentralized AI Compute Network - Private, Modular, Unstoppable**
+
+> *Cogito, Creo, Codex* — I think, I create, I code.
+
+Transform idle browser compute into a globally distributed AI infrastructure. Edge-net combines WebRTC P2P networking, WASM-accelerated cryptography, and a modular plugin architecture to create a self-sustaining collective intelligence network.
+
+> **v0.5.1** - Now with hardened plugin system featuring Ed25519 verification, rate limiting, and HKDF key derivation.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              EDGE-NET: DECENTRALIZED AI COMPUTE NETWORK                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐              │
+│   │  Browser    │       │  Global P2P │       │  AI Tasks   │              │
+│   │  Nodes      │◄─────►│  Mesh       │◄─────►│  Executed   │              │
+│   │  (WASM)     │ WebRTC│  (Genesis)  │       │  Privately  │              │
+│   └─────────────┘       └─────────────┘       └─────────────┘              │
+│         │                     │                     │                       │
+│         ▼                     ▼                     ▼                       │
+│   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐              │
+│   │  Contribute │       │  Earn rUv   │       │  Extend via │              │
+│   │  Idle CPU   │  ───► │  Credits    │  ───► │  Plugins    │              │
+│   │  Securely   │       │  Privately  │       │  Modularly  │              │
+│   └─────────────┘       └─────────────┘       └─────────────┘              │
+│                                                                             │
+│   Vector Search │ Embeddings │ E2E Encryption │ Federated ML │ Swarm AI    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Why Edge-Net?
+
+| Problem | Edge-Net Solution |
+|---------|-------------------|
+| **Centralized AI** requires sending your data to cloud providers | **Local-first** - your data never leaves your browser |
+| **GPU scarcity** makes AI expensive and inaccessible | **Collective compute** - thousands of browsers working together |
+| **Monolithic systems** force all-or-nothing adoption | **Plugin architecture** - enable only what you need |
+| **Closed networks** lock you into vendor ecosystems | **Open P2P** - WebRTC mesh with no central authority |
+| **Opaque AI** - you can't verify what's running | **Transparent WASM** - auditable, reproducible compute |
+
+## Table of Contents
+
+- [WebRTC P2P Networking](#webrtc-p2p-networking)
+- [Plugin System](#plugin-system)
+- [Core Invariants](#core-invariants)
+- [What is Edge-Net?](#what-is-edge-net)
+- [Key Features](#key-features)
+- [Quick Start](#quick-start)
+- [How It Works](#how-it-works)
+- [AI Computing Tasks](#ai-computing-tasks)
+- [Pi-Key Identity System](#pi-key-identity-system)
+- [Security Architecture](#security-architecture)
+- [Self-Optimization](#self-optimization)
+- [Tutorials](#tutorials)
+- [API Reference](#api-reference)
+- [Development](#development)
+- [Exotic AI Capabilities](#exotic-ai-capabilities)
+- [Core Architecture & Capabilities](#core-architecture--capabilities)
+- [Self-Learning Hooks & MCP Integration](#self-learning-hooks--mcp-integration)
+- [Distributed AI Agents & Workers](#distributed-ai-agents--workers)
+
+---
+
+## WebRTC P2P Networking
+
+Edge-net implements **real WebRTC peer-to-peer connectivity** for direct browser-to-browser communication, with Google Cloud genesis nodes for global coordination.
+
+### P2P Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    WEBRTC P2P NETWORK ARCHITECTURE                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────┐     Signaling      ┌─────────────┐                        │
+│   │  Browser A  │◄──────────────────►│   Relay     │  (WebSocket)           │
+│   │  (Node 1)   │   offer/answer     │   Server    │                        │
+│   └──────┬──────┘     ICE candidates └─────────────┘                        │
+│          │                                                                  │
+│          │ WebRTC Data Channel (DTLS encrypted, direct P2P)                 │
+│          │                                                                  │
+│          ▼                                                                  │
+│   ┌─────────────┐                    ┌─────────────┐                        │
+│   │  Browser B  │◄──────────────────►│  Browser C  │                        │
+│   │  (Node 2)   │   Direct P2P       │  (Node 3)   │                        │
+│   └─────────────┘                    └─────────────┘                        │
+│                                                                             │
+│   Genesis Nodes (Google Cloud):                                             │
+│   • us-central1  • europe-west1  • asia-east1                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### WebRTC Features
+
+| Feature | Description |
+|---------|-------------|
+| **Real P2P Data Channels** | Direct browser-to-browser communication |
+| **ICE/STUN/TURN** | NAT traversal with Google STUN servers |
+| **DTLS Encryption** | End-to-end encrypted data channels |
+| **WebSocket Signaling** | Relay server for connection establishment |
+| **Automatic Reconnection** | Self-healing connections with exponential backoff |
+| **Heartbeat Monitoring** | Connection health with 5s heartbeat |
+| **Connection Quality Metrics** | Latency, throughput, packet loss tracking |
+| **Fallback Simulation** | Offline mode when signaling unavailable |
+
+### Genesis Nodes (Google Cloud)
+
+| Region | Host | Purpose |
+|--------|------|---------|
+| **us-central1** | edge-net-genesis-us.ruvector.dev | Americas coordination |
+| **europe-west1** | edge-net-genesis-eu.ruvector.dev | EMEA coordination |
+| **asia-east1** | edge-net-genesis-asia.ruvector.dev | APAC coordination |
+
+### WebRTC Security
+
+| Security Feature | Implementation |
+|-----------------|----------------|
+| **DTLS 1.2+** | Data channel encryption |
+| **SCTP** | Reliable ordered delivery |
+| **Origin Validation** | CORS whitelist for browser connections |
+| **Rate Limiting** | 100 msg/min per node |
+| **Message Size Limits** | 64KB max message size |
+| **Connection Limits** | 5 connections per IP |
+| **Heartbeat Timeout** | 30s stale connection cleanup |
+| **SDP Sanitization** | Prevent injection attacks |
+
+### Relay Server
+
+The relay server (`relay/index.js`) handles:
+
+```javascript
+// WebRTC signaling message types
+'webrtc_offer'     // Relay SDP offer to target peer
+'webrtc_answer'    // Relay SDP answer back
+'webrtc_ice'       // Relay ICE candidates
+'webrtc_disconnect' // Notify peer of disconnection
+```
+
+### Testing & Benchmarks
+
+```bash
+cd examples/edge-net/relay
+npm install
+node index.js &
+
+cd ../test
+npm install
+
+# Run P2P connectivity test
+npm test
+
+# Run security audit
+npm run security
+
+# Run latency benchmark
+npm run benchmark
+```
+
+### Browser Integration
+
+```javascript
+// join.html implements real WebRTC
+const WEBRTC_CONFIG = {
+    iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' },
+    ]
+};
+
+// Connects to relay server
+const RELAY_URL = 'ws://localhost:8080';
+
+// Real peer connections via RTCPeerConnection
+const pc = new RTCPeerConnection(WEBRTC_CONFIG);
+const channel = pc.createDataChannel('edge-net');
+```
+
+---
+
+## Plugin System
+
+Edge-net features a **modular plugin architecture** that lets you enable only the capabilities you need. Plugins are cryptographically verified, sandboxed, and rate-limited for security.
+
+### Plugin Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      EDGE-NET PLUGIN ARCHITECTURE                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   ┌─────────────────────────────────────────────────────────────────────┐   │
+│   │                        Plugin Loader (Secure)                        │   │
+│   │  • Ed25519 signature verification  • Rate limiting (100 req/min)    │   │
+│   │  • SHA-256 integrity checks        • Capability-based sandbox       │   │
+│   │  • Lazy loading with cache         • Frozen manifest objects        │   │
+│   └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│   ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐   │
+│   │   CORE    │ │  NETWORK  │ │  CRYPTO   │ │  PRIVACY  │ │    AI     │   │
+│   │           │ │           │ │           │ │           │ │           │   │
+│   │ Compress  │ │ Mesh Opt  │ │ ZK-Proofs │ │ Onion     │ │ Federated │   │
+│   │ Metrics   │ │ Gossip    │ │ MPC       │ │ Mixnet    │ │ Swarm     │   │
+│   │ Logging   │ │ DHT       │ │ Threshold │ │ PIR       │ │ RL Agent  │   │
+│   └───────────┘ └───────────┘ └───────────┘ └───────────┘ └───────────┘   │
+│                                                                             │
+│   ┌───────────┐ ┌───────────┐ ┌───────────┐                               │
+│   │ ECONOMIC  │ │  STORAGE  │ │  EXOTIC   │                               │
+│   │           │ │           │ │           │                               │
+│   │ Staking   │ │ IPFS      │ │ Time      │                               │
+│   │ AMM       │ │ Arweave   │ │ Crystal   │                               │
+│   │ Auction   │ │ Filecoin  │ │ Morpho    │                               │
+│   └───────────┘ └───────────┘ └───────────┘                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Plugin Categories
+
+| Category | Description | Example Plugins |
+|----------|-------------|-----------------|
+| **core** | Essential functionality | compression, metrics, logging |
+| **network** | Network topology & routing | mesh-optimization, gossip-protocol, dht-routing |
+| **crypto** | Cryptographic features | zk-proofs, mpc-compute, threshold-signatures, e2e-encryption |
+| **privacy** | Privacy-enhancing tech | onion-routing, mixnet, pir (private info retrieval) |
+| **ai** | AI/ML capabilities | federated-learning, swarm-intelligence, rl-agents, onnx-inference |
+| **economic** | Incentive mechanisms | reputation-staking, amm-pricing, auction-mechanism |
+| **storage** | Data persistence | ipfs-storage, arweave-persist, filecoin-deals |
+| **exotic** | Experimental features | time-crystal, morphogenetic-net, quantum-sim |
+
+### Plugin Tiers
+
+| Tier | Badge | Description |
+|------|-------|-------------|
+| **stable** | 🟢 | Production-ready, security audited |
+| **beta** | 🟡 | Feature complete, needs testing |
+| **experimental** | 🟠 | Works but may change |
+| **research** | 🔴 | Academic/research only |
+
+### Capability Permissions
+
+Plugins declare required capabilities. The loader enforces these at runtime:
+
+| Capability | Permission | Description |
+|------------|------------|-------------|
+| `network:connect` | Network | Outbound connections |
+| `network:listen` | Network | Accept connections |
+| `network:relay` | Network | Relay for other nodes |
+| `crypto:sign` | Crypto | Digital signatures |
+| `crypto:encrypt` | Crypto | Encryption/decryption |
+| `crypto:keygen` | Crypto | Key generation |
+| `storage:read` | Storage | Read local data |
+| `storage:write` | Storage | Write local data |
+| `storage:delete` | Storage | Delete local data |
+| `compute:cpu` | Compute | CPU-intensive work |
+| `compute:gpu` | Compute | WebGPU acceleration |
+| `compute:wasm` | Compute | WASM module execution |
+| `system:env` | System | Environment variables |
+| `system:fs` | System | Filesystem access |
+| `system:exec` | System | Execute commands (denied by default) |
+
+### Quick Start with Plugins
+
+```javascript
+import { PluginManager } from '@ruvector/edge-net/plugins';
+
+// Get plugin manager instance
+const plugins = PluginManager.getInstance({
+    allowedTiers: ['stable', 'beta'],
+    verifySignatures: true,
+});
+
+// Load individual plugins
+const compression = await plugins.load('core.compression');
+const encryption = await plugins.load('crypto.e2e-encryption');
+
+// Or load a bundle
+await plugins.loadBundle('privacy-focused');
+// Loads: compression, e2e-encryption, onion-routing, zk-proofs, pir
+
+// Use plugins
+const compressed = compression.compress(data);
+const encrypted = encryption.encrypt('peer-123', sensitiveData);
+```
+
+### Available Bundles
+
+| Bundle | Plugins | Use Case |
+|--------|---------|----------|
+| **minimal** | (none) | Bare-bones, maximum control |
+| **standard** | compression, metrics, e2e-encryption | Typical usage |
+| **privacy-focused** | compression, e2e-encryption, onion-routing, zk-proofs, pir | Maximum privacy |
+| **ai-compute** | compression, federated-learning, swarm-intelligence, onnx-inference | AI workloads |
+| **experimental** | All experimental tier plugins | Research & testing |
+
+### CLI Commands
+
+```bash
+# List all plugins
+edge-net plugins list
+
+# Filter by category or tier
+edge-net plugins list privacy
+edge-net plugins list experimental
+
+# Get plugin details
+edge-net plugins info crypto.zk-proofs
+
+# List bundles
+edge-net plugins bundles
+
+# Create custom plugin
+edge-net plugins create my-plugin --category ai --tier experimental
+
+# Validate plugin
+edge-net plugins validate ./my-plugin/index.js
+```
+
+### Creating Custom Plugins
+
+```javascript
+import { BasePlugin, PluginCategory, PluginTier, Capability } from '@ruvector/edge-net/plugins/sdk';
+
+class MyCustomPlugin extends BasePlugin {
+    static manifest = {
+        id: 'custom.my-plugin',
+        name: 'My Custom Plugin',
+        version: '1.0.0',
+        description: 'Does amazing things',
+        category: PluginCategory.AI,
+        tier: PluginTier.EXPERIMENTAL,
+        capabilities: [Capability.COMPUTE_WASM, Capability.NETWORK_CONNECT],
+    };
+
+    async onInit(config, sandbox) {
+        sandbox.require(Capability.COMPUTE_WASM);
+        this.ready = true;
+    }
+
+    async process(data) {
+        // Your plugin logic
+        return { processed: true, data };
+    }
+}
+
+// Register with the plugin system
+import { getRegistry } from '@ruvector/edge-net/plugins/sdk';
+getRegistry().register(MyCustomPlugin);
+```
+
+### Security Features
+
+| Feature | Implementation |
+|---------|----------------|
+| **Ed25519 Signatures** | All non-stable plugins must be cryptographically signed |
+| **SHA-256 Checksums** | Verify plugin integrity before loading |
+| **Rate Limiting** | 100 requests/minute per plugin to prevent DoS |
+| **Capability Sandbox** | Plugins can only access declared capabilities |
+| **Frozen Manifests** | Plugin metadata immutable after load |
+| **HKDF Key Derivation** | Secure key generation with proper entropy |
+| **Path Validation** | Prevent directory traversal attacks |
+| **Trusted Authors** | Public key registry for verified developers |
+
+### Plugin Failure Semantics
+
+Plugins operate under explicit failure constraints to prevent ecosystem fragility:
+
+- **Silent degradation**: Plugins may fail, be unloaded, or be rate-limited without warning to the caller
+- **Core isolation**: Network liveness, task routing, and credit settlement never depend on plugin success
+- **No blocking**: Plugins cannot block core operations; timeouts are enforced at the sandbox level
+
+### Built-in Plugin Implementations
+
+| Plugin | Description | Performance |
+|--------|-------------|-------------|
+| **compression** | LZ4/Zstd compression | 354 MB/s |
+| **e2e-encryption** | AES-256-GCM with HKDF | 54K ops/sec |
+| **federated-learning** | Byzantine-tolerant FL | 12.7M samples/sec |
+| **reputation-staking** | Stake-weighted trust | Instant |
+| **swarm-intelligence** | PSO/GA/DE/ACO optimization | 19K iter/sec |
+
+---
+
+## Core Invariants
+
+> *Cogito, Creo, Codex* — The system thinks collectively, creates through contribution, and codifies trust in cryptographic proof.
+
+These rules are not configurable. They define what Edge-net *is*.
+
+| Invariant | Constraint |
+|-----------|------------|
+| **Network liveness without plugins** | The network must route tasks, settle credits, and maintain connections with zero plugins loaded. Plugins extend; they never enable. |
+| **Economic settlement isolation** | rUv minting, burning, and settlement are core-only operations. Economic plugins may observe, suggest, or model—but never execute settlement. |
+| **Identity persistence and decay** | Identities are permanent once created, but reputation decays without activity. New identities face a warm-up curve before full participation. |
+| **Verifiable work or no reward** | Credit issuance requires cryptographic proof of work completion. Unverifiable claims are rejected, not trusted. |
+| **Degradation over halt** | The system degrades gracefully under load, attack, or partial failure. It never halts. Consistency is sacrificed before availability. |
+
+### Economic Boundaries
+
+The credit system is explicitly **not extensible**:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         ECONOMIC SETTLEMENT BOUNDARY                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   CORE (immutable)                    PLUGINS (observable only)             │
+│   ┌─────────────────────────┐        ┌─────────────────────────┐           │
+│   │ • rUv minting           │        │ • Pricing suggestions   │           │
+│   │ • rUv burning           │   ──►  │ • Reputation scoring    │           │
+│   │ • Credit settlement     │  read  │ • Economic modeling     │           │
+│   │ • Balance enforcement   │  only  │ • Auction mechanisms    │           │
+│   │ • Slashing execution    │        │ • AMM simulations       │           │
+│   └─────────────────────────┘        └─────────────────────────┘           │
+│                                                                             │
+│   Plugins CANNOT: mint, burn, transfer, or settle credits directly         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Identity Anti-Sybil Measures
+
+New identities face friction to prevent plugin marketplace Sybil attacks:
+
+| Mechanism | Description |
+|-----------|-------------|
+| **Delayed activation** | 24-hour window before full task execution privileges |
+| **Reputation warm-up** | Linear ramp from 0.1 to 1.0 reputation over first 100 tasks |
+| **Stake requirement** | Optional stake to unlock higher task priority (slashable) |
+| **Witness diversity** | Task results require confirmation from identities with independent creation times |
+
+---
+
+## What is Edge-Net?
+
+Edge-net creates a **collective computing network** where participants share idle browser resources to power distributed AI workloads. Think of it as a cooperative where:
+
+1. **You Contribute** - Share unused CPU cycles when browsing
+2. **You Earn** - Accumulate rUv (Resource Utility Vouchers) based on contribution
+3. **You Use** - Spend rUv to run AI tasks across the collective network
+4. **Network Grows** - More participants = more collective computing power
+
+### Why Collective AI Computing?
+
+| Traditional AI Computing | Collective Edge-Net |
+|-------------------------|---------------------|
+| Expensive GPU servers | Free idle browser CPUs |
+| Centralized data centers | Distributed global network |
+| Pay-per-use pricing | Contribution-based access |
+| Single point of failure | Resilient P2P mesh |
+| Limited by your hardware | Scale with the collective |
+
+### Core Principles
+
+| Principle | Description |
+|-----------|-------------|
+| **Collectibility** | Resources are pooled and shared fairly |
+| **Contribution** | Earn by giving, spend by using |
+| **Self-Sustaining** | Network operates without central control |
+| **Privacy-First** | Pi-Key cryptographic identity system |
+| **Adaptive** | Q-learning security protects the collective |
+
+---
+
+## Key Features
+
+### Collective Resource Sharing
+
+| Feature | Benefit |
+|---------|---------|
+| **Idle CPU Utilization** | Use resources that would otherwise be wasted |
+| **Browser-Based** | No installation, runs in any modern browser |
+| **Adjustable Contribution** | Control how much you share (10-50% CPU) |
+| **Battery Aware** | Automatically reduces on battery power |
+| **Fair Distribution** | Work routed based on capability matching |
+
+### AI Computing Capabilities
+
+Edge-net provides a complete AI stack that runs entirely in your browser. Each component is designed to be lightweight, fast, and work without a central server.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        AI INTELLIGENCE STACK                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    MicroLoRA Adapter Pool (from ruvLLM)              │   │
+│  │  • LRU-managed pool (16 slots) • Rank 1-16 adaptation                │   │
+│  │  • <50µs rank-1 forward        • 2,236+ ops/sec with batch 32        │   │
+│  │  • 4-bit/8-bit quantization    • P2P shareable adapters              │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    SONA - Self-Optimizing Neural Architecture         │   │
+│  │  • Instant Loop: Per-request MicroLoRA adaptation                    │   │
+│  │  • Background Loop: Hourly K-means consolidation                     │   │
+│  │  • Deep Loop: Weekly EWC++ consolidation (catastrophic forgetting)   │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌──────────────────────┐  ┌──────────────────────┐  ┌─────────────────┐  │
+│  │   HNSW Vector Index  │  │  Federated Learning  │  │ ReasoningBank   │  │
+│  │   • 150x faster      │  │  • TopK Sparsify 90% │  │ • Trajectories  │  │
+│  │   • O(log N) search  │  │  • Byzantine tolerant│  │ • Pattern learn │  │
+│  │   • Incremental P2P  │  │  • Diff privacy      │  │ • 87x energy    │  │
+│  └──────────────────────┘  └──────────────────────┘  └─────────────────┘  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Core AI Tasks
+
+| Task Type | Use Case | How It Works |
+|-----------|----------|--------------|
+| **Vector Search** | Find similar items | HNSW index with 150x speedup |
+| **Embeddings** | Text understanding | Generate semantic vectors |
+| **Semantic Match** | Intent detection | Classify meaning |
+| **LoRA Inference** | Task adaptation | MicroLoRA <100µs forward |
+| **Pattern Learning** | Self-optimization | ReasoningBank trajectories |
+
+---
+
+#### MicroLoRA Adapter System
+
+> **What it does:** Lets the network specialize for different tasks without retraining the whole model. Think of it like having 16 expert "hats" the AI can quickly swap between - one for searching, one for encryption, one for routing, etc.
+
+Ported from **ruvLLM** with enhancements for distributed compute:
+
+| Feature | Specification | Performance |
+|---------|--------------|-------------|
+| **Rank Support** | 1-16 | Rank-1: <50µs, Rank-2: <100µs |
+| **Pool Size** | 16 concurrent adapters | LRU eviction policy |
+| **Quantization** | 4-bit, 8-bit | 75% memory reduction |
+| **Batch Size** | 32 (optimal) | 2,236+ ops/sec |
+| **Task Types** | VectorSearch, Embedding, Inference, Crypto, Routing | Auto-routing |
+
+**Why it matters:** Traditional AI models are "one size fits all." MicroLoRA lets each node become a specialist for specific tasks in under 100 microseconds - faster than a blink.
+
+---
+
+#### SONA: Self-Optimizing Neural Architecture
+
+> **What it does:** The network teaches itself to get better over time using three learning speeds - instant reactions, daily improvements, and long-term memory. Like how your brain handles reflexes, daily learning, and permanent memories differently.
+
+Three-temporal-loop continuous learning system:
+
+| Loop | Interval | Mechanism | Purpose |
+|------|----------|-----------|---------|
+| **Instant** | Per-request | MicroLoRA rank-2 | Immediate adaptation |
+| **Background** | Hourly | K-means clustering | Pattern consolidation |
+| **Deep** | Weekly | EWC++ (λ=2000) | Prevent catastrophic forgetting |
+
+**Why it matters:** Most AI systems forget old knowledge when learning new things ("catastrophic forgetting"). SONA's three-loop design lets the network learn continuously without losing what it already knows.
+
+---
+
+#### HNSW Vector Index
+
+> **What it does:** Finds similar items incredibly fast by organizing data like a multi-level highway system. Instead of checking every item (like walking door-to-door), it takes smart shortcuts to find what you need 150x faster.
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| **M** | 32 | Max connections per node |
+| **M_max_0** | 64 | Max connections at layer 0 |
+| **ef_construction** | 200 | Build-time beam width |
+| **ef_search** | 64 | Search-time beam width |
+| **Performance** | 150x | Speedup vs linear scan |
+
+**Why it matters:** When searching millions of vectors, naive search takes seconds. HNSW takes milliseconds - essential for real-time AI responses.
+
+---
+
+#### Federated Learning
+
+> **What it does:** Nodes teach each other without sharing their private data. Each node trains on its own data, then shares only the "lessons learned" (gradients) - like students sharing study notes instead of copying each other's homework.
+
+P2P gradient gossip without central coordinator:
+
+| Feature | Mechanism | Benefit |
+|---------|-----------|---------|
+| **TopK Sparsification** | 90% compression | Only share the most important updates |
+| **Rep-Weighted FedAvg** | Reputation scoring | Trusted nodes have more influence |
+| **Byzantine Tolerance** | Outlier detection, clipping | Ignore malicious or broken nodes |
+| **Differential Privacy** | Noise injection | Mathematically guaranteed privacy |
+| **Gossip Protocol** | Eventually consistent | Works even if some nodes go offline |
+
+**Why it matters:** Traditional AI training requires sending all your data to a central server. Federated learning keeps your data local while still benefiting from collective intelligence.
+
+---
+
+#### ReasoningBank & Learning Intelligence
+
+> **What it does:** The network's "memory system" that remembers what worked and what didn't. Like keeping a journal of successful strategies that any node can learn from.
+
+| Component | What It Does | Why It's Fast |
+|-----------|--------------|---------------|
+| **ReasoningBank** | Stores successful task patterns | Semantic search for quick recall |
+| **Pattern Extractor** | Groups similar experiences together | K-means finds common patterns |
+| **Multi-Head Attention** | Decides which node handles each task | Parallel evaluation of options |
+| **Spike-Driven Attention** | Ultra-low-power decision making | 87x more energy efficient |
+
+**Why it matters:** Without memory, the network would repeat the same mistakes. ReasoningBank lets nodes learn from each other's successes and failures across the entire collective.
+
+### Pi-Key Identity System
+
+Ultra-compact cryptographic identity using mathematical constants:
+
+| Key Type | Size | Purpose |
+|----------|------|---------|
+| **π (Pi-Key)** | 40 bytes | Your permanent identity |
+| **e (Session)** | 34 bytes | Temporary encrypted sessions |
+| **φ (Genesis)** | 21 bytes | Network origin markers |
+
+### Self-Optimizing Network
+
+- **Automatic Task Routing** - Work goes to best-suited nodes
+- **Topology Optimization** - Network self-organizes for efficiency
+- **Q-Learning Security** - Learns to defend against threats
+- **Economic Balance** - Self-sustaining resource economy
+
+---
+
+## Quick Start
+
+### 1. Add to Your Website
+
+```html
+<script type="module">
+  import init, { EdgeNetNode, EdgeNetConfig } from '@ruvector/edge-net';
+
+  async function joinCollective() {
+    await init();
+
+    // Join the collective with your site ID
+    const node = new EdgeNetConfig('my-website')
+      .cpuLimit(0.3)          // Contribute 30% CPU when idle
+      .memoryLimit(256 * 1024 * 1024)  // 256MB max
+      .respectBattery(true)   // Reduce on battery
+      .build();
+
+    // Start contributing to the collective
+    node.start();
+
+    // Monitor your participation
+    setInterval(() => {
+      console.log(`Contributed: ${node.ruvBalance()} rUv`);
+      console.log(`Tasks completed: ${node.getStats().tasks_completed}`);
+    }, 10000);
+  }
+
+  joinCollective();
+</script>
+```
+
+### 2. Use the Collective's AI Power
+
+```javascript
+// Submit an AI task to the collective
+const result = await node.submitTask('vector_search', {
+  query: embeddings,
+  k: 10,
+  index: 'shared-knowledge-base'
+}, 5);  // Spend up to 5 rUv
+
+console.log('Similar items:', result);
+```
+
+### 3. Monitor Your Contribution
+
+```javascript
+// Check your standing in the collective
+const stats = node.getStats();
+console.log(`
+  rUv Earned: ${stats.ruv_earned}
+  rUv Spent: ${stats.ruv_spent}
+  Net Balance: ${stats.ruv_earned - stats.ruv_spent}
+  Tasks Completed: ${stats.tasks_completed}
+  Reputation: ${(stats.reputation * 100).toFixed(1)}%
+`);
+```
+
+---
+
+## How It Works
+
+### The Contribution Cycle
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        CONTRIBUTION CYCLE                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   1. CONTRIBUTE          2. EARN              3. USE                        │
+│   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐              │
+│   │   Browser   │       │    rUv      │       │  AI Tasks   │              │
+│   │   detects   │  ───► │   credited  │  ───► │  submitted  │              │
+│   │   idle time │       │   to you    │       │  to network │              │
+│   └─────────────┘       └─────────────┘       └─────────────┘              │
+│         │                     │                     │                       │
+│         ▼                     ▼                     ▼                       │
+│   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐              │
+│   │  Process    │       │  10x boost  │       │  Results    │              │
+│   │  incoming   │       │  for early  │       │  returned   │              │
+│   │  tasks      │       │  adopters   │       │  to you     │              │
+│   └─────────────┘       └─────────────┘       └─────────────┘              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Network Growth Phases
+
+The collective grows through natural phases:
+
+| Phase | Size | Your Benefit |
+|-------|------|--------------|
+| **Genesis** | 0-10K nodes | 10x rUv multiplier (early adopter bonus) |
+| **Growth** | 10K-50K | Multiplier decreases, network strengthens |
+| **Maturation** | 50K-100K | Stable economy, high reliability |
+| **Independence** | 100K+ | Self-sustaining, maximum collective power |
+
+### Fair Resource Allocation
+
+```javascript
+// The network automatically optimizes task distribution
+const health = JSON.parse(node.getEconomicHealth());
+
+console.log(`
+  Resource Velocity: ${health.velocity}      // How fast resources circulate
+  Utilization: ${health.utilization}         // Network capacity used
+  Growth Rate: ${health.growth}              // Network expansion
+  Stability: ${health.stability}             // Economic equilibrium
+`);
+```
+
+---
+
+## AI Computing Tasks
+
+### Vector Search (Distributed Similarity)
+
+Find similar items across the collective's distributed index:
+
+```javascript
+// Search for similar documents
+const similar = await node.submitTask('vector_search', {
+  query: [0.1, 0.2, 0.3, ...],  // Your query vector
+  k: 10,                         // Top 10 results
+  index: 'shared-docs'           // Distributed index name
+}, 3);  // Max 3 rUv
+
+// Results from across the network
+similar.forEach(item => {
+  console.log(`Score: ${item.score}, ID: ${item.id}`);
+});
+```
+
+### Embedding Generation
+
+Generate semantic embeddings using collective compute:
+
+```javascript
+// Generate embeddings for text
+const embeddings = await node.submitTask('embedding', {
+  text: 'Your text to embed',
+  model: 'sentence-transformer'
+}, 2);
+
+console.log('Embedding vector:', embeddings);
+```
+
+### Semantic Matching
+
+Classify intent or meaning:
+
+```javascript
+// Classify text intent
+const intent = await node.submitTask('semantic_match', {
+  text: 'I want to cancel my subscription',
+  categories: ['billing', 'support', 'sales', 'general']
+}, 1);
+
+console.log('Detected intent:', intent.category);
+```
+
+### Secure Operations
+
+Encrypt data across the network:
+
+```javascript
+// Distributed encryption
+const encrypted = await node.submitTask('encryption', {
+  data: sensitiveData,
+  operation: 'encrypt',
+  key_id: 'my-shared-key'
+}, 2);
+```
+
+---
+
+## Pi-Key Identity System
+
+Your identity in the collective uses mathematical constants for key sizes:
+
+### Key Types
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        PI-KEY IDENTITY SYSTEM                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   π Pi-Key (Identity)     e Euler-Key (Session)    φ Phi-Key (Genesis)     │
+│   ┌─────────────────┐     ┌───────────────┐        ┌───────────────┐       │
+│   │   314 bits      │     │   271 bits    │        │   161 bits    │       │
+│   │   = 40 bytes    │     │   = 34 bytes  │        │   = 21 bytes  │       │
+│   │                 │     │               │        │               │       │
+│   │   Your unique   │     │   Temporary   │        │   Origin      │       │
+│   │   identity      │     │   sessions    │        │   markers     │       │
+│   │   (permanent)   │     │   (encrypted) │        │   (network)   │       │
+│   └─────────────────┘     └───────────────┘        └───────────────┘       │
+│                                                                             │
+│   Ed25519 Signing         AES-256-GCM              SHA-256 Derived         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Using Pi-Keys
+
+```javascript
+import { PiKey, SessionKey, GenesisKey } from '@ruvector/edge-net';
+
+// Create your permanent identity
+const identity = new PiKey();
+console.log(`Your ID: ${identity.getShortId()}`);  // π:a1b2c3d4...
+
+// Sign data
+const signature = identity.sign(data);
+const valid = identity.verify(data, signature, identity.getPublicKey());
+
+// Create encrypted backup
+const backup = identity.createEncryptedBackup('my-password');
+
+// Create temporary session
+const session = SessionKey.create(identity, 3600);  // 1 hour
+const encrypted = session.encrypt(sensitiveData);
+const decrypted = session.decrypt(encrypted);
+```
+
+---
+
+## Security Architecture
+
+Edge-net implements production-grade cryptographic security:
+
+### Cryptographic Primitives
+
+| Component | Algorithm | Purpose |
+|-----------|-----------|---------|
+| **Key Derivation** | Argon2id (64MB, 3 iterations) | Memory-hard password hashing |
+| **Signing** | Ed25519 | Digital signatures (128-bit security) |
+| **Encryption** | AES-256-GCM | Authenticated encryption |
+| **Hashing** | SHA-256 | Content hashing and verification |
+
+### Identity Protection
+
+```rust
+// Password-protected key export with Argon2id + AES-256-GCM
+let encrypted = identity.export_secret_key("strong_password")?;
+
+// Secure memory cleanup (zeroize)
+// All sensitive key material is automatically zeroed after use
+```
+
+### Authority Verification
+
+All resolution events require cryptographic proof:
+
+```rust
+// Ed25519 signature verification for authority decisions
+let signature = ScopedAuthority::sign_resolution(&resolution, &context, &signing_key);
+// Signature verified against registered authority public keys
+```
+
+### Attack Resistance
+
+The RAC (RuVector Adversarial Coherence) protocol defends against:
+
+| Attack | Defense |
+|--------|---------|
+| **Sybil** | Stake-weighted voting, witness path diversity |
+| **Eclipse** | Context isolation, Merkle divergence detection |
+| **Byzantine** | 1/3 threshold, escalation tracking |
+| **Replay** | Timestamp validation, duplicate detection |
+| **Double-spend** | Conflict detection, quarantine system |
+
+---
+
+## Self-Optimization
+
+The network continuously improves itself:
+
+### Automatic Task Routing
+
+```javascript
+// Get optimal peers for your tasks
+const peers = node.getOptimalPeers(5);
+
+// Network learns from every interaction
+node.recordTaskRouting('vector_search', 'peer-123', 45, true);
+```
+
+### Fitness-Based Evolution
+
+```javascript
+// High-performing nodes can replicate their config
+if (node.shouldReplicate()) {
+  const optimalConfig = node.getRecommendedConfig();
+  // New nodes inherit successful configurations
+}
+
+// Track your contribution
+const fitness = node.getNetworkFitness();  // 0.0 - 1.0
+```
+
+### Q-Learning Security
+
+The collective learns to defend itself:
+
+```javascript
+// Run security audit
+const audit = JSON.parse(node.runSecurityAudit());
+console.log(`Security Score: ${audit.security_score}/10`);
+
+// Defends against:
+// - DDoS attacks
+// - Sybil attacks
+// - Byzantine behavior
+// - Eclipse attacks
+// - Replay attacks
+```
+
+---
+
+## Tutorials
+
+### Tutorial 1: Join the Collective
+
+```javascript
+import init, { EdgeNetConfig } from '@ruvector/edge-net';
+
+async function joinCollective() {
+  await init();
+
+  // Configure your contribution
+  const node = new EdgeNetConfig('my-site')
+    .cpuLimit(0.25)           // 25% CPU when idle
+    .memoryLimit(128 * 1024 * 1024)  // 128MB
+    .minIdleTime(5000)        // Wait 5s of idle
+    .respectBattery(true)     // Reduce on battery
+    .build();
+
+  // Join the network
+  node.start();
+
+  // Check your status
+  console.log('Joined collective!');
+  console.log(`Node ID: ${node.nodeId()}`);
+  console.log(`Multiplier: ${node.getMultiplier()}x`);
+
+  return node;
+}
+```
+
+### Tutorial 2: Contribute and Earn
+
+```javascript
+async function contributeAndEarn(node) {
+  // Process tasks from the collective
+  let tasksCompleted = 0;
+
+  while (true) {
+    // Check if we should work
+    if (node.isIdle()) {
+      // Process a task from the network
+      const processed = await node.processNextTask();
+
+      if (processed) {
+        tasksCompleted++;
+        const stats = node.getStats();
+        console.log(`Completed ${tasksCompleted} tasks, earned ${stats.ruv_earned} rUv`);
+      }
+    }
+
+    await new Promise(r => setTimeout(r, 1000));
+  }
+}
+```
+
+### Tutorial 3: Use Collective AI Power
+
+```javascript
+async function useCollectiveAI(node) {
+  // Check your balance
+  const balance = node.ruvBalance();
+  console.log(`Available: ${balance} rUv`);
+
+  // Submit AI tasks
+  const tasks = [
+    { type: 'vector_search', cost: 3 },
+    { type: 'embedding', cost: 2 },
+    { type: 'semantic_match', cost: 1 }
+  ];
+
+  for (const task of tasks) {
+    if (balance >= task.cost) {
+      console.log(`Running ${task.type}...`);
+      const result = await node.submitTask(
+        task.type,
+        { data: 'sample' },
+        task.cost
+      );
+      console.log(`Result: ${JSON.stringify(result)}`);
+    }
+  }
+}
+```
+
+### Tutorial 4: Monitor Network Health
+
+```javascript
+async function monitorHealth(node) {
+  setInterval(() => {
+    // Your contribution
+    const stats = node.getStats();
+    console.log(`
+      === Your Contribution ===
+      Earned: ${stats.ruv_earned} rUv
+      Spent: ${stats.ruv_spent} rUv
+      Tasks: ${stats.tasks_completed}
+      Reputation: ${(stats.reputation * 100).toFixed(1)}%
+    `);
+
+    // Network health
+    const health = JSON.parse(node.getEconomicHealth());
+    console.log(`
+      === Network Health ===
+      Velocity: ${health.velocity.toFixed(2)}
+      Utilization: ${(health.utilization * 100).toFixed(1)}%
+      Stability: ${health.stability.toFixed(2)}
+    `);
+
+    // Check sustainability
+    const sustainable = node.isSelfSustaining(10000, 50000);
+    console.log(`Self-sustaining: ${sustainable}`);
+
+  }, 30000);
+}
+```
+
+---
+
+## API Reference
+
+### Core Methods
+
+| Method | Description | Returns |
+|--------|-------------|---------|
+| `new EdgeNetNode(siteId)` | Join the collective | `EdgeNetNode` |
+| `start()` | Begin contributing | `void` |
+| `pause()` / `resume()` | Control contribution | `void` |
+| `ruvBalance()` | Check your credits | `u64` |
+| `submitTask(type, payload, maxCost)` | Use collective compute | `Promise<Result>` |
+| `processNextTask()` | Process work for others | `Promise<bool>` |
+
+### Identity Methods
+
+| Method | Description | Returns |
+|--------|-------------|---------|
+| `new PiKey()` | Generate identity | `PiKey` |
+| `getIdentity()` | Get 40-byte identity | `Vec<u8>` |
+| `sign(data)` | Sign data | `Vec<u8>` |
+| `verify(data, sig, pubkey)` | Verify signature | `bool` |
+| `createEncryptedBackup(password)` | Backup identity | `Vec<u8>` |
+
+### Network Methods
+
+| Method | Description | Returns |
+|--------|-------------|---------|
+| `getNetworkFitness()` | Your contribution score | `f32` |
+| `getOptimalPeers(count)` | Best nodes for tasks | `Vec<String>` |
+| `getEconomicHealth()` | Network health metrics | `String (JSON)` |
+| `isSelfSustaining(nodes, tasks)` | Check sustainability | `bool` |
+
+---
+
+## Development
+
+### Build
+
+```bash
+cd examples/edge-net
+wasm-pack build --target web --out-dir pkg
+```
+
+### Test
+
+```bash
+cargo test
+```
+
+### Run Simulation
+
+```bash
+cd sim
+npm install
+npm run simulate
+```
+
+---
+
+## Exotic AI Capabilities
+
+Edge-net can be enhanced with exotic AI WASM capabilities for advanced P2P coordination, self-learning, and distributed reasoning. Enable these features by building with the appropriate feature flags.
+
+### Available Feature Flags
+
+| Feature | Description | Dependencies |
+|---------|-------------|--------------|
+| `exotic` | Time Crystal, NAO, Morphogenetic Networks | ruvector-exotic-wasm |
+| `learning-enhanced` | MicroLoRA, BTSP, HDC, WTA, Global Workspace | ruvector-learning-wasm, ruvector-nervous-system-wasm |
+| `economy-enhanced` | Enhanced CRDT credits | ruvector-economy-wasm |
+| `exotic-full` | All exotic capabilities | All above |
+
+### Time Crystal (P2P Synchronization)
+
+Robust distributed coordination using discrete time crystal dynamics:
+
+```javascript
+// Enable time crystal with 10 oscillators
+node.enableTimeCrystal(10);
+
+// Check synchronization level (0.0 - 1.0)
+const sync = node.getTimeCrystalSync();
+console.log(`P2P sync: ${(sync * 100).toFixed(1)}%`);
+
+// Check if crystal is stable
+if (node.isTimeCrystalStable()) {
+  console.log('Network is synchronized!');
+}
+```
+
+### NAO (Neural Autonomous Organization)
+
+Decentralized governance with stake-weighted quadratic voting:
+
+```javascript
+// Enable NAO with 70% quorum requirement
+node.enableNAO(0.7);
+
+// Add peer nodes as members
+node.addNAOMember('peer-123', 100);
+node.addNAOMember('peer-456', 50);
+
+// Propose and vote on network actions
+const propId = node.proposeNAOAction('Increase task capacity');
+node.voteNAOProposal(propId, 0.9);  // Vote with 90% weight
+
+// Execute if quorum reached
+if (node.executeNAOProposal(propId)) {
+  console.log('Proposal executed!');
+}
+```
+
+### MicroLoRA (Per-Node Self-Learning)
+
+Ultra-fast LoRA adaptation with <100us latency:
+
+```javascript
+// Enable MicroLoRA with rank-2 adaptation
+node.enableMicroLoRA(2);
+
+// Adapt weights based on task feedback
+const gradient = new Float32Array(128);
+node.adaptMicroLoRA('vector_search', gradient);
+
+// Apply adaptation to inputs
+const input = new Float32Array(128);
+const adapted = node.applyMicroLoRA('vector_search', input);
+```
+
+### HDC (Hyperdimensional Computing)
+
+10,000-bit binary hypervectors for distributed reasoning:
+
+```javascript
+// Enable HDC memory
+node.enableHDC();
+
+// Store patterns for semantic operations
+node.storeHDCPattern('concept_a');
+node.storeHDCPattern('concept_b');
+```
+
+### WTA (Winner-Take-All)
+
+Instant decisions with <1us latency:
+
+```javascript
+// Enable WTA with 1000 neurons
+node.enableWTA(1000);
+```
+
+### BTSP (One-Shot Learning)
+
+Immediate pattern association without iterative training:
+
+```javascript
+// Enable BTSP with 128-dim inputs
+node.enableBTSP(128);
+
+// One-shot associate a pattern
+const pattern = new Float32Array(128);
+node.oneShotAssociate(pattern, 1.0);
+```
+
+### Morphogenetic Network
+
+Self-organizing network topology through cellular differentiation:
+
+```javascript
+// Enable 100x100 morphogenetic grid
+node.enableMorphogenetic(100);
+
+// Network grows automatically
+console.log(`Cells: ${node.getMorphogeneticCellCount()}`);
+```
+
+### Stepping All Capabilities
+
+In your main loop, step all capabilities forward:
+
+```javascript
+function gameLoop(dt) {
+  // Step exotic capabilities
+  node.stepCapabilities(dt);
+
+  // Process tasks
+  node.processNextTask();
+}
+
+setInterval(() => gameLoop(0.016), 16);  // 60 FPS
+```
+
+### Building with Exotic Features
+
+```bash
+# Build with exotic capabilities
+wasm-pack build --target web --release --out-dir pkg -- --features exotic
+
+# Build with learning-enhanced capabilities
+wasm-pack build --target web --release --out-dir pkg -- --features learning-enhanced
+
+# Build with all exotic capabilities
+wasm-pack build --target web --release --out-dir pkg -- --features exotic-full
+```
+
+---
+
+## Core Architecture & Capabilities
+
+Edge-net is a production-grade distributed AI computing platform with **~36,500 lines of Rust code** and **177 passing tests**.
+
+### Unified Attention Architecture
+
+Four attention mechanisms that answer critical questions for distributed AI:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    UNIFIED ATTENTION ARCHITECTURE                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐            │
+│  │ Neural Attention│  │  DAG Attention  │  │ Graph Attention │            │
+│  │                 │  │                 │  │                 │            │
+│  │ "What words     │  │ "What steps     │  │ "What relations │            │
+│  │  matter?"       │  │  matter?"       │  │  matter?"       │            │
+│  │                 │  │                 │  │                 │            │
+│  │ • Multi-head    │  │ • Topo-sort     │  │ • GAT-style     │            │
+│  │ • Q/K/V project │  │ • Critical path │  │ • Edge features │            │
+│  │ • Softmax focus │  │ • Parallelism   │  │ • Message pass  │            │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘            │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────┐          │
+│  │                   State Space Model (SSM)                    │          │
+│  │                                                              │          │
+│  │     "What history still matters?" - O(n) Mamba-style         │          │
+│  │                                                              │          │
+│  │  • Selective gating: What to remember vs forget              │          │
+│  │  • O(n) complexity: Efficient long-sequence processing       │          │
+│  │  • Temporal dynamics: dt, A, B, C, D state transitions       │          │
+│  └─────────────────────────────────────────────────────────────┘          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+| Attention Type | Question Answered | Use Case |
+|----------------|-------------------|----------|
+| **Neural** | What words matter? | Semantic focus, importance weighting |
+| **DAG** | What steps matter? | Task scheduling, critical path analysis |
+| **Graph** | What relationships matter? | Network topology, peer connections |
+| **State Space** | What history matters? | Long-term memory, temporal patterns |
+
+### AI Intelligence Layer
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       AI Intelligence Layer                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │  HNSW Index     │  │  AdapterPool    │  │  Federated      │             │
+│  │  (memory.rs)    │  │   (lora.rs)     │  │ (federated.rs)  │             │
+│  │                 │  │                 │  │                 │             │
+│  │ • 150x speedup  │  │ • LRU eviction  │  │ • TopK Sparse   │             │
+│  │ • O(log N)      │  │ • 16 slots      │  │ • Byzantine tol │             │
+│  │ • Cosine dist   │  │ • Task routing  │  │ • Rep-weighted  │             │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘             │
+│                                                                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │  DAG Attention  │  │  LoraAdapter    │  │ GradientGossip  │             │
+│  │                 │  │                 │  │                 │             │
+│  │ • Critical path │  │ • Rank 1-16     │  │ • Error feedback│             │
+│  │ • Topo sort     │  │ • SIMD forward  │  │ • Diff privacy  │             │
+│  │ • Parallelism   │  │ • 4/8-bit quant │  │ • Gossipsub     │             │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Swarm Intelligence
+
+| Component | Capability | Description |
+|-----------|------------|-------------|
+| **Entropy Consensus** | Belief convergence | Shannon entropy-based decision making |
+| **Collective Memory** | Pattern sharing | Hippocampal-inspired consolidation and replay |
+| **Stigmergy** | Pheromone trails | Ant colony optimization for task routing |
+| **Consensus Coordinator** | Multi-topic | Parallel consensus on multiple decisions |
+
+### Compute Acceleration
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      COMPUTE ACCELERATION STACK                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      WebGPU Compute Backend                          │   │
+│  │                                                                      │   │
+│  │  • wgpu-based GPU acceleration (10+ TFLOPS target)                   │   │
+│  │  • Matrix multiplication pipeline (tiled, cache-friendly)            │   │
+│  │  • Attention pipeline (Flash Attention algorithm)                    │   │
+│  │  • LoRA forward pipeline (<1ms inference)                            │   │
+│  │  • Staging buffer pool (16MB, zero-copy transfers)                   │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                      WebWorker Pool                                  │   │
+│  │                                                                      │   │
+│  │  +------------------+                                                │   │
+│  │  |   Main Thread    |                                                │   │
+│  │  |  (Coordinator)   |                                                │   │
+│  │  +--------+---------+                                                │   │
+│  │           |                                                          │   │
+│  │     +-----+-----+-----+-----+                                        │   │
+│  │     |     |     |     |     |                                        │   │
+│  │  +--v-+ +-v--+ +--v-+ +--v-+ +--v-+                                  │   │
+│  │  | W1 | | W2 | | W3 | | W4 | | Wn |  (up to 16 workers)             │   │
+│  │  +----+ +----+ +----+ +----+ +----+                                  │   │
+│  │     |     |     |     |     |                                        │   │
+│  │     +-----+-----+-----+-----+                                        │   │
+│  │           |                                                          │   │
+│  │     SharedArrayBuffer (when available, zero-copy)                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                             │
+│  ┌────────────────────────┐  ┌────────────────────────┐                   │
+│  │   WASM SIMD (simd128)  │  │   WebGL Compute        │                   │
+│  │   • f32x4 vectorized   │  │   • Shader fallback    │                   │
+│  │   • 4x parallel ops    │  │   • Universal support  │                   │
+│  │   • All modern browsers│  │   • Fragment matmul    │                   │
+│  └────────────────────────┘  └────────────────────────┘                   │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+| Backend | Availability | Performance | Operations |
+|---------|-------------|-------------|------------|
+| **WebGPU** | Chrome 113+, Firefox 120+ | 10+ TFLOPS | Matmul, Attention, LoRA |
+| **WebWorker Pool** | All browsers | 4-16x CPU cores | Parallel matmul, dot product |
+| **WASM SIMD** | All modern browsers | 4x vectorized | Cosine distance, softmax |
+| **WebGL** | Universal fallback | Shader compute | Matrix operations |
+| **CPU** | Always available | Loop-unrolled | All operations |
+
+### WebGPU Pipelines
+
+| Pipeline | Purpose | Performance Target |
+|----------|---------|-------------------|
+| **Matmul** | Matrix multiplication (tiled) | 10+ TFLOPS |
+| **Attention** | Flash attention (memory efficient) | 2ms for 4K context |
+| **LoRA** | Low-rank adapter forward pass | <1ms inference |
+
+### WebWorker Operations
+
+| Operation | Description | Parallelization |
+|-----------|-------------|-----------------|
+| **MatmulPartial** | Row-blocked matrix multiply | Rows split across workers |
+| **DotProductPartial** | Partial vector dot products | Segments split across workers |
+| **VectorOp** | Element-wise ops (add, mul, relu, sigmoid) | Ranges split across workers |
+| **Reduce** | Sum, max, min, mean reductions | Hierarchical aggregation |
+
+### Work Stealing
+
+Workers that finish early can steal tasks from busy workers' queues:
+- **LIFO** for local tasks (cache locality)
+- **FIFO** for stolen tasks (load balancing)
+
+### Economics & Reputation
+
+| Feature | Mechanism | Purpose |
+|---------|-----------|---------|
+| **AMM** | Automated Market Maker | Dynamic rUv pricing |
+| **Reputation** | Stake-weighted scoring | Trust computation |
+| **Slashing** | Byzantine penalties | Bad actor deterrence |
+| **Rewards** | Contribution tracking | Fair distribution |
+
+### Network Learning
+
+| Component | Learning Type | Application |
+|-----------|---------------|-------------|
+| **RAC** | Adversarial Coherence | Conflict resolution |
+| **ReasoningBank** | Trajectory learning | Strategy optimization |
+| **Q-Learning** | Reinforcement | Security adaptation |
+| **Federated** | Distributed training | Model improvement |
+
+---
+
+## Self-Learning Hooks & MCP Integration
+
+Edge-net integrates with Claude Code's hooks system for continuous self-learning.
+
+### Learning Scenarios Module
+
+```rust
+use ruvector_edge_net::learning_scenarios::{
+    NeuralAttention, DagAttention, GraphAttention, StateSpaceAttention,
+    AttentionOrchestrator, ErrorLearningTracker, SequenceTracker,
+    get_ruvector_tools, generate_settings_json,
+};
+
+// Create unified attention orchestrator
+let orchestrator = AttentionOrchestrator::new(
+    NeuralAttention::new(128, 4),      // 128 dim, 4 heads
+    DagAttention::new(),
+    GraphAttention::new(64, 4),         // 64 dim, 4 heads
+    StateSpaceAttention::new(256, 0.95), // 256 dim, 0.95 decay
+);
+
+// Get comprehensive attention analysis
+let analysis = orchestrator.analyze(tokens, &dag, &graph, &history);
+```
+
+### Error Pattern Learning
+
+```rust
+let mut tracker = ErrorLearningTracker::new();
+
+// Record errors for learning
+tracker.record_error(ErrorPattern::TypeMismatch, "expected String", "lib.rs", 42);
+
+// Get AI-suggested fixes
+let fixes = tracker.get_suggestions("type mismatch");
+// ["Use .to_string()", "Use String::from()", ...]
+```
+
+### MCP Tool Categories
+
+| Category | Tools | Purpose |
+|----------|-------|---------|
+| **VectorDb** | `vector_search`, `vector_store`, `vector_query` | Semantic similarity |
+| **Learning** | `learn_pattern`, `train_model`, `get_suggestions` | Pattern recognition |
+| **Memory** | `remember`, `recall`, `forget` | Vector memory |
+| **Swarm** | `spawn_agent`, `coordinate`, `route_task` | Multi-agent coordination |
+| **Telemetry** | `track_event`, `get_stats`, `export_metrics` | Usage analytics |
+| **AgentRouting** | `suggest_agent`, `record_outcome`, `get_routing_table` | Agent selection |
+
+### RuVector CLI Commands
+
+```bash
+# Session management
+ruvector hooks session-start    # Start learning session
+ruvector hooks session-end      # Save patterns
+
+# Intelligence
+ruvector hooks stats            # Show learning stats
+ruvector hooks route <task>     # Get agent suggestion
+ruvector hooks suggest-context  # Context suggestions
+
+# Memory
+ruvector hooks remember <content> -t <type>  # Store memory
+ruvector hooks recall <query>                # Semantic search
+```
+
+---
+
+## Distributed AI Agents & Workers
+
+Edge-net enables spawning AI agents and distributed worker pools across the collective compute network. This transforms passive compute contribution into active distributed AI execution.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    DISTRIBUTED AI AGENT SYSTEM                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐       │
+│  │    AgentSpawner │     │   WorkerPool    │     │ TaskOrchestrator│       │
+│  │                 │     │                 │     │                 │       │
+│  │ • Type routing  │     │ • Load balance  │     │ • Workflows     │       │
+│  │ • rUv costing   │     │ • Auto-scaling  │     │ • Dependencies  │       │
+│  │ • Priority mgmt │     │ • Fault tolerant│     │ • Parallel exec │       │
+│  └────────┬────────┘     └────────┬────────┘     └────────┬────────┘       │
+│           │                       │                       │                 │
+│           └───────────────────────┼───────────────────────┘                 │
+│                                   │                                         │
+│                      ┌────────────┴────────────┐                            │
+│                      │   Edge-Net P2P Network   │                            │
+│                      │   (WebRTC Data Channels) │                            │
+│                      └──────────────────────────┘                            │
+│                                                                             │
+│   Agent Types:  researcher | coder | reviewer | tester | analyst |          │
+│                 optimizer | coordinator | embedder                          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Agent Types
+
+| Type | Capabilities | Base rUv | Use Cases |
+|------|-------------|----------|-----------|
+| **researcher** | search, analyze, summarize, extract | 10 | Codebase analysis, documentation research |
+| **coder** | code, refactor, debug, test | 15 | Feature implementation, bug fixes |
+| **reviewer** | review, audit, validate, suggest | 12 | Code review, security audit |
+| **tester** | test, benchmark, validate, report | 10 | Test creation, coverage analysis |
+| **analyst** | analyze, metrics, report, visualize | 8 | Performance analysis, data insights |
+| **optimizer** | optimize, profile, benchmark, improve | 15 | Performance tuning, efficiency |
+| **coordinator** | orchestrate, route, schedule, monitor | 20 | Multi-agent workflows |
+| **embedder** | embed, vectorize, similarity, search | 5 | Vector operations, semantic search |
+
+### CLI Commands
+
+```bash
+# Show Edge-Net information
+ruvector edge-net info
+
+# Spawn a distributed AI agent
+ruvector edge-net spawn researcher "Analyze the authentication system"
+ruvector edge-net spawn coder "Implement user profile feature" --max-ruv 50 --priority high
+
+# Create and use worker pools
+ruvector edge-net pool create --size 10 --capabilities compute,embed
+ruvector edge-net pool execute "Process batch embeddings"
+
+# Run multi-agent workflows
+ruvector edge-net workflow code-review
+ruvector edge-net workflow feature-dev
+ruvector edge-net workflow optimization
+
+# Check network status
+ruvector edge-net status
+```
+
+### MCP Tools
+
+The following MCP tools are available when `ruvector` is configured as an MCP server:
+
+| Tool | Description | Parameters |
+|------|-------------|------------|
+| `edge_net_info` | Get Edge-Net information | - |
+| `edge_net_spawn` | Spawn distributed agent | type, task, max_ruv, priority |
+| `edge_net_pool_create` | Create worker pool | min_workers, max_workers |
+| `edge_net_pool_execute` | Execute on pool | task, pool_id |
+| `edge_net_workflow` | Run workflow | name (code-review, feature-dev, etc.) |
+| `edge_net_status` | Network status | - |
+
+### Workflows
+
+Pre-built multi-agent workflows:
+
+| Workflow | Steps | Est. rUv | Description |
+|----------|-------|----------|-------------|
+| **code-review** | analyst → reviewer → tester → optimizer | 45 | Comprehensive code analysis |
+| **feature-dev** | researcher → coder → tester → reviewer | 60 | Full feature development cycle |
+| **bug-fix** | analyst → coder → tester | 35 | Bug diagnosis and fix |
+| **optimization** | analyst → optimizer → coder → tester | 50 | Performance improvement |
+| **research** | researcher → analyst → embedder | 30 | Deep research with embeddings |
+
+### JavaScript API
+
+```javascript
+import { AgentSpawner, WorkerPool, TaskOrchestrator, AGENT_TYPES } from '@ruvector/edge-net/agents';
+
+// Spawn a distributed agent
+const spawner = new AgentSpawner(edgeNetNode);
+const agent = await spawner.spawn('coder', 'Implement authentication', {
+    maxRuv: 30,
+    priority: 'high'
+});
+
+// Create a worker pool
+const pool = new WorkerPool(edgeNetNode, {
+    minWorkers: 5,
+    maxWorkers: 20,
+    capabilities: ['compute', 'embed', 'analyze']
+});
+await pool.scale(10);
+
+// Execute tasks on the pool
+const result = await pool.execute({
+    type: 'parallel',
+    task: 'Process batch data',
+    data: largeDataset
+});
+
+// Run multi-agent workflow
+const orchestrator = new TaskOrchestrator(edgeNetNode, spawner);
+await orchestrator.runWorkflow('feature-dev', 'Add user authentication');
+```
+
+### Event System
+
+Agents and workers emit events for monitoring:
+
+```javascript
+agent.on('started', ({ id, type }) => console.log(`Agent ${id} started`));
+agent.on('progress', ({ progress }) => console.log(`Progress: ${progress}%`));
+agent.on('completed', ({ result }) => console.log('Done:', result));
+agent.on('error', ({ error }) => console.error('Error:', error));
+
+pool.on('scaled', ({ workers }) => console.log(`Pool scaled to ${workers}`));
+pool.on('task_completed', ({ taskId }) => console.log(`Task ${taskId} done`));
+```
+
+### rUv Economics for Agents
+
+| Factor | Impact |
+|--------|--------|
+| **Base Cost** | Agent type determines base rUv per task |
+| **Task Complexity** | Longer/complex tasks cost more |
+| **Priority** | High priority = 1.5x cost, Critical = 2x |
+| **Network Load** | Dynamic pricing based on availability |
+| **Early Adopter** | 10x multiplier during genesis phase |
+
+### Security Considerations
+
+- All agent communications are encrypted via DTLS
+- Task execution sandboxed in WebWorkers
+- rUv spending limits prevent runaway costs
+- Input validation on all MCP tools
+- Rate limiting on agent spawning
+
+### Claude Code Hook Events
+
+| Event | Trigger | Action |
+|-------|---------|--------|
+| `PreToolUse` | Before Edit/Bash | Agent routing, risk analysis |
+| `PostToolUse` | After Edit/Bash | Q-learning update, pattern recording |
+| `SessionStart` | Conversation begins | Load intelligence |
+| `Stop` | Conversation ends | Save learning data |
+| `UserPromptSubmit` | User message | Context suggestions |
+| `PreCompact` | Before compaction | Preserve context |
+
+---
+
+## Research Foundation
+
+Edge-net is built on research in:
+
+- **Distributed Computing** - P2P resource sharing
+- **Collective Intelligence** - Emergent optimization
+- **Game Theory** - Incentive-compatible mechanisms
+- **Adaptive Security** - Q-learning threat response
+- **Time Crystals** - Floquet engineering for coordination
+- **Neuromorphic Computing** - BTSP, HDC, WTA mechanisms
+- **Decentralized Governance** - Neural Autonomous Organizations
+
+---
+
+## Disclaimer
+
+Edge-net is a **research platform** for collective computing. The rUv units are:
+
+- Resource participation metrics, not currency
+- Used for balancing contribution and consumption
+- Not redeemable for money or goods outside the network
+
+**Edge-net makes no correctness claims. All results are challengeable.** The system optimizes for coherence and availability, not guaranteed correctness. Disputes are resolved through cryptographic evidence and stake-weighted arbitration, not authority.
+
+---
+
+## Links
+
+- [Design Document](./DESIGN.md)
+- [Technical Report](./docs/FINAL_REPORT.md)
+- [Simulation Guide](./sim/README.md)
+- [RuVector GitHub](https://github.com/ruvnet/ruvector)
+
+## License
+
+MIT License

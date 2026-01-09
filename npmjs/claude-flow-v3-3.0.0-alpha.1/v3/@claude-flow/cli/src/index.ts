@@ -1,0 +1,400 @@
+/**
+ * V3 CLI Main Entry Point
+ * Modernized CLI for Claude Flow V3
+ */
+
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import type { Command, CommandContext, CommandResult, V3Config, CLIError } from './types.js';
+import { CommandParser, commandParser } from './parser.js';
+import { OutputFormatter, output } from './output.js';
+import { commands, commandRegistry, getCommand } from './commands/index.js';
+
+// Read version from package.json at runtime
+function getPackageVersion(): string {
+  try {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    // Navigate from dist/src to package root
+    const pkgPath = join(__dirname, '..', '..', 'package.json');
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+    return pkg.version || '3.0.0';
+  } catch {
+    return '3.0.0';
+  }
+}
+
+export const VERSION = getPackageVersion();
+
+export interface CLIOptions {
+  name?: string;
+  description?: string;
+  version?: string;
+  interactive?: boolean;
+}
+
+/**
+ * V3 CLI Application
+ */
+export class CLI {
+  private name: string;
+  private description: string;
+  private version: string;
+  private parser: CommandParser;
+  private output: OutputFormatter;
+  private interactive: boolean;
+
+  constructor(options: CLIOptions = {}) {
+    this.name = options.name || 'claude-flow';
+    this.description = options.description || 'Claude Flow V3 - AI Agent Orchestration Platform';
+    this.version = options.version || VERSION;
+    this.parser = commandParser;
+    this.output = output;
+    this.interactive = options.interactive ?? process.stdin.isTTY ?? false;
+
+    // Register all commands
+    for (const cmd of commands) {
+      this.parser.registerCommand(cmd);
+    }
+  }
+
+  /**
+   * Run the CLI with given arguments
+   */
+  async run(args: string[] = process.argv.slice(2)): Promise<void> {
+    try {
+      // Parse arguments
+      const parseResult = this.parser.parse(args);
+      const { command: commandPath, flags, positional } = parseResult;
+
+      // Handle global flags
+      if (flags.version || flags.V) {
+        this.showVersion();
+        return;
+      }
+
+      if (flags.noColor) {
+        this.output.setColorEnabled(false);
+      }
+
+      // No command - show help
+      if (commandPath.length === 0 || flags.help || flags.h) {
+        if (commandPath.length > 0) {
+          // Show command-specific help
+          this.showCommandHelp(commandPath[0]);
+        } else {
+          this.showHelp();
+        }
+        return;
+      }
+
+      // Find and execute command
+      const commandName = commandPath[0];
+      // First check the parser's registry (for dynamically registered commands)
+      // Then fall back to the static registry
+      const command = this.parser.getCommand(commandName) || getCommand(commandName);
+
+      if (!command) {
+        this.output.printError(`Unknown command: ${commandName}`);
+        this.output.writeln(`Run "${this.name} --help" for available commands`);
+        process.exit(1);
+      }
+
+      // Handle subcommand (supports nested subcommands)
+      let targetCommand = command;
+      let subcommandArgs = positional;
+
+      // Process command path (e.g., ['hooks', 'worker', 'list'])
+      if (commandPath.length > 1 && command.subcommands) {
+        const subcommandName = commandPath[1];
+        const subcommand = command.subcommands.find(
+          sc => sc.name === subcommandName || sc.aliases?.includes(subcommandName)
+        );
+
+        if (subcommand) {
+          targetCommand = subcommand;
+          subcommandArgs = positional.slice(1);
+
+          // Check for nested subcommand (level 2)
+          if (commandPath.length > 2 && subcommand.subcommands) {
+            const nestedName = commandPath[2];
+            const nestedSubcommand = subcommand.subcommands.find(
+              sc => sc.name === nestedName || sc.aliases?.includes(nestedName)
+            );
+            if (nestedSubcommand) {
+              targetCommand = nestedSubcommand;
+              subcommandArgs = positional.slice(2);
+            }
+          }
+        }
+      } else if (positional.length > 0 && command.subcommands) {
+        // Check if first positional is a subcommand
+        const subcommandName = positional[0];
+        const subcommand = command.subcommands.find(
+          sc => sc.name === subcommandName || sc.aliases?.includes(subcommandName)
+        );
+
+        if (subcommand) {
+          targetCommand = subcommand;
+          subcommandArgs = positional.slice(1);
+
+          // Check for nested subcommand (level 2 from positional)
+          if (subcommandArgs.length > 0 && subcommand.subcommands) {
+            const nestedName = subcommandArgs[0];
+            const nestedSubcommand = subcommand.subcommands.find(
+              sc => sc.name === nestedName || sc.aliases?.includes(nestedName)
+            );
+            if (nestedSubcommand) {
+              targetCommand = nestedSubcommand;
+              subcommandArgs = subcommandArgs.slice(1);
+            }
+          }
+        }
+      }
+
+      // Validate flags
+      const validationErrors = this.parser.validateFlags(flags, targetCommand);
+      if (validationErrors.length > 0) {
+        for (const error of validationErrors) {
+          this.output.printError(error);
+        }
+        process.exit(1);
+      }
+
+      // Build context
+      const ctx: CommandContext = {
+        args: subcommandArgs,
+        flags,
+        config: await this.loadConfig(flags.config as string),
+        cwd: process.cwd(),
+        interactive: this.interactive && !flags.quiet
+      };
+
+      // Execute command
+      if (targetCommand.action) {
+        const result = await targetCommand.action(ctx);
+
+        if (result && !result.success) {
+          process.exit(result.exitCode || 1);
+        }
+      } else {
+        // No action - show command help
+        this.showCommandHelp(commandName);
+      }
+    } catch (error) {
+      // Don't re-handle if this is a process.exit error (from mocked tests)
+      const errorMessage = (error as Error).message;
+      if (errorMessage && errorMessage.startsWith('process.exit:')) {
+        throw error; // Re-throw so tests can capture the exit code
+      }
+      this.handleError(error as Error);
+    }
+  }
+
+  /**
+   * Show main help
+   */
+  private showHelp(): void {
+    this.output.writeln();
+    this.output.writeln(this.output.bold(`${this.name} v${this.version}`));
+    this.output.writeln(this.output.dim(this.description));
+    this.output.writeln();
+
+    this.output.writeln(this.output.bold('USAGE:'));
+    this.output.writeln(`  ${this.name} <command> [subcommand] [options]`);
+    this.output.writeln();
+
+    this.output.writeln(this.output.bold('COMMANDS:'));
+    for (const cmd of commands) {
+      if (cmd.hidden) continue;
+      const name = cmd.name.padEnd(12);
+      this.output.writeln(`  ${this.output.highlight(name)} ${cmd.description}`);
+    }
+    this.output.writeln();
+
+    this.output.writeln(this.output.bold('GLOBAL OPTIONS:'));
+    for (const opt of this.parser.getGlobalOptions()) {
+      const flags = opt.short ? `-${opt.short}, --${opt.name}` : `    --${opt.name}`;
+      this.output.writeln(`  ${flags.padEnd(25)} ${opt.description}`);
+    }
+    this.output.writeln();
+
+    this.output.writeln(this.output.bold('V3 FEATURES:'));
+    this.output.printList([
+      '15-agent hierarchical mesh coordination',
+      'AgentDB with HNSW indexing (150x-12,500x faster)',
+      'Flash Attention (2.49x-7.47x speedup)',
+      'Unified SwarmCoordinator engine',
+      'Event-sourced state management',
+      'Domain-Driven Design architecture'
+    ]);
+    this.output.writeln();
+
+    this.output.writeln(this.output.bold('EXAMPLES:'));
+    this.output.writeln(`  ${this.name} agent spawn -t coder              # Spawn a coder agent`);
+    this.output.writeln(`  ${this.name} swarm init --v3-mode              # Initialize V3 swarm`);
+    this.output.writeln(`  ${this.name} memory search -q "auth patterns"  # Semantic search`);
+    this.output.writeln(`  ${this.name} mcp start                         # Start MCP server`);
+    this.output.writeln();
+
+    this.output.writeln(this.output.dim('Run "claude-flow <command> --help" for command help'));
+    this.output.writeln();
+  }
+
+  /**
+   * Show command-specific help
+   */
+  private showCommandHelp(commandName: string): void {
+    const command = getCommand(commandName);
+
+    if (!command) {
+      this.output.printError(`Unknown command: ${commandName}`);
+      return;
+    }
+
+    this.output.writeln();
+    this.output.writeln(this.output.bold(`${this.name} ${command.name}`));
+    this.output.writeln(command.description);
+    this.output.writeln();
+
+    // Subcommands
+    if (command.subcommands && command.subcommands.length > 0) {
+      this.output.writeln(this.output.bold('SUBCOMMANDS:'));
+      for (const sub of command.subcommands) {
+        if (sub.hidden) continue;
+        const name = sub.name.padEnd(15);
+        const aliases = sub.aliases ? this.output.dim(` (${sub.aliases.join(', ')})`) : '';
+        this.output.writeln(`  ${this.output.highlight(name)} ${sub.description}${aliases}`);
+      }
+      this.output.writeln();
+    }
+
+    // Options
+    if (command.options && command.options.length > 0) {
+      this.output.writeln(this.output.bold('OPTIONS:'));
+      for (const opt of command.options) {
+        const flags = opt.short ? `-${opt.short}, --${opt.name}` : `    --${opt.name}`;
+        const required = opt.required ? this.output.error(' (required)') : '';
+        const defaultVal = opt.default !== undefined ? this.output.dim(` [default: ${opt.default}]`) : '';
+        this.output.writeln(`  ${flags.padEnd(25)} ${opt.description}${required}${defaultVal}`);
+      }
+      this.output.writeln();
+    }
+
+    // Examples
+    if (command.examples && command.examples.length > 0) {
+      this.output.writeln(this.output.bold('EXAMPLES:'));
+      for (const example of command.examples) {
+        this.output.writeln(`  ${this.output.dim('$')} ${example.command}`);
+        this.output.writeln(`    ${this.output.dim(example.description)}`);
+      }
+      this.output.writeln();
+    }
+  }
+
+  /**
+   * Show version
+   */
+  private showVersion(): void {
+    this.output.writeln(`${this.name} v${this.version}`);
+  }
+
+  /**
+   * Load configuration file
+   */
+  private async loadConfig(configPath?: string): Promise<V3Config | undefined> {
+    try {
+      // Import config utilities
+      const { loadConfig: loadSystemConfig } = await import('@claude-flow/shared');
+      const { systemConfigToV3Config } = await import('./config-adapter.js');
+
+      // Load configuration
+      const loaded = await loadSystemConfig({
+        file: configPath,
+        paths: configPath ? undefined : [process.cwd()],
+      });
+
+      // Convert to V3Config format
+      const v3Config = systemConfigToV3Config(loaded.config);
+
+      // Log warnings if any
+      if (loaded.warnings && loaded.warnings.length > 0) {
+        for (const warning of loaded.warnings) {
+          this.output.printWarning(warning);
+        }
+      }
+
+      return v3Config;
+    } catch (error) {
+      // Config loading is optional - don't fail if it doesn't exist
+      if (process.env.DEBUG) {
+        this.output.writeln(
+          this.output.dim(`Config loading failed: ${(error as Error).message}`)
+        );
+      }
+      return undefined;
+    }
+  }
+
+  /**
+   * Handle errors
+   */
+  private handleError(error: Error): void {
+    if ('code' in error) {
+      // CLIError
+      const cliError = error as CLIError;
+      this.output.printError(cliError.message);
+
+      if (cliError.details) {
+        this.output.writeln(this.output.dim(JSON.stringify(cliError.details, null, 2)));
+      }
+
+      process.exit(cliError.exitCode);
+    } else {
+      // Generic error
+      this.output.printError(error.message);
+
+      if (process.env.DEBUG) {
+        this.output.writeln();
+        this.output.writeln(this.output.dim(error.stack || ''));
+      }
+
+      process.exit(1);
+    }
+  }
+}
+
+// =============================================================================
+// Module Exports
+// =============================================================================
+
+// Types
+export * from './types.js';
+
+// Parser
+export { CommandParser, commandParser } from './parser.js';
+
+// Output
+export { OutputFormatter, output, Progress, Spinner } from './output.js';
+
+// Prompt
+export * from './prompt.js';
+
+// Commands (internal use)
+export * from './commands/index.js';
+
+// MCP Server management
+export {
+  MCPServerManager,
+  createMCPServerManager,
+  getServerManager,
+  startMCPServer,
+  stopMCPServer,
+  getMCPServerStatus,
+  type MCPServerOptions,
+  type MCPServerStatus,
+} from './mcp-server.js';
+
+// Default export
+export default CLI;

@@ -1,0 +1,12 @@
+{
+  "name": "@ruvector/attention-win32-x64-msvc",
+  "version": "0.1.4",
+  "description": "Windows x64 MSVC binary for @ruvector/attention",
+  "os": ["win32"],
+  "cpu": ["x64"],
+  "main": "attention.win32-x64-msvc.node",
+  "files": ["attention.win32-x64-msvc.node"],
+  "license": "MIT OR Apache-2.0",
+  "repository": {"type": "git", "url": "https://github.com/ruvnet/ruvector"},
+  "publishConfig": {"access": "public"}
+}

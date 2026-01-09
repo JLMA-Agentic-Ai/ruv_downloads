@@ -1,0 +1,16 @@
+{
+  "patterns": {
+    "command:": {
+      "success": 0.1
+    }
+  },
+  "sequences": {},
+  "memories": [],
+  "dirPatterns": {},
+  "errorPatterns": [],
+  "metrics": {
+    "totalRoutes": 1,
+    "successfulRoutes": 1,
+    "routingHistory": []
+  }
+}
