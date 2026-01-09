@@ -4,6 +4,7 @@
 # Whitelist root files
 !.gitignore
 !.github/
+!.github/**
 !README.md
 !*.sh
 !MANIFEST.md
