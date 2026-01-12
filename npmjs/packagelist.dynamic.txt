@@ -105,6 +105,7 @@
 @ruvector/graph-node-win32-x64-msvc
 @ruvector/graph-wasm
 @ruvector/learning-wasm
+@ruvector/math-wasm
 @ruvector/nervous-system-wasm
 @ruvector/node
 @ruvector/node-darwin-arm64
@@ -178,6 +179,7 @@ ruvector-core-linux-arm64-gnu
 ruvector-core-linux-x64-gnu
 ruvector-core-win32-x64-msvc
 ruvector-extensions
+ruvector-math-wasm
 ruvector-onnx-embeddings-wasm
 ruvector-sona
 ruvi

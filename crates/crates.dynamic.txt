@@ -128,6 +128,8 @@ ruvector-gnn-wasm
 ruvector-graph
 ruvector-graph-node
 ruvector-graph-wasm
+ruvector-math
+ruvector-math-wasm
 ruvector-metrics
 ruvector-mincut
 ruvector-mincut-gated-transformer
