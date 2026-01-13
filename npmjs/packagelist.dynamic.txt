@@ -5,6 +5,7 @@
 @agentic-robotics/self-learning
 @agentics.org/agentic-mcp
 @agentics.org/sparc2
+@claude-flow/aidefence
 @claude-flow/claims
 @claude-flow/cli
 @claude-flow/deployment
