@@ -99,6 +99,7 @@ infinity-ui
 inflight
 llamastack
 local-logic
+marketing
 markov-chains
 micro-agent
 midstream
