@@ -116,6 +116,7 @@ import { embeddingsCommand } from './embeddings.js';
 import { neuralCommand } from './neural.js';
 import { performanceCommand } from './performance.js';
 import { securityCommand } from './security.js';
+import { hiveMindCommand } from './hive-mind.js';
 
 // Pre-populate cache with core commands
 loadedCommands.set('init', initCommand);
@@ -134,6 +135,7 @@ loadedCommands.set('embeddings', embeddingsCommand);
 loadedCommands.set('neural', neuralCommand);
 loadedCommands.set('performance', performanceCommand);
 loadedCommands.set('security', securityCommand);
+loadedCommands.set('hive-mind', hiveMindCommand);
 
 // =============================================================================
 // Exports (maintain backwards compatibility)
@@ -156,6 +158,7 @@ export { embeddingsCommand } from './embeddings.js';
 export { neuralCommand } from './neural.js';
 export { performanceCommand } from './performance.js';
 export { securityCommand } from './security.js';
+export { hiveMindCommand } from './hive-mind.js';
 
 // Lazy-loaded command re-exports (for backwards compatibility, but async-only)
 export async function getConfigCommand() { return loadCommand('config'); }
@@ -201,6 +204,7 @@ export const commands: Command[] = [
   neuralCommand,
   performanceCommand,
   securityCommand,
+  hiveMindCommand,
 ];
 
 /**

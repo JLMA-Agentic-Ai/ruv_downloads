@@ -159,6 +159,14 @@ ruvector-wasm
 ruvllm
 ruvllm-esp32
 rvlite
+sevensense-analysis
+sevensense-api
+sevensense-audio
+sevensense-core
+sevensense-embedding
+sevensense-interpretation
+sevensense-learning
+sevensense-vector
 strange-loop
 subjective-time-expansion
 sublinear
