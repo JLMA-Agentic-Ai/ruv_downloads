@@ -103,8 +103,12 @@ qudag-vault-core
 qudag-wasm
 qvm-scheduler
 ruqu
+ruqu-neural-decoder
 ruqu-qarlp
 ruqu-qear
+ruqu-qflg
+ruqu-qgat-mol
+ruqu-quantum-monitor
 ruqu-vq-nas
 ruv-fann
 ruv-swarm-agents
