@@ -17,6 +17,8 @@ code-mesh-cli
 code-mesh-core
 code-mesh-tui
 code-mesh-wasm
+cognitum-gate-kernel
+cognitum-gate-tilezero
 conformal-prediction
 cuda-rust-wasm
 daa-ai
@@ -100,6 +102,10 @@ qudag-protocol
 qudag-vault-core
 qudag-wasm
 qvm-scheduler
+ruqu
+ruqu-qarlp
+ruqu-qear
+ruqu-vq-nas
 ruv-fann
 ruv-swarm-agents
 ruv-swarm-cli
