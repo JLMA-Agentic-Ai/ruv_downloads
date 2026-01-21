@@ -410,14 +410,32 @@ export async function executeUpgradeWithMissing(targetDir: string): Promise<Upgr
     const sourceAgentsDir = findSourceDir('agents');
     const sourceCommandsDir = findSourceDir('commands');
 
+    // Debug: Log source directories found
+    if (process.env.DEBUG || process.env.CLAUDE_FLOW_DEBUG) {
+      console.log('[DEBUG] Source directories:');
+      console.log(`  Skills: ${sourceSkillsDir || 'NOT FOUND'}`);
+      console.log(`  Agents: ${sourceAgentsDir || 'NOT FOUND'}`);
+      console.log(`  Commands: ${sourceCommandsDir || 'NOT FOUND'}`);
+    }
+
     // Add missing skills
     if (sourceSkillsDir) {
       const allSkills = Object.values(SKILLS_MAP).flat();
+      const debugMode = process.env.DEBUG || process.env.CLAUDE_FLOW_DEBUG;
+      if (debugMode) {
+        console.log(`[DEBUG] Checking ${allSkills.length} skills from SKILLS_MAP`);
+      }
       for (const skillName of [...new Set(allSkills)]) {
         const sourcePath = path.join(sourceSkillsDir, skillName);
         const targetPath = path.join(skillsDir, skillName);
+        const sourceExists = fs.existsSync(sourcePath);
+        const targetExists = fs.existsSync(targetPath);
 
-        if (fs.existsSync(sourcePath) && !fs.existsSync(targetPath)) {
+        if (debugMode) {
+          console.log(`[DEBUG] Skill '${skillName}': source=${sourceExists}, target=${targetExists}`);
+        }
+
+        if (sourceExists && !targetExists) {
           copyDirRecursive(sourcePath, targetPath);
           result.addedSkills.push(skillName);
           result.created.push(`.claude/skills/${skillName}`);
@@ -550,6 +568,7 @@ async function copySkills(
     if (skillsConfig.agentdb) skillsToCopy.push(...SKILLS_MAP.agentdb);
     if (skillsConfig.github) skillsToCopy.push(...SKILLS_MAP.github);
     if (skillsConfig.flowNexus) skillsToCopy.push(...SKILLS_MAP.flowNexus);
+    if (skillsConfig.browser) skillsToCopy.push(...SKILLS_MAP.browser);
     if (skillsConfig.v3) skillsToCopy.push(...SKILLS_MAP.v3);
   }
 
@@ -655,6 +674,7 @@ async function copyAgents(
     if (agentsConfig.hiveMind) agentsToCopy.push(...AGENTS_MAP.hiveMind);
     if (agentsConfig.sparc) agentsToCopy.push(...AGENTS_MAP.sparc);
     if (agentsConfig.swarm) agentsToCopy.push(...AGENTS_MAP.swarm);
+    if (agentsConfig.browser) agentsToCopy.push(...AGENTS_MAP.browser);
     // V3-specific agent categories
     if (agentsConfig.v3) agentsToCopy.push(...(AGENTS_MAP.v3 || []));
     if (agentsConfig.optimization) agentsToCopy.push(...(AGENTS_MAP.optimization || []));
