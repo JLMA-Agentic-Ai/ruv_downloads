@@ -1,6 +1,6 @@
 # Ruvnet Ecosystem Downloader & Artifacts
 
-> **📊 Repository Stats**: 554 total artifacts | 193 Rust crates | 195 NPM packages | 166 GitHub repositories
+> **📊 Repository Stats**: 557 total artifacts | 193 Rust crates | 198 NPM packages | 166 GitHub repositories
 
 This repository provides tools to automatically discover, download, and manage the complete **Ruvnet ecosystem** across multiple platforms. It's a comprehensive collection of production-grade packages for AI agents, robotics, financial trading, distributed systems, and advanced computation.
 
@@ -17,7 +17,7 @@ ruv_downloads/
 │   ├── download_ruvnet_crates.sh
 │   └── crates.dynamic.txt     # Auto-maintained manifest
 │
-├── npmjs/                     # 195 NPM packages  
+├── npmjs/                     # 198 NPM packages  
 │   ├── download_ruvnet_packages.sh
 │   └── packagelist.dynamic.txt
 │
@@ -91,7 +91,7 @@ cd ruv_downloads
 
 # Verify downloads
 cat crates/crates.dynamic.txt | wc -l      # Should be ~193
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~195
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~198
 cat github/repos.dynamic.txt | wc -l       # Should be ~166
 ```
 
@@ -197,6 +197,6 @@ MIT/Apache-2.0 (dual) - See individual package licenses
 
 ---
 
-**Last Updated**: January 18, 2026
+**Last Updated**: January 21, 2026
 **Maintained by**: Ruvnet Community  
 **Complete Documentation**: [RUV_DOWNLOADS_COMPLETE_GUIDE.md](RUV_DOWNLOADS_COMPLETE_GUIDE.md)

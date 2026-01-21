@@ -10,6 +10,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {
   executeInit,
+  executeUpgrade,
+  executeUpgradeWithMissing,
   DEFAULT_INIT_OPTIONS,
   MINIMAL_INIT_OPTIONS,
   FULL_INIT_OPTIONS,
@@ -583,6 +585,7 @@ const skillsCommand: Command = {
         agentdb: ctx.flags.agentdb as boolean,
         github: ctx.flags.github as boolean,
         flowNexus: false,
+        browser: false,
         v3: ctx.flags.v3 as boolean,
       },
     };
@@ -663,11 +666,143 @@ const hooksCommand: Command = {
   },
 };
 
+// Upgrade subcommand - updates helpers without losing user data
+const upgradeCommand: Command = {
+  name: 'upgrade',
+  description: 'Update statusline and helpers while preserving existing data',
+  options: [
+    {
+      name: 'verbose',
+      short: 'v',
+      description: 'Show detailed output',
+      type: 'boolean',
+      default: false,
+    },
+    {
+      name: 'add-missing',
+      short: 'a',
+      description: 'Add any new skills, agents, and commands that are missing',
+      type: 'boolean',
+      default: false,
+    },
+  ],
+  action: async (ctx: CommandContext): Promise<CommandResult> => {
+    const addMissing = (ctx.flags['add-missing'] || ctx.flags.addMissing) as boolean;
+
+    output.writeln();
+    output.writeln(output.bold('Upgrading Claude Flow'));
+    if (addMissing) {
+      output.writeln(output.dim('Updates helpers and adds any missing skills/agents/commands'));
+    } else {
+      output.writeln(output.dim('Updates helpers while preserving your existing data'));
+    }
+    output.writeln();
+
+    const spinner = output.createSpinner({ text: addMissing ? 'Upgrading and adding missing assets...' : 'Upgrading...' });
+    spinner.start();
+
+    try {
+      const result = addMissing
+        ? await executeUpgradeWithMissing(ctx.cwd)
+        : await executeUpgrade(ctx.cwd);
+
+      if (!result.success) {
+        spinner.fail('Upgrade failed');
+        for (const error of result.errors) {
+          output.printError(error);
+        }
+        return { success: false, exitCode: 1 };
+      }
+
+      spinner.succeed('Upgrade complete!');
+      output.writeln();
+
+      // Show what was updated
+      if (result.updated.length > 0) {
+        output.printBox(
+          result.updated.map(f => `✓ ${f}`).join('\n'),
+          'Updated (latest version)'
+        );
+        output.writeln();
+      }
+
+      // Show what was created
+      if (result.created.length > 0) {
+        output.printBox(
+          result.created.map(f => `+ ${f}`).join('\n'),
+          'Created (new files)'
+        );
+        output.writeln();
+      }
+
+      // Show what was preserved
+      if (result.preserved.length > 0 && ctx.flags.verbose) {
+        output.printBox(
+          result.preserved.map(f => `• ${f}`).join('\n'),
+          'Preserved (existing data kept)'
+        );
+        output.writeln();
+      } else if (result.preserved.length > 0) {
+        output.printInfo(`Preserved ${result.preserved.length} existing data files`);
+        output.writeln();
+      }
+
+      // Show added assets (when --add-missing flag is used)
+      if (result.addedSkills && result.addedSkills.length > 0) {
+        output.printBox(
+          result.addedSkills.map(s => `+ ${s}`).join('\n'),
+          `Added Skills (${result.addedSkills.length} new)`
+        );
+        output.writeln();
+      }
+
+      if (result.addedAgents && result.addedAgents.length > 0) {
+        output.printBox(
+          result.addedAgents.map(a => `+ ${a}`).join('\n'),
+          `Added Agents (${result.addedAgents.length} new)`
+        );
+        output.writeln();
+      }
+
+      if (result.addedCommands && result.addedCommands.length > 0) {
+        output.printBox(
+          result.addedCommands.map(c => `+ ${c}`).join('\n'),
+          `Added Commands (${result.addedCommands.length} new)`
+        );
+        output.writeln();
+      }
+
+      output.printSuccess('Your statusline helper has been updated to the latest version');
+      output.printInfo('Existing metrics and learning data were preserved');
+
+      // Show summary for --add-missing
+      if (addMissing) {
+        const totalAdded = (result.addedSkills?.length || 0) + (result.addedAgents?.length || 0) + (result.addedCommands?.length || 0);
+        if (totalAdded > 0) {
+          output.printSuccess(`Added ${totalAdded} missing assets to your project`);
+        } else {
+          output.printInfo('All skills, agents, and commands are already up to date');
+        }
+      }
+
+      if (ctx.flags.format === 'json') {
+        output.printJson(result);
+      }
+
+      return { success: true, data: result };
+    } catch (error) {
+      spinner.fail('Upgrade failed');
+      output.printError(`Failed to upgrade: ${error instanceof Error ? error.message : String(error)}`);
+      return { success: false, exitCode: 1 };
+    }
+  },
+};
+
 // Main init command
 export const initCommand: Command = {
   name: 'init',
   description: 'Initialize Claude Flow in the current directory',
-  subcommands: [wizardCommand, checkCommand, skillsCommand, hooksCommand],
+  subcommands: [wizardCommand, checkCommand, skillsCommand, hooksCommand, upgradeCommand],
   options: [
     {
       name: 'force',
@@ -741,6 +876,8 @@ export const initCommand: Command = {
     { command: 'claude-flow init --with-embeddings --embedding-model all-mpnet-base-v2', description: 'Use larger embedding model' },
     { command: 'claude-flow init skills --all', description: 'Install all available skills' },
     { command: 'claude-flow init hooks --minimal', description: 'Create minimal hooks configuration' },
+    { command: 'claude-flow init upgrade', description: 'Update helpers while preserving data' },
+    { command: 'claude-flow init upgrade --verbose', description: 'Show detailed upgrade info' },
   ],
   action: initAction,
 };

@@ -6,6 +6,7 @@
 @agentics.org/agentic-mcp
 @agentics.org/sparc2
 @claude-flow/aidefence
+@claude-flow/browser
 @claude-flow/claims
 @claude-flow/cli
 @claude-flow/deployment
@@ -98,6 +99,7 @@
 @ruvector/gnn-linux-x64-gnu
 @ruvector/gnn-wasm
 @ruvector/gnn-win32-x64-msvc
+@ruvector/graph-data-generator
 @ruvector/graph-node
 @ruvector/graph-node-darwin-arm64
 @ruvector/graph-node-darwin-x64
@@ -138,6 +140,7 @@
 @ruvector/sona-linux-x64-musl
 @ruvector/sona-win32-arm64-msvc
 @ruvector/sona-win32-x64-msvc
+@ruvector/spiking-neural
 @ruvector/tiny-dancer
 @ruvector/tiny-dancer-linux-x64-gnu
 @ruvector/tiny-dancer-wasm

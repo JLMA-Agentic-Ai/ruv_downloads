@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **554 total artifacts**: **193 Rust crates**, **195 NPM packages**, and **166 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
+**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **557 total artifacts**: **193 Rust crates**, **198 NPM packages**, and **166 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Repository Information
 - **Type**: Package discovery and distribution system
-- **Scope**: 554 artifacts (193 Rust crates + 195 NPM packages + 166 GitHub repositories)
+- **Scope**: 557 artifacts (193 Rust crates + 198 NPM packages + 166 GitHub repositories)
 - **Maintained by**: Ruvnet Community
 - **Update Frequency**: Automatic discovery and versioning
 - **Storage**: Organized archives with legacy support
@@ -53,7 +53,7 @@ ruv_downloads/
 │   ├── agentic-jujutsu-1.0.1/            # Version-specific directories
 │   ├── ... [155+ more crates] ...
 │
-├── npmjs/                                 # 195 NPM packages
+├── npmjs/                                 # 198 NPM packages
 │   ├── README.md                          # Package management documentation
 │   ├── download_ruvnet_packages.sh        # Download script with --discover flag
 │   ├── packagelist.dynamic.txt            # Dynamic manifest (auto-maintained)
@@ -1725,7 +1725,7 @@ cd ruv_downloads
 
 # Step 4: Check what was downloaded
 cat crates/crates.dynamic.txt | wc -l      # Should be ~193
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~195
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~198
 cat github/repos.dynamic.txt | wc -l       # Should be ~166
 ```
 
@@ -1864,9 +1864,9 @@ swarm.route_message(msg, "agent")?;
 ## Summary Statistics
 
 - **Total Crates**: 193 (Rust)
-- **Total Packages**: 195 (NPM/TypeScript)
+- **Total Packages**: 198 (NPM/TypeScript)
 - **Total GitHub Repositories**: 166
-- **Total Artifacts**: 554
+- **Total Artifacts**: 557
 - **Documentation Pages**: 300+ README files
 - **Code Size**: ~50,000+ lines of documentation
 - **Performance Tested**: Yes, 95%+ of packages
@@ -1876,7 +1876,7 @@ swarm.route_message(msg, "agent")?;
 
 ---
 
-**Last Updated**: January 18, 2026
+**Last Updated**: January 21, 2026
 **Repository**: ruv_downloads
 **Maintained by**: Ruvnet Community
 **License**: MIT/Apache-2.0 (dual)
