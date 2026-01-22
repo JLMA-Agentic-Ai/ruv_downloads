@@ -168,6 +168,7 @@ ruvector-tiny-dancer-wasm
 ruvector-wasm
 ruvllm
 ruvllm-esp32
+ruvllm-wasm
 rvlite
 sevensense-analysis
 sevensense-api

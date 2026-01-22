@@ -2,6 +2,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/ruvector-core.svg)](https://crates.io/crates/ruvector-core)
 [![npm](https://img.shields.io/npm/v/ruvector.svg)](https://www.npmjs.com/package/ruvector)
+[![npm Downloads](https://img.shields.io/npm/dt/ruvector.svg?label=total)](https://www.npmjs.com/package/ruvector)
 [![npm Downloads](https://img.shields.io/npm/dm/ruvector.svg?label=monthly)](https://www.npmjs.com/package/ruvector)
 [![HuggingFace](https://img.shields.io/badge/🤗-RuvLTRA_Models-yellow.svg)](https://huggingface.co/ruv/ruvltra)
 [![ruv.io](https://img.shields.io/badge/ruv.io-website-purple.svg)](https://ruv.io)
@@ -28,25 +29,61 @@ Most vector databases are static—they store embeddings and search them. That's
 **One package. Everything included:** vector search, graph queries, GNN learning, distributed clustering, local LLMs, 39 attention mechanisms, and WASM support.
 
 <details>
-<summary>📋 See Full Capabilities (14 features)</summary>
+<summary>📋 See Full Capabilities (30+ features)</summary>
 
+**Core Vector Database**
 | # | Capability | What It Does |
 |---|------------|--------------|
-| 1 | **Store vectors** | Like any vector DB (embeddings from OpenAI, Cohere, local ONNX) |
+| 1 | **Store vectors** | Embeddings from OpenAI, Cohere, local ONNX with HNSW indexing |
 | 2 | **Query with Cypher** | Graph queries like Neo4j (`MATCH (a)-[:SIMILAR]->(b)`) |
 | 3 | **The index learns** | GNN layers make search results improve over time |
-| 4 | **Scale horizontally** | Raft consensus, multi-master replication, auto-sharding |
-| 5 | **Route AI requests** | Semantic routing + FastGRNN for LLM optimization |
-| 6 | **Run LLMs locally** | ruvllm with GGUF, Metal/CUDA, save $250+/month on API costs |
-| 6a | **RuvLTRA models** | Pre-trained GGUF models for routing & embeddings (<10ms, $0) → [HuggingFace](https://huggingface.co/ruv/ruvltra) |
-| 7 | **Self-learning hooks** | Q-learning, neural patterns, HNSW memory, swarm coordination |
-| 8 | **Compress automatically** | 2-32x memory reduction with adaptive tiered compression |
-| 9 | **39 attention mechanisms** | Flash, linear, graph, hyperbolic, mincut-gated (50% compute) |
-| 10 | **Drop into Postgres** | pgvector-compatible extension with SIMD acceleration |
-| 11 | **Run anywhere** | Node.js, browser (WASM), edge (rvLite), HTTP server, Rust |
-| 12 | **Continuous learning** | SONA with LoRA, EWC++, ReasoningBank for runtime adaptation |
-| 13 | **MCP integration** | Model Context Protocol server for AI assistant tools |
-| 14 | **Quantum coherence** | ruQu for quantum error correction via dynamic min-cut |
+| 4 | **Hyperbolic HNSW** | Hierarchical data in hyperbolic space for better tree structures |
+| 5 | **Compress automatically** | 2-32x memory reduction with adaptive tiered compression |
+
+**Distributed Systems**
+| # | Capability | What It Does |
+|---|------------|--------------|
+| 6 | **Raft consensus** | Leader election, log replication, fault-tolerant coordination |
+| 7 | **Multi-master replication** | Vector clocks, conflict resolution, geo-distributed sync |
+| 8 | **Burst scaling** | 10-50x capacity scaling for traffic spikes |
+| 9 | **Auto-sharding** | Automatic data partitioning across nodes |
+
+**AI & Machine Learning**
+| # | Capability | What It Does |
+|---|------------|--------------|
+| 10 | **Run LLMs locally** | ruvllm with GGUF, Metal/CUDA/ANE acceleration |
+| 11 | **RuvLTRA models** | Pre-trained GGUF for routing & embeddings (<10ms) → [HuggingFace](https://huggingface.co/ruv/ruvltra) |
+| 12 | **SONA learning** | Self-Optimizing Neural Architecture with LoRA, EWC++ |
+| 13 | **39 attention mechanisms** | Flash, linear, graph, hyperbolic, mincut-gated (50% compute) |
+| 14 | **Spiking neural networks** | Event-driven neuromorphic computing |
+| 15 | **Mincut-gated transformer** | Dynamic attention via graph min-cut optimization |
+| 16 | **Route AI requests** | Semantic routing + FastGRNN for LLM optimization |
+
+**Specialized Processing**
+| # | Capability | What It Does |
+|---|------------|--------------|
+| 17 | **SciPix OCR** | LaTeX/MathML extraction from scientific documents |
+| 18 | **DAG workflows** | Self-learning directed acyclic graph execution |
+| 19 | **Cognitum Gate** | Cognitive AI gateway with TileZero acceleration |
+| 20 | **FPGA transformer** | Hardware-accelerated transformer inference |
+| 21 | **Quantum coherence** | ruQu for quantum error correction via dynamic min-cut |
+
+**Platform & Integration**
+| # | Capability | What It Does |
+|---|------------|--------------|
+| 22 | **Run anywhere** | Node.js, browser (WASM), edge (rvLite), HTTP server, Rust |
+| 23 | **Drop into Postgres** | pgvector-compatible extension with SIMD acceleration |
+| 24 | **MCP integration** | Model Context Protocol server for AI assistant tools |
+| 25 | **Cloud deployment** | One-click deploy to Cloud Run, Kubernetes |
+
+**Self-Learning & Adaptation**
+| # | Capability | What It Does |
+|---|------------|--------------|
+| 26 | **Self-learning hooks** | Q-learning, neural patterns, HNSW memory |
+| 27 | **ReasoningBank** | Trajectory learning with verdict judgment |
+| 28 | **Economy system** | Tokenomics, CRDT-based distributed state |
+| 29 | **Nervous system** | Event-driven reactive architecture |
+| 30 | **Agentic synthesis** | Multi-agent workflow composition |
 
 </details>
 
@@ -181,7 +218,7 @@ npx ruvector
 | **AI Agent Routing** | ✅ Tiny Dancer | ❌ | ❌ | ❌ | ❌ |
 | **Attention Mechanisms** | ✅ 39 types | ❌ | ❌ | ❌ | ❌ |
 | **Hyperbolic Embeddings** | ✅ Poincaré+Lorentz | ❌ | ❌ | ❌ | ❌ |
-| **Local Embeddings** | ✅ 6 models | ❌ | ❌ | ❌ | ❌ |
+| **Local Embeddings** | ✅ 8+ models | ❌ | ❌ | ❌ | ❌ |
 | **PostgreSQL Extension** | ✅ 77+ functions | ❌ | ❌ | ❌ | ❌ |
 | **SIMD Optimization** | ✅ AVX-512/NEON | Partial | ✅ | ✅ | ❌ |
 | **Metadata Filtering** | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -191,7 +228,7 @@ npx ruvector
 | **Auto-Sharding** | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Auto-Compression** | ✅ 2-32x | ❌ | ❌ | ✅ | ❌ |
 | **Snapshots/Backups** | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Browser/WASM** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Browser/WASM** | ✅ WebGPU | ❌ | ❌ | ❌ | ❌ |
 | **Standalone Edge DB** | ✅ rvLite | ❌ | ❌ | ❌ | ❌ |
 | **LLM Runtime** | ✅ ruvllm | ❌ | ❌ | ❌ | ❌ |
 | **Pre-trained Models** | ✅ RuvLTRA (HF) | ❌ | ❌ | ❌ | ❌ |
@@ -203,6 +240,16 @@ npx ruvector
 | **Local ONNX Embeddings** | ✅ 8+ models | ❌ | ❌ | ❌ | ❌ |
 | **Differentiable** | ✅ | ❌ | ❌ | ❌ | ❌ |
 | **Multi-Tenancy** | ✅ Collections | ✅ | ✅ | ✅ | ✅ |
+| **DAG Workflows** | ✅ Self-learning | ❌ | ❌ | ❌ | ❌ |
+| **ReasoningBank** | ✅ Trajectory learning | ❌ | ❌ | ❌ | ❌ |
+| **Economy System** | ✅ CRDT tokenomics | ❌ | ❌ | ❌ | ❌ |
+| **Nervous System** | ✅ Event-driven | ❌ | ❌ | ❌ | ❌ |
+| **Cognitum Gate** | ✅ TileZero | ❌ | ❌ | ❌ | ❌ |
+| **SciPix OCR** | ✅ LaTeX/MathML | ❌ | ❌ | ❌ | ❌ |
+| **Spiking Neural Nets** | ✅ Neuromorphic | ❌ | ❌ | ❌ | ❌ |
+| **Node.js Native** | ✅ napi-rs | ❌ | ❌ | ❌ | ✅ |
+| **Burst Scaling** | ✅ 10-50x | ✅ | ❌ | ✅ | ❌ |
+| **Streaming API** | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Open Source** | ✅ MIT | ❌ | ✅ | ✅ | ✅ |
 
 *With PQ8 compression. Benchmarks on Apple M2 / Intel i7.
@@ -222,6 +269,41 @@ npx ruvector
 | **Hyperedges** | Connect 3+ nodes at once | Model complex relationships |
 | **Metadata Filtering** | Filter vectors by properties | Combine semantic + structured search |
 | **Collections** | Namespace isolation, multi-tenancy | Organize vectors by project/user |
+| **Hyperbolic HNSW** | Poincaré ball indexing for hierarchies | Better tree/taxonomy embeddings |
+| **Sparse Vectors** | BM25/TF-IDF hybrid search | Combine keyword + semantic |
+
+### LLM Runtime
+
+| Feature | What It Does | Why It Matters |
+|---------|--------------|----------------|
+| **ruvllm** | Local LLM inference with GGUF models | Run AI without cloud APIs |
+| **Metal/CUDA/ANE** | Hardware acceleration on Mac/NVIDIA/Apple | 10-50x faster inference |
+| **ruvllm-wasm** | Browser LLM with WebGPU acceleration | Client-side AI, zero latency |
+| **RuvLTRA Models** | Pre-trained GGUF for routing & embeddings | <10ms inference → [HuggingFace](https://huggingface.co/ruv/ruvltra) |
+| **Streaming Tokens** | Real-time token generation | Responsive chat UX |
+| **Quantization** | Q4, Q5, Q8 model support | Run 7B models in 4GB RAM |
+
+```bash
+npm install @ruvector/ruvllm        # Node.js
+cargo add ruvllm                    # Rust
+```
+
+### Platform & Edge
+
+| Feature | What It Does | Why It Matters |
+|---------|--------------|----------------|
+| **rvLite** | Standalone 2MB edge database | IoT, mobile, embedded |
+| **PostgreSQL Extension** | 77+ SQL functions, pgvector replacement | Drop-in upgrade for existing DBs |
+| **MCP Server** | Model Context Protocol integration | AI assistant tool calling |
+| **WASM/Browser** | Full client-side vector search | Offline-first apps |
+| **Node.js Bindings** | Native napi-rs, zero-copy | No serialization overhead |
+| **HTTP/gRPC Server** | REST API with streaming | Easy microservice integration |
+
+```bash
+docker pull ruvnet/ruvector-postgres    # PostgreSQL
+npm install rvlite                       # Edge DB
+npx ruvector mcp start                   # MCP Server
+```
 
 ### Distributed Systems
 
@@ -232,6 +314,7 @@ npx ruvector
 | **Multi-Master Replication** | Write to any node, conflict resolution | High availability, no SPOF |
 | **Snapshots** | Point-in-time backups, incremental | Disaster recovery |
 | **Cluster Metrics** | Prometheus-compatible monitoring | Observability at scale |
+| **Burst Scaling** | 10-50x capacity for traffic spikes | Handle viral moments |
 
 ```bash
 cargo add ruvector-raft ruvector-cluster ruvector-replication
@@ -248,6 +331,35 @@ cargo add ruvector-raft ruvector-cluster ruvector-replication
 | **Tiny Dancer** | FastGRNN neural inference | Optimize LLM inference costs |
 | **Adaptive Routing** | Learn optimal routing strategies | Minimize latency, maximize accuracy |
 | **SONA** | Two-tier LoRA + EWC++ + ReasoningBank | Runtime learning without retraining |
+| **Local Embeddings** | 8+ ONNX models built-in | No external API needed |
+
+### Specialized Processing
+
+| Feature | What It Does | Why It Matters |
+|---------|--------------|----------------|
+| **SciPix OCR** | LaTeX/MathML from scientific docs | Index research papers |
+| **DAG Workflows** | Self-learning directed acyclic graphs | Complex pipeline orchestration |
+| **Cognitum Gate** | Cognitive AI gateway + TileZero | Unified AI model routing |
+| **FPGA Transformer** | Hardware-accelerated inference | Ultra-low latency serving |
+| **ruQu Quantum** | Quantum error correction via min-cut | Future-proof algorithms |
+| **Mincut-Gated Transformer** | Dynamic attention via graph optimization | **50% compute reduction** |
+| **Sparse Inference** | Efficient sparse matrix operations | 10x faster for sparse data |
+
+### Self-Learning & Adaptation
+
+| Feature | What It Does | Why It Matters |
+|---------|--------------|----------------|
+| **Self-Learning Hooks** | Q-learning + neural patterns + HNSW | System improves automatically |
+| **ReasoningBank** | Trajectory learning with verdict judgment | Learn from successes/failures |
+| **Economy System** | Tokenomics, CRDT-based distributed state | Incentivize agent behavior |
+| **Nervous System** | Event-driven reactive architecture | Real-time adaptation |
+| **Agentic Synthesis** | Multi-agent workflow composition | Emergent problem solving |
+| **EWC++** | Elastic weight consolidation | Prevent catastrophic forgetting |
+
+```bash
+npx @ruvector/cli hooks init      # Install self-learning hooks
+npx @ruvector/cli hooks install   # Configure for Claude Code
+```
 
 ### Attention Mechanisms (`@ruvector/attention`)
 
@@ -410,23 +522,346 @@ Think of it like your computer's memory hierarchy—frequently accessed data liv
 <details>
 <summary>💡 Use Cases</summary>
 
-**RAG (Retrieval-Augmented Generation)**
+### AI & LLM Applications
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **RAG Pipelines** | Vector search, Local embeddings, ruvllm | [examples/ruvLLM](./examples/ruvLLM) |
+| **AI Agent Routing** | Tiny Dancer, Semantic router, SONA | [Claude-Flow](https://github.com/ruvnet/claude-flow) |
+| **Multi-Agent Orchestration** | GNN, HNSW memory, Consensus | [Agentic-Flow](https://github.com/ruvnet/agentic-flow) |
+| **Self-Learning Chatbots** | ReasoningBank, EWC++, Neural patterns | [examples/meta-cognition](./examples/meta-cognition-spiking-neural-network) |
+
 ```javascript
-const context = ruvector.search(questionEmbedding, 5);
-const prompt = `Context: ${context.join('\n')}\n\nQuestion: ${question}`;
+// RAG with local LLM (zero cloud costs)
+import { RuVector } from 'ruvector';
+import { RuvLLM } from '@ruvector/ruvllm';
+
+const db = new RuVector({ dimensions: 384 });
+const llm = new RuvLLM({ model: 'ruvltra-small-0.5b-q4_k_m.gguf' });
+
+// Search learns from usage via GNN layers
+const context = await db.search(questionEmbedding, { k: 5 });
+const response = await llm.generate(`Context: ${context}\n\nQ: ${question}`);
 ```
 
-**Recommendation Systems**
+### Search & Discovery
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Semantic Search** | HNSW, Metadata filtering, SIMD | Core feature |
+| **Hybrid Search** | BM25 + embeddings, Sparse vectors | [docs/api](./docs/api/) |
+| **Image Similarity** | CLIP embeddings, Hyperbolic HNSW | [examples/wasm-react](./examples/wasm-react) |
+| **Code Search** | Local ONNX embeddings, Graph queries | [examples/nodejs](./examples/nodejs) |
+
+```javascript
+// Hybrid search: keyword + semantic
+const results = await db.search(query, {
+  k: 10,
+  filter: { category: 'electronics', price: { $lt: 500 } },
+  hybridAlpha: 0.7,  // 70% semantic, 30% keyword
+  rerank: true       // GNN-enhanced reranking
+});
+```
+
+### Recommendations & Personalization
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Product Recommendations** | Graph queries, Cypher, GNN | [examples/graph](./examples/graph) |
+| **Content Personalization** | User embeddings, Collaborative filtering | Real-time adaptation |
+| **Similar Items** | Cosine similarity, Hyperbolic space | Hierarchical taxonomies |
+
 ```cypher
-MATCH (user:User)-[:VIEWED]->(item:Product)
+// Neo4j-style recommendations with learning
+MATCH (user:User {id: $userId})-[:VIEWED]->(item:Product)
 MATCH (item)-[:SIMILAR_TO]->(rec:Product)
-RETURN rec ORDER BY rec.score DESC LIMIT 10
+WHERE NOT (user)-[:PURCHASED]->(rec)
+RETURN rec ORDER BY rec.gnn_score DESC LIMIT 10
 ```
 
-**Knowledge Graphs**
+### Knowledge Management
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Knowledge Graphs** | Hypergraph, Cypher, SPARQL | [docs/api/CYPHER_REFERENCE.md](./docs/api/CYPHER_REFERENCE.md) |
+| **Document Q&A** | Chunking, Embeddings, RAG | [examples/refrag-pipeline](./examples/refrag-pipeline) |
+| **Scientific Papers** | SciPix OCR, LaTeX extraction | [examples/scipix](./examples/scipix) |
+| **Research Discovery** | Citation graphs, Concept linking | Hyperedge relationships |
+
 ```cypher
-MATCH (concept:Concept)-[:RELATES_TO*1..3]->(related)
-RETURN related
+// Multi-hop knowledge graph traversal
+MATCH (paper:Paper)-[:CITES*1..3]->(cited:Paper)
+WHERE paper.topic = 'machine learning'
+MATCH (cited)-[:AUTHORED_BY]->(author:Researcher)
+RETURN author, count(cited) as influence
+ORDER BY influence DESC LIMIT 20
+```
+
+### Real-Time & Edge Computing
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Browser AI** | WASM, WebGPU, ruvllm-wasm | [examples/wasm-vanilla](./examples/wasm-vanilla) |
+| **IoT Sensors** | rvLite, Edge DB, no_std | [examples/edge](./examples/edge) |
+| **Mobile Apps** | 2MB footprint, Offline-first | [examples/edge-net](./examples/edge-net) |
+| **Streaming Data** | Real-time indexing, Dynamic min-cut | [examples/neural-trader](./examples/neural-trader) |
+
+```javascript
+// Browser-based AI (no server required)
+import init, { RuvLLMWasm } from '@ruvector/ruvllm-wasm';
+
+await init();
+const llm = await RuvLLMWasm.new(true); // WebGPU enabled
+await llm.load_model_from_url('https://cdn.example.com/model.gguf');
+
+// Runs entirely in browser
+const response = await llm.generate('Explain quantum computing', {
+  max_tokens: 200,
+  temperature: 0.7
+});
+```
+
+### Scientific & Research
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Neural Network Analysis** | Spiking NN, Meta-cognition | [examples/meta-cognition](./examples/meta-cognition-spiking-neural-network) |
+| **Algorithmic Trading** | Neural Trader, Time-series | [examples/neural-trader](./examples/neural-trader) |
+| **Quantum Computing** | ruQu, Min-cut coherence | [crates/ruQu](./crates/ruQu) |
+| **Brain Connectivity** | Dynamic min-cut, Network analysis | [examples/mincut](./examples/mincut) |
+
+```rust
+// Neuromorphic computing with spiking networks
+use ruvector_nervous_system::{SpikingNetwork, LIFNeuron};
+
+let mut network = SpikingNetwork::new();
+network.add_layer(LIFNeuron::new(128));  // 128 spiking neurons
+network.enable_stdp();                    // Spike-timing plasticity
+
+// 10-50x more energy efficient than traditional ANNs
+let output = network.forward(&input_spikes);
+```
+
+### Neuromorphic Computing (micro-hnsw v2.3)
+
+Novel neuromorphic discoveries for brain-inspired vector search in **11.8KB WASM**.
+
+| Discovery | Description | Benefit |
+|-----------|-------------|---------|
+| **Spike-Timing Vector Encoding** | Convert vectors to temporal spike patterns | Temporal similarity matching |
+| **Homeostatic Plasticity** | Self-stabilizing network activity | Prevents runaway activation |
+| **Oscillatory Resonance** | Gamma-frequency (40Hz) search amplification | Improved recall via resonance |
+| **Winner-Take-All Circuits** | Competitive neural selection with lateral inhibition | Sparse, efficient representations |
+| **Dendritic Computation** | Non-linear local processing in dendrites | Complex pattern detection |
+| **STDP Learning** | Spike-Timing Dependent Plasticity | Unsupervised Hebbian learning |
+
+```rust
+// micro-hnsw: Neuromorphic HNSW in 11.8KB WASM
+use micro_hnsw_wasm::{MicroHnsw, LIFNeuron, SpikeTrain};
+
+// 256 cores × 32 vectors = 8K total capacity
+let mut hnsw = MicroHnsw::new(16, Metric::Cosine);  // 16-dim vectors
+
+// Spike-timing vector encoding
+let spike_train = SpikeTrain::encode(&embedding, 8);  // 8-bit temporal resolution
+
+// LIF neuron with STDP learning
+let neuron = LIFNeuron::new(0.8);  // threshold = 0.8
+neuron.enable_stdp(0.01, 0.012);   // A+ = 0.01, A- = 0.012
+neuron.enable_homeostasis(0.1);    // Target rate: 0.1 spikes/ms
+
+// Winner-take-all search with lateral inhibition
+let results = hnsw.search_wta(&query, 10, 0.8);  // WTA inhibition = 0.8
+```
+
+### Distributed & Enterprise
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Multi-Region Deployment** | Raft consensus, Replication | [docs/cloud-architecture](./docs/cloud-architecture/) |
+| **High Availability** | Auto-sharding, Failover | 99.99% SLA capable |
+| **PostgreSQL Integration** | 230+ SQL functions, pgvector replacement | [crates/ruvector-postgres](./crates/ruvector-postgres) |
+| **Burst Traffic** | 10-50x scaling, Load balancing | [examples/google-cloud](./examples/google-cloud) |
+
+```sql
+-- PostgreSQL with RuVector extension
+CREATE EXTENSION ruvector;
+
+-- Create vector column with GNN-enhanced index
+CREATE TABLE documents (
+  id SERIAL PRIMARY KEY,
+  content TEXT,
+  embedding VECTOR(384)
+);
+
+CREATE INDEX ON documents USING hnsw_gnn (embedding);
+
+-- Self-improving search
+SELECT * FROM documents
+ORDER BY embedding <-> query_vector
+LIMIT 10;
+```
+
+### AI Safety & Coherence (Cognitum Gate)
+
+A **256-tile WASM fabric** for real-time AI agent safety decisions with cryptographic verification.
+
+| Component | Description | Memory |
+|-----------|-------------|--------|
+| **Worker Tiles (255)** | Local graph shards, evidence accumulation, witness fragments | 64KB each |
+| **TileZero Arbiter** | Supergraph merging, global decisions, permit tokens | Central |
+| **Gate Decisions** | Permit / Defer / Deny with confidence scores | <1ms |
+| **Witness Receipts** | Hash-chained cryptographic audit trail | Immutable |
+
+| Feature | Description |
+|---------|-------------|
+| **Anytime-Valid Testing** | Sequential hypothesis testing with e-values |
+| **Min-Cut Aggregation** | Global coherence via distributed min-cut |
+| **Signed Permits** | Cryptographic tokens for approved actions |
+| **Evidence Filters** | Three-filter decision system (structural, evidence, combined) |
+
+```rust
+// Cognitum Gate: AI agent safety in microseconds
+use cognitum_gate_tilezero::{GateDecision, ActionContext, PermitToken};
+
+let gate = CoherenceGate::new_256_tiles();
+
+// Evaluate action safety
+let context = ActionContext {
+    action_id: "deploy-model-v2".into(),
+    action_type: "config_change".into(),
+    agent_id: "coder-agent-01".into(),
+    ..Default::default()
+};
+
+let decision = gate.evaluate(&context).await?;
+
+match decision {
+    GateDecision::Permit(token) => {
+        // Cryptographically signed permit token
+        assert!(token.verify(&gate.public_key()));
+        execute_action(token);
+    }
+    GateDecision::Defer(reason) => {
+        // Needs more evidence - retry later
+        log::info!("Deferred: {}", reason);
+    }
+    GateDecision::Deny(evidence) => {
+        // Action blocked with witness receipt
+        log::warn!("Denied: {:?}", evidence);
+    }
+}
+```
+
+```javascript
+// Browser: Real-time safety checks via WASM
+import { CognitumGate } from '@cognitum/gate';
+
+const gate = await CognitumGate.init();
+
+// Check action in <1ms
+const result = await gate.evaluate({
+  action: 'modify_user_data',
+  agent: 'assistant-v3',
+  context: { user_id: '12345' }
+});
+
+if (result.permitted) {
+  const receipt = result.witnessReceipt;  // Hash-chained audit log
+  console.log('Permit token:', result.token);
+}
+```
+
+### Dynamic Embedding Fine-Tuning
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Real-Time Adaptation** | MicroLoRA (<1ms), Per-request learning | [docs/ruvllm/FINE_TUNING.md](./docs/ruvllm/FINE_TUNING.md) |
+| **Contrastive Training** | Triplet loss, Hard negatives, InfoNCE | [npm/packages/ruvllm](./npm/packages/ruvllm) |
+| **Task-Specific Adapters** | 5 pre-defined adapters (Coder, Researcher, Security, Architect, Reviewer) | [docs/training](./docs/training/) |
+| **Catastrophic Forgetting Prevention** | EWC++ (Elastic Weight Consolidation) | [crates/sona](./crates/sona) |
+| **Browser Fine-Tuning** | MicroLoRA WASM, <50KB adapters | [crates/ruvllm-wasm](./crates/ruvllm-wasm) |
+
+**Three-Tier Adaptation System:**
+
+| Tier | Technique | Latency | Use Case |
+|------|-----------|---------|----------|
+| **Instant** | MicroLoRA (rank 1-2) | <1ms | Per-request adaptation |
+| **Background** | Adapter Merge + EWC++ | ~100ms | Pattern consolidation |
+| **Deep** | Full Training Pipeline | Minutes | Periodic optimization |
+
+```javascript
+// Real-time embedding fine-tuning with contrastive learning
+import { ContrastiveTrainer, tripletLoss } from '@ruvector/ruvllm';
+
+const trainer = new ContrastiveTrainer({
+  epochs: 10,
+  batchSize: 16,
+  margin: 0.5,           // Triplet loss margin
+  hardNegativeRatio: 0.7 // 70% hard negatives for better learning
+});
+
+// Train with triplets: anchor (task) → positive (correct agent) → negative (wrong agent)
+trainer.addTriplet(taskEmb, correctAgentEmb, wrongAgentEmb, isHardNegative);
+const results = trainer.train();
+trainer.exportTrainingData('./fine-tuned-model');
+```
+
+```rust
+// Rust: MicroLoRA for per-request adaptation
+use ruvllm::lora::{MicroLoRA, MicroLoraConfig, AdaptFeedback};
+
+let lora = MicroLoRA::new(MicroLoraConfig::for_hidden_dim(4096));
+
+// During inference: apply LoRA delta
+let output = model.forward(&input)?;
+let delta = lora.forward(&input, &TargetModule::QProj);
+let enhanced = output.iter().zip(delta.iter()).map(|(o, d)| o + d).collect();
+
+// After response: adapt based on quality feedback
+lora.adapt(&input, AdaptFeedback::from_quality(0.85))?;
+lora.apply_updates(0.01); // Learning rate
+```
+
+```javascript
+// Browser: Real-time fine-tuning with MicroLoRA WASM
+import init, { MicroLoraWasm, MicroLoraConfigWasm } from 'ruvllm-wasm';
+
+await init();
+const config = new MicroLoraConfigWasm();
+config.rank = 2;           // Tiny rank for browser (<50KB)
+config.alpha = 4.0;
+config.inFeatures = 768;
+
+const lora = new MicroLoraWasm(config);
+const delta = lora.forward(hiddenStates);  // <1ms latency
+
+// Persist to localStorage/IndexedDB
+const json = lora.toJson();
+localStorage.setItem('user-adapter', json);
+```
+
+### Agentic Workflows
+
+| Use Case | Features Used | Example |
+|----------|---------------|---------|
+| **Version Control for AI** | Agentic Jujutsu, Branching | [examples/agentic-jujutsu](./examples/agentic-jujutsu) |
+| **Data Pipelines** | DAG workflows, Self-learning | [crates/ruvector-dag](./crates/ruvector-dag) |
+| **Web Scraping** | Apify integration, Embeddings | [examples/apify](./examples/apify) |
+| **Synthetic Data** | Agentic synthesis, Generation | [Agentic-Flow](https://github.com/ruvnet/agentic-flow) |
+
+```javascript
+// Self-learning DAG workflow
+import { QueryDag, AttentionSelector } from '@ruvector/dag';
+
+const dag = new QueryDag();
+dag.addNode({ type: 'fetch', source: 'api' });
+dag.addNode({ type: 'embed', model: 'local-onnx' });
+dag.addNode({ type: 'index', engine: 'hnsw' });
+
+// DAG learns optimal execution paths over time
+dag.enableSonaLearning();
+await dag.execute();
 ```
 
 </details>
@@ -442,18 +877,68 @@ RETURN related
 | **Rust (SONA)** | `cargo add ruvector-sona` |
 | **Rust (LLM)** | `cargo add ruvllm` |
 
+---
+
+## Package Reference
+
 <details>
 <summary>📖 Documentation</summary>
+
+#### Getting Started
 
 | Topic | Link |
 |-------|------|
 | Getting Started | [docs/guides/GETTING_STARTED.md](./docs/guides/GETTING_STARTED.md) |
+| API Reference | [docs/api/](./docs/api/) |
 | Cypher Reference | [docs/api/CYPHER_REFERENCE.md](./docs/api/CYPHER_REFERENCE.md) |
-| GNN Architecture | [docs/gnn/gnn-layer-implementation.md](./docs/gnn/gnn-layer-implementation.md) |
+| Performance Tuning | [docs/optimization/PERFORMANCE_TUNING_GUIDE.md](./docs/optimization/PERFORMANCE_TUNING_GUIDE.md) |
+
+#### Core Components
+
+| Topic | Link |
+|-------|------|
+| GNN Architecture | [docs/gnn/](./docs/gnn/) |
+| HNSW Indexing | [docs/hnsw/](./docs/hnsw/) |
+| DAG System | [docs/dag/](./docs/dag/) |
+| Nervous System | [docs/nervous-system/](./docs/nervous-system/) |
+| Sparse Inference | [docs/sparse-inference/](./docs/sparse-inference/) |
+
+#### Bindings & Integration
+
+| Topic | Link |
+|-------|------|
 | Node.js API | [crates/ruvector-gnn-node/README.md](./crates/ruvector-gnn-node/README.md) |
 | WASM API | [crates/ruvector-gnn-wasm/README.md](./crates/ruvector-gnn-wasm/README.md) |
-| Performance Tuning | [docs/optimization/PERFORMANCE_TUNING_GUIDE.md](./docs/optimization/PERFORMANCE_TUNING_GUIDE.md) |
-| API Reference | [docs/api/](./docs/api/) |
+| PostgreSQL | [docs/postgres/](./docs/postgres/) |
+| Self-Learning Hooks | [docs/hooks/](./docs/hooks/) |
+| Integration Guides | [docs/integration/](./docs/integration/) |
+
+#### LLM & AI
+
+| Topic | Link |
+|-------|------|
+| RuvLLM | [docs/ruvllm/](./docs/ruvllm/) |
+| Training Guides | [docs/training/](./docs/training/) |
+
+#### Operations
+
+| Topic | Link |
+|-------|------|
+| Architecture | [docs/architecture/](./docs/architecture/) |
+| Cloud Deployment | [docs/cloud-architecture/](./docs/cloud-architecture/) |
+| Security | [docs/security/](./docs/security/) |
+| Benchmarks | [docs/benchmarks/](./docs/benchmarks/) |
+| Testing | [docs/testing/](./docs/testing/) |
+
+#### Research
+
+| Topic | Link |
+|-------|------|
+| Research Papers | [docs/research/](./docs/research/) |
+| GNN V2 Features | [docs/research/gnn-v2/](./docs/research/gnn-v2/) |
+| Min-Cut Algorithms | [docs/research/mincut/](./docs/research/mincut/) |
+| SPARQL Support | [docs/research/sparql/](./docs/research/sparql/) |
+| Latent Space | [docs/research/latent-space/](./docs/research/latent-space/) |
 
 ### Architecture Decision Records (ADRs)
 
@@ -475,6 +960,102 @@ RETURN related
 
 </details>
 
+
+<details>
+<summary>📦 npm Packages (45+ Packages)</summary>
+
+#### Core Packages
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [ruvector](https://www.npmjs.com/package/ruvector) | All-in-one CLI & package | [![npm](https://img.shields.io/npm/v/ruvector.svg)](https://www.npmjs.com/package/ruvector) | [![downloads](https://img.shields.io/npm/dt/ruvector.svg)](https://www.npmjs.com/package/ruvector) |
+| [@ruvector/core](https://www.npmjs.com/package/@ruvector/core) | Core vector database with HNSW | [![npm](https://img.shields.io/npm/v/@ruvector/core.svg)](https://www.npmjs.com/package/@ruvector/core) | [![downloads](https://img.shields.io/npm/dt/@ruvector/core.svg)](https://www.npmjs.com/package/@ruvector/core) |
+| [@ruvector/node](https://www.npmjs.com/package/@ruvector/node) | Unified Node.js bindings | [![npm](https://img.shields.io/npm/v/@ruvector/node.svg)](https://www.npmjs.com/package/@ruvector/node) | [![downloads](https://img.shields.io/npm/dt/@ruvector/node.svg)](https://www.npmjs.com/package/@ruvector/node) |
+| [ruvector-extensions](https://www.npmjs.com/package/ruvector-extensions) | Advanced features: embeddings, UI | [![npm](https://img.shields.io/npm/v/ruvector-extensions.svg)](https://www.npmjs.com/package/ruvector-extensions) | [![downloads](https://img.shields.io/npm/dt/ruvector-extensions.svg)](https://www.npmjs.com/package/ruvector-extensions) |
+
+#### Graph & GNN
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/gnn](https://www.npmjs.com/package/@ruvector/gnn) | Graph Neural Network layers | [![npm](https://img.shields.io/npm/v/@ruvector/gnn.svg)](https://www.npmjs.com/package/@ruvector/gnn) | [![downloads](https://img.shields.io/npm/dt/@ruvector/gnn.svg)](https://www.npmjs.com/package/@ruvector/gnn) |
+| [@ruvector/graph-node](https://www.npmjs.com/package/@ruvector/graph-node) | Hypergraph with Cypher queries | [![npm](https://img.shields.io/npm/v/@ruvector/graph-node.svg)](https://www.npmjs.com/package/@ruvector/graph-node) | [![downloads](https://img.shields.io/npm/dt/@ruvector/graph-node.svg)](https://www.npmjs.com/package/@ruvector/graph-node) |
+| [@ruvector/graph-wasm](https://www.npmjs.com/package/@ruvector/graph-wasm) | Browser graph queries | [![npm](https://img.shields.io/npm/v/@ruvector/graph-wasm.svg)](https://www.npmjs.com/package/@ruvector/graph-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/graph-wasm.svg)](https://www.npmjs.com/package/@ruvector/graph-wasm) |
+| [@ruvector/graph-data-generator](https://www.npmjs.com/package/@ruvector/graph-data-generator) | AI-powered synthetic graph data | [![npm](https://img.shields.io/npm/v/@ruvector/graph-data-generator.svg)](https://www.npmjs.com/package/@ruvector/graph-data-generator) | [![downloads](https://img.shields.io/npm/dt/@ruvector/graph-data-generator.svg)](https://www.npmjs.com/package/@ruvector/graph-data-generator) |
+
+#### AI Routing & Attention
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/tiny-dancer](https://www.npmjs.com/package/@ruvector/tiny-dancer) | FastGRNN neural routing | [![npm](https://img.shields.io/npm/v/@ruvector/tiny-dancer.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer) | [![downloads](https://img.shields.io/npm/dt/@ruvector/tiny-dancer.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer) |
+| [@ruvector/router](https://www.npmjs.com/package/@ruvector/router) | Semantic router + HNSW | [![npm](https://img.shields.io/npm/v/@ruvector/router.svg)](https://www.npmjs.com/package/@ruvector/router) | [![downloads](https://img.shields.io/npm/dt/@ruvector/router.svg)](https://www.npmjs.com/package/@ruvector/router) |
+| [@ruvector/attention](https://www.npmjs.com/package/@ruvector/attention) | 39 attention mechanisms | [![npm](https://img.shields.io/npm/v/@ruvector/attention.svg)](https://www.npmjs.com/package/@ruvector/attention) | [![downloads](https://img.shields.io/npm/dt/@ruvector/attention.svg)](https://www.npmjs.com/package/@ruvector/attention) |
+
+#### Learning & Neural
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/sona](https://www.npmjs.com/package/@ruvector/sona) | Self-Optimizing Neural Architecture | [![npm](https://img.shields.io/npm/v/@ruvector/sona.svg)](https://www.npmjs.com/package/@ruvector/sona) | [![downloads](https://img.shields.io/npm/dt/@ruvector/sona.svg)](https://www.npmjs.com/package/@ruvector/sona) |
+| [@ruvector/spiking-neural](https://www.npmjs.com/package/@ruvector/spiking-neural) | Spiking neural networks (SNN) | [![npm](https://img.shields.io/npm/v/@ruvector/spiking-neural.svg)](https://www.npmjs.com/package/@ruvector/spiking-neural) | [![downloads](https://img.shields.io/npm/dt/@ruvector/spiking-neural.svg)](https://www.npmjs.com/package/@ruvector/spiking-neural) |
+
+#### LLM Runtime
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/ruvllm](https://www.npmjs.com/package/@ruvector/ruvllm) | LLM orchestration + SONA | [![npm](https://img.shields.io/npm/v/@ruvector/ruvllm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/ruvllm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm) |
+| [@ruvector/ruvllm-cli](https://www.npmjs.com/package/@ruvector/ruvllm-cli) | LLM CLI: inference, benchmarks | [![npm](https://img.shields.io/npm/v/@ruvector/ruvllm-cli.svg)](https://www.npmjs.com/package/@ruvector/ruvllm-cli) | [![downloads](https://img.shields.io/npm/dt/@ruvector/ruvllm-cli.svg)](https://www.npmjs.com/package/@ruvector/ruvllm-cli) |
+| [@ruvector/ruvllm-wasm](https://www.npmjs.com/package/@ruvector/ruvllm-wasm) | Browser LLM inference | [![npm](https://img.shields.io/npm/v/@ruvector/ruvllm-wasm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/ruvllm-wasm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm-wasm) |
+
+#### Distributed Systems
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/cluster](https://www.npmjs.com/package/@ruvector/cluster) | Distributed clustering | [![npm](https://img.shields.io/npm/v/@ruvector/cluster.svg)](https://www.npmjs.com/package/@ruvector/cluster) | [![downloads](https://img.shields.io/npm/dt/@ruvector/cluster.svg)](https://www.npmjs.com/package/@ruvector/cluster) |
+| [@ruvector/server](https://www.npmjs.com/package/@ruvector/server) | HTTP/gRPC server | [![npm](https://img.shields.io/npm/v/@ruvector/server.svg)](https://www.npmjs.com/package/@ruvector/server) | [![downloads](https://img.shields.io/npm/dt/@ruvector/server.svg)](https://www.npmjs.com/package/@ruvector/server) |
+| [@ruvector/raft](https://www.npmjs.com/package/@ruvector/raft) | Raft consensus | [![npm](https://img.shields.io/npm/v/@ruvector/raft.svg)](https://www.npmjs.com/package/@ruvector/raft) | [![downloads](https://img.shields.io/npm/dt/@ruvector/raft.svg)](https://www.npmjs.com/package/@ruvector/raft) |
+| [@ruvector/replication](https://www.npmjs.com/package/@ruvector/replication) | Multi-master replication | [![npm](https://img.shields.io/npm/v/@ruvector/replication.svg)](https://www.npmjs.com/package/@ruvector/replication) | [![downloads](https://img.shields.io/npm/dt/@ruvector/replication.svg)](https://www.npmjs.com/package/@ruvector/replication) |
+| [@ruvector/burst-scaling](https://www.npmjs.com/package/@ruvector/burst-scaling) | 10-50x burst scaling | [![npm](https://img.shields.io/npm/v/@ruvector/burst-scaling.svg)](https://www.npmjs.com/package/@ruvector/burst-scaling) | [![downloads](https://img.shields.io/npm/dt/@ruvector/burst-scaling.svg)](https://www.npmjs.com/package/@ruvector/burst-scaling) |
+
+#### Edge & Standalone
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [rvlite](https://www.npmjs.com/package/rvlite) | SQLite-style edge DB | [![npm](https://img.shields.io/npm/v/rvlite.svg)](https://www.npmjs.com/package/rvlite) | [![downloads](https://img.shields.io/npm/dt/rvlite.svg)](https://www.npmjs.com/package/rvlite) |
+| [@ruvector/rudag](https://www.npmjs.com/package/@ruvector/rudag) | Self-learning DAG | [![npm](https://img.shields.io/npm/v/@ruvector/rudag.svg)](https://www.npmjs.com/package/@ruvector/rudag) | [![downloads](https://img.shields.io/npm/dt/@ruvector/rudag.svg)](https://www.npmjs.com/package/@ruvector/rudag) |
+
+#### Agentic & Synthetic Data
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/agentic-synth](https://www.npmjs.com/package/@ruvector/agentic-synth) | AI synthetic data generator | [![npm](https://img.shields.io/npm/v/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth) | [![downloads](https://img.shields.io/npm/dt/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth) |
+| [@ruvector/agentic-integration](https://www.npmjs.com/package/@ruvector/agentic-integration) | Distributed agent coordination | [![npm](https://img.shields.io/npm/v/@ruvector/agentic-integration.svg)](https://www.npmjs.com/package/@ruvector/agentic-integration) | [![downloads](https://img.shields.io/npm/dt/@ruvector/agentic-integration.svg)](https://www.npmjs.com/package/@ruvector/agentic-integration) |
+| [@cognitum/gate](https://www.npmjs.com/package/@cognitum/gate) | AI coherence gate | [![npm](https://img.shields.io/npm/v/@cognitum/gate.svg)](https://www.npmjs.com/package/@cognitum/gate) | [![downloads](https://img.shields.io/npm/dt/@cognitum/gate.svg)](https://www.npmjs.com/package/@cognitum/gate) |
+
+#### CLI Tools
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/cli](https://www.npmjs.com/package/@ruvector/cli) | CLI + self-learning hooks | [![npm](https://img.shields.io/npm/v/@ruvector/cli.svg)](https://www.npmjs.com/package/@ruvector/cli) | [![downloads](https://img.shields.io/npm/dt/@ruvector/cli.svg)](https://www.npmjs.com/package/@ruvector/cli) |
+| [@ruvector/postgres-cli](https://www.npmjs.com/package/@ruvector/postgres-cli) | PostgreSQL extension CLI | [![npm](https://img.shields.io/npm/v/@ruvector/postgres-cli.svg)](https://www.npmjs.com/package/@ruvector/postgres-cli) | [![downloads](https://img.shields.io/npm/dt/@ruvector/postgres-cli.svg)](https://www.npmjs.com/package/@ruvector/postgres-cli) |
+| [@ruvector/scipix](https://www.npmjs.com/package/@ruvector/scipix) | Scientific OCR client | [![npm](https://img.shields.io/npm/v/@ruvector/scipix.svg)](https://www.npmjs.com/package/@ruvector/scipix) | [![downloads](https://img.shields.io/npm/dt/@ruvector/scipix.svg)](https://www.npmjs.com/package/@ruvector/scipix) |
+
+#### WASM Packages
+
+| Package | Description | Version | Downloads |
+|---------|-------------|---------|-----------|
+| [@ruvector/wasm](https://www.npmjs.com/package/@ruvector/wasm) | Unified WASM meta-package | [![npm](https://img.shields.io/npm/v/@ruvector/wasm.svg)](https://www.npmjs.com/package/@ruvector/wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/wasm.svg)](https://www.npmjs.com/package/@ruvector/wasm) |
+| [@ruvector/wasm-unified](https://www.npmjs.com/package/@ruvector/wasm-unified) | Unified TypeScript API | [![npm](https://img.shields.io/npm/v/@ruvector/wasm-unified.svg)](https://www.npmjs.com/package/@ruvector/wasm-unified) | [![downloads](https://img.shields.io/npm/dt/@ruvector/wasm-unified.svg)](https://www.npmjs.com/package/@ruvector/wasm-unified) |
+| [@ruvector/gnn-wasm](https://www.npmjs.com/package/@ruvector/gnn-wasm) | GNN WASM bindings | [![npm](https://img.shields.io/npm/v/@ruvector/gnn-wasm.svg)](https://www.npmjs.com/package/@ruvector/gnn-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/gnn-wasm.svg)](https://www.npmjs.com/package/@ruvector/gnn-wasm) |
+| [@ruvector/attention-wasm](https://www.npmjs.com/package/@ruvector/attention-wasm) | Attention WASM bindings | [![npm](https://img.shields.io/npm/v/@ruvector/attention-wasm.svg)](https://www.npmjs.com/package/@ruvector/attention-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/attention-wasm.svg)](https://www.npmjs.com/package/@ruvector/attention-wasm) |
+| [@ruvector/attention-unified-wasm](https://www.npmjs.com/package/@ruvector/attention-unified-wasm) | All 39 attention mechanisms | [![npm](https://img.shields.io/npm/v/@ruvector/attention-unified-wasm.svg)](https://www.npmjs.com/package/@ruvector/attention-unified-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/attention-unified-wasm.svg)](https://www.npmjs.com/package/@ruvector/attention-unified-wasm) |
+| [@ruvector/tiny-dancer-wasm](https://www.npmjs.com/package/@ruvector/tiny-dancer-wasm) | AI routing WASM | [![npm](https://img.shields.io/npm/v/@ruvector/tiny-dancer-wasm.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/tiny-dancer-wasm.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer-wasm) |
+| [@ruvector/router-wasm](https://www.npmjs.com/package/@ruvector/router-wasm) | Semantic router WASM | [![npm](https://img.shields.io/npm/v/@ruvector/router-wasm.svg)](https://www.npmjs.com/package/@ruvector/router-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/router-wasm.svg)](https://www.npmjs.com/package/@ruvector/router-wasm) |
+| [@ruvector/learning-wasm](https://www.npmjs.com/package/@ruvector/learning-wasm) | Learning module WASM | [![npm](https://img.shields.io/npm/v/@ruvector/learning-wasm.svg)](https://www.npmjs.com/package/@ruvector/learning-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/learning-wasm.svg)](https://www.npmjs.com/package/@ruvector/learning-wasm) |
+| [@ruvector/economy-wasm](https://www.npmjs.com/package/@ruvector/economy-wasm) | Tokenomics WASM | [![npm](https://img.shields.io/npm/v/@ruvector/economy-wasm.svg)](https://www.npmjs.com/package/@ruvector/economy-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/economy-wasm.svg)](https://www.npmjs.com/package/@ruvector/economy-wasm) |
+| [@ruvector/exotic-wasm](https://www.npmjs.com/package/@ruvector/exotic-wasm) | Exotic features WASM | [![npm](https://img.shields.io/npm/v/@ruvector/exotic-wasm.svg)](https://www.npmjs.com/package/@ruvector/exotic-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/exotic-wasm.svg)](https://www.npmjs.com/package/@ruvector/exotic-wasm) |
+| [@ruvector/nervous-system-wasm](https://www.npmjs.com/package/@ruvector/nervous-system-wasm) | Nervous system WASM | [![npm](https://img.shields.io/npm/v/@ruvector/nervous-system-wasm.svg)](https://www.npmjs.com/package/@ruvector/nervous-system-wasm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/nervous-system-wasm.svg)](https://www.npmjs.com/package/@ruvector/nervous-system-wasm) |
+
+</details>
+
 <details>
 <summary>🦀 Rust Crates (63 Packages)</summary>
 
@@ -489,6 +1070,10 @@ All crates are published to [crates.io](https://crates.io) under the `ruvector-*
 | [ruvector-filter](./crates/ruvector-filter) | Vector filtering and metadata queries | [![crates.io](https://img.shields.io/crates/v/ruvector-filter.svg)](https://crates.io/crates/ruvector-filter) |
 | [ruvector-metrics](./crates/ruvector-metrics) | Performance metrics and monitoring | [![crates.io](https://img.shields.io/crates/v/ruvector-metrics.svg)](https://crates.io/crates/ruvector-metrics) |
 | [ruvector-snapshot](./crates/ruvector-snapshot) | Snapshot and persistence management | [![crates.io](https://img.shields.io/crates/v/ruvector-snapshot.svg)](https://crates.io/crates/ruvector-snapshot) |
+| [ruvector-node](./crates/ruvector-node) | Node.js bindings via NAPI-RS | [![crates.io](https://img.shields.io/crates/v/ruvector-node.svg)](https://crates.io/crates/ruvector-node) |
+| [ruvector-wasm](./crates/ruvector-wasm) | WASM bindings for browser/edge | [![crates.io](https://img.shields.io/crates/v/ruvector-wasm.svg)](https://crates.io/crates/ruvector-wasm) |
+| [ruvector-cli](./crates/ruvector-cli) | CLI and MCP server | [![crates.io](https://img.shields.io/crates/v/ruvector-cli.svg)](https://crates.io/crates/ruvector-cli) |
+| [ruvector-bench](./crates/ruvector-bench) | Benchmarking suite | [![crates.io](https://img.shields.io/crates/v/ruvector-bench.svg)](https://crates.io/crates/ruvector-bench) |
 
 ### Graph & GNN
 
@@ -538,151 +1123,6 @@ cargo add ruvllm --features inference-cuda   # NVIDIA GPU
 wget https://huggingface.co/ruv/ruvltra/resolve/main/ruvltra-small-0.5b-q4_k_m.gguf
 ```
 
-<details>
-<summary><strong>🎓 RuvLLM Training & Fine-Tuning Tutorials</strong></summary>
-
-#### Hybrid Routing (90% Accuracy)
-
-RuvLTRA achieves **90% routing accuracy** using a keyword-first strategy with embedding fallback:
-
-```javascript
-// Optimal routing: Keywords first, embeddings as tiebreaker
-function routeTask(task, taskEmbedding, agentEmbeddings) {
-  const keywordScores = getKeywordScores(task);
-  const maxKw = Math.max(...Object.values(keywordScores));
-
-  if (maxKw > 0) {
-    const candidates = Object.entries(keywordScores)
-      .filter(([_, score]) => score === maxKw)
-      .map(([agent]) => agent);
-
-    if (candidates.length === 1) return { agent: candidates[0] };
-    return pickByEmbedding(candidates, taskEmbedding, agentEmbeddings);
-  }
-
-  return embeddingSimilarity(taskEmbedding, agentEmbeddings);
-}
-```
-
-Run the benchmark: `node npm/packages/ruvllm/scripts/hybrid-model-compare.js`
-
-#### Generate Training Data
-
-```bash
-# Using CLI (recommended)
-npx @ruvector/ruvllm train stats              # View dataset statistics
-npx @ruvector/ruvllm train dataset            # Export training data
-npx @ruvector/ruvllm train contrastive        # Run full training pipeline
-
-# With options
-npx @ruvector/ruvllm train dataset --output ./my-training
-npx @ruvector/ruvllm train contrastive --epochs 20 --batch-size 32 --lr 0.0001
-```
-
-**Programmatic API:**
-```javascript
-import { ContrastiveTrainer, generateTrainingDataset, getDatasetStats } from '@ruvector/ruvllm';
-
-const stats = getDatasetStats();
-console.log(`${stats.totalExamples} examples, ${stats.agentTypes} agent types`);
-
-const trainer = new ContrastiveTrainer({ epochs: 10, margin: 0.5 });
-trainer.addTriplet(anchor, anchorEmb, positive, positiveEmb, negative, negativeEmb, true);
-const result = trainer.train();
-trainer.exportTrainingData('./output');
-```
-
-#### Fine-Tune with LoRA
-
-```bash
-pip install transformers peft datasets accelerate
-
-python -m peft.lora_train \
-  --model_name Qwen/Qwen2.5-0.5B-Instruct \
-  --dataset ./data/training/routing-examples.jsonl \
-  --output_dir ./ruvltra-routing-lora \
-  --lora_r 8 --lora_alpha 16 \
-  --num_train_epochs 3 \
-  --learning_rate 2e-4
-```
-
-#### Convert to GGUF
-
-```bash
-# Merge LoRA weights
-python -c "
-from peft import PeftModel
-from transformers import AutoModelForCausalLM
-base = AutoModelForCausalLM.from_pretrained('Qwen/Qwen2.5-0.5B-Instruct')
-model = PeftModel.from_pretrained(base, './ruvltra-routing-lora')
-model.merge_and_unload().save_pretrained('./ruvltra-routing-merged')
-"
-
-# Convert and quantize
-python llama.cpp/convert_hf_to_gguf.py ./ruvltra-routing-merged --outfile ruvltra-routing-f16.gguf
-./llama.cpp/llama-quantize ruvltra-routing-f16.gguf ruvltra-routing-q4_k_m.gguf Q4_K_M
-```
-
-#### Contrastive Embedding Training
-
-**Using RuvLLM CLI (recommended):**
-```bash
-# Full contrastive training pipeline with triplet loss
-npx @ruvector/ruvllm train contrastive --output ./training-output
-
-# Exports: triplets.jsonl, embeddings.json, lora_config.json, train.sh
-```
-
-**Using Python (for GPU training):**
-```python
-from sentence_transformers import SentenceTransformer, losses, InputExample
-from torch.utils.data import DataLoader
-
-train_examples = [
-    InputExample(texts=["implement login", "build auth component"], label=1.0),
-    InputExample(texts=["implement login", "write unit tests"], label=0.0),
-]
-
-model = SentenceTransformer("Qwen/Qwen2.5-0.5B-Instruct")
-train_loss = losses.CosineSimilarityLoss(model)
-model.fit([(DataLoader(train_examples, batch_size=16), train_loss)], epochs=5)
-```
-
-**Resources:** [Issue #122](https://github.com/ruvnet/ruvector/issues/122) | [LoRA Paper](https://arxiv.org/abs/2106.09685) | [Sentence Transformers](https://www.sbert.net/docs/training/overview.html)
-
-#### Rust Training Module
-
-For production-scale dataset generation, use the Rust training module ([full docs](./crates/ruvllm/src/training/README.md)):
-
-```rust
-use ruvllm::training::{DatasetGenerator, DatasetConfig};
-
-let config = DatasetConfig {
-    examples_per_category: 100,
-    enable_augmentation: true,
-    seed: 42,
-    ..Default::default()
-};
-
-let dataset = DatasetGenerator::new(config).generate();
-let (train, val, test) = dataset.split(0.7, 0.15, 0.15, 42);
-dataset.export_jsonl("training.jsonl")?;
-```
-
-**Features:**
-- **5 agent categories**: Coder, Researcher, Security, Architecture, Reviewer (20% each)
-- **Model routing**: Haiku (simple) → Sonnet (moderate) → Opus (complex/security)
-- **Data augmentation**: Paraphrasing, complexity variations, domain transfer
-- **8 technical domains**: Web, Systems, DataScience, Mobile, DevOps, Security, Database, API
-- **Quality scores**: 0.80-0.96 based on template quality and category
-- **Performance**: ~10,000 examples/second, ~50 MB/s JSONL export
-
-```bash
-cargo run --example generate_claude_dataset --release
-# Outputs: train.jsonl, val.jsonl, test.jsonl, stats.json
-```
-
-</details>
 
 ### Distributed Systems
 
@@ -691,6 +1131,7 @@ cargo run --example generate_claude_dataset --release
 | [ruvector-cluster](./crates/ruvector-cluster) | Cluster management and coordination | [![crates.io](https://img.shields.io/crates/v/ruvector-cluster.svg)](https://crates.io/crates/ruvector-cluster) |
 | [ruvector-raft](./crates/ruvector-raft) | Raft consensus implementation | [![crates.io](https://img.shields.io/crates/v/ruvector-raft.svg)](https://crates.io/crates/ruvector-raft) |
 | [ruvector-replication](./crates/ruvector-replication) | Data replication and synchronization | [![crates.io](https://img.shields.io/crates/v/ruvector-replication.svg)](https://crates.io/crates/ruvector-replication) |
+| [ruvector-server](./crates/ruvector-server) | REST/gRPC API server | [![crates.io](https://img.shields.io/crates/v/ruvector-server.svg)](https://crates.io/crates/ruvector-server) |
 
 ### AI Agent Routing (Tiny Dancer)
 
@@ -787,12 +1228,42 @@ let syndrome = gate.assess_coherence(&quantum_state)?;
 | [ruvector-economy-wasm](./crates/ruvector-economy-wasm) | CRDT-based autonomous credit economy | [![crates.io](https://img.shields.io/crates/v/ruvector-economy-wasm.svg)](https://crates.io/crates/ruvector-economy-wasm) |
 | [ruvector-exotic-wasm](./crates/ruvector-exotic-wasm) | Exotic AI primitives (strange loops, time crystals) | [![crates.io](https://img.shields.io/crates/v/ruvector-exotic-wasm.svg)](https://crates.io/crates/ruvector-exotic-wasm) |
 | [ruvector-attention-unified-wasm](./crates/ruvector-attention-unified-wasm) | Unified 18+ attention mechanisms (Neural, DAG, Mamba SSM) | [![crates.io](https://img.shields.io/crates/v/ruvector-attention-unified-wasm.svg)](https://crates.io/crates/ruvector-attention-unified-wasm) |
+| [micro-hnsw-wasm](./crates/micro-hnsw-wasm) | Neuromorphic HNSW with spiking neurons (11.8KB WASM) | [![crates.io](https://img.shields.io/crates/v/micro-hnsw-wasm.svg)](https://crates.io/crates/micro-hnsw-wasm) |
 
 **Bio-inspired features:**
 - **Spiking Neural Networks (SNNs)** — 10-50x energy efficiency vs traditional ANNs
 - **BTSP Learning** — Behavioral Time-Scale Synaptic Plasticity for rapid adaptation
 - **MicroLoRA** — Sub-microsecond fine-tuning for per-operator learning
 - **Mamba SSM** — State Space Model attention for linear-time sequences
+
+### Self-Learning (SONA)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [sona](./crates/sona) | Self-Optimizing Neural Architecture - LoRA, EWC++, ReasoningBank | [![crates.io](https://img.shields.io/crates/v/ruvector-sona.svg)](https://crates.io/crates/ruvector-sona) |
+
+**SONA Features:** Two-tier LoRA adaptation, Elastic Weight Consolidation (EWC++), ReasoningBank for trajectory learning, runtime-adaptive learning for LLM routers.
+
+### Standalone Edge Database (rvLite)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [rvlite](./crates/rvlite) | Standalone 2MB edge database with SQL, SPARQL, Cypher | [![crates.io](https://img.shields.io/crates/v/rvlite.svg)](https://crates.io/crates/rvlite) |
+
+**rvLite Features:** Powered by RuVector WASM, supports SQL/SPARQL/Cypher queries, ideal for IoT, mobile, and embedded systems.
+
+### PostgreSQL Extension
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [ruvector-postgres](./crates/ruvector-postgres) | pgvector replacement with 230+ SQL functions, SIMD, Flash Attention | [![crates.io](https://img.shields.io/crates/v/ruvector-postgres.svg)](https://crates.io/crates/ruvector-postgres) |
+
+**PostgreSQL Features:** Drop-in pgvector replacement, GNN layers, hybrid search, multi-tenancy, self-healing, self-learning capabilities.
+
+```bash
+docker pull ruvnet/ruvector-postgres    # Docker image
+cargo add ruvector-postgres             # Rust crate
+```
 
 ### Self-Learning Query DAG (ruvector-dag)
 
@@ -823,6 +1294,51 @@ let scores = selector.select_and_apply(SelectionPolicy::Adaptive, &dag)?;
 ```
 
 See [ruvector-dag README](./crates/ruvector-dag/README.md) for full documentation.
+
+### Distributed Systems (Raft & Replication)
+
+| Crate | Description | crates.io |
+|-------|-------------|-----------|
+| [ruvector-raft](./crates/ruvector-raft) | Raft consensus with leader election & log replication | [![crates.io](https://img.shields.io/crates/v/ruvector-raft.svg)](https://crates.io/crates/ruvector-raft) |
+| [ruvector-replication](./crates/ruvector-replication) | Multi-master replication with vector clocks | [![crates.io](https://img.shields.io/crates/v/ruvector-replication.svg)](https://crates.io/crates/ruvector-replication) |
+| [ruvector-cluster](./crates/ruvector-cluster) | Cluster coordination and sharding | [![crates.io](https://img.shields.io/crates/v/ruvector-cluster.svg)](https://crates.io/crates/ruvector-cluster) |
+
+**Build distributed vector databases** with strong consistency guarantees:
+
+- **Raft Consensus** — Leader election, log replication, automatic failover
+- **Vector Clocks** — Causal ordering for conflict detection
+- **Conflict Resolution** — Last-Write-Wins, custom merge functions, CRDT support
+- **Change Data Capture** — Stream changes to replicas in real-time
+- **Automatic Failover** — Promote replicas on primary failure
+
+```typescript
+import { RaftNode, ReplicaSet, VectorClock } from '@ruvector/raft';
+import { ReplicationManager, ConflictStrategy } from '@ruvector/replication';
+
+// Raft consensus cluster
+const node = new RaftNode({
+  nodeId: 'node-1',
+  peers: ['node-2', 'node-3'],
+  electionTimeout: [150, 300],
+});
+
+await node.start();
+const entry = await node.propose({ op: 'insert', vector: embedding });
+
+// Multi-master replication
+const replicaSet = new ReplicaSet();
+replicaSet.addReplica('primary', 'localhost:5001', 'primary');
+replicaSet.addReplica('replica-1', 'localhost:5002', 'replica');
+
+const manager = new ReplicationManager(replicaSet, {
+  conflictStrategy: ConflictStrategy.LastWriteWins,
+  syncMode: 'async',
+});
+
+await manager.write('vectors', { id: 'v1', data: embedding });
+```
+
+See [npm/packages/raft/README.md](./npm/packages/raft/README.md) and [npm/packages/replication/README.md](./npm/packages/replication/README.md) for full documentation.
 
 ### Standalone Vector Database (rvLite)
 
@@ -887,31 +1403,1677 @@ engine.addTrajectoryStep(trajId, activations, attention, 0.9);
 engine.endTrajectory(trajId, 0.95);
 ```
 
-### PostgreSQL Extension
+</details>
 
-| Crate | Description | crates.io | npm |
-|-------|-------------|-----------|-----|
-| [ruvector-postgres](./crates/ruvector-postgres) | pgvector-compatible PostgreSQL extension with SIMD optimization | [![crates.io](https://img.shields.io/crates/v/ruvector-postgres.svg)](https://crates.io/crates/ruvector-postgres) | [![npm](https://img.shields.io/npm/v/@ruvector/postgres-cli.svg)](https://www.npmjs.com/package/@ruvector/postgres-cli) |
+---
 
-**v0.2.0** — Drop-in replacement for pgvector with **77+ SQL functions**, full **AVX-512/AVX2/NEON SIMD** acceleration (~2x faster than AVX2), HNSW and IVFFlat indexes, 39 attention mechanisms, GNN layers, hyperbolic embeddings (Poincaré + Lorentz), sparse vectors/BM25, **W3C SPARQL 1.1** with 50+ RDF functions, **local embeddings** (6 fastembed models), and self-learning capabilities.
+## Platform Features
 
-```bash
-# Docker (recommended)
-docker run -d -e POSTGRES_PASSWORD=secret -p 5432:5432 ruvector/postgres:latest
+<details>
+<summary><strong>🔀 Self-Learning DAG (Query Optimization)</strong></summary>
 
-# From source
-cargo install cargo-pgrx --version "0.12.9" --locked
-cargo pgrx install --release
+[![crates.io](https://img.shields.io/crates/v/ruvector-dag.svg)](https://crates.io/crates/ruvector-dag)
+[![npm](https://img.shields.io/npm/v/@ruvector/rudag.svg)](https://www.npmjs.com/package/@ruvector/rudag)
 
-# CLI tool for management
-npm install -g @ruvector/postgres-cli
-ruvector-pg install
-ruvector-pg vector create table --dim 1536 --index hnsw
+**Make your queries faster automatically.** RuVector DAG learns from every query execution and continuously optimizes performance—no manual tuning required.
+
+### What is RuVector DAG?
+
+A **self-learning query optimization system**—like a "nervous system" for your database queries that:
+
+1. **Watches** how queries execute and identifies bottlenecks
+2. **Learns** which optimization strategies work best for different query patterns
+3. **Adapts** in real-time, switching strategies when conditions change
+4. **Heals** itself by detecting anomalies and fixing problems before they impact users
+
+Unlike traditional query optimizers that use static rules, RuVector DAG learns from actual execution patterns and gets smarter over time.
+
+### Key Benefits
+
+| Benefit | What It Does | Result |
+|---------|--------------|--------|
+| **Automatic Improvement** | Queries get faster without code changes | **50-80% latency reduction** after learning |
+| **Zero-Downtime Adaptation** | Adapts to pattern changes automatically | No manual index rebuilds |
+| **Predictive Prevention** | Detects rising "tension" early | Intervenes *before* slowdowns |
+| **Works Everywhere** | PostgreSQL, Browser (58KB WASM), Embedded | Universal deployment |
+
+### Use Cases
+
+| Use Case | Why RuVector DAG Helps |
+|----------|------------------------|
+| **Vector Search Applications** | Optimize similarity searches that traditional databases struggle with |
+| **High-Traffic APIs** | Automatically adapt to changing query patterns throughout the day |
+| **Real-Time Analytics** | Learn which aggregation paths are fastest for your specific data |
+| **Edge/Embedded Systems** | 58KB WASM build runs in browsers and IoT devices |
+| **Multi-Tenant Platforms** | Learn per-tenant query patterns without manual tuning |
+
+### How It Works
+
+```
+Query comes in → DAG analyzes execution plan → Best attention mechanism selected
+                                                          ↓
+Query executes → Results returned → Learning system records what worked
+                                                          ↓
+                    Next similar query benefits from learned optimizations
 ```
 
-See [ruvector-postgres README](./crates/ruvector-postgres/README.md) for full SQL API reference and advanced features.
+The system maintains a **MinCut tension** score that acts as a health indicator. When tension rises, the system automatically switches to more aggressive optimization strategies and triggers predictive healing.
 
-### Tools & Utilities
+### 7 DAG Attention Mechanisms
+
+| Mechanism | When to Use | Trigger |
+|-----------|-------------|---------|
+| **Topological** | Default baseline | Low variance |
+| **Causal Cone** | Downstream impact analysis | Write-heavy patterns |
+| **Critical Path** | Latency-bound queries | p99 > 2x p50 |
+| **MinCut Gated** | Bottleneck-aware weighting | Cut tension rising |
+| **Hierarchical Lorentz** | Deep hierarchical queries | Depth > 10 |
+| **Parallel Branch** | Wide parallel execution | Branch count > 3 |
+| **Temporal BTSP** | Time-series workloads | Temporal patterns |
+
+### Quick Start
+
+**Rust:**
+```rust
+use ruvector_dag::{QueryDag, OperatorNode, OperatorType};
+use ruvector_dag::attention::{TopologicalAttention, DagAttention};
+
+// Build a query DAG
+let mut dag = QueryDag::new();
+let scan = dag.add_node(OperatorNode::hnsw_scan(0, "vectors_idx", 64));
+let filter = dag.add_node(OperatorNode::filter(1, "score > 0.5"));
+let result = dag.add_node(OperatorNode::new(2, OperatorType::Result));
+
+dag.add_edge(scan, filter).unwrap();
+dag.add_edge(filter, result).unwrap();
+
+// Compute attention scores
+let attention = TopologicalAttention::new(Default::default());
+let scores = attention.forward(&dag).unwrap();
+```
+
+**Node.js:**
+```javascript
+import { QueryDag, TopologicalAttention } from '@ruvector/rudag';
+
+// Build DAG
+const dag = new QueryDag();
+const scan = dag.addNode({ type: 'hnsw_scan', table: 'vectors', k: 64 });
+const filter = dag.addNode({ type: 'filter', condition: 'score > 0.5' });
+dag.addEdge(scan, filter);
+
+// Apply attention
+const attention = new TopologicalAttention();
+const scores = attention.forward(dag);
+console.log('Attention scores:', scores);
+```
+
+**Browser (WASM - 58KB):**
+```html
+<script type="module">
+import init, { QueryDag, TopologicalAttention } from '@ruvector/rudag-wasm';
+
+await init();
+const dag = new QueryDag();
+// ... same API as Node.js
+</script>
+```
+
+### SONA Learning Integration
+
+SONA (Self-Optimizing Neural Architecture) runs post-query in background, never blocking execution:
+
+```rust
+use ruvector_dag::sona::{DagSonaEngine, SonaConfig};
+
+let config = SonaConfig {
+    embedding_dim: 256,
+    lora_rank: 2,           // Rank-2 for <100μs updates
+    ewc_lambda: 5000.0,     // Catastrophic forgetting prevention
+    trajectory_capacity: 10_000,
+};
+let mut sona = DagSonaEngine::new(config);
+
+// Pre-query: Get enhanced embedding (fast path)
+let enhanced = sona.pre_query(&dag);
+
+// Execute query...
+let execution_time = execute_query(&dag);
+
+// Post-query: Record trajectory (async, background)
+sona.post_query(&dag, execution_time, baseline_time, "topological");
+```
+
+### Self-Healing
+
+Reactive (Z-score anomaly detection) + Predictive (rising MinCut tension triggers early intervention):
+
+```rust
+use ruvector_dag::healing::{HealingOrchestrator, AnomalyConfig, PredictiveConfig};
+
+let mut orchestrator = HealingOrchestrator::new();
+
+// Reactive: Z-score anomaly detection
+orchestrator.add_detector("query_latency", AnomalyConfig {
+    z_threshold: 3.0,
+    window_size: 100,
+    min_samples: 10,
+});
+
+// Predictive: Rising cut tension triggers early intervention
+orchestrator.enable_predictive(PredictiveConfig {
+    tension_threshold: 0.6,    // Intervene before 0.7 crisis
+    variance_threshold: 1.5,   // Rising variance = trouble coming
+    lookahead_window: 50,      // Predict 50 queries ahead
+});
+```
+
+### Query Convergence Example
+
+A slow query converges over several runs:
+
+```text
+[run 1] query: SELECT * FROM vectors WHERE embedding <-> $1 < 0.5
+        attention: topological (default)
+        mincut_tension: 0.23
+        latency: 847ms (improvement: 0.4%)
+
+[run 4] mincut_tension: 0.71 > 0.7 (THRESHOLD)
+        --> switching attention: topological -> mincut_gated
+        latency: 412ms (improvement: 51.5%)
+
+[run 10] attention: mincut_gated
+         mincut_tension: 0.22 (stable)
+         latency: 156ms (improvement: 81.6%)
+```
+
+### Performance Targets
+
+| Component | Target | Notes |
+|-----------|--------|-------|
+| Attention (100 nodes) | <100μs | All 7 mechanisms |
+| MicroLoRA adaptation | <100μs | Rank-2, per-operator |
+| Pattern search (10K) | <2ms | K-means++ indexing |
+| MinCut update | O(n^0.12) | Subpolynomial amortized |
+| Anomaly detection | <50μs | Z-score, streaming |
+| WASM size | 58KB | Gzipped, browser-ready |
+
+### Installation
+
+```bash
+# Rust
+cargo add ruvector-dag
+
+# Node.js
+npm install @ruvector/rudag
+
+# WASM (browser)
+npm install @ruvector/rudag-wasm
+```
+
+> **Full Documentation**: [ruvector-dag README](./crates/ruvector-dag/README.md)
+
+</details>
+
+<details>
+<summary><strong>📦 rvLite - Standalone Edge Database</strong></summary>
+
+[![crates.io](https://img.shields.io/crates/v/rvlite.svg)](https://crates.io/crates/rvlite)
+[![npm](https://img.shields.io/npm/v/@ruvector/rvlite.svg)](https://www.npmjs.com/package/@ruvector/rvlite)
+[![downloads](https://img.shields.io/npm/dt/@ruvector/rvlite.svg)](https://www.npmjs.com/package/@ruvector/rvlite)
+
+**A complete vector database that runs anywhere JavaScript runs** — browsers, Node.js, Deno, Bun, Cloudflare Workers, Vercel Edge Functions.
+
+### What is rvLite?
+
+rvLite is a **lightweight, standalone vector database** that runs entirely in WebAssembly. It provides SQL, SPARQL, and Cypher query interfaces, along with graph neural networks and self-learning capabilities—all in under 3MB.
+
+### Key Features
+
+| Feature | What It Does | Why It Matters |
+|---------|--------------|----------------|
+| **SQL Interface** | Familiar `SELECT`, `INSERT`, `WHERE` | No learning curve |
+| **SPARQL Support** | W3C-compliant RDF queries | Knowledge graphs in browser |
+| **Cypher Queries** | Neo4j-style graph queries | Graph traversals anywhere |
+| **GNN Embeddings** | Graph neural network layers | Self-learning search |
+| **ReasoningBank** | Trajectory learning | Gets smarter over time |
+| **SIMD Optimized** | Vector operations accelerated | Native-like performance |
+
+### Runs Everywhere
+
+| Platform | Status | Use Case |
+|----------|--------|----------|
+| **Browsers** | ✅ | Offline-first apps |
+| **Node.js** | ✅ | Server-side |
+| **Deno** | ✅ | Edge functions |
+| **Bun** | ✅ | Fast runtime |
+| **Cloudflare Workers** | ✅ | Edge computing |
+| **Vercel Edge** | ✅ | Serverless |
+
+### Architecture
+
+```
+┌─────────────────────────────────────────┐
+│  RvLite (Orchestration)                 │
+│  ├─ SQL executor                        │
+│  ├─ SPARQL executor                     │
+│  ├─ Cypher executor                     │
+│  └─ Unified WASM API                    │
+└──────────────┬──────────────────────────┘
+               │ depends on (100% reuse)
+               ▼
+┌──────────────────────────────────────────┐
+│  Existing WASM Crates                    │
+├──────────────────────────────────────────┤
+│  • ruvector-core (vectors, SIMD)         │
+│  • ruvector-graph-wasm (Cypher)          │
+│  • ruvector-gnn-wasm (GNN layers)        │
+│  • sona (ReasoningBank learning)         │
+│  • micro-hnsw-wasm (ultra-fast HNSW)     │
+└──────────────────────────────────────────┘
+```
+
+### Quick Start
+
+```typescript
+import { RvLite } from '@ruvector/rvlite';
+
+// Create database
+const db = await RvLite.create();
+
+// SQL with vector search
+await db.sql(`
+  CREATE TABLE docs (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    embedding VECTOR(384)
+  )
+`);
+
+await db.sql(`
+  SELECT id, content, embedding <=> $1 AS distance
+  FROM docs
+  ORDER BY distance
+  LIMIT 10
+`, [queryVector]);
+
+// Cypher graph queries
+await db.cypher(`
+  CREATE (a:Person {name: 'Alice'})-[:KNOWS]->(b:Person {name: 'Bob'})
+`);
+
+// SPARQL RDF queries
+await db.sparql(`
+  SELECT ?name WHERE {
+    ?person foaf:name ?name .
+  }
+`);
+
+// GNN embeddings
+const embeddings = await db.gnn.computeEmbeddings('social_network', [
+  db.gnn.createLayer('gcn', { inputDim: 128, outputDim: 64 })
+]);
+
+// Self-learning with ReasoningBank
+await db.learning.recordTrajectory({ state: [0.1], action: 2, reward: 1.0 });
+await db.learning.train({ algorithm: 'q-learning', iterations: 1000 });
+```
+
+### Size Budget
+
+| Component | Size | Purpose |
+|-----------|------|---------|
+| ruvector-core | ~500KB | Vectors, SIMD |
+| SQL parser | ~200KB | Query parsing |
+| SPARQL executor | ~300KB | RDF queries |
+| Cypher (graph-wasm) | ~600KB | Graph queries |
+| GNN layers | ~300KB | Neural networks |
+| ReasoningBank (sona) | ~300KB | Self-learning |
+| **Total** | **~2.3MB** | Gzipped |
+
+### Installation
+
+```bash
+# npm
+npm install @ruvector/rvlite
+
+# Rust
+cargo add rvlite
+
+# Build WASM
+wasm-pack build --target web --release
+```
+
+> **Full Documentation**: [rvlite README](./crates/rvlite/README.md)
+
+</details>
+
+<details>
+<summary><strong>🌐 Edge-Net - Collective AI Computing Network</strong></summary>
+
+[![npm](https://img.shields.io/npm/v/@ruvector/edge-net.svg)](https://www.npmjs.com/package/@ruvector/edge-net)
+
+**Share, Contribute, Compute Together** — A distributed computing platform that enables collective resource sharing for AI workloads.
+
+### What is Edge-Net?
+
+Edge-Net creates a **collective computing network** where participants share idle browser resources to power distributed AI workloads:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│              EDGE-NET: COLLECTIVE AI COMPUTING NETWORK                      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐              │
+│   │  Your       │       │  Collective │       │  AI Tasks   │              │
+│   │  Browser    │◄─────►│  Network    │◄─────►│  Completed  │              │
+│   │  (Idle CPU) │  P2P  │  (1000s)    │       │  for You    │              │
+│   └─────────────┘       └─────────────┘       └─────────────┘              │
+│         │                     │                     │                       │
+│   Contribute ──────► Earn rUv Units ──────► Use for AI Workloads           │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### How It Works
+
+| Step | What Happens | Result |
+|------|--------------|--------|
+| 1. **Contribute** | Share unused CPU cycles when browsing | Help the network |
+| 2. **Earn** | Accumulate rUv (Resource Utility Vouchers) | Build credits |
+| 3. **Use** | Spend rUv to run AI tasks | Access collective power |
+| 4. **Network Grows** | More participants = more power | Everyone benefits |
+
+### Why Collective AI Computing?
+
+| Traditional AI | Collective Edge-Net |
+|----------------|---------------------|
+| Expensive GPU servers | Free idle browser CPUs |
+| Centralized data centers | Distributed global network |
+| Pay-per-use pricing | Contribution-based access |
+| Single point of failure | Resilient P2P mesh |
+| Limited by your hardware | Scale with the collective |
+
+### AI Intelligence Stack
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        AI INTELLIGENCE STACK                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    MicroLoRA Adapter Pool (from ruvLLM)              │   │
+│  │  • LRU-managed pool (16 slots) • <50µs rank-1 forward               │   │
+│  │  • 4-bit/8-bit quantization    • 2,236+ ops/sec                     │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                    SONA - Self-Optimizing Neural Architecture         │   │
+│  │  • Instant Loop: Per-request MicroLoRA adaptation                    │   │
+│  │  • Background Loop: Hourly K-means consolidation                     │   │
+│  │  • Deep Loop: Weekly EWC++ (prevents catastrophic forgetting)        │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌──────────────────────┐  ┌──────────────────────┐  ┌─────────────────┐  │
+│  │   HNSW Vector Index  │  │  Federated Learning  │  │ ReasoningBank   │  │
+│  │   • 150x faster      │  │  • Byzantine tolerant│  │ • Pattern learn │  │
+│  │   • O(log N) search  │  │  • Diff privacy      │  │ • 87x energy    │  │
+│  └──────────────────────┘  └──────────────────────┘  └─────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Core AI Tasks
+
+| Task Type | Use Case | Performance |
+|-----------|----------|-------------|
+| **Vector Search** | Find similar items | 150x speedup via HNSW |
+| **Embeddings** | Text understanding | Semantic vectors |
+| **Semantic Match** | Intent detection | Classify meaning |
+| **LoRA Inference** | Task adaptation | <100µs forward |
+| **Pattern Learning** | Self-optimization | ReasoningBank trajectories |
+
+### Pi-Key Identity System
+
+Ultra-compact cryptographic identity using mathematical constants:
+
+| Key Type | Size | Purpose |
+|----------|------|---------|
+| **π (Pi-Key)** | 40 bytes | Permanent identity |
+| **e (Session)** | 34 bytes | Encrypted sessions |
+| **φ (Genesis)** | 21 bytes | Network origin markers |
+
+### Self-Optimizing Features
+
+| Feature | Mechanism | Benefit |
+|---------|-----------|---------|
+| **Task Routing** | Multi-head attention | Work goes to best nodes |
+| **Topology Optimization** | Self-organizing mesh | Network adapts to load |
+| **Q-Learning Security** | Reinforcement learning | Learns to defend threats |
+| **Economic Balance** | rUv token system | Self-sustaining economy |
+
+### Quick Start
+
+**Add to Your Website:**
+```html
+<script type="module">
+  import init, { EdgeNetNode, EdgeNetConfig } from '@ruvector/edge-net';
+
+  async function joinCollective() {
+    await init();
+
+    // Join the collective
+    const node = new EdgeNetConfig('my-website')
+      .cpuLimit(0.3)          // Contribute 30% CPU when idle
+      .memoryLimit(256 * 1024 * 1024)  // 256MB max
+      .respectBattery(true)   // Reduce on battery
+      .build();
+
+    node.start();
+
+    // Monitor participation
+    setInterval(() => {
+      console.log(`Contributed: ${node.ruvBalance()} rUv`);
+    }, 10000);
+  }
+
+  joinCollective();
+</script>
+```
+
+**Use the Collective's AI Power:**
+```javascript
+// Submit an AI task to the collective
+const result = await node.submitTask('vector_search', {
+  query: embeddings,
+  k: 10,
+  index: 'shared-knowledge-base'
+}, 5);  // Spend up to 5 rUv
+
+console.log('Similar items:', result);
+```
+
+**Monitor Your Contribution:**
+```javascript
+const stats = node.getStats();
+console.log(`
+  rUv Earned: ${stats.ruv_earned}
+  rUv Spent: ${stats.ruv_spent}
+  Tasks Completed: ${stats.tasks_completed}
+  Reputation: ${(stats.reputation * 100).toFixed(1)}%
+`);
+```
+
+### Key Features
+
+| Feature | Benefit |
+|---------|---------|
+| **Idle CPU Utilization** | Use resources that would otherwise be wasted |
+| **Browser-Based** | No installation, runs in any modern browser |
+| **Adjustable Contribution** | Control how much you share (10-50% CPU) |
+| **Battery Aware** | Automatically reduces on battery power |
+| **Fair Distribution** | Work routed based on capability matching |
+| **Privacy-First** | Pi-Key cryptographic identity |
+| **Federated Learning** | Learn collectively without sharing data |
+| **Byzantine Tolerance** | Resilient to malicious nodes |
+
+### Installation
+
+```bash
+# npm
+npm install @ruvector/edge-net
+
+# Or include directly
+<script src="https://unpkg.com/@ruvector/edge-net"></script>
+```
+
+> **Full Documentation**: [edge-net README](./examples/edge-net/README.md)
+
+</details>
+
+---
+
+## AI & Machine Learning
+
+<details>
+<summary><strong>🎲 Agentic-Synth - AI Synthetic Data Generation</strong></summary>
+
+[![npm](https://img.shields.io/npm/v/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth)
+[![downloads](https://img.shields.io/npm/dt/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth)
+
+**AI-Powered Synthetic Data Generation at Scale** — Generate unlimited, high-quality synthetic data for training AI models, testing systems, and building robust agentic applications.
+
+### Why Agentic-Synth?
+
+| Problem | Solution |
+|---------|----------|
+| Real data is **expensive** to collect | Generate **unlimited** synthetic data |
+| **Privacy-sensitive** with compliance risks | **Fully synthetic**, no PII concerns |
+| **Slow** to generate at scale | **10-100x faster** than manual creation |
+| **Insufficient** for edge cases | **Customizable** schemas for any scenario |
+| **Hard to reproduce** across environments | **Reproducible** with seed values |
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Multi-Model Support** | Gemini, OpenRouter, GPT, Claude, and 50+ models via DSPy.ts |
+| **Context Caching** | 95%+ performance improvement with intelligent LRU cache |
+| **Smart Model Routing** | Automatic load balancing, failover, and cost optimization |
+| **DSPy.ts Integration** | Self-learning optimization with 20-25% quality improvement |
+| **Streaming** | AsyncGenerator for real-time data flow |
+| **Memory Efficient** | <50MB for datasets up to 10K records |
+
+### Data Generation Types
+
+| Type | Use Cases |
+|------|-----------|
+| **Time-Series** | Financial data, IoT sensors, metrics |
+| **Events** | Logs, user actions, system events |
+| **Structured** | JSON, CSV, databases, APIs |
+| **Embeddings** | Vector data for RAG systems |
+
+### Quick Start
+
+```bash
+# Install
+npm install @ruvector/agentic-synth
+
+# Or run instantly with npx
+npx @ruvector/agentic-synth generate --count 100
+
+# Interactive mode
+npx @ruvector/agentic-synth interactive
+```
+
+### Basic Usage
+
+```typescript
+import { AgenticSynth } from '@ruvector/agentic-synth';
+
+// Initialize with your preferred model
+const synth = new AgenticSynth({
+  model: 'gemini-pro',
+  apiKey: process.env.GEMINI_API_KEY
+});
+
+// Generate structured data
+const users = await synth.generate({
+  schema: {
+    name: 'string',
+    email: 'email',
+    age: 'number:18-65',
+    role: ['admin', 'user', 'guest']
+  },
+  count: 1000
+});
+
+// Generate time-series data
+const stockData = await synth.timeSeries({
+  fields: ['open', 'high', 'low', 'close', 'volume'],
+  interval: '1h',
+  count: 500,
+  volatility: 0.02
+});
+
+// Stream large datasets
+for await (const batch of synth.stream({ count: 100000, batchSize: 1000 })) {
+  await processData(batch);
+}
+```
+
+### Self-Learning with DSPy
+
+```typescript
+import { AgenticSynth, DSPyOptimizer } from '@ruvector/agentic-synth';
+
+// Enable self-learning optimization
+const synth = new AgenticSynth({
+  model: 'gemini-pro',
+  optimizer: new DSPyOptimizer({
+    learningRate: 0.1,
+    qualityThreshold: 0.85
+  })
+});
+
+// Quality improves automatically over time
+const data = await synth.generate({
+  schema: { ... },
+  count: 1000,
+  optimize: true  // Enable learning
+});
+
+console.log(`Quality score: ${data.metrics.quality}`);
+// First run: 0.72
+// After 100 runs: 0.94 (+25% improvement)
+```
+
+### Performance
+
+| Metric | Value |
+|--------|-------|
+| **With caching** | 98.2% faster |
+| **P99 latency** | 2500ms → 45ms |
+| **Memory** | <50MB for 10K records |
+| **Throughput** | 1000+ records/sec |
+
+### Ecosystem Integration
+
+| Package | Purpose |
+|---------|---------|
+| **RuVector** | Native vector database for RAG |
+| **DSPy.ts** | Prompt optimization |
+| **Agentic-Jujutsu** | Version-controlled generation |
+
+### Installation
+
+```bash
+# npm
+npm install @ruvector/agentic-synth
+
+# Examples package (50+ production examples)
+npm install @ruvector/agentic-synth-examples
+```
+
+> **Full Documentation**: [agentic-synth README](./npm/packages/agentic-synth/README.md)
+
+</details>
+
+<details>
+<summary><strong>📈 Neural Trader - AI Trading System</strong></summary>
+
+[![npm](https://img.shields.io/npm/v/neural-trader.svg)](https://www.npmjs.com/package/neural-trader)
+[![downloads](https://img.shields.io/npm/dt/neural-trader.svg)](https://www.npmjs.com/package/neural-trader)
+
+**Production-ready neural trading system** combining state-of-the-art ML for automated trading, sports betting, and portfolio management. Zero external ML dependencies, sub-millisecond latency.
+
+### Core AI/ML Engines
+
+| Engine | Description | Performance |
+|--------|-------------|-------------|
+| **Fractional Kelly** | Optimal position sizing with risk-adjusted bet scaling | 588,885 ops/s |
+| **LSTM-Transformer** | Deep learning price prediction (temporal + attention) | 1,468 seq/s |
+| **DRL Portfolio** | Reinforcement learning ensemble (PPO/SAC/A2C) | 17,043 steps/s |
+| **Sentiment Alpha** | Real-time sentiment analysis for alpha generation | 3,764 pipeline/s |
+
+### Why Neural Trader?
+
+| Traditional ML | Neural Trader |
+|----------------|---------------|
+| TensorFlow/PyTorch required | **Zero dependencies** |
+| 1.2MB+ bundle size | **45KB** bundle |
+| 2.1ms LSTM inference | **0.68ms** inference |
+| Complex deployment | **Works in browser & Node.js** |
+
+### Research-Backed Algorithms
+
+| Algorithm | Research Finding |
+|-----------|------------------|
+| **Kelly Criterion** | 1/5th fractional achieves 98% ROI with 85% less risk of ruin |
+| **LSTM-Transformer** | Temporal + attention fusion outperforms single architectures |
+| **DRL Ensemble** | PPO/SAC/A2C voting reduces variance vs single agent |
+| **Sentiment Alpha** | 3% annual excess returns documented in academia |
+
+### Quick Start
+
+```javascript
+import { KellyCriterion, HybridLSTMTransformer, DRLPortfolioManager } from 'neural-trader';
+
+// Kelly position sizing
+const kelly = new KellyCriterion();
+const stake = kelly.calculateStake(9000, 0.55, 2.0, 0.2);  // 1/5th Kelly
+// → $180 recommended stake (2% of bankroll)
+
+// LSTM-Transformer prediction
+const model = new HybridLSTMTransformer({
+  lstm: { hiddenSize: 64, layers: 2 },
+  transformer: { heads: 4, layers: 2 }
+});
+const prediction = model.predict(candles);
+// → { signal: 'BUY', confidence: 0.73, direction: 'bullish' }
+
+// DRL portfolio allocation
+const manager = new DRLPortfolioManager({ numAssets: 10 });
+await manager.train(marketData, { episodes: 100 });
+const allocation = manager.getAction(currentState);
+// → [0.15, 0.12, 0.08, ...] optimal weights
+```
+
+### Use Cases
+
+| Use Case | Example |
+|----------|---------|
+| **Stock Trading** | DAG-based pipeline with parallel execution |
+| **Sports Betting** | Kelly sizing with ML calibration |
+| **Crypto Trading** | DRL portfolio for 20+ assets |
+| **News Trading** | Real-time sentiment stream processing |
+| **Portfolio Rebalancing** | Reinforcement learning allocation |
+
+### Package Ecosystem (20+)
+
+| Package | Description |
+|---------|-------------|
+| `neural-trader` | Core engine with native HNSW, SIMD |
+| `@neural-trader/core` | Ultra-low latency Rust + Node.js bindings |
+| `@neural-trader/strategies` | Strategy management and backtesting |
+| `@neural-trader/execution` | Trade execution and order management |
+| `@neural-trader/mcp` | MCP server with 87+ trading tools |
+| `@neural-trader/risk` | VaR, stress testing, risk metrics |
+| `@neural-trader/portfolio` | Markowitz, Risk Parity optimization |
+| `@neural-trader/neural` | Neural network training |
+| `@neural-trader/brokers` | Alpaca, Interactive Brokers |
+| `@neural-trader/sports-betting` | Arbitrage, Kelly, odds analysis |
+
+### CLI Interface
+
+```bash
+# Real-time trading
+node cli.js run --strategy=hybrid --symbol=AAPL --capital=100000
+
+# Backtest historical performance
+node cli.js backtest --days=252 --capital=50000 --strategy=drl
+
+# Paper trading simulation
+node cli.js paper --capital=100000 --strategy=sentiment
+
+# Performance benchmarks
+node cli.js benchmark --iterations=100
+```
+
+### Exotic Examples
+
+| Example | Description |
+|---------|-------------|
+| **Multi-Agent Swarm** | Distributed trading intelligence with consensus |
+| **GNN Correlation Network** | Graph neural network correlation analysis |
+| **Attention Regime Detection** | Transformer-based market regime classification |
+| **Quantum Portfolio** | QAOA & quantum annealing optimization |
+| **Hyperbolic Embeddings** | Poincaré disk market embeddings |
+| **Atomic Arbitrage** | Cross-exchange with MEV protection |
+
+### Performance
+
+| Module | Latency | Throughput | Status |
+|--------|---------|------------|--------|
+| Kelly Engine | 0.014ms | 71,295/s | ✓ Ready |
+| LSTM-Transformer | 0.681ms | 1,468/s | ✓ Ready |
+| DRL Portfolio | 0.059ms | 17,043/s | ✓ Ready |
+| Sentiment Alpha | 0.266ms | 3,764/s | ✓ Ready |
+| Full Pipeline | 4.68ms | 214/s | ✓ Ready |
+
+### Installation
+
+```bash
+# npm
+npm install neural-trader
+
+# Full ecosystem
+npm install @neural-trader/core @neural-trader/strategies @neural-trader/mcp
+```
+
+> **Full Documentation**: [neural-trader README](./examples/neural-trader/README.md)
+
+</details>
+
+<details>
+<summary><strong>🥋 Agentic-Jujutsu - Quantum-Resistant Version Control</strong></summary>
+
+[![npm](https://img.shields.io/npm/v/agentic-jujutsu.svg)](https://www.npmjs.com/package/agentic-jujutsu)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+### What is Agentic-Jujutsu?
+
+Agentic-Jujutsu is a **quantum-resistant, self-learning version control system** designed for AI agents. It combines lock-free concurrent operations with ReasoningBank trajectory learning for continuous improvement.
+
+| Traditional Git | Agentic-Jujutsu |
+|----------------|-----------------|
+| Lock-based commits | Lock-free (23x faster) |
+| Manual conflict resolution | 87% automatic resolution |
+| Static operations | Self-learning from patterns |
+| No quantum protection | SHA3-512 + HQC-128 |
+| Sequential agents | Concurrent multi-agent |
+
+### Key Features
+
+| Feature | Performance | Description |
+|---------|-------------|-------------|
+| **Concurrent Commits** | 350 ops/s | 23x faster than Git (15 ops/s) |
+| **Context Switching** | <100ms | 10x faster than Git (500-1000ms) |
+| **Conflict Resolution** | 87% auto | AI-powered pattern matching |
+| **Quantum Security** | <1ms verify | SHA3-512 fingerprints, HQC-128 encryption |
+| **ReasoningBank** | Continuous | Trajectory learning with verdicts |
+
+### Quick Start
+
+```bash
+# Install
+npm install agentic-jujutsu
+
+# Basic usage
+npx agentic-jujutsu
+```
+
+```typescript
+import { JjWrapper } from 'agentic-jujutsu';
+
+const jj = new JjWrapper();
+
+// Start learning trajectory
+jj.startTrajectory('Implement feature X');
+
+// Make changes and commit
+await jj.newCommit('Add authentication module');
+jj.addToTrajectory();
+
+// Finalize with success score
+jj.finalizeTrajectory(0.9, 'Feature implemented successfully');
+
+// Get AI-powered suggestions
+const suggestions = await jj.getSuggestions();
+```
+
+### Multi-Agent Coordination
+
+```typescript
+// Concurrent commits without locks
+const agents = ['agent-1', 'agent-2', 'agent-3'];
+await Promise.all(agents.map(agent =>
+  jj.newCommit(`Changes from ${agent}`)
+));
+// All commits succeed - no lock waiting!
+```
+
+> **Full Documentation**: [agentic-jujutsu README](./examples/agentic-jujutsu/README.md)
+
+</details>
+
+<details>
+<summary><strong>🔬 SciPix - Scientific Document OCR</strong></summary>
+
+[![crates.io](https://img.shields.io/crates/v/ruvector-scipix.svg)](https://crates.io/crates/ruvector-scipix)
+[![docs.rs](https://docs.rs/ruvector-scipix/badge.svg)](https://docs.rs/ruvector-scipix)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+### What is SciPix?
+
+SciPix is a **blazing-fast, memory-safe OCR engine** written in pure Rust, purpose-built for scientific documents, mathematical equations, and technical diagrams.
+
+| Feature | SciPix | Tesseract | Mathpix |
+|---------|--------|-----------|---------|
+| Simple Text OCR | **50ms** | 120ms | 200ms* |
+| Math Equation | **80ms** | N/A | 150ms* |
+| Batch (100 images) | **2.1s** | 8.5s | N/A |
+| Memory Usage | **45MB** | 180MB | Cloud |
+| LaTeX Output | Yes | No | Yes |
+
+*API latency, not processing time
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **ONNX Runtime** | GPU-accelerated with CUDA, TensorRT, CoreML |
+| **LaTeX Output** | Mathematical equation recognition with LaTeX, MathML, AsciiMath |
+| **SIMD Optimized** | 4x faster image preprocessing with AVX2, SSE4, NEON |
+| **REST API** | Production-ready HTTP server with rate limiting |
+| **MCP Server** | Integrate with Claude, ChatGPT via Model Context Protocol |
+| **WebAssembly** | Run OCR directly in browsers |
+
+### Quick Start
+
+```bash
+# Add to Cargo.toml
+cargo add ruvector-scipix
+
+# With features
+ruvector-scipix = { version = "0.1.16", features = ["ocr", "math", "optimize"] }
+```
+
+```rust
+use ruvector_scipix::{SciPixOcr, OcrConfig};
+
+// Initialize OCR engine
+let ocr = SciPixOcr::new(OcrConfig::default())?;
+
+// Process scientific image
+let result = ocr.process_image("equation.png")?;
+println!("LaTeX: {}", result.latex);
+println!("Confidence: {:.2}%", result.confidence * 100.0);
+```
+
+### Use Cases
+
+- **Academic Paper Digitization** - Extract text and equations from scanned research papers
+- **Math Homework Assistance** - Convert handwritten equations to LaTeX for AI tutoring
+- **Technical Documentation** - Process engineering diagrams and scientific charts
+- **AI/LLM Integration** - Feed scientific content to language models via MCP
+
+> **Full Documentation**: [scipix README](./examples/scipix/README.md)
+
+</details>
+
+<details>
+<summary><strong>🧠 Meta-Cognition SNN - Spiking Neural Networks</strong></summary>
+
+### What is Meta-Cognition SNN?
+
+A hybrid AI architecture combining **Spiking Neural Networks (SNN)**, **SIMD-optimized vector operations**, and **5 attention mechanisms** with meta-cognitive self-discovery capabilities.
+
+| Capability | Performance | Description |
+|------------|-------------|-------------|
+| **Spiking Neural Networks** | 10-50x faster | LIF neurons + STDP learning with N-API SIMD |
+| **SIMD Vector Operations** | 5-54x faster | Loop-unrolled distance/dot product calculations |
+| **5 Attention Mechanisms** | Sub-millisecond | Multi-Head, Flash, Linear, Hyperbolic, MoE |
+| **Vector Search** | 150x faster | RuVector-powered semantic search |
+| **Meta-Cognition** | Autonomous | Self-discovering emergent capabilities |
+
+### SIMD Performance
+
+| Operation | Speedup | Notes |
+|-----------|---------|-------|
+| LIF Updates | **16.7x** | Leaky integrate-and-fire neurons |
+| Synaptic Forward | **14.9x** | Forward propagation |
+| STDP Learning | **26.3x** | Spike-timing dependent plasticity |
+| Distance (128d) | **54x** | Euclidean distance calculation |
+| Full Simulation | **18.4x** | End-to-end SNN simulation |
+
+### 5 Attention Mechanisms
+
+| Mechanism | Best For | Latency |
+|-----------|----------|---------|
+| **Flash** | Long sequences | 0.023ms |
+| **MoE** | Specialized domains | 0.021ms |
+| **Multi-Head** | Complex patterns | 0.047ms |
+| **Linear** | Real-time processing | 0.075ms |
+| **Hyperbolic** | Hierarchical data | 0.222ms |
+
+### Quick Start
+
+```bash
+# Install and run demos
+cd examples/meta-cognition-spiking-neural-network
+npm install
+node demos/run-all.js
+```
+
+```javascript
+const { createFeedforwardSNN, rateEncoding } = require('./demos/snn/lib/SpikingNeuralNetwork');
+
+// Create SNN with SIMD optimization
+const snn = createFeedforwardSNN([100, 50, 10], {
+  dt: 1.0,
+  tau: 20.0,
+  a_plus: 0.005,
+  lateral_inhibition: true
+});
+
+// Train with STDP
+const input = rateEncoding(pattern, snn.dt, 100);
+snn.step(input);
+```
+
+### 6 Emergent Discoveries
+
+1. Multi-Scale Attention Hierarchy (Novelty: 5/5)
+2. Spike Synchronization Patterns
+3. Attention-Gated Spike Propagation
+4. Temporal Coherence Emergence
+5. Emergent Sparsity (80% fewer active neurons)
+6. Meta-Plasticity (faster learning on later tasks)
+
+> **Full Documentation**: [meta-cognition-snn README](./examples/meta-cognition-spiking-neural-network/README.md)
+
+</details>
+
+<details>
+<summary><strong>🤖 RuvLLM - Self-Learning LLM Orchestration</strong></summary>
+
+[![Rust](https://img.shields.io/badge/rust-1.77%2B-orange.svg)](https://www.rust-lang.org/)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE)
+[![HuggingFace](https://img.shields.io/badge/export-HuggingFace-yellow.svg)](#)
+
+### What is RuvLLM?
+
+RuvLLM is a **self-learning language model orchestration system** that combines frozen foundation models with adaptive memory and intelligent routing. Unlike traditional LLMs that rely solely on static parameters, RuvLLM continuously improves from every interaction.
+
+> *"The intelligence is not in one model anymore. It is in the loop."*
+
+### SONA: 3-Tier Temporal Learning
+
+| Loop | Frequency | Latency | Description |
+|------|-----------|---------|-------------|
+| **A: Instant** | Per-request | <100μs | MicroLoRA adaptation (rank 1-2) |
+| **B: Background** | Hourly | ~1.3ms | K-means++ clustering, base LoRA (rank 4-16) |
+| **C: Deep** | Weekly | N/A | EWC++ consolidation, concept hierarchies |
+
+### Core Components
+
+| Component | Description |
+|-----------|-------------|
+| **LFM2 Cortex** | Frozen reasoning engine (135M-2.6B params) |
+| **Ruvector Memory** | Adaptive synaptic mesh with HNSW indexing |
+| **FastGRNN Router** | Intelligent model selection circuit |
+| **Graph Attention** | 8-head attention with edge features |
+| **SONA Engine** | LoRA + EWC++ + ReasoningBank |
+
+### Performance (CPU-Only)
+
+| Metric | Value |
+|--------|-------|
+| **Initialization** | 3.71ms |
+| **Average Query** | 0.09ms |
+| **Session Query** | 0.04ms |
+| **Throughput** | ~38,000 q/s |
+| **Memory** | ~50MB |
+
+### Quick Start
+
+```rust
+use ruvllm::{RuvLLMOrchestrator, OrchestratorConfig};
+
+// Initialize orchestrator
+let config = OrchestratorConfig::default();
+let orchestrator = RuvLLMOrchestrator::new(config)?;
+
+// Query with automatic learning
+let response = orchestrator.query("Explain quantum entanglement").await?;
+println!("{}", response.text);
+
+// Response improves over time as SONA learns patterns
+```
+
+### Federated Learning
+
+```rust
+// Ephemeral agents collect trajectories
+let agent = EphemeralAgent::new("task-specific-agent");
+agent.process_task(&task).await?;
+let export = agent.export();
+
+// Central coordinator aggregates learning
+coordinator.accept_export(export)?;
+coordinator.consolidate();  // Share patterns with new agents
+```
+
+### Dynamic Embedding Fine-Tuning
+
+RuvLLM's adaptive learning system enables real-time model improvement without retraining.
+
+| Feature | Description | Latency |
+|---------|-------------|---------|
+| **MicroLoRA** | Per-request adaptation (rank 1-2), <50KB adapters | <1ms |
+| **Contrastive Training** | Triplet loss with hard negatives for embedding optimization | Batch |
+| **Task-Specific Adapters** | Pre-tuned for Coder, Researcher, Security, Architect, Reviewer | Hot-swap |
+| **EWC++ Consolidation** | Prevents catastrophic forgetting during continuous learning | Background |
+| **Adapter Merging** | Average, Weighted, SLERP, TIES, DARE strategies | On-demand |
+
+```javascript
+// Contrastive fine-tuning for agent routing
+import { ContrastiveTrainer } from '@ruvector/ruvllm';
+
+const trainer = new ContrastiveTrainer({
+  margin: 0.5,
+  hardNegativeRatio: 0.7
+});
+
+// Learn: task → correct agent, not wrong agent
+trainer.addTriplet(taskEmb, correctAgentEmb, wrongAgentEmb, true);
+const model = trainer.train();
+```
+
+```rust
+// Task-specific adapter hot-swapping
+use ruvllm::lora::RuvLtraAdapters;
+
+let adapters = RuvLtraAdapters::new();
+let coder = adapters.create_lora("coder", 768)?;      // Rank 16, code patterns
+let security = adapters.create_lora("security", 768)?; // Rank 16, vulnerability detection
+
+// Hot-swap at runtime without model reload
+orchestrator.set_adapter(coder);
+let code_response = orchestrator.query("Implement binary search").await?;
+
+orchestrator.set_adapter(security);
+let audit_response = orchestrator.query("Audit this code for vulnerabilities").await?;
+```
+
+### Advanced Features
+
+- **SIMD Inference**: AVX2/AVX512/SSE4.1 optimization
+- **Q4 Quantization**: 4-bit weights for memory efficiency
+- **HuggingFace Export**: Export LoRA weights and preference pairs
+- **Multi-Model Routing**: SmolLM, Qwen2, TinyLlama selection
+- **WASM Support**: Run SONA in browsers and edge devices
+- **Browser Fine-Tuning**: MicroLoRA WASM with localStorage persistence
+
+> **Full Documentation**: [ruvLLM README](./examples/ruvLLM/README.md) | [Fine-Tuning Guide](./docs/ruvllm/FINE_TUNING.md) | [Task Adapters](./docs/training/task_specific_lora_adapters.md)
+
+</details>
+
+<details>
+<summary><strong>🗜️ REFRAG - Compress-Sense-Expand RAG</strong></summary>
+
+### What is REFRAG?
+
+REFRAG implements the **Compress-Sense-Expand architecture** from [arXiv:2509.01092](https://arxiv.org/abs/2509.01092), achieving **~30x RAG latency reduction** by storing pre-computed representation tensors instead of raw text.
+
+### Architecture
+
+```
+┌────────────────┐    ┌────────────────┐    ┌────────────────┐
+│   COMPRESS     │───▶│     SENSE      │───▶│    EXPAND      │
+│    Layer       │    │     Layer      │    │    Layer       │
+└────────────────┘    └────────────────┘    └────────────────┘
+
+Binary tensor         Policy network        Dimension projection
+storage with          decides COMPRESS      (768 → 4096 dims)
+zero-copy access      vs EXPAND
+```
+
+### Compression Strategies
+
+| Strategy | Compression | Use Case |
+|----------|-------------|----------|
+| `None` | 1x | Maximum precision |
+| `Float16` | 2x | Good balance |
+| `Int8` | 4x | Memory constrained |
+| `Binary` | 32x | Extreme compression |
+
+### Policy Networks
+
+| Policy | Latency | Description |
+|--------|---------|-------------|
+| `ThresholdPolicy` | ~2μs | Cosine similarity threshold |
+| `LinearPolicy` | ~5μs | Single layer classifier |
+| `MLPPolicy` | ~15μs | Two-layer neural network |
+
+### Quick Start
+
+```bash
+# Run demo
+cargo run --bin refrag-demo
+
+# Run benchmarks
+cargo run --bin refrag-benchmark --release
+```
+
+```rust
+use refrag_pipeline_example::{RefragStore, RefragEntry};
+
+// Create REFRAG-enabled store
+let store = RefragStore::new(384, 768)?;
+
+// Insert with representation tensor
+let entry = RefragEntry::new("doc_1", search_vector, "The quick brown fox...")
+    .with_tensor(tensor_bytes, "llama3-8b");
+store.insert(entry)?;
+
+// Hybrid search (policy-based COMPRESS/EXPAND)
+let results = store.search_hybrid(&query, 10, Some(0.85))?;
+
+for result in results {
+    match result.response_type {
+        RefragResponseType::Compress => {
+            // Tensor directly injectable into LLM context
+            println!("Tensor: {} dims", result.tensor_dims.unwrap());
+        }
+        RefragResponseType::Expand => {
+            // Original text when full context needed
+            println!("Text: {}", result.content.unwrap());
+        }
+    }
+}
+```
+
+### Target LLM Dimensions
+
+| Source | Target | LLM |
+|--------|--------|-----|
+| 768 | 4096 | LLaMA-3 8B |
+| 768 | 8192 | LLaMA-3 70B |
+| 1536 | 8192 | GPT-4 |
+
+> **Full Documentation**: [refrag-pipeline README](./examples/refrag-pipeline/README.md)
+
+</details>
+
+<details>
+<summary><strong>🐦 7sense - Bioacoustic Intelligence Platform</strong></summary>
+
+[![Rust](https://img.shields.io/badge/rust-1.75+-orange.svg)](https://www.rust-lang.org)
+[![Tests](https://img.shields.io/badge/tests-329%20passed-brightgreen.svg)]()
+[![Coverage](https://img.shields.io/badge/coverage-85%25-green.svg)]()
+
+### What is 7sense?
+
+7sense transforms **bird calls into navigable geometric space** using cutting-edge AI and vector search. It converts audio recordings of bird songs into rich, searchable embeddings using Perch 2.0 neural networks and ultra-fast HNSW indexing.
+
+| Traditional Monitoring | 7sense |
+|----------------------|--------|
+| Expert human listeners | Instant AI species ID |
+| Basic spectrogram analysis | Neural embeddings (1536-dim) |
+| Limited scale | Millions of recordings |
+| Manual pattern finding | Automated discovery |
+
+### Performance Targets
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| HNSW Search Speedup | 150x vs brute force | Achieved |
+| Query Latency (p99) | < 50ms | Achieved |
+| Recall@10 | >= 0.95 | Achieved |
+| Embedding Throughput | > 100 segments/sec | Achieved |
+| Memory per 1M vectors | < 6 GB | Achieved |
+
+### 9 Rust Crates
+
+| Crate | Description |
+|-------|-------------|
+| `sevensense-core` | Species taxonomy, temporal types |
+| `sevensense-audio` | WAV/MP3/FLAC, Mel spectrograms |
+| `sevensense-embedding` | Perch 2.0 ONNX, 1536-dim vectors |
+| `sevensense-vector` | HNSW with 150x speedup |
+| `sevensense-learning` | GNN training, EWC regularization |
+| `sevensense-analysis` | HDBSCAN clustering, Markov models |
+| `sevensense-interpretation` | Evidence packs, species narratives |
+| `sevensense-api` | GraphQL, REST, WebSocket streaming |
+| `sevensense-benches` | Criterion.rs performance suites |
+
+### Quick Start
+
+```bash
+# Build and run
+cd examples/vibecast-7sense
+cargo build --release
+cargo run -p sevensense-api --release
+```
+
+```rust
+use sevensense_audio::AudioProcessor;
+use sevensense_embedding::EmbeddingPipeline;
+use sevensense_vector::HnswIndex;
+
+// Load and process audio
+let processor = AudioProcessor::new(Default::default());
+let segments = processor.process_file("recording.wav").await?;
+
+// Generate Perch 2.0 embeddings
+let pipeline = EmbeddingPipeline::new(Default::default()).await?;
+let embeddings = pipeline.embed_segments(&segments).await?;
+
+// Search for similar calls (150x faster)
+let index = HnswIndex::new(Default::default());
+index.add_batch(&embeddings)?;
+let neighbors = index.search(&embeddings[0], 10)?;
+
+println!("Found {} similar bird calls", neighbors.len());
+```
+
+### Use Cases
+
+- **Species Identification** - Instant predictions with confidence scores
+- **Pattern Discovery** - Find similar calls across millions of recordings
+- **Behavioral Insights** - Detect singing patterns, dialects, anomalies
+- **Conservation Monitoring** - Track biodiversity at scale
+
+> **Full Documentation**: [7sense README](./examples/vibecast-7sense/README.md)
+
+</details>
+
+<details>
+<summary><strong>🧬 EXO-AI - Advanced Cognitive Substrate</strong></summary>
+
+[![crates.io](https://img.shields.io/crates/v/exo-core.svg)](https://crates.io/crates/exo-core)
+[![docs.rs](https://docs.rs/exo-core/badge.svg)](https://docs.rs/exo-core)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE)
+
+### What is EXO-AI?
+
+EXO-AI 2025 is a comprehensive **cognitive substrate** implementing cutting-edge theories from neuroscience, physics, and consciousness research. It provides 9 interconnected Rust crates totaling ~15,800+ lines of research-grade code.
+
+> Traditional AI systems process information. EXO-AI aims to understand it.
+
+### SIMD-Accelerated Performance
+
+| Operation | Speedup | Notes |
+|-----------|---------|-------|
+| Distance (128d) | **54x** | AVX2/NEON optimized |
+| Cosine Similarity | **2.73x** | Batch operations |
+| Pattern Matching | **8-54x** | Loop-unrolled |
+| Meta-Simulation | **13+ quadrillion/s** | From ultra-low-latency-sim |
+
+### 9 Rust Crates
+
+| Crate | Description |
+|-------|-------------|
+| `exo-core` | IIT consciousness (Φ) measurement & Landauer thermodynamics |
+| `exo-temporal` | Temporal memory with causal tracking & consolidation |
+| `exo-hypergraph` | Topological analysis with persistent homology |
+| `exo-manifold` | SIREN networks + SIMD-accelerated retrieval |
+| `exo-exotic` | 10 cutting-edge cognitive experiments |
+| `exo-federation` | Post-quantum federated cognitive mesh |
+| `exo-backend-classical` | SIMD-accelerated compute backend |
+| `exo-wasm` | Browser & edge WASM deployment |
+| `exo-node` | Node.js bindings via NAPI-RS |
+
+### Key Theories Implemented
+
+| Theory | Implementation |
+|--------|---------------|
+| **IIT (Integrated Information Theory)** | Consciousness level (Φ) measurement |
+| **Landauer's Principle** | Computational thermodynamics |
+| **Free Energy Principle** | Friston's predictive processing |
+| **Strange Loops** | Hofstadter's self-referential patterns |
+| **Morphogenesis** | Pattern formation emergence |
+
+### Quick Start
+
+```toml
+[dependencies]
+exo-core = "0.1"
+exo-temporal = "0.1"
+exo-exotic = "0.1"
+exo-manifold = "0.1"  # SIMD acceleration!
+```
+
+```rust
+use exo_core::consciousness::{ConsciousnessSubstrate, IITConfig};
+use exo_core::thermodynamics::CognitiveThermometer;
+
+// Measure integrated information (Φ)
+let substrate = ConsciousnessSubstrate::new(IITConfig::default());
+substrate.add_pattern(pattern);
+let phi = substrate.compute_phi();
+println!("Consciousness level (Φ): {:.4}", phi);
+
+// Track computational thermodynamics
+let thermo = CognitiveThermometer::new(300.0); // Kelvin
+let cost = thermo.landauer_cost_bits(1024);
+println!("Landauer cost: {:.2e} J", cost);
+```
+
+### SIMD Pattern Retrieval
+
+```rust
+use exo_manifold::{ManifoldEngine, cosine_similarity_simd, batch_distances};
+
+// 54x faster similarity search
+let query = vec![0.5; 768];
+let results = engine.retrieve(&query, 10)?;
+
+// Batch distance computation
+let distances = batch_distances(&query, &database);  // 8-54x speedup
+```
+
+> **Full Documentation**: [exo-ai README](./examples/exo-ai-2025/README.md)
+
+</details>
+
+---
+
+## Database Extensions
+
+<details>
+<summary><strong>🐘 PostgreSQL Extension</strong></summary>
+
+[![crates.io](https://img.shields.io/crates/v/ruvector-postgres.svg)](https://crates.io/crates/ruvector-postgres)
+[![npm](https://img.shields.io/npm/v/@ruvector/postgres-cli.svg)](https://www.npmjs.com/package/@ruvector/postgres-cli)
+[![Docker Hub](https://img.shields.io/docker/pulls/ruvnet/ruvector-postgres?label=docker%20pulls)](https://hub.docker.com/r/ruvnet/ruvector-postgres)
+[![Docker](https://img.shields.io/docker/v/ruvnet/ruvector-postgres?label=docker)](https://hub.docker.com/r/ruvnet/ruvector-postgres)
+
+**The most advanced PostgreSQL vector extension** — a drop-in pgvector replacement with 230+ SQL functions, hardware-accelerated SIMD operations, and built-in AI capabilities. Transform your existing PostgreSQL database into a full-featured vector search engine with GNN layers, attention mechanisms, and self-learning capabilities.
+
+```bash
+# Quick Install from Docker Hub
+docker run -d --name ruvector \
+  -e POSTGRES_PASSWORD=secret \
+  -p 5432:5432 \
+  ruvnet/ruvector-postgres:latest
+
+# Connect and use
+psql -h localhost -U ruvector -d ruvector_test
+
+# Create extension
+CREATE EXTENSION ruvector;
+```
+
+**Why RuVector Postgres?**
+- **Zero Migration** — Works with existing pgvector code, just swap the extension
+- **10x More Functions** — 230+ SQL functions vs pgvector's ~20
+- **2x Faster** — AVX-512/AVX2/NEON SIMD acceleration
+- **AI-Native** — GNN layers, 39 attention mechanisms, local embeddings
+- **Self-Learning** — Improves search quality over time with ReasoningBank
+
+| Feature | pgvector | RuVector Postgres |
+|---------|----------|-------------------|
+| SQL Functions | ~20 | **230+** |
+| SIMD Acceleration | Basic | AVX-512/AVX2/NEON (~2x faster) |
+| Index Types | HNSW, IVFFlat | HNSW, IVFFlat + Hyperbolic |
+| Attention Mechanisms | ❌ | 39 types (Flash, Linear, Graph) |
+| GNN Layers | ❌ | GCN, GraphSAGE, GAT, GIN |
+| Sparse Vectors | ❌ | BM25, TF-IDF, SPLADE |
+| Self-Learning | ❌ | ReasoningBank, trajectory learning |
+| Local Embeddings | ❌ | 6 fastembed models built-in |
+| Multi-Tenancy | ❌ | Built-in namespace isolation |
+| Quantization | ❌ | Scalar, Product, Binary (4-32x compression) |
+
+<details>
+<summary><strong>🐳 Docker Hub (Recommended)</strong></summary>
+
+**Pull from Docker Hub:** [hub.docker.com/r/ruvnet/ruvector-postgres](https://hub.docker.com/r/ruvnet/ruvector-postgres)
+
+```bash
+# Quick start
+docker run -d --name ruvector \
+  -e POSTGRES_PASSWORD=secret \
+  -p 5432:5432 \
+  ruvnet/ruvector-postgres:latest
+
+# Connect
+psql -h localhost -U ruvector -d ruvector_test
+
+# Create extension
+CREATE EXTENSION ruvector;
+```
+
+**Environment Variables:**
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `POSTGRES_USER` | `ruvector` | Database user |
+| `POSTGRES_PASSWORD` | `ruvector` | Database password |
+| `POSTGRES_DB` | `ruvector_test` | Default database |
+
+**Docker Compose:**
+```yaml
+version: '3.8'
+services:
+  ruvector-postgres:
+    image: ruvnet/ruvector-postgres:latest
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: ruvector_test
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+```
+
+**Available Tags:**
+- `ruvnet/ruvector-postgres:latest` - PostgreSQL + RuVector 2.0
+- `ruvnet/ruvector-postgres:2.0.0` - Specific version
+
+</details>
+
+<details>
+<summary><strong>📦 npm CLI</strong></summary>
+
+```bash
+# Install globally
+npm install -g @ruvector/postgres-cli
+
+# Or use npx
+npx @ruvector/postgres-cli --help
+
+# Commands available as 'ruvector-pg' or 'rvpg'
+ruvector-pg --version
+rvpg --help
+```
+
+**CLI Commands:**
+```bash
+# Install extension to existing PostgreSQL
+ruvector-pg install
+
+# Create vector table with HNSW index
+ruvector-pg vector create table embeddings --dim 1536 --index hnsw
+
+# Import vectors from file
+ruvector-pg vector import embeddings data.json
+
+# Search vectors
+ruvector-pg vector search embeddings --query "0.1,0.2,..." --limit 10
+
+# Benchmark performance
+ruvector-pg bench --iterations 1000
+
+# Check extension status
+ruvector-pg status
+```
+
+**Programmatic Usage:**
+```typescript
+import { RuvectorPG } from '@ruvector/postgres-cli';
+
+const client = new RuvectorPG({
+  host: 'localhost',
+  port: 5432,
+  database: 'vectors',
+  user: 'postgres',
+  password: 'secret'
+});
+
+// Create table with HNSW index
+await client.createTable('embeddings', {
+  dimensions: 1536,
+  indexType: 'hnsw',
+  distanceMetric: 'cosine'
+});
+
+// Insert vectors
+await client.insert('embeddings', {
+  id: '1',
+  vector: [0.1, 0.2, ...],
+  metadata: { source: 'openai' }
+});
+
+// Search
+const results = await client.search('embeddings', queryVector, { limit: 10 });
+```
+
+</details>
+
+<details>
+<summary><strong>🦀 Rust Crate</strong></summary>
+
+```bash
+# Install pgrx (PostgreSQL extension framework)
+cargo install cargo-pgrx --version "0.12.9" --locked
+cargo pgrx init
+
+# Build and install extension
+cd crates/ruvector-postgres
+cargo pgrx install --release
+
+# Or install specific PostgreSQL version
+cargo pgrx install --release --pg-config /usr/lib/postgresql/17/bin/pg_config
+```
+
+**Cargo.toml:**
+```toml
+[dependencies]
+ruvector-postgres = "2.0"
+
+# Optional features
+[features]
+default = ["pg17"]
+pg16 = ["ruvector-postgres/pg16"]
+pg15 = ["ruvector-postgres/pg15"]
+
+# AI features (opt-in)
+ai-complete = ["ruvector-postgres/ai-complete"]  # All AI features
+learning = ["ruvector-postgres/learning"]         # Self-learning
+attention = ["ruvector-postgres/attention"]       # 39 attention mechanisms
+gnn = ["ruvector-postgres/gnn"]                   # Graph neural networks
+hyperbolic = ["ruvector-postgres/hyperbolic"]     # Hyperbolic embeddings
+embeddings = ["ruvector-postgres/embeddings"]     # Local embedding generation
+```
+
+**Build with all features:**
+```bash
+cargo pgrx install --release --features "ai-complete,embeddings"
+```
+
+</details>
+
+<details>
+<summary><strong>📝 SQL Examples</strong></summary>
+
+```sql
+-- Enable extension
+CREATE EXTENSION ruvector;
+
+-- Create table with vector column
+CREATE TABLE documents (
+  id SERIAL PRIMARY KEY,
+  content TEXT,
+  embedding VECTOR(1536)
+);
+
+-- Create HNSW index
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops)
+  WITH (m = 16, ef_construction = 200);
+
+-- Insert vectors
+INSERT INTO documents (content, embedding)
+VALUES ('Hello world', '[0.1, 0.2, ...]'::vector);
+
+-- Semantic search (cosine similarity)
+SELECT id, content, embedding <=> '[0.1, 0.2, ...]'::vector AS distance
+FROM documents
+ORDER BY distance
+LIMIT 10;
+
+-- Hybrid search (vector + full-text)
+SELECT id, content
+FROM documents
+WHERE to_tsvector(content) @@ to_tsquery('machine & learning')
+ORDER BY embedding <=> query_embedding
+LIMIT 10;
+
+-- GNN-enhanced search (with learning)
+SELECT * FROM ruvector_gnn_search(
+  'documents',
+  '[0.1, 0.2, ...]'::vector,
+  10,  -- limit
+  'gcn' -- gnn_type: gcn, graphsage, gat, gin
+);
+
+-- Generate embeddings locally (no API needed)
+SELECT ruvector_embed('all-MiniLM-L6-v2', 'Your text here');
+
+-- Flash attention
+SELECT ruvector_flash_attention(query, key, value);
+```
+
+</details>
+
+See [ruvector-postgres README](./crates/ruvector-postgres/README.md) for full SQL API reference (230+ functions).
+
+</details>
+
+---
+
+## Developer Tools
+
+<details>
+<summary>🛠️ Tools & Utilities</summary>
 
 | Crate | Description | crates.io |
 |-------|-------------|-----------|
@@ -920,7 +3082,6 @@ See [ruvector-postgres README](./crates/ruvector-postgres/README.md) for full SQ
 | [ruvector-filter](./crates/ruvector-filter) | Metadata filtering and query predicates | [![crates.io](https://img.shields.io/crates/v/ruvector-filter.svg)](https://crates.io/crates/ruvector-filter) |
 | [ruvector-collections](./crates/ruvector-collections) | Multi-tenant collection management | [![crates.io](https://img.shields.io/crates/v/ruvector-collections.svg)](https://crates.io/crates/ruvector-collections) |
 | [ruvector-snapshot](./crates/ruvector-snapshot) | Point-in-time snapshots and backups | [![crates.io](https://img.shields.io/crates/v/ruvector-snapshot.svg)](https://crates.io/crates/ruvector-snapshot) |
-| [profiling](./crates/profiling) | Performance profiling and analysis tools | [![crates.io](https://img.shields.io/crates/v/ruvector-profiling.svg)](https://crates.io/crates/ruvector-profiling) |
 | [micro-hnsw-wasm](./crates/micro-hnsw-wasm) | Lightweight HNSW implementation for WASM | [![crates.io](https://img.shields.io/crates/v/micro-hnsw-wasm.svg)](https://crates.io/crates/micro-hnsw-wasm) |
 
 ### Embedded & IoT
@@ -942,6 +3103,10 @@ let results = db.search(&query, 5);
 ```
 
 </details>
+
+---
+
+## Browser & Edge (WASM)
 
 <details>
 <summary>🌐 WASM Packages (Browser & Edge)</summary>
@@ -1409,6 +3574,10 @@ console.log(available_mechanisms());
 
 </details>
 
+---
+
+## Self-Learning Systems
+
 <details>
 <summary>🧠 Self-Learning Intelligence Hooks</summary>
 
@@ -1710,20 +3879,59 @@ The PostgreSQL backend provides:
 
 </details>
 
+---
+
+## Additional Modules
+
 <details>
 <summary>🔬 Scientific OCR (SciPix)</summary>
 
-| Crate | Description | crates.io |
-|-------|-------------|-----------|
-| [ruvector-scipix](./examples/scipix) | OCR engine for scientific documents, math equations → LaTeX/MathML | [![crates.io](https://img.shields.io/crates/v/ruvector-scipix.svg)](https://crates.io/crates/ruvector-scipix) |
+| Package | Description | Install |
+|---------|-------------|---------|
+| [ruvector-scipix](./examples/scipix) | Rust OCR engine for scientific documents | `cargo add ruvector-scipix` |
+| [@ruvector/scipix](https://www.npmjs.com/package/@ruvector/scipix) | TypeScript client for SciPix API | `npm install @ruvector/scipix` |
 
-**SciPix** extracts text and mathematical equations from images, converting them to LaTeX, MathML, or plain text. Features GPU-accelerated ONNX inference, SIMD-optimized preprocessing, REST API server, CLI tool, and MCP integration for AI assistants.
+**SciPix** extracts text and mathematical equations from images, converting them to LaTeX, MathML, or plain text.
+
+**Features:**
+- **Multi-format output** — LaTeX, MathML, AsciiMath, plain text, structured JSON
+- **Batch processing** — Process multiple images with parallel execution
+- **Content detection** — Equations, tables, diagrams, mixed content
+- **Confidence scoring** — Per-region confidence levels (high/medium/low)
+- **PDF support** — Extract from multi-page PDFs with page selection
+
+```typescript
+import { SciPixClient, OutputFormat } from '@ruvector/scipix';
+
+const client = new SciPixClient({
+  baseUrl: 'http://localhost:8080',
+  apiKey: 'your-api-key',
+});
+
+// OCR an image file
+const result = await client.ocrFile('./equation.png', {
+  formats: [OutputFormat.LaTeX, OutputFormat.MathML],
+  detectEquations: true,
+});
+
+console.log('LaTeX:', result.latex);
+console.log('Confidence:', result.confidence);
+
+// Quick LaTeX extraction
+const latex = await client.extractLatex('./math.png');
+
+// Batch processing
+const batchResult = await client.batchOcr({
+  images: [
+    { source: 'base64...', id: 'eq1' },
+    { source: 'base64...', id: 'eq2' },
+  ],
+  defaultOptions: { formats: [OutputFormat.LaTeX] },
+});
+```
 
 ```bash
-# Install
-cargo add ruvector-scipix
-
-# CLI usage
+# Rust CLI usage
 scipix-cli ocr --input equation.png --format latex
 scipix-cli serve --port 3000
 
@@ -1731,6 +3939,8 @@ scipix-cli serve --port 3000
 scipix-cli mcp
 claude mcp add scipix -- scipix-cli mcp
 ```
+
+See [npm/packages/scipix/README.md](./npm/packages/scipix/README.md) for full documentation.
 
 </details>
 
@@ -1777,15 +3987,62 @@ async fn main() -> anyhow::Result<()> {
 <details>
 <summary>🔧 Bindings & Tools</summary>
 
+**Native bindings and tools** for integrating RuVector into any environment — Node.js, browsers, CLI, or as an HTTP/gRPC server.
+
 | Crate | Description | crates.io |
 |-------|-------------|-----------|
-| [ruvector-node](./crates/ruvector-node) | Main Node.js bindings (napi-rs) | [![crates.io](https://img.shields.io/crates/v/ruvector-node.svg)](https://crates.io/crates/ruvector-node) |
-| [ruvector-wasm](./crates/ruvector-wasm) | Main WASM bindings for browsers | [![crates.io](https://img.shields.io/crates/v/ruvector-wasm.svg)](https://crates.io/crates/ruvector-wasm) |
-| [ruvllm-wasm](./crates/ruvllm-wasm) | LLM integration WASM bindings | [![crates.io](https://img.shields.io/crates/v/ruvllm-wasm.svg)](https://crates.io/crates/ruvllm-wasm) |
+| [ruvector-node](./crates/ruvector-node) | Native Node.js bindings via napi-rs | [![crates.io](https://img.shields.io/crates/v/ruvector-node.svg)](https://crates.io/crates/ruvector-node) |
+| [ruvector-wasm](./crates/ruvector-wasm) | WASM bindings for browsers & edge | [![crates.io](https://img.shields.io/crates/v/ruvector-wasm.svg)](https://crates.io/crates/ruvector-wasm) |
+| [ruvllm-wasm](./crates/ruvllm-wasm) | Browser LLM inference with WebGPU | [![crates.io](https://img.shields.io/crates/v/ruvllm-wasm.svg)](https://crates.io/crates/ruvllm-wasm) |
 | [ruvector-cli](./crates/ruvector-cli) | Command-line interface | [![crates.io](https://img.shields.io/crates/v/ruvector-cli.svg)](https://crates.io/crates/ruvector-cli) |
 | [ruvector-server](./crates/ruvector-server) | HTTP/gRPC server | [![crates.io](https://img.shields.io/crates/v/ruvector-server.svg)](https://crates.io/crates/ruvector-server) |
 
+**Node.js (Native Performance)**
+```bash
+npm install @ruvector/node
+```
+```javascript
+const { RuVector } = require('@ruvector/node');
+const db = new RuVector({ dimensions: 1536 });
+db.insert('doc1', embedding, { title: 'Hello' });
+const results = db.search(queryEmbedding, 10);
+```
+
+**Browser (WASM)**
+```bash
+npm install @ruvector/wasm
+```
+```javascript
+import { RuVectorWasm } from '@ruvector/wasm';
+const db = await RuVectorWasm.create({ dimensions: 384 });
+await db.insert('doc1', embedding);
+const results = await db.search(query, 5);
+```
+
+**CLI**
+```bash
+cargo install ruvector-cli
+ruvector init mydb --dim 1536
+ruvector insert mydb --file embeddings.json
+ruvector search mydb --query "[0.1, 0.2, ...]" --limit 10
+```
+
+**HTTP Server**
+```bash
+cargo install ruvector-server
+ruvector-server --port 8080 --data ./vectors
+
+# REST API
+curl -X POST http://localhost:8080/search \
+  -H "Content-Type: application/json" \
+  -d '{"vector": [0.1, 0.2, ...], "limit": 10}'
+```
+
 </details>
+
+---
+
+## Examples & Tutorials
 
 <details>
 <summary>📚 Production Examples</summary>
@@ -2012,31 +4269,7 @@ await db.sync('https://api.example.com/vectors');
 </details>
 
 <details>
-<summary>📦 npm Packages (40+ Packages)</summary>
-
-#### ✅ Published
-
-| Package | Description | Version | Downloads |
-|---------|-------------|---------|-----------|
-| [ruvector](https://www.npmjs.com/package/ruvector) | All-in-one CLI & package | [![npm](https://img.shields.io/npm/v/ruvector.svg)](https://www.npmjs.com/package/ruvector) | [![downloads](https://img.shields.io/npm/dt/ruvector.svg)](https://www.npmjs.com/package/ruvector) |
-| [@ruvector/core](https://www.npmjs.com/package/@ruvector/core) | Core vector database | [![npm](https://img.shields.io/npm/v/@ruvector/core.svg)](https://www.npmjs.com/package/@ruvector/core) | [![downloads](https://img.shields.io/npm/dt/@ruvector/core.svg)](https://www.npmjs.com/package/@ruvector/core) |
-| [@ruvector/gnn](https://www.npmjs.com/package/@ruvector/gnn) | Graph Neural Network layers | [![npm](https://img.shields.io/npm/v/@ruvector/gnn.svg)](https://www.npmjs.com/package/@ruvector/gnn) | [![downloads](https://img.shields.io/npm/dt/@ruvector/gnn.svg)](https://www.npmjs.com/package/@ruvector/gnn) |
-| [@ruvector/graph-node](https://www.npmjs.com/package/@ruvector/graph-node) | Hypergraph with Cypher | [![npm](https://img.shields.io/npm/v/@ruvector/graph-node.svg)](https://www.npmjs.com/package/@ruvector/graph-node) | [![downloads](https://img.shields.io/npm/dt/@ruvector/graph-node.svg)](https://www.npmjs.com/package/@ruvector/graph-node) |
-| [@ruvector/tiny-dancer](https://www.npmjs.com/package/@ruvector/tiny-dancer) | FastGRNN AI routing | [![npm](https://img.shields.io/npm/v/@ruvector/tiny-dancer.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer) | [![downloads](https://img.shields.io/npm/dt/@ruvector/tiny-dancer.svg)](https://www.npmjs.com/package/@ruvector/tiny-dancer) |
-| [@ruvector/router](https://www.npmjs.com/package/@ruvector/router) | Semantic router + HNSW | [![npm](https://img.shields.io/npm/v/@ruvector/router.svg)](https://www.npmjs.com/package/@ruvector/router) | [![downloads](https://img.shields.io/npm/dt/@ruvector/router.svg)](https://www.npmjs.com/package/@ruvector/router) |
-| [@ruvector/attention](https://www.npmjs.com/package/@ruvector/attention) | 39 attention mechanisms | [![npm](https://img.shields.io/npm/v/@ruvector/attention.svg)](https://www.npmjs.com/package/@ruvector/attention) | [![downloads](https://img.shields.io/npm/dt/@ruvector/attention.svg)](https://www.npmjs.com/package/@ruvector/attention) |
-| [@ruvector/sona](https://www.npmjs.com/package/@ruvector/sona) | Self-Optimizing Neural Architecture | [![npm](https://img.shields.io/npm/v/@ruvector/sona.svg)](https://www.npmjs.com/package/@ruvector/sona) | [![downloads](https://img.shields.io/npm/dt/@ruvector/sona.svg)](https://www.npmjs.com/package/@ruvector/sona) |
-| [@ruvector/ruvllm](https://www.npmjs.com/package/@ruvector/ruvllm) | LLM orchestration + SONA | [![npm](https://img.shields.io/npm/v/@ruvector/ruvllm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm) | [![downloads](https://img.shields.io/npm/dt/@ruvector/ruvllm.svg)](https://www.npmjs.com/package/@ruvector/ruvllm) |
-| [@ruvector/cli](https://www.npmjs.com/package/@ruvector/cli) | CLI + self-learning hooks | [![npm](https://img.shields.io/npm/v/@ruvector/cli.svg)](https://www.npmjs.com/package/@ruvector/cli) | [![downloads](https://img.shields.io/npm/dt/@ruvector/cli.svg)](https://www.npmjs.com/package/@ruvector/cli) |
-| [@ruvector/rvlite](https://www.npmjs.com/package/@ruvector/rvlite) | SQLite-style edge DB | [![npm](https://img.shields.io/npm/v/@ruvector/rvlite.svg)](https://www.npmjs.com/package/@ruvector/rvlite) | [![downloads](https://img.shields.io/npm/dt/@ruvector/rvlite.svg)](https://www.npmjs.com/package/@ruvector/rvlite) |
-| [@ruvector/cluster](https://www.npmjs.com/package/@ruvector/cluster) | Distributed clustering | [![npm](https://img.shields.io/npm/v/@ruvector/cluster.svg)](https://www.npmjs.com/package/@ruvector/cluster) | [![downloads](https://img.shields.io/npm/dt/@ruvector/cluster.svg)](https://www.npmjs.com/package/@ruvector/cluster) |
-| [@ruvector/server](https://www.npmjs.com/package/@ruvector/server) | HTTP/gRPC server | [![npm](https://img.shields.io/npm/v/@ruvector/server.svg)](https://www.npmjs.com/package/@ruvector/server) | [![downloads](https://img.shields.io/npm/dt/@ruvector/server.svg)](https://www.npmjs.com/package/@ruvector/server) |
-| [@ruvector/rudag](https://www.npmjs.com/package/@ruvector/rudag) | Self-learning DAG | [![npm](https://img.shields.io/npm/v/@ruvector/rudag.svg)](https://www.npmjs.com/package/@ruvector/rudag) | [![downloads](https://img.shields.io/npm/dt/@ruvector/rudag.svg)](https://www.npmjs.com/package/@ruvector/rudag) |
-| [@ruvector/burst-scaling](https://www.npmjs.com/package/@ruvector/burst-scaling) | 10-50x burst scaling | [![npm](https://img.shields.io/npm/v/@ruvector/burst-scaling.svg)](https://www.npmjs.com/package/@ruvector/burst-scaling) | [![downloads](https://img.shields.io/npm/dt/@ruvector/burst-scaling.svg)](https://www.npmjs.com/package/@ruvector/burst-scaling) |
-| [@ruvector/spiking-neural](https://www.npmjs.com/package/@ruvector/spiking-neural) | Spiking neural networks | [![npm](https://img.shields.io/npm/v/@ruvector/spiking-neural.svg)](https://www.npmjs.com/package/@ruvector/spiking-neural) | [![downloads](https://img.shields.io/npm/dt/@ruvector/spiking-neural.svg)](https://www.npmjs.com/package/@ruvector/spiking-neural) |
-
-<details>
-<summary>WASM & Utility Packages</summary>
+<summary>🍕 WASM & Utility Packages</summary>
 
 | Package | Description | Version | Downloads |
 |---------|-------------|---------|-----------|
@@ -2050,8 +4283,8 @@ await db.sync('https://api.example.com/vectors');
 | [@ruvector/agentic-synth](https://www.npmjs.com/package/@ruvector/agentic-synth) | Synthetic data generator | [![npm](https://img.shields.io/npm/v/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth) | [![downloads](https://img.shields.io/npm/dt/@ruvector/agentic-synth.svg)](https://www.npmjs.com/package/@ruvector/agentic-synth) |
 | [@ruvector/graph-data-generator](https://www.npmjs.com/package/@ruvector/graph-data-generator) | Graph data generation | [![npm](https://img.shields.io/npm/v/@ruvector/graph-data-generator.svg)](https://www.npmjs.com/package/@ruvector/graph-data-generator) | [![downloads](https://img.shields.io/npm/dt/@ruvector/graph-data-generator.svg)](https://www.npmjs.com/package/@ruvector/graph-data-generator) |
 | [@ruvector/agentic-integration](https://www.npmjs.com/package/@ruvector/agentic-integration) | Agentic workflows | [![npm](https://img.shields.io/npm/v/@ruvector/agentic-integration.svg)](https://www.npmjs.com/package/@ruvector/agentic-integration) | [![downloads](https://img.shields.io/npm/dt/@ruvector/agentic-integration.svg)](https://www.npmjs.com/package/@ruvector/agentic-integration) |
+| [rvlite](https://www.npmjs.com/package/rvlite) | SQLite-style edge DB (SQL/SPARQL/Cypher) | [![npm](https://img.shields.io/npm/v/rvlite.svg)](https://www.npmjs.com/package/rvlite) | [![downloads](https://img.shields.io/npm/dt/rvlite.svg)](https://www.npmjs.com/package/rvlite) |
 
-</details>
 
 **Platform-specific native bindings** (auto-detected):
 - `@ruvector/node-linux-x64-gnu`, `@ruvector/node-linux-arm64-gnu`, `@ruvector/node-darwin-x64`, `@ruvector/node-darwin-arm64`, `@ruvector/node-win32-x64-msvc`
@@ -2060,14 +4293,6 @@ await db.sync('https://api.example.com/vectors');
 - `@ruvector/router-linux-x64-gnu`, `@ruvector/router-linux-arm64-gnu`, `@ruvector/router-darwin-x64`, `@ruvector/router-darwin-arm64`, `@ruvector/router-win32-x64-msvc`
 - `@ruvector/attention-linux-x64-gnu`, `@ruvector/attention-linux-arm64-gnu`, `@ruvector/attention-darwin-x64`, `@ruvector/attention-darwin-arm64`, `@ruvector/attention-win32-x64-msvc`
 - `@ruvector/ruvllm-linux-x64-gnu`, `@ruvector/ruvllm-linux-arm64-gnu`, `@ruvector/ruvllm-darwin-x64`, `@ruvector/ruvllm-darwin-arm64`, `@ruvector/ruvllm-win32-x64-msvc`
-
-#### 🚧 Planned
-
-| Package | Description | Status |
-|---------|-------------|--------|
-| @ruvector/raft | Raft consensus for distributed ops | Crate ready |
-| @ruvector/replication | Multi-master replication | Crate ready |
-| @ruvector/scipix | Scientific OCR (LaTeX/MathML) | Crate ready |
 
 See [GitHub Issue #20](https://github.com/ruvnet/ruvector/issues/20) for multi-platform npm package roadmap.
 
@@ -2158,6 +4383,157 @@ let sync = SyncManager::new(SyncMode::SemiSync { min_replicas: 2 });
 ```
 
 </details>
+
+
+<details>
+<summary>🎓 RuvLLM Training & RLM Fine-Tuning Tutorials </summary>
+
+#### Hybrid Routing (90% Accuracy)
+
+RuvLTRA achieves **90% routing accuracy** using a keyword-first strategy with embedding fallback:
+
+```javascript
+// Optimal routing: Keywords first, embeddings as tiebreaker
+function routeTask(task, taskEmbedding, agentEmbeddings) {
+  const keywordScores = getKeywordScores(task);
+  const maxKw = Math.max(...Object.values(keywordScores));
+
+  if (maxKw > 0) {
+    const candidates = Object.entries(keywordScores)
+      .filter(([_, score]) => score === maxKw)
+      .map(([agent]) => agent);
+
+    if (candidates.length === 1) return { agent: candidates[0] };
+    return pickByEmbedding(candidates, taskEmbedding, agentEmbeddings);
+  }
+
+  return embeddingSimilarity(taskEmbedding, agentEmbeddings);
+}
+```
+
+Run the benchmark: `node npm/packages/ruvllm/scripts/hybrid-model-compare.js`
+
+#### Generate Training Data
+
+```bash
+# Using CLI (recommended)
+npx @ruvector/ruvllm train stats              # View dataset statistics
+npx @ruvector/ruvllm train dataset            # Export training data
+npx @ruvector/ruvllm train contrastive        # Run full training pipeline
+
+# With options
+npx @ruvector/ruvllm train dataset --output ./my-training
+npx @ruvector/ruvllm train contrastive --epochs 20 --batch-size 32 --lr 0.0001
+```
+
+**Programmatic API:**
+```javascript
+import { ContrastiveTrainer, generateTrainingDataset, getDatasetStats } from '@ruvector/ruvllm';
+
+const stats = getDatasetStats();
+console.log(`${stats.totalExamples} examples, ${stats.agentTypes} agent types`);
+
+const trainer = new ContrastiveTrainer({ epochs: 10, margin: 0.5 });
+trainer.addTriplet(anchor, anchorEmb, positive, positiveEmb, negative, negativeEmb, true);
+const result = trainer.train();
+trainer.exportTrainingData('./output');
+```
+
+#### Fine-Tune with LoRA
+
+```bash
+pip install transformers peft datasets accelerate
+
+python -m peft.lora_train \
+  --model_name Qwen/Qwen2.5-0.5B-Instruct \
+  --dataset ./data/training/routing-examples.jsonl \
+  --output_dir ./ruvltra-routing-lora \
+  --lora_r 8 --lora_alpha 16 \
+  --num_train_epochs 3 \
+  --learning_rate 2e-4
+```
+
+#### Convert to GGUF
+
+```bash
+# Merge LoRA weights
+python -c "
+from peft import PeftModel
+from transformers import AutoModelForCausalLM
+base = AutoModelForCausalLM.from_pretrained('Qwen/Qwen2.5-0.5B-Instruct')
+model = PeftModel.from_pretrained(base, './ruvltra-routing-lora')
+model.merge_and_unload().save_pretrained('./ruvltra-routing-merged')
+"
+
+# Convert and quantize
+python llama.cpp/convert_hf_to_gguf.py ./ruvltra-routing-merged --outfile ruvltra-routing-f16.gguf
+./llama.cpp/llama-quantize ruvltra-routing-f16.gguf ruvltra-routing-q4_k_m.gguf Q4_K_M
+```
+
+#### Contrastive Embedding Training
+
+**Using RuvLLM CLI (recommended):**
+```bash
+# Full contrastive training pipeline with triplet loss
+npx @ruvector/ruvllm train contrastive --output ./training-output
+
+# Exports: triplets.jsonl, embeddings.json, lora_config.json, train.sh
+```
+
+**Using Python (for GPU training):**
+```python
+from sentence_transformers import SentenceTransformer, losses, InputExample
+from torch.utils.data import DataLoader
+
+train_examples = [
+    InputExample(texts=["implement login", "build auth component"], label=1.0),
+    InputExample(texts=["implement login", "write unit tests"], label=0.0),
+]
+
+model = SentenceTransformer("Qwen/Qwen2.5-0.5B-Instruct")
+train_loss = losses.CosineSimilarityLoss(model)
+model.fit([(DataLoader(train_examples, batch_size=16), train_loss)], epochs=5)
+```
+
+**Resources:** [Issue #122](https://github.com/ruvnet/ruvector/issues/122) | [LoRA Paper](https://arxiv.org/abs/2106.09685) | [Sentence Transformers](https://www.sbert.net/docs/training/overview.html)
+
+#### Rust Training Module
+
+For production-scale dataset generation, use the Rust training module ([full docs](./crates/ruvllm/src/training/README.md)):
+
+```rust
+use ruvllm::training::{DatasetGenerator, DatasetConfig};
+
+let config = DatasetConfig {
+    examples_per_category: 100,
+    enable_augmentation: true,
+    seed: 42,
+    ..Default::default()
+};
+
+let dataset = DatasetGenerator::new(config).generate();
+let (train, val, test) = dataset.split(0.7, 0.15, 0.15, 42);
+dataset.export_jsonl("training.jsonl")?;
+```
+
+**Features:**
+- **5 agent categories**: Coder, Researcher, Security, Architecture, Reviewer (20% each)
+- **Model routing**: Haiku (simple) → Sonnet (moderate) → Opus (complex/security)
+- **Data augmentation**: Paraphrasing, complexity variations, domain transfer
+- **8 technical domains**: Web, Systems, DataScience, Mobile, DevOps, Security, Database, API
+- **Quality scores**: 0.80-0.96 based on template quality and category
+- **Performance**: ~10,000 examples/second, ~50 MB/s JSONL export
+
+```bash
+cargo run --example generate_claude_dataset --release
+# Outputs: train.jsonl, val.jsonl, test.jsonl, stats.json
+```
+
+</details>
+
+---
+
+## Project
 
 <details>
 <summary>📁 Project Structure</summary>

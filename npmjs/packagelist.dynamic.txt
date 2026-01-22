@@ -117,6 +117,8 @@
 @ruvector/node-linux-x64-gnu
 @ruvector/node-win32-x64-msvc
 @ruvector/postgres-cli
+@ruvector/raft
+@ruvector/replication
 @ruvector/router
 @ruvector/router-darwin-arm64
 @ruvector/router-linux-arm64-gnu
@@ -125,12 +127,15 @@
 @ruvector/router-win32-x64-msvc
 @ruvector/rudag
 @ruvector/ruvllm
+@ruvector/ruvllm-cli
 @ruvector/ruvllm-darwin-arm64
 @ruvector/ruvllm-darwin-x64
 @ruvector/ruvllm-linux-arm64-gnu
 @ruvector/ruvllm-linux-x64-gnu
+@ruvector/ruvllm-wasm
 @ruvector/ruvllm-win32-x64-msvc
 @ruvector/rvlite
+@ruvector/scipix
 @ruvector/server
 @ruvector/sona
 @ruvector/sona-darwin-arm64
