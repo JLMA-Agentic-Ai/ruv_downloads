@@ -1,0 +1,1 @@
+AgentDB Browser Demo: Agentic Marketing Intelligence System: An intelligent marketing optimization system that uses AgentDB's ReasoningBank with SAFLA (Self-Adaptive Feedback Loop Architecture) to automatically optimize Meta Ads campaigns.

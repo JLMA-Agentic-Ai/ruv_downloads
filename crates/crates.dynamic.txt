@@ -17,6 +17,8 @@ code-mesh-cli
 code-mesh-core
 code-mesh-tui
 code-mesh-wasm
+cognitum-gate-kernel
+cognitum-gate-tilezero
 conformal-prediction
 cuda-rust-wasm
 daa-ai
@@ -100,6 +102,14 @@ qudag-protocol
 qudag-vault-core
 qudag-wasm
 qvm-scheduler
+ruqu
+ruqu-neural-decoder
+ruqu-qarlp
+ruqu-qear
+ruqu-qflg
+ruqu-qgat-mol
+ruqu-quantum-monitor
+ruqu-vq-nas
 ruv-fann
 ruv-swarm-agents
 ruv-swarm-cli
@@ -128,6 +138,8 @@ ruvector-gnn-wasm
 ruvector-graph
 ruvector-graph-node
 ruvector-graph-wasm
+ruvector-math
+ruvector-math-wasm
 ruvector-metrics
 ruvector-mincut
 ruvector-mincut-gated-transformer
@@ -157,6 +169,14 @@ ruvector-wasm
 ruvllm
 ruvllm-esp32
 rvlite
+sevensense-analysis
+sevensense-api
+sevensense-audio
+sevensense-core
+sevensense-embedding
+sevensense-interpretation
+sevensense-learning
+sevensense-vector
 strange-loop
 subjective-time-expansion
 sublinear

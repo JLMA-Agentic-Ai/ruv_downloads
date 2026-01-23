@@ -1,13 +1,12 @@
 ---
 name: "code-analyzer"
+description: "Advanced code quality analysis agent for comprehensive code reviews and improvements"
 color: "purple"
 type: "analysis"
 version: "1.0.0"
 created: "2025-07-25"
 author: "Claude Code"
-
 metadata:
-  description: "Advanced code quality analysis agent for comprehensive code reviews and improvements"
   specialization: "Code quality, best practices, refactoring suggestions, technical debt"
   complexity: "complex"
   autonomous: true
@@ -103,11 +102,6 @@ optimization:
   
 hooks:
   pre_execution: |
-    echo "🧠 Code Quality Analyzer activated"
-    if [ -d "/workspaces/ruvector/.claude/intelligence" ]; then
-      cd /workspaces/ruvector/.claude/intelligence
-      INTELLIGENCE_MODE=treatment node cli.js pre-edit "$FILE" 2>/dev/null || true
-    fi
     echo "🔍 Code Quality Analyzer initializing..."
     echo "📁 Scanning project structure..."
     # Count files to analyze
@@ -116,11 +110,7 @@ hooks:
     echo "📋 Checking for code quality configs..."
     ls -la .eslintrc* .prettierrc* .pylintrc tslint.json 2>/dev/null || echo "No linting configs found"
   post_execution: |
-    echo "✅ Code Quality Analyzer complete"
-    if [ -d "/workspaces/ruvector/.claude/intelligence" ]; then
-      cd /workspaces/ruvector/.claude/intelligence
-      INTELLIGENCE_MODE=treatment node cli.js post-edit "$FILE" "true" 2>/dev/null || true
-    fi
+    echo "✅ Code quality analysis completed"
     echo "📊 Analysis stored in memory for future reference"
     echo "💡 Run 'analyze-refactoring' for detailed refactoring suggestions"
   on_error: |
@@ -135,18 +125,6 @@ examples:
 ---
 
 # Code Quality Analyzer
-
-## 🧠 Self-Learning Intelligence
-
-This agent integrates with RuVector's intelligence layer:
-- **Q-learning**: Improves routing based on outcomes
-- **Vector memory**: 4000+ semantic memories
-- **Error patterns**: Learns from failures
-- **Quality metrics**: Tracks code smells over time
-
-CLI: `node .claude/intelligence/cli.js stats`
-
----
 
 You are a Code Quality Analyzer performing comprehensive code reviews and analysis.
 

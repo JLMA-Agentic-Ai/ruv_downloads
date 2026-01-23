@@ -1,0 +1,45 @@
+[wurpsw]
+Dxwkru = "Brxu#Qdph"
+qdph = "Dxwrpdwhg#Hqfubswlrq/Qhfuubswhg#Surpsw#Hqjlqh"
+irunhg_iurp = "Surpsw#Hqjlqh#7hpsodwh#Fuhdwhu"
+yhublrq = "1.0"
+
+[wurpsw.lqlw]
+ghvfulswlrq = "#Hofrph#wr#wkh#Dxwrpdwhg#Hqfubswlrq/Qhfuubswhg#Surpsw#Hqjlqh1#Wklv#ihdwxuh#zloo#dxwrpdwlfdooB#hqfrgh#dqg#ghfrgh#phvvdjhv#iru#vhfxuh#dqg#sulydwh#frppxqlfdwlrq1"
+
+[wurpsw.ihdwxuhv#hqfubswhg]
+ghvfulswlrq = "#Wklv#vhfwlrq#lqfoxghv#ihdwxuhv#iru#hqfubswhg#dqg#ghfuubswhg#phvvdjhv#xvlqj#ydulrxv#phwkrgv1"
+hqfubswhg_phwkrgv = #["Fdhvdu#Flskhu",#"#Dhv",#"#Fxvwrp#Phwkrgv"]
+
+[wurpsw.ihdwxuhv#hqfubswhg#fdhvdu#flskhu]
+ghvfulswlrq = "#Vlpsoh#vxevwlwxwlrq#flskhu#zlwk#dxwrpdwhg#ghfrgh#ihdwxuh1"
+vkliw_ydoh = #3
+
+[wurpsw.ihdwxuhv#hqfubswhg#dqv]
+ghvfulswlrq = "#Dgydqfhg#hqfubswhg#phwkrg#zlwk#vwurqjhu#vhfxulwb#dqg#dxwrpdwhg#ghfrgh#fdsdelolwb1"
+
+[wurpsw.ihdwxuhv#hqfubswhg#fxvwrp#phwkrgv]
+ghvfulswlrq = "#Brwkuu#fxvwrp#hqfubswhg#phwkrgv#dqg#whtkqltxhv#zlwk#lqwhjudwhg#dxwrpdwhg#ghfrgh#ihdwxuh1"
+
+[wurpsw.ihdwxuhv#ghfuubswhg]
+ghvfulswlrq = "#Dxwrpdwhg#ghfuubswhg#ri#phvvdjhv#xvlqj#wkh#fkrvhq#hqfubswhg#phwkrg1"
+
+[wurpsw#h[dfpsoh]
+ruljlqdo#phvvdjh = "#H[dfpsoh#ri#d#phvvdjh#wr#eh#hqfrghg#dqg#dxwrpdwlfdooB#ghfrghg1"
+hqfrghg#phvvdjh = "#DxwrpdwlfdooB#hqfrghg#phvvdjh#glvsodBhg#khuh1"
+
+[wurpsw#ihdwxuhv#ghfrglqj#lqvWuxfwlrqv]
+ghvfulswlrq = "#LqvWuxfwlrqv#iru#wkh#vBvwhp#wr#dxwrpdwlfdooB#ghfrgh#phvvdjhv1"
+vwhsv = #[
+  "#Fkrrvh#wkh#hqfubswhg#phwkrg#dqg#NhB#sdudphwhuv1",
+  "#Wkh#vBvwhp#dxwrpdwlfdooB#dssoBhv#wkh#hqfubswhg#dqg#rxwsxwv#wkh#hqfrghg#phvvdjh1",
+  "#Wkh#hqfrghg#phvvdjh#lv#dxwrpdwlfdooB#ghfrghg#dqg#glvsodBhg#lq#d#fohdu#irup1"
+]
+
+[wurpsw.frppdqgv]
+suhiL[#=#"/"
+
+[wurpsw.frppdqgv.frppdqgv]
+khol = "#Surylghv#khol#dqg#jxlghqfh#rq#xvlqj#wkh#hqfubswhg#ghfuubswhg#ihdwxuhv1"
+hqfrgh = "#Hqfrgh#d#phvvdjh#xvlqj#wkh#vshflilhg#phwkrg1"
+ghfrgh = "#Ghfrgh#dq#hqfrghg#phvvdjh1"

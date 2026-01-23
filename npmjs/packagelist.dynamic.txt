@@ -5,6 +5,8 @@
 @agentic-robotics/self-learning
 @agentics.org/agentic-mcp
 @agentics.org/sparc2
+@claude-flow/aidefence
+@claude-flow/browser
 @claude-flow/claims
 @claude-flow/cli
 @claude-flow/deployment
@@ -97,6 +99,7 @@
 @ruvector/gnn-linux-x64-gnu
 @ruvector/gnn-wasm
 @ruvector/gnn-win32-x64-msvc
+@ruvector/graph-data-generator
 @ruvector/graph-node
 @ruvector/graph-node-darwin-arm64
 @ruvector/graph-node-darwin-x64
@@ -105,6 +108,7 @@
 @ruvector/graph-node-win32-x64-msvc
 @ruvector/graph-wasm
 @ruvector/learning-wasm
+@ruvector/math-wasm
 @ruvector/nervous-system-wasm
 @ruvector/node
 @ruvector/node-darwin-arm64
@@ -136,6 +140,7 @@
 @ruvector/sona-linux-x64-musl
 @ruvector/sona-win32-arm64-msvc
 @ruvector/sona-win32-x64-msvc
+@ruvector/spiking-neural
 @ruvector/tiny-dancer
 @ruvector/tiny-dancer-linux-x64-gnu
 @ruvector/tiny-dancer-wasm
@@ -178,6 +183,7 @@ ruvector-core-linux-arm64-gnu
 ruvector-core-linux-x64-gnu
 ruvector-core-win32-x64-msvc
 ruvector-extensions
+ruvector-math-wasm
 ruvector-onnx-embeddings-wasm
 ruvector-sona
 ruvi

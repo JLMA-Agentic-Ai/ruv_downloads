@@ -1,0 +1,1 @@
+This repository showcases a FastAPI application seamlessly orchestrating Gradio for crafting UIs, executing dynamic code, and managing interactive sessions. Experience the power of running code snippets, generating intuitive Gradio UIs from prompts, and handling session outputs with ease.

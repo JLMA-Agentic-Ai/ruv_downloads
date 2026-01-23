@@ -1,0 +1,1 @@
+Implementation Plan for a WASM‑Based Local Serverless CLI Agent System

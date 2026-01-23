@@ -1,0 +1,1 @@
+This project integrates OpenAI's GPT-4o large language model with Power Automate Desktop to create an advanced AI-powered automation system. It uses real-time streaming via WebSockets to enable the AI to observe and interact with your desktop, allowing for dynamic and intelligent automation of tasks.

@@ -1,0 +1,1 @@
+This ChatGPT prompt details synthetic time series data generation using ARIMA, emphasizing PII obfuscation. It includes stationarity checks, model fitting, forecasting, and evaluation, tailored for ChatGPT's computational limits. Outputs include CSV and JSON formats.

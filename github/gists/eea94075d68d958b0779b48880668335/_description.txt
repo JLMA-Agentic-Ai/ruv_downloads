@@ -1,0 +1,1 @@
+PowerInfer-Style Activation Locality Inference Engine for Ruvector (SPARC Specification)

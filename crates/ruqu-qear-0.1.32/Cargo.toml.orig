@@ -1,0 +1,53 @@
+[package]
+name = "ruqu-qear"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Quantum Echo-Attention Reservoir (QEAR) - Combining quantum reservoir computing with attention mechanisms for time series processing"
+keywords = ["quantum", "reservoir", "attention", "timeseries", "esn"]
+categories = ["science", "mathematics", "algorithms"]
+homepage = "https://ruv.io"
+documentation = "https://docs.rs/ruqu-qear"
+
+[lib]
+crate-type = ["rlib"]
+
+[features]
+default = ["std"]
+std = []
+simd = []
+parallel = ["rayon"]
+serde = ["dep:serde"]
+attention = ["dep:ruvector-attention"]
+
+[dependencies]
+# Math and numerics - ndarray for matrix operations
+ndarray = { workspace = true, features = ["serde"] }
+rand = { workspace = true }
+rand_distr = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Optional features
+rayon = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+
+# Optional attention integration
+ruvector-attention = { version = "0.1.31", path = "../../ruvector-attention", optional = true }
+
+[dev-dependencies]
+criterion = { workspace = true }
+proptest = { workspace = true }
+approx = "0.5"
+rand = { workspace = true }
+
+# Benchmarks can be added later
+# [[bench]]
+# name = "reservoir_bench"
+# harness = false
