@@ -89,6 +89,7 @@ nt-utils
 opencv-core
 opencv-sdk
 opencv-wasm
+prime-radiant
 qudag
 qudag-cli
 qudag-crypto
@@ -138,6 +139,7 @@ ruvector-gnn-wasm
 ruvector-graph
 ruvector-graph-node
 ruvector-graph-wasm
+ruvector-hyperbolic-hnsw
 ruvector-math
 ruvector-math-wasm
 ruvector-metrics
