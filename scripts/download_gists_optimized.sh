@@ -85,41 +85,45 @@ fi
 
 GISTS=("${MERGED_GISTS[@]}")
 
-# Step 4: Download with cache
-for gist_id in "${GISTS[@]}"; do
+# Step 4: Download with cache (Parallel)
+MAX_JOBS=10
+current_jobs=0
+
+process_gist() {
+  local gist_id=$1
   echo "Checking Gist: $gist_id"
   
-  gist_url="https://gist.github.com/${gist_id}.git"
-  target_dir="$GISTS_DIR/$gist_id"
+  local gist_url="https://gist.github.com/${gist_id}.git"
+  local target_dir="$GISTS_DIR/$gist_id"
   
   # Get remote hash
-  remote_hash=$(git ls-remote "$gist_url" HEAD 2>/dev/null | awk '{print $1}' || true)
+  local remote_hash=$(git ls-remote "$gist_url" HEAD 2>/dev/null | awk '{print $1}' || true)
   
   if [ -z "$remote_hash" ]; then
     echo "  Warning: Could not fetch remote hash for gist $gist_id -- skipping"
-    continue
+    return
   fi
   
-  checksum="git:$remote_hash"
+  local checksum="git:$remote_hash"
   
   # Check cache
-  cached_path=$(check_cache "gist" "$gist_id" "HEAD" "$checksum")
+  local cached_path=$(check_cache "gist" "$gist_id" "HEAD" "$checksum")
   
   if [ -n "$cached_path" ] && [ -d "$cached_path" ]; then
-    local_hash=$(get_git_commit_hash "$cached_path")
+    local local_hash=$(get_git_commit_hash "$cached_path")
     if [ "$local_hash" = "$checksum" ]; then
       echo "  ✓ Cache hit: $gist_id ($remote_hash)"
-      continue
+      return
     fi
   fi
   
   # Check if exists locally
   if [ -d "$target_dir" ]; then
-    local_hash=$(get_git_commit_hash "$target_dir")
+    local local_hash=$(get_git_commit_hash "$target_dir")
     if [ "$local_hash" = "$checksum" ]; then
       echo "  ✓ Up-to-date: $gist_id ($remote_hash)"
       update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
-      continue
+      return
     else
       echo "  Updating: $gist_id"
       rm -rf "$target_dir"
@@ -135,25 +139,40 @@ for gist_id in "${GISTS[@]}"; do
     echo "$remote_hash" > "$target_dir/.ruv_commit"
     
     # Get description if available
-    gist_desc=$(gh api "gists/$gist_id" --jq '.description' 2>/dev/null || echo "")
+    local gist_desc=$(gh api "gists/$gist_id" --jq '.description' 2>/dev/null || echo "")
     
-    # Generate metadata
-    cat > "$METADATA_DIR/${gist_id}.json" <<EOF
-{
-  "id": "$gist_id",
-  "type": "gist",
-  "description": "$gist_desc",
-  "lastUpdated": "$(date -Iseconds)",
-  "commit": "$remote_hash",
-  "url": "https://gist.github.com/$gist_id"
-}
-EOF
+    # Generate metadata safely using jq
+    jq -n \
+      --arg id "$gist_id" \
+      --arg description "$gist_desc" \
+      --arg lastUpdated "$(date -Iseconds)" \
+      --arg commit "$remote_hash" \
+      --arg url "https://gist.github.com/$gist_id" \
+      '{id: $id, type: "gist", description: $description, lastUpdated: $lastUpdated, commit: $commit, url: $url}' \
+      > "$METADATA_DIR/${gist_id}.json"
     
     update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
   else
     echo "  Warning: failed to clone gist $gist_id"
   fi
+}
+
+for gist_id in "${GISTS[@]}"; do
+  process_gist "$gist_id" &
+  current_jobs=$((current_jobs + 1))
+  
+  if [ "$current_jobs" -ge "$MAX_JOBS" ]; then
+    wait -n || true
+    current_jobs=$((current_jobs - 1))
+  fi
 done
+
+wait # Wait for all remaining jobs
+
+echo "All gist downloads complete!"
+echo "Cache stats:"
+get_cache_stats | grep "Gists:"
+
 
 echo "All gist downloads complete!"
 echo "Cache stats:"

@@ -86,41 +86,45 @@ fi
 
 REPOS=("${MERGED_REPOS[@]}")
 
-# Step 4: Download with cache
-for repo in "${REPOS[@]}"; do
+# Step 4: Download with cache (Parallel)
+MAX_JOBS=10
+current_jobs=0
+
+process_repo() {
+  local repo=$1
   echo "Checking: $repo"
   
-  repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
-  target_dir="$REPOS_DIR/$repo"
+  local repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
+  local target_dir="$REPOS_DIR/$repo"
   
   # Get remote hash
-  remote_hash=$(git ls-remote "$repo_url" HEAD 2>/dev/null | awk '{print $1}' || true)
+  local remote_hash=$(git ls-remote "$repo_url" HEAD 2>/dev/null | awk '{print $1}' || true)
   
   if [ -z "$remote_hash" ]; then
     echo "  Warning: Could not fetch remote hash for $repo -- skipping"
-    continue
+    return
   fi
   
-  checksum="git:$remote_hash"
+  local checksum="git:$remote_hash"
   
   # Check cache
-  cached_path=$(check_cache "repo" "$repo" "HEAD" "$checksum")
+  local cached_path=$(check_cache "repo" "$repo" "HEAD" "$checksum")
   
   if [ -n "$cached_path" ] && [ -d "$cached_path" ]; then
-    local_hash=$(get_git_commit_hash "$cached_path")
+    local local_hash=$(get_git_commit_hash "$cached_path")
     if [ "$local_hash" = "$checksum" ]; then
       echo "  ✓ Cache hit: $repo ($remote_hash)"
-      continue
+      return
     fi
   fi
   
   # Check if exists locally
   if [ -d "$target_dir" ]; then
-    local_hash=$(get_git_commit_hash "$target_dir")
+    local local_hash=$(get_git_commit_hash "$target_dir")
     if [ "$local_hash" = "$checksum" ]; then
       echo "  ✓ Up-to-date: $repo ($remote_hash)"
       update_cache "repo" "$repo" "HEAD" "$checksum" "$target_dir"
-      continue
+      return
     else
       echo "  Updating: $repo (local: ${local_hash#git:} → remote: $remote_hash)"
       rm -rf "$target_dir"
@@ -135,23 +139,32 @@ for repo in "${REPOS[@]}"; do
     # Save commit hash
     echo "$remote_hash" > "$target_dir/.ruv_commit"
     
-    # Generate metadata
-    cat > "$METADATA_DIR/${repo}.json" <<EOF
-{
-  "name": "$repo",
-  "type": "repository",
-  "lastUpdated": "$(date -Iseconds)",
-  "commit": "$remote_hash",
-  "url": "$repo_url",
-  "tier": "tier-1-active"
-}
-EOF
+    # Generate metadata safely using jq
+    jq -n \
+      --arg name "$repo" \
+      --arg lastUpdated "$(date -Iseconds)" \
+      --arg commit "$remote_hash" \
+      --arg url "$repo_url" \
+      '{name: $name, type: "repository", lastUpdated: $lastUpdated, commit: $commit, url: $url, tier: "tier-1-active"}' \
+      > "$METADATA_DIR/${repo}.json"
     
     update_cache "repo" "$repo" "HEAD" "$checksum" "$target_dir"
   else
     echo "  Warning: failed to clone $repo"
   fi
+}
+
+for repo in "${REPOS[@]}"; do
+  process_repo "$repo" &
+  current_jobs=$((current_jobs + 1))
+  
+  if [ "$current_jobs" -ge "$MAX_JOBS" ]; then
+    wait -n || true
+    current_jobs=$((current_jobs - 1))
+  fi
 done
+
+wait # Wait for all remaining jobs
 
 echo "All repository downloads complete!"
 echo "Cache stats:"

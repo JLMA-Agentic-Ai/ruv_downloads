@@ -97,8 +97,12 @@ fi
 
 CRATES=("${MERGED_CRATES[@]}")
 
-# Step 4: Download with cache integration
-for crate in "${CRATES[@]}"; do
+# Step 4: Download with cache integration (Parallel)
+MAX_JOBS=10
+current_jobs=0
+
+process_crate() {
+  local crate=$1
   echo "Checking: $crate"
   
   # Get latest version from API
@@ -107,7 +111,7 @@ for crate in "${CRATES[@]}"; do
   
   if [ -z "$latest_version" ]; then
     echo "  Warning: crate not found on crates.io: $crate -- skipping"
-    continue
+    return
   fi
   
   # Get checksum from API
@@ -129,12 +133,12 @@ for crate in "${CRATES[@]}"; do
       # Ensure extracted directory exists
       extracted_path="$EXTRACTED_DIR/${crate}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
-        echo "  Extracting from cache..."
+        echo "  Extracting from cache: $crate"
         tar -xzf "$cached_path" -C "$EXTRACTED_DIR"
       fi
-      continue
+      return
     else
-      echo "  Cache corrupted, re-downloading..."
+      echo "  Cache corrupted, re-downloading: $crate"
     fi
   fi
   
@@ -150,12 +154,12 @@ for crate in "${CRATES[@]}"; do
       # Ensure extracted
       extracted_path="$EXTRACTED_DIR/${crate}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
-        echo "  Extracting..."
+        echo "  Extracting: $crate"
         tar -xzf "$archive_path" -C "$EXTRACTED_DIR"
       fi
-      continue
+      return
     else
-      echo "  Existing file corrupted, re-downloading..."
+      echo "  Existing file corrupted, re-downloading: $crate"
       mv "$archive_path" "$LEGACY_DIR/" || rm -f "$archive_path"
     fi
   fi
@@ -164,26 +168,26 @@ for crate in "${CRATES[@]}"; do
   echo "  Downloading: $crate@$latest_version"
   download_url="https://crates.io/api/v1/crates/${crate}/${latest_version}/download"
   
-  if ! curl -L -A "ruvnet-downloader (github-actions)" -o "$archive_path" "$download_url"; then
+  if ! curl -L -s -A "ruvnet-downloader (github-actions)" -o "$archive_path" "$download_url"; then
     echo "  Warning: failed to download $crate@$latest_version -- skipping"
-    continue
+    return
   fi
   
   # Verify download
   if ! verify_crate_checksum "$archive_path" "$checksum"; then
-    echo "  Error: downloaded file failed checksum verification!"
+    echo "  Error: downloaded file failed checksum verification: $crate"
     mv "$archive_path" "$LEGACY_DIR/"
-    continue
+    return
   fi
   
   echo "  ✓ Downloaded and verified: $crate@$latest_version"
   
   # Extract
-  echo "  Extracting..."
+  echo "  Extracting: $crate"
   if tar -xzf "$archive_path" -C "$EXTRACTED_DIR"; then
     echo "  ✓ Extracted: ${crate}-${latest_version}/"
   else
-    echo "  Warning: extraction failed"
+    echo "  Warning: extraction failed: $crate"
   fi
   
   # Update cache
@@ -192,18 +196,35 @@ for crate in "${CRATES[@]}"; do
   # Cleanup old versions
   for old_file in "$ARCHIVE_DIR/${crate}"-*.crate; do
     if [ -e "$old_file" ] && [ "$(basename "$old_file")" != "${crate}-${latest_version}.crate" ]; then
-      echo "  Cleanup: Moving old version to legacy/"
+      echo "  Cleanup: Moving old version to legacy: $(basename "$old_file")"
       mv "$old_file" "$LEGACY_DIR/"
     fi
   done
   
   for old_dir in "$EXTRACTED_DIR/${crate}"-*/; do
     if [ -d "$old_dir" ] && [ "$(basename "$old_dir")" != "${crate}-${latest_version}" ]; then
-      echo "  Cleanup: Removing old extracted version"
+      echo "  Cleanup: Removing old extracted version: $(basename "$old_dir")"
       rm -rf "$old_dir"
     fi
   done
+}
+
+export -f process_crate
+export EXTRACTED_DIR ARCHIVE_DIR LEGACY_DIR
+# Note: functions from lib/cache.sh and lib/checksum.sh might need to be exported or sourced inside
+# But since we are using bash for loops and background jobs in the same script, they are available.
+
+for crate in "${CRATES[@]}"; do
+  process_crate "$crate" &
+  current_jobs=$((current_jobs + 1))
+  
+  if [ "$current_jobs" -ge "$MAX_JOBS" ]; then
+    wait -n || true
+    current_jobs=$((current_jobs - 1))
+  fi
 done
+
+wait # Wait for all remaining jobs
 
 echo "All crate checks complete. Only missing/new versions were downloaded."
 echo "Cache stats:"

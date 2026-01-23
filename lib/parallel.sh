@@ -24,7 +24,7 @@ run_parallel() {
   # Wait for all and collect exit codes
   for pid in "${pids[@]}"; do
     if ! wait "$pid"; then
-      ((failed++))
+      failed=$((failed + 1))
     fi
   done
   
@@ -62,13 +62,13 @@ run_parallel_with_logging() {
       exit $exit_code
     ) &
     pids+=($!)
-    ((idx++))
+    idx=$((idx + 1))
   done
   
   # Wait and collect results
   for pid in "${pids[@]}"; do
     if ! wait "$pid"; then
-      ((failed++))
+      failed=$((failed + 1))
     fi
   done
   
@@ -91,11 +91,11 @@ wait_with_progress() {
   
   for pid in "${pids[@]}"; do
     if wait "$pid"; then
-      ((completed++))
+      completed=$((completed + 1))
       echo -ne "\rProgress: $completed/$total completed"
     else
-      ((completed++))
-      ((failed++))
+      completed=$((completed + 1))
+      failed=$((failed + 1))
       echo -ne "\rProgress: $completed/$total completed ($failed failed)"
     fi
   done

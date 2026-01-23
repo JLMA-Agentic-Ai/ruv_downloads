@@ -77,14 +77,18 @@ fi
 
 PACKAGES=("${MERGED_PACKAGES[@]}")
 
-# Step 4: Download with cache
-for pkg in "${PACKAGES[@]}"; do
+# Step 4: Download with cache (Parallel)
+MAX_JOBS=10
+current_jobs=0
+
+process_package() {
+  local pkg=$1
   echo "Checking: $pkg"
   
   latest_version=$(npm view "$pkg" version 2>/dev/null || true)
   if [ -z "$latest_version" ]; then
     echo "  Warning: package not found on npm: $pkg -- skipping"
-    continue
+    return
   fi
   
   checksum=$(get_npm_checksum "$pkg" "$latest_version")
@@ -100,35 +104,35 @@ for pkg in "${PACKAGES[@]}"; do
       echo "  ✓ Cache hit: $pkg@$latest_version"
       
       # Ensure extracted
-      name_dash=${pkg//@/}
-      name_dash=${name_dash//\//-}
-      extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
+      local name_no_at=${pkg//@/}
+      local name_dash=${name_no_at//\//-}
+      local extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
-        echo "  Extracting from cache..."
+        echo "  Extracting from cache: $pkg"
         tar -xzf "$cached_path" -C "$EXTRACTED_DIR"
         [ -d "$EXTRACTED_DIR/package" ] && mv "$EXTRACTED_DIR/package" "$extracted_path"
       fi
-      continue
+      return
     fi
   fi
   
   #Prepare paths
-  name_no_at=${pkg//@/}
-  name_dash=${name_no_at//\//-}
-  archive_path="$ARCHIVE_DIR/${name_dash}-${latest_version}.tgz"
+  local name_no_at=${pkg//@/}
+  local name_dash=${name_no_at//\//-}
+  local archive_path="$ARCHIVE_DIR/${name_dash}-${latest_version}.tgz"
   
   if [ -f "$archive_path" ]; then
     if verify_npm_checksum "$archive_path" "$checksum"; then
       echo "  ✓ Already downloaded: $pkg@$latest_version"
       update_cache "npm" "$pkg" "$latest_version" "$checksum" "$archive_path"
       
-      extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
+      local extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
-        echo "  Extracting..."
+        echo "  Extracting: $pkg"
         tar -xzf "$archive_path" -C "$EXTRACTED_DIR"
         [ -d "$EXTRACTED_DIR/package" ] && mv "$EXTRACTED_DIR/package" "$extracted_path"
       fi
-      continue
+      return
     else
       mv "$archive_path" "$LEGACY_DIR/" || rm -f "$archive_path"
     fi
@@ -136,48 +140,68 @@ for pkg in "${PACKAGES[@]}"; do
   
   # Download
   echo "  Downloading: $pkg@$latest_version"
-  if ! npm pack "$pkg@$latest_version" --pack-destination "$ARCHIVE_DIR"; then
+  # We need a temp dir to avoid collisions when multiple npm pack run in same dir
+  local temp_pack_dir=$(mktemp -d)
+  if ! npm pack "$pkg@$latest_version" --pack-destination "$temp_pack_dir" --loglevel error; then
     echo "  Warning: failed to download $pkg@$latest_version -- skipping"
-    continue
+    rm -rf "$temp_pack_dir"
+    return
   fi
   
-  # Find downloaded file
-  downloaded_file=$(ls "$ARCHIVE_DIR/${name_dash}-${latest_version}.tgz" 2>/dev/null || ls "$ARCHIVE_DIR"/${name_dash}*.tgz 2>/dev/null | head -1 || true)
+  # Find downloaded file in temp dir
+  local downloaded_file=$(ls "$temp_pack_dir"/*.tgz | head -1 || true)
   
-  if [ -z "$downloaded_file" ]; then
-    echo "  Warning: could not find downloaded file"
-    continue
+  if [ -z "$downloaded_file" ] || [ ! -f "$downloaded_file" ]; then
+    echo "  Warning: could not find downloaded file for $pkg"
+    rm -rf "$temp_pack_dir"
+    return
   fi
   
   # Verify and extract
   if ! verify_npm_checksum "$downloaded_file" "$checksum"; then
-    echo "  Error: download failed checksum"
+    echo "  Error: download failed checksum: $pkg"
     mv "$downloaded_file" "$LEGACY_DIR/"
-    continue
+    rm -rf "$temp_pack_dir"
+    return
   fi
   
   echo "  ✓ Downloaded and verified: $pkg@$latest_version"
   
-  echo "  Extracting..."
-  tar -xzf "$downloaded_file" -C "$EXTRACTED_DIR"
-  extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
-  [ -d "$EXTRACTED_DIR/package" ] && mv "$EXTRACTED_DIR/package" "$extracted_path"
+  # Move to final archive path
+  mv "$downloaded_file" "$archive_path"
+  rm -rf "$temp_pack_dir"
   
-  # Rename if needed
-  if [ "$downloaded_file" != "$archive_path" ]; then
-    mv "$downloaded_file" "$archive_path"
+  echo "  Extracting: $pkg"
+  local temp_extract_dir=$(mktemp -d)
+  tar -xzf "$archive_path" -C "$temp_extract_dir"
+  local extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
+  if [ -d "$temp_extract_dir/package" ]; then
+    mv "$temp_extract_dir/package" "$extracted_path"
   fi
+  rm -rf "$temp_extract_dir"
   
   update_cache "npm" "$pkg" "$latest_version" "$checksum" "$archive_path"
   
   # Cleanup old versions
   for old_file in "$ARCHIVE_DIR/${name_dash}"-*.tgz; do
     if [ -e "$old_file" ] && [ "$(basename "$old_file")" != "${name_dash}-${latest_version}.tgz" ]; then
-      echo "  Cleanup: Moving old version to legacy/"
+      echo "  Cleanup: Moving old version to legacy: $(basename "$old_file")"
       mv "$old_file" "$LEGACY_DIR/"
     fi
   done
+}
+
+for pkg in "${PACKAGES[@]}"; do
+  process_package "$pkg" &
+  current_jobs=$((current_jobs + 1))
+  
+  if [ "$current_jobs" -ge "$MAX_JOBS" ]; then
+    wait -n || true
+    current_jobs=$((current_jobs - 1))
+  fi
 done
+
+wait # Wait for all remaining jobs
 
 echo "All npm package downloads complete!"
 echo "Cache stats:"
