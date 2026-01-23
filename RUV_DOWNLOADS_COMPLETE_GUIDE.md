@@ -91,7 +91,11 @@ ruv_downloads/
 
 ## Complete Rust Crates Directory
 
+<<<<<<< HEAD
 ### Total: 193 Rust Crates
+=======
+### Total: 196 Rust Crates
+>>>>>>> origin/main
 
 #### 1. AGENTIC SYSTEMS CRATES (8 total)
 
@@ -1723,10 +1727,16 @@ cd ruv_downloads
 ./npmjs/download_ruvnet_packages.sh --discover
 
 # Step 4: Check what was downloaded
+<<<<<<< HEAD
 cat manifests/crates.txt | wc -l      # Should be ~197
 cat manifests/packages.txt | wc -l    # Should be ~204
 cat manifests/repos.txt | wc -l       # Should be ~163
 cat manifests/gists.txt | wc -l       # Should be ~290
+=======
+cat crates/crates.dynamic.txt | wc -l      # Should be ~196
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~204
+cat github/repos.dynamic.txt | wc -l       # Should be ~166
+>>>>>>> origin/main
 ```
 
 ### Using Individual Crates
@@ -1863,10 +1873,17 @@ swarm.route_message(msg, "agent")?;
 
 ## Summary Statistics
 
+<<<<<<< HEAD
 - **Total Crates**: 193 (Rust)
 - **Total Packages**: 198 (NPM/TypeScript)
 - **Total GitHub Repositories**: 166
 - **Total Artifacts**: 557
+=======
+- **Total Crates**: 196 (Rust)
+- **Total Packages**: 204 (NPM/TypeScript)
+- **Total GitHub Repositories**: 166
+- **Total Artifacts**: 566
+>>>>>>> origin/main
 - **Documentation Pages**: 300+ README files
 - **Code Size**: ~50,000+ lines of documentation
 - **Performance Tested**: Yes, 95%+ of packages
@@ -1876,7 +1893,11 @@ swarm.route_message(msg, "agent")?;
 
 ---
 
+<<<<<<< HEAD
 **Last Updated**: January 21, 2026
+=======
+**Last Updated**: January 23, 2026
+>>>>>>> origin/main
 **Repository**: ruv_downloads
 **Maintained by**: Ruvnet Community
 **License**: MIT/Apache-2.0 (dual)

@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "104e3e10bceada4bee2571d5fd88e42def1a7724"
+  },
+  "path_in_vcs": "crates/ruvector-hyperbolic-hnsw"
+}

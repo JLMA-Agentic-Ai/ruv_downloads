@@ -1,0 +1,67 @@
+{
+  "name": "prime-radiant-advanced-wasm",
+  "type": "module",
+  "collaborators": [
+    "Prime-Radiant Team",
+    "ruvnet"
+  ],
+  "description": "Advanced mathematical AI interpretability: Category Theory, Homotopy Type Theory, Spectral Analysis, Causal Inference, Quantum Topology, and Sheaf Cohomology for WebAssembly. Implements functorial retrieval, univalence axioms, Cheeger bounds, do-calculus, persistent homology, and coboundary operators.",
+  "version": "0.1.0",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/ruvector"
+  },
+  "homepage": "https://github.com/ruvnet/ruvector/tree/main/examples/prime-radiant",
+  "bugs": {
+    "url": "https://github.com/ruvnet/ruvector/issues"
+  },
+  "files": [
+    "prime_radiant_advanced_wasm_bg.wasm",
+    "prime_radiant_advanced_wasm.js",
+    "prime_radiant_advanced_wasm.d.ts"
+  ],
+  "main": "prime_radiant_advanced_wasm.js",
+  "types": "prime_radiant_advanced_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "rust",
+    "category-theory",
+    "topos",
+    "functor",
+    "morphism",
+    "homotopy-type-theory",
+    "hott",
+    "univalence",
+    "dependent-types",
+    "spectral-analysis",
+    "eigenvalue",
+    "cheeger-constant",
+    "lanczos",
+    "causal-inference",
+    "do-calculus",
+    "counterfactual",
+    "structural-causal-model",
+    "quantum-topology",
+    "persistent-homology",
+    "betti-numbers",
+    "topological-data-analysis",
+    "sheaf-cohomology",
+    "coboundary-operator",
+    "sheaf-neural-network",
+    "ai-interpretability",
+    "machine-learning",
+    "llm",
+    "neural-network",
+    "mathematical-foundations",
+    "coherence-engine",
+    "rag",
+    "retrieval-augmented-generation",
+    "memory-systems",
+    "attention-mechanism"
+  ]
+}
