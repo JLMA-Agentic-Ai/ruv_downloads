@@ -13,24 +13,24 @@ This repository provides tools to automatically discover, download, and manage t
 
 ```
 ruv_downloads/
-├── crates/                    # 193 Rust crates
-│   ├── download_ruvnet_crates.sh
-│   └── crates.dynamic.txt     # Auto-maintained manifest
+├── artifacts/                # All downloaded artifacts
+│   ├── crates/               # Rust ecosystem
+│   │   ├── archives/         # .crate files
+│   │   ├── extracted/        # Unpacked code
+│   │   └── legacy/           # Old versions
+│   ├── npm/                  # NPM ecosystem
+│   ├── repos/                # GitHub repositories
+│   └── gists/                # GitHub gists
 │
-├── npmjs/                     # 198 NPM packages  
-│   ├── download_ruvnet_packages.sh
-│   └── packagelist.dynamic.txt
+├── manifests/                # Centralized manifests
+│   ├── crates.txt            # Rust crates list
+│   ├── packages.txt          # NPM packages list
+│   ├── repos.txt             # Repositories list
+│   └── gists.txt             # Gists list
 │
-├── github/                    # 166 GitHub repositories
-│   ├── download_ruvnet_repos.sh
-│   ├── repos.dynamic.txt
-│   └── by-tier/              # Organized by development tier
-│
-├── 00_crates/                # Rust .crate archives
-│   └── legacy_crates/        # Previous versions
-│
-└── 00_tgz/                   # NPM .tgz archives
-    └── legacy_tgz/           # Previous versions
+├── scripts/                  # Optimized download system
+├── lib/                      # Core libraries (cache, checksum, parallel)
+└── artifacts/index.json      # Metadata search index
 ```
 
 ## Key Features
@@ -80,19 +80,14 @@ The easiest way to download and update everything:
 # Navigate to repository
 cd ruv_downloads
 
-# Discover and download all Rust crates
-./crates/download_ruvnet_crates.sh --discover
-
-# Discover and download all NPM packages
-./npmjs/download_ruvnet_packages.sh --discover
-
-# Discover and download all GitHub repositories
-./github/download_ruvnet_repos.sh --discover
+# Discover and download all artifacts in parallel
+./scripts/download_all_optimized.sh --discover
 
 # Verify downloads
-cat crates/crates.dynamic.txt | wc -l      # Should be ~193
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~198
-cat github/repos.dynamic.txt | wc -l       # Should be ~166
+cat manifests/crates.txt | wc -l      # Should be ~197
+cat manifests/packages.txt | wc -l    # Should be ~204
+cat manifests/repos.txt | wc -l       # Should be ~163
+cat manifests/gists.txt | wc -l       # Should be ~290
 ```
 
 ### Update Existing Artifacts

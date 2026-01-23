@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **557 total artifacts**: **193 Rust crates**, **198 NPM packages**, and **166 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
+**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **854 total artifacts**: **197 Rust crates**, **204 NPM packages**, **163 GitHub repositories**, and **290 GitHub gists** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Repository Information
 - **Type**: Package discovery and distribution system
-- **Scope**: 557 artifacts (193 Rust crates + 198 NPM packages + 166 GitHub repositories)
+- **Scope**: 854 artifacts (197 Rust crates + 204 NPM packages + 163 GitHub repositories + 290 GitHub gists)
 - **Maintained by**: Ruvnet Community
 - **Update Frequency**: Automatic discovery and versioning
 - **Storage**: Organized archives with legacy support
@@ -45,33 +45,32 @@ ruv_downloads/
 ├── README.md                              # Main overview
 ├── RUV_DOWNLOADS_COMPLETE_GUIDE.md       # This document
 │
-├── crates/                                # 193 Rust crates
-│   ├── README.md                          # Crate management documentation
-│   ├── download_ruvnet_crates.sh          # Download script with --discover flag
-│   ├── crates.dynamic.txt                 # Dynamic manifest (auto-maintained)
-│   │
-│   ├── agentic-jujutsu-1.0.1/            # Version-specific directories
-│   ├── ... [155+ more crates] ...
+├── artifacts/                             # All downloaded artifacts
+│   ├── crates/                            # Rust ecosystem
+│   │   ├── archives/                      # .crate files
+│   │   ├── extracted/                     # Unpacked code
+│   │   └── legacy/                        # Old versions
+│   ├── npm/                               # NPM ecosystem
+│   ├── repos/                             # GitHub repositories
+│   └── gists/                             # GitHub gists
 │
-├── npmjs/                                 # 198 NPM packages
-│   ├── README.md                          # Package management documentation
-│   ├── download_ruvnet_packages.sh        # Download script with --discover flag
-│   ├── packagelist.dynamic.txt            # Dynamic manifest (auto-maintained)
-│   │
-│   ├── agentic-jujutsu-2.3.6/            # Version-specific directories
-│   ├── ... [156+ more packages] ...
+├── manifests/                             # Centralized manifests
+│   ├── crates.txt                         # Rust crates list
+│   ├── packages.txt                       # NPM packages list
+│   ├── repos.txt                          # Repositories list
+│   └── gists.txt                          # Gists list
 │
-├── github/                                # 160+ GitHub Repositories
-│   ├── download_ruvnet_repos.sh           # Download script (incremental updates)
-│   ├── repos.dynamic.txt                  # Dynamic manifest
-│   │
-│   ├── by-tier/                           # Organized by tier
-│   │   ├── tier-1-active/                 # Active development
-│   │   ├── tier-2-stable/                 # Stable releases
-│   │   ├── tier-3-maintenance/            # Maintenance mode
-│   │   └── tier-4-archive/                # Archived projects
-│   │
-│   └── scripts/                           # Helper scripts
+├── scripts/                               # Optimized download system
+│   ├── download_all_optimized.sh          # Parallel orchestrator
+│   ├── ruv_index.sh                       # Metadata indexer
+│   └── ruv_query.sh                       # Search utility
+│
+├── lib/                                   # Core libraries
+│   ├── cache.sh                           # Unified cache
+│   ├── checksum.sh                        # Validation
+│   └── parallel.sh                        # Concurrent jobs
+│
+└── logs/                                  # Centralized logs
 
 │
 ├── 00_crates/                             # Rust crate archives
@@ -1724,9 +1723,10 @@ cd ruv_downloads
 ./npmjs/download_ruvnet_packages.sh --discover
 
 # Step 4: Check what was downloaded
-cat crates/crates.dynamic.txt | wc -l      # Should be ~193
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~198
-cat github/repos.dynamic.txt | wc -l       # Should be ~166
+cat manifests/crates.txt | wc -l      # Should be ~197
+cat manifests/packages.txt | wc -l    # Should be ~204
+cat manifests/repos.txt | wc -l       # Should be ~163
+cat manifests/gists.txt | wc -l       # Should be ~290
 ```
 
 ### Using Individual Crates
