@@ -1,0 +1,1 @@
+outline for implementing a “mirror life” simulation

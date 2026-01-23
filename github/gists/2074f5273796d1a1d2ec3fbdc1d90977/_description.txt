@@ -1,0 +1,1 @@
+a single‑file, ~200‑line Rust program that gives you both a central index server and a peer client in the spirit of the original Napster

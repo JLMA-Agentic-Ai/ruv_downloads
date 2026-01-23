@@ -1,0 +1,447 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Google Sheets and Drive API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://www.googleapis.com"
+    }
+  ],
+  "paths": {
+    "/drive/v3/files": {
+      "get": {
+        "summary": "List files",
+        "operationId": "listFiles",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query string to filter results by mimeType",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileList"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new file",
+        "operationId": "createFile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "mimeType": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "mimeType"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful creation of the file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/File"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sheets/v4/spreadsheets/{spreadsheetId}:batchUpdate": {
+      "post": {
+        "summary": "Add or update sheets within a spreadsheet",
+        "operationId": "batchUpdate",
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for adding or updating sheets",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "requests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "addSheet": {
+                          "type": "object",
+                          "properties": {
+                            "properties": {
+                              "$ref": "#/components/schemas/SheetProperties"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful addition or update of sheets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchUpdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sheets/v4/spreadsheets/{spreadsheetId}/values/{range}": {
+      "put": {
+        "summary": "Update a range of values in a sheet",
+        "operationId": "updateSheetValues",
+        "parameters": [
+          {
+            "name": "spreadsheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for updating values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValueRange"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "spreadsheetId": {
+                      "type": "string"
+                    },
+                    "updatedRange": {
+                      "type": "string"
+                    },
+                    "updatedRows": {
+                      "type": "integer"
+                    },
+                    "updatedColumns": {
+                      "type": "integer"
+                    },
+                    "updatedCells": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drive/v3/files/{fileId}": {
+      "patch": {
+        "summary": "Update file metadata",
+        "operationId": "updateFileMetadata",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Metadata to be updated for the file",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful update of the file metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/File"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update the content of a file",
+        "operationId": "updateTextFileContent",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uploadType",
+            "in": "query",
+            "description": "The type of upload request to the /upload endpoint. Set to 'media' for simple uploads.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["media"],
+              "default": "media"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Content to be updated in the file",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "required": ["content"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful update of the file content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/File"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth2/v3/userinfo": {
+      "get": {
+        "summary": "Get user's email address",
+        "operationId": "getUserEmail",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FileList": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/File"
+            }
+          }
+        }
+      },
+      "File": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          }
+        }
+      },
+      "SheetProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "gridProperties": {
+            "type": "object",
+            "properties": {
+              "rowCount": {
+                "type": "integer"
+              },
+              "columnCount": {
+                "type": "integer"
+              }
+            }
+          },
+          "tabColor": {
+            "type": "object",
+            "properties": {
+              "red": {
+                "type": "number",
+                "format": "float"
+              },
+              "green": {
+                "type": "number",
+                "format": "float"
+              },
+              "blue": {
+                "type": "number",
+                "format": "float"
+              },
+              "alpha": {
+                "type": "number",
+                "format": "float"
+              }
+            }
+          }
+        }
+      },
+      "BatchUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "spreadsheetId": {
+            "type": "string"
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "ValueRange": {
+        "type": "object",
+        "properties": {
+          "range": {
+            "type": "string"
+          },
+          "majorDimension": {
+            "type": "string",
+            "enum": ["ROWS", "COLUMNS"],
+            "default": "ROWS"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "GoogleOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+            "tokenUrl": "https://oauth2.googleapis.com/token",
+            "scopes": {
+              "https://www.googleapis.com/auth/drive": "Full access to Google Drive",
+              "https://www.googleapis.com/auth/spreadsheets": "Full access to Google Sheets",
+              "https://www.googleapis.com/auth/userinfo.email": "View your email address"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "GoogleOAuth": [
+        "https://www.googleapis.com/auth/drive",
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/userinfo.email"
+      ]
+    }
+  ]
+}

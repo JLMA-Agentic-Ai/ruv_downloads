@@ -1,0 +1,1 @@
+ChatGPT Codex Agent.md and environment setup script

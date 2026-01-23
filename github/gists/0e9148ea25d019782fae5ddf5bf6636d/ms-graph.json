@@ -1,0 +1,244 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Microsoft Graph API Example",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://graph.microsoft.com/v1.0"
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getUserProfile",
+        "summary": "Get current user profile",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
+      }
+    },
+    "/me/messages": {
+      "get": {
+        "operationId": "getUserEmails",
+        "summary": "Get user's email messages",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "Number of emails to return per page."
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of emails to skip."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserEmails"
+                      }
+                    },
+                    "@odata.nextLink": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
+      }
+    },
+    "/me/sendMail": {
+      "post": {
+        "operationId": "sendUserEmail",
+        "summary": "Send an email message",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMail"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Email sent successfully"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserProfile": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "mail": {
+            "type": "string"
+          }
+        }
+      },
+      "UserEmails": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string"
+          },
+          "sender": {
+            "type": "object",
+            "properties": {
+              "emailAddress": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "bodyPreview": {
+            "type": "string"
+          },
+          "receivedDateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SendMail": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "object",
+            "required": [
+              "subject",
+              "body",
+              "toRecipients"
+            ],
+            "properties": {
+              "subject": {
+                "type": "string"
+              },
+              "body": {
+                "type": "object",
+                "properties": {
+                  "contentType": {
+                    "type": "string",
+                    "enum": [
+                      "text",
+                      "HTML"
+                    ],
+                    "default": "text"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              },
+              "toRecipients": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "emailAddress"
+                  ],
+                  "properties": {
+                    "emailAddress": {
+                      "type": "object",
+                      "required": [
+                        "address"
+                      ],
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+            "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+            "scopes": {
+              "User.Read": "Read user profile",
+              "Mail.Read": "Read user's mail",
+              "Mail.ReadWrite": "Read and write access to user's mail",
+              "Mail.Send": "Send mail as a user",
+              "Calendars.Read": "Read user's calendar",
+              "Calendars.ReadWrite": "Read and write access to user's calendar"
+            }
+          }
+        }
+      }
+    }
+  }
+}

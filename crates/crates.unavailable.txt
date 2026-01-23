@@ -1,7 +1,0 @@
-# Crates descubiertos pero no disponibles en crates.io
-# (Posiblemente privados, borrados, o con acceso restringido)
-intrinsic-dim
-ruvector-agentic-synth
-ruvector-router-ffi
-ruvector-router-wasm
-temporal-compare

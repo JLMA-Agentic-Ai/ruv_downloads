@@ -1,0 +1,1 @@
+This example demonstrates basic polymorphic obfuscation techniques, including encryption, variable code structure, and behavioral adaptation.

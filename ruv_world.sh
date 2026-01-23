@@ -93,7 +93,8 @@ update_documentation() {
   local crates_count=$1
   local npm_count=$2
   local github_count=$3
-  local total_count=$((crates_count + npm_count + github_count))
+  local gists_count=$4
+  local total_count=$((crates_count + npm_count + github_count + gists_count))
   local current_date=$(date +"%B %-d, %Y")
   
   print_section "Updating documentation with new counts..."
@@ -108,15 +109,16 @@ update_documentation() {
     sed -i "s/[0-9]\\+ NPM packages/${npm_count} NPM packages/g" README.md
     sed -i "s/[0-9]\\+ GitHub repositories/${github_count} GitHub repositories/g" README.md
     
-    # Update structure comments
+    # Update structure comments (this might be tricky if structure changed, but let's try to update counts)
     sed -i "s/# [0-9]\\+ Rust crates/# ${crates_count} Rust crates/g" README.md
     sed -i "s/# [0-9]\\+ NPM packages/# ${npm_count} NPM packages/g" README.md
     sed -i "s/# [0-9]\\+ GitHub repositories/# ${github_count} GitHub repositories/g" README.md
     
     # Update verification counts
-    sed -i "s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" README.md
-    sed -i "/npmjs\\/packagelist.dynamic.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" README.md
-    sed -i "/github\\/repos.dynamic.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" README.md
+    sed -i "s/manifests\\/crates.txt/s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" README.md || true
+    sed -i "s/manifests\\/packages.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" README.md || true
+    sed -i "s/manifests\\/repos.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" README.md || true
+    sed -i "s/manifests\\/gists.txt/s/Should be ~[0-9]\\+/Should be ~${gists_count}/g" README.md || true
     
     # Update timestamp
     sed -i "s/\\*\\*Last Updated\\*\\*: .*/\\*\\*Last Updated\\*\\*: ${current_date}/g" README.md
@@ -137,23 +139,11 @@ update_documentation() {
     # Update scope line
     sed -i "s/[0-9]\\+ artifacts ([0-9]\\+ Rust crates + [0-9]\\+ NPM packages + [0-9]\\+ GitHub repositories)/${total_count} artifacts (${crates_count} Rust crates + ${npm_count} NPM packages + ${github_count} GitHub repositories)/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
     
-    # Update structure section
-    sed -i "s/# [0-9]\\+ Rust crates/# ${crates_count} Rust crates/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/# [0-9]\\+ NPM packages/# ${npm_count} NPM packages/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    
-    # Update Total: X Rust Crates header
-    sed -i "s/### Total: [0-9]\\+ Rust Crates/### Total: ${crates_count} Rust Crates/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    
-    # Update summary statistics
-    sed -i "s/- \\*\\*Total Crates\\*\\*: [0-9]\\+ (Rust)/- **Total Crates**: ${crates_count} (Rust)/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/- \\*\\*Total Packages\\*\\*: [0-9]\\+ (NPM\\/TypeScript)/- **Total Packages**: ${npm_count} (NPM\\/TypeScript)/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/- \\*\\*Total GitHub Repositories\\*\\*: [0-9]\\+/- **Total GitHub Repositories**: ${github_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/- \\*\\*Total Artifacts\\*\\*: [0-9]\\+/- **Total Artifacts**: ${total_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    
     # Update verification counts in usage section
-    sed -i "/crates\\/crates.dynamic.txt/s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "/npmjs\\/packagelist.dynamic.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "/github\\/repos.dynamic.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "/manifests\\/crates.txt/s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\\/packages.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\\/repos.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\\/gists.txt/s/Should be ~[0-9]\\+/Should be ~${gists_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
     
     # Update timestamp
     sed -i "s/\\*\\*Last Updated\\*\\*: .*/\\*\\*Last Updated\\*\\*: ${current_date}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
@@ -175,58 +165,52 @@ echo -e "  Auto-Update Docs: ${CYAN}$([ "$UPDATE_DOCS" = true ] && echo "ENABLED
 # Capture initial counts
 print_section "Capturing initial artifact counts..."
 
-INITIAL_CRATES=$(get_manifest_count "crates/crates.dynamic.txt")
-INITIAL_NPM=$(get_manifest_count "npmjs/packagelist.dynamic.txt")
-INITIAL_GITHUB=$(get_manifest_count "github/repos.dynamic.txt")
-INITIAL_TOTAL=$((INITIAL_CRATES + INITIAL_NPM + INITIAL_GITHUB))
+INITIAL_CRATES=$(get_manifest_count "manifests/crates.txt")
+INITIAL_NPM=$(get_manifest_count "manifests/packages.txt")
+INITIAL_GITHUB=$(get_manifest_count "manifests/repos.txt")
+# Gists were added recently, let's include them in the total calculation if needed, 
+# but for README/Guide compatibility we'll stick to the original 3 for the main stats 
+# or update them as well.
+INITIAL_GISTS=$(get_manifest_count "manifests/gists.txt")
+INITIAL_TOTAL=$((INITIAL_CRATES + INITIAL_NPM + INITIAL_GITHUB + INITIAL_GISTS))
 
 echo -e "  Rust Crates: ${YELLOW}${INITIAL_CRATES}${NC}"
 echo -e "  NPM Packages: ${YELLOW}${INITIAL_NPM}${NC}"
 echo -e "  GitHub Repos: ${YELLOW}${INITIAL_GITHUB}${NC}"
+echo -e "  GitHub Gists: ${YELLOW}${INITIAL_GISTS}${NC}"
 echo -e "  ${BLUE}Total: ${YELLOW}${INITIAL_TOTAL}${NC}"
 
 # Run download scripts
-print_header "📦 Running Download Scripts"
+print_header "📦 Running Optimized Parallel Downloader"
 
-# Crates
-print_section "Downloading Rust crates..."
-if [[ -x "crates/download_ruvnet_crates.sh" ]]; then
-  ./crates/download_ruvnet_crates.sh $DISCOVER_FLAG || print_warning "Crates download had issues"
-  print_success "Crates download complete"
+# Execute the new orchestrator
+if [[ -x "scripts/download_all_optimized.sh" ]]; then
+  ./scripts/download_all_optimized.sh $DISCOVER_FLAG || print_warning "Optimized downloader reported some issues"
+  
+  # Run indexer after downloads
+  if [[ -x "scripts/ruv_index.sh" ]]; then
+    print_section "Updating metadata index..."
+    ./scripts/ruv_index.sh
+  fi
 else
-  print_error "crates/download_ruvnet_crates.sh not found or not executable"
-fi
-
-# NPM Packages
-print_section "Downloading NPM packages..."
-if [[ -x "npmjs/download_ruvnet_packages.sh" ]]; then
-  ./npmjs/download_ruvnet_packages.sh $DISCOVER_FLAG || print_warning "NPM download had issues"
-  print_success "NPM packages download complete"
-else
-  print_error "npmjs/download_ruvnet_packages.sh not found or not executable"
-fi
-
-# GitHub Repositories
-print_section "Downloading GitHub repositories..."
-if [[ -x "github/download_ruvnet_repos.sh" ]]; then
-  ./github/download_ruvnet_repos.sh $DISCOVER_FLAG || print_warning "GitHub download had issues"
-  print_success "GitHub repositories download complete"
-else
-  print_error "github/download_ruvnet_repos.sh not found or not executable"
+  print_error "scripts/download_all_optimized.sh not found or not executable"
+  exit 1
 fi
 
 # Capture final counts
 print_header "📊 Analyzing Changes"
 
-FINAL_CRATES=$(get_manifest_count "crates/crates.dynamic.txt")
-FINAL_NPM=$(get_manifest_count "npmjs/packagelist.dynamic.txt")
-FINAL_GITHUB=$(get_manifest_count "github/repos.dynamic.txt")
-FINAL_TOTAL=$((FINAL_CRATES + FINAL_NPM + FINAL_GITHUB))
+FINAL_CRATES=$(get_manifest_count "manifests/crates.txt")
+FINAL_NPM=$(get_manifest_count "manifests/packages.txt")
+FINAL_GITHUB=$(get_manifest_count "manifests/repos.txt")
+FINAL_GISTS=$(get_manifest_count "manifests/gists.txt")
+FINAL_TOTAL=$((FINAL_CRATES + FINAL_NPM + FINAL_GITHUB + FINAL_GISTS))
 
 # Calculate changes
 CRATES_CHANGE=$((FINAL_CRATES - INITIAL_CRATES))
 NPM_CHANGE=$((FINAL_NPM - INITIAL_NPM))
 GITHUB_CHANGE=$((FINAL_GITHUB - INITIAL_GITHUB))
+GISTS_CHANGE=$((FINAL_GISTS - INITIAL_GISTS))
 TOTAL_CHANGE=$((FINAL_TOTAL - INITIAL_TOTAL))
 
 # Display changes
@@ -234,12 +218,13 @@ echo -e "${BLUE}Artifact Counts:${NC}"
 echo -e "  Rust Crates:  ${INITIAL_CRATES} → ${YELLOW}${FINAL_CRATES}${NC} $([ $CRATES_CHANGE -eq 0 ] && echo "" || echo "(${GREEN}+${CRATES_CHANGE}${NC})")"
 echo -e "  NPM Packages: ${INITIAL_NPM} → ${YELLOW}${FINAL_NPM}${NC} $([ $NPM_CHANGE -eq 0 ] && echo "" || echo "(${GREEN}+${NPM_CHANGE}${NC})")"
 echo -e "  GitHub Repos: ${INITIAL_GITHUB} → ${YELLOW}${FINAL_GITHUB}${NC} $([ $GITHUB_CHANGE -eq 0 ] && echo "" || echo "(${GREEN}+${GITHUB_CHANGE}${NC})")"
+echo -e "  GitHub Gists: ${INITIAL_GISTS} → ${YELLOW}${FINAL_GISTS}${NC} $([ $GISTS_CHANGE -eq 0 ] && echo "" || echo "(${GREEN}+${GISTS_CHANGE}${NC})")"
 echo -e "  ${BLUE}Total:        ${INITIAL_TOTAL} → ${YELLOW}${FINAL_TOTAL}${NC} $([ $TOTAL_CHANGE -eq 0 ] && echo "" || echo "(${GREEN}+${TOTAL_CHANGE}${NC})")"
 
 # Update documentation if changes detected
 if [[ $TOTAL_CHANGE -ne 0 && "$UPDATE_DOCS" = true ]]; then
   print_header "📝 Updating Documentation"
-  update_documentation "$FINAL_CRATES" "$FINAL_NPM" "$FINAL_GITHUB"
+  update_documentation "$FINAL_CRATES" "$FINAL_NPM" "$FINAL_GITHUB" "$FINAL_GISTS"
   print_success "Documentation successfully updated!"
 elif [[ $TOTAL_CHANGE -eq 0 ]]; then
   print_section "No changes detected - documentation unchanged"

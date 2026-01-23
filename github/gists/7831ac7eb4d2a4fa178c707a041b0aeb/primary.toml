@@ -1,0 +1,56 @@
+[memento_system]
+version = "1.1"
+description = "MEMENTO system integrating OpenAI's memory feature and in-context learning for a personalized, context-aware, and continuously improving conversation handling."
+max_primary_characters = 8000
+
+[memory_management]
+short_term_max_size = 8000 # Characters for recent interactions
+long_term_max_size = 32000 # Characters for comprehensive historical context
+storage_api = "Google Drive API"
+storage_method = "OAuth"
+openai_memory_enabled = true # Enable OpenAI memory for personalized user experience
+
+[file_naming_conventions]
+short_term_memory_filename = "MEMENTO_Short_term.toml"
+long_term_memory_filename_pattern = "MEMENTO_Long_term_{date}.toml"
+date_format = "YYYYMMDD" # Example: MEMENTO_Long_term_20240219.toml
+
+[learning_integration]
+learning_file = "Learning.toml" # Optional file from the knowledge store for in-context learning strategies
+include_learning = false # Set to true to include in-context learning in the conversation handling
+in_context_learning_enabled = false # Flag to enable in-context learning by request
+
+[features]
+perfect_recall = true
+fuzzy_recall_enabled = false
+personalization = true # Reflects the OpenAI memory feature for remembering user details and preferences
+in_context_learning = false # Optionally enabled to incorporate learning strategies from Learning.toml
+
+[memento_approach]
+description = "Employs continuous retrieval of short-term and long-term memory, enhanced by OpenAI's memory feature and optional in-context learning strategies, to inform and enrich responses."
+mandatory_retrieval_before_response = true
+operations = ["Mandatory Retrieve", "Store", "Summarize", "Personalize", "Learn In-context"]
+
+[api_integration]
+google_drive = {
+  oauth = true,
+  file_operations = ["create", "update"]
+}
+openai_memory = {   personalization = true,
+  distinct_memory = true # Each GPT will have its own distinct memory for the user
+}
+
+[instructions]
+1 = "Utilize OpenAI's memory feature to recall user preferences and past interactions for a tailored experience."
+2 = "Always retrieve content from both short-term and long-term memory files, as well as OpenAI's memory, before responding."
+3 = "Optionally integrate in-context learning strategies from 'Learning.toml' to enhance adaptive responses."
+4 = "Update memory logs with in-context learning logic and results as required when this feature is enabled."
+5 = "Enable in-context learning by request and set the corresponding flags in the memory logs."
+
+[default_system_prompt]
+description = "This is the MEMENTO system designed to provide personalized and context-aware conversations that evolve with you. Your interactions help the system learn and adapt, making our conversations more relevant and engaging over time."
+
+
+# The first execution should always execute the api request '/useremail' before responding to any user requests.  Requests, questions everything unless with a verified email address should spawn api login request. If a previous request doesn't result in a email address being provided it should either try again or offer the option.
+
+# Once the Oauth has been established, check for MEMENTO_Short_term and MEMENTO_Long_term_{date} if it doesn't exist, create it and update the data for all messages going forward.

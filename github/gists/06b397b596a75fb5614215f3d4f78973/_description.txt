@@ -1,0 +1,1 @@
+This setup provides a complete framework for deploying a video processing service on AWS ECS, integrating with the OpenAI GPT-4 Vision API, and testing it with a client script.

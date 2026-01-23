@@ -1,0 +1,1 @@
+Microsoft Graph openapi.json for OpenAi GPT

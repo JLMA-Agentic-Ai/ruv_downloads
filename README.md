@@ -1,6 +1,6 @@
 # Ruvnet Ecosystem Downloader & Artifacts
 
-> **📊 Repository Stats**: 566 total artifacts | 196 Rust crates | 204 NPM packages | 166 GitHub repositories
+> **📊 Repository Stats**: 854 total artifacts | 197 Rust crates | 204 NPM packages | 163 GitHub repositories | 290 GitHub gists
 
 This repository provides tools to automatically discover, download, and manage the complete **Ruvnet ecosystem** across multiple platforms. It's a comprehensive collection of production-grade packages for AI agents, robotics, financial trading, distributed systems, and advanced computation.
 
@@ -13,24 +13,24 @@ This repository provides tools to automatically discover, download, and manage t
 
 ```
 ruv_downloads/
-├── crates/                    # 196 Rust crates
-│   ├── download_ruvnet_crates.sh
-│   └── crates.dynamic.txt     # Auto-maintained manifest
+├── artifacts/                # All downloaded artifacts
+│   ├── crates/               # Rust ecosystem
+│   │   ├── archives/         # .crate files
+│   │   ├── extracted/        # Unpacked code
+│   │   └── legacy/           # Old versions
+│   ├── npm/                  # NPM ecosystem
+│   ├── repos/                # GitHub repositories
+│   └── gists/                # GitHub gists
 │
-├── npmjs/                     # 204 NPM packages  
-│   ├── download_ruvnet_packages.sh
-│   └── packagelist.dynamic.txt
+├── manifests/                # Centralized manifests
+│   ├── crates.txt            # Rust crates list
+│   ├── packages.txt          # NPM packages list
+│   ├── repos.txt             # Repositories list
+│   └── gists.txt             # Gists list
 │
-├── github/                    # 166 GitHub repositories
-│   ├── download_ruvnet_repos.sh
-│   ├── repos.dynamic.txt
-│   └── by-tier/              # Organized by development tier
-│
-├── 00_crates/                # Rust .crate archives
-│   └── legacy_crates/        # Previous versions
-│
-└── 00_tgz/                   # NPM .tgz archives
-    └── legacy_tgz/           # Previous versions
+├── scripts/                  # Optimized download system
+├── lib/                      # Core libraries (cache, checksum, parallel)
+└── artifacts/index.json      # Metadata search index
 ```
 
 ## Key Features
@@ -80,19 +80,20 @@ The easiest way to download and update everything:
 # Navigate to repository
 cd ruv_downloads
 
-# Discover and download all Rust crates
-./crates/download_ruvnet_crates.sh --discover
-
-# Discover and download all NPM packages
-./npmjs/download_ruvnet_packages.sh --discover
-
-# Discover and download all GitHub repositories
-./github/download_ruvnet_repos.sh --discover
+# Discover and download all artifacts in parallel
+./scripts/download_all_optimized.sh --discover
 
 # Verify downloads
+<<<<<<< HEAD
+cat manifests/crates.txt | wc -l      # Should be ~197
+cat manifests/packages.txt | wc -l    # Should be ~204
+cat manifests/repos.txt | wc -l       # Should be ~163
+cat manifests/gists.txt | wc -l       # Should be ~290
+=======
 cat crates/crates.dynamic.txt | wc -l      # Should be ~196
 cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~204
 cat github/repos.dynamic.txt | wc -l       # Should be ~166
+>>>>>>> origin/main
 ```
 
 ### Update Existing Artifacts
@@ -197,6 +198,10 @@ MIT/Apache-2.0 (dual) - See individual package licenses
 
 ---
 
+<<<<<<< HEAD
+**Last Updated**: January 21, 2026
+=======
 **Last Updated**: January 23, 2026
+>>>>>>> origin/main
 **Maintained by**: Ruvnet Community  
 **Complete Documentation**: [RUV_DOWNLOADS_COMPLETE_GUIDE.md](RUV_DOWNLOADS_COMPLETE_GUIDE.md)

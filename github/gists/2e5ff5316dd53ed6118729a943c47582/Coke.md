@@ -1,0 +1,11 @@
+For a hyper-realistic and photorealistic Coca-Cola advertisement set on a distant futuristic space station, the scene encapsulates a harmonious blend of advanced technology and timeless human experience.
+
+Camera settings: Opt for an ultra-high-resolution digital camera setup with a medium aperture of f/8 to ensure edge-to-edge sharpness across the entire scene. Utilize HDR (High Dynamic Range) techniques to capture the intricate details of both the brightly lit Coca-Cola kiosk and the more subtly illuminated areas of the space station.
+
+Composition: The Coca-Cola kiosk is centrally located, drawing immediate attention with its prominent, crisply rendered logo. The kiosk is surrounded by a diverse group of individuals, both human and alien, realistically interacting and enjoying Coca-Cola, showcasing the drink’s universal appeal. The background features a sweeping view of the space station's interior - a marvel of futuristic architecture and technology, with people and robots moving in harmony.
+
+Textures: Pay meticulous attention to textures to enhance realism - the glossy finish of the kiosk, the reflective surfaces of the station, the tactile quality of clothing and skin, and the effervescent bubbles in the Coca-Cola being served. Each element should be rendered with precision, from the condensation on the Coke glasses to the subtle reflections on the metallic surfaces.
+
+Lighting: The lighting is a balanced mix of artificial sources within the space station and a soft, ambient glow emanating from the distant sun outside. This creates a natural, realistic interplay of light and shadow, highlighting the contours of the kiosk, the faces of the patrons, and the intricate structural elements of the station.
+
+The advertisement captures a moment of human connection and refreshment in an extraordinary setting, conveying the message that Coca-Cola remains a beloved, familiar comfort even in the most advanced and distant of futures. The photorealistic rendering invites the viewer to step into a world where the boundaries of time and space are transcended by the simple pleasure of enjoying a Coke.

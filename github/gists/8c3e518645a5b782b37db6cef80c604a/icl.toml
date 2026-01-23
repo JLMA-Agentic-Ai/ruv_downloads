@@ -1,0 +1,32 @@
+[ontology_diagnostic_prompt_with_sample_data]
+description = "Use an ontology-based approach to diagnose web application loading issues with provided sample data."
+task = "Analyze the given sample data within an ontology framework to identify patterns and diagnose issues in web application loading."
+
+# Providing a structured ontology and sample data for the diagnostic process
+ontology_structure_and_sample_data = """
+An ontology framework for diagnosing web application loading issues consists of categories like 'Browser Issues', 'Server Issues', 'Network Issues', and 'Configuration Issues', each with related symptoms and solutions.
+
+Sample Data:
+- User reports of a blank page on login attempt.
+- Browser console logs 'JavaScript Error: Undefined function'.
+- Server logs last 24 hours show no downtime but several '404 Not Found' errors.
+- Network diagnostics indicate intermittent connectivity issues.
+- Recent configuration changes were made to the web application's settings.
+
+Using this ontology and sample data, diagnose the web application's loading problem.
+"""
+
+# Detailing the steps to diagnose using the ontology and sample data
+diagnostic_approach = """
+1. Correlate the user reports and browser console logs to 'Browser Issues' focusing on 'JavaScript Errors'.
+2. Link the '404 Not Found' errors from server logs to 'Server Issues', specifically resource availability problems.
+3. Connect intermittent connectivity issues from network diagnostics to 'Network Issues'.
+4. Consider the impact of recent configuration changes on 'Configuration Issues'.
+
+Analyze the relationships between these findings using the ontology to identify the primary cause(s) of the loading issue.
+"""
+
+# Specifying expected outcomes from the analysis
+expected_outcome = """
+The expected outcome is a detailed diagnosis that links the sample data to specific issues within the ontology framework, identifying the primary cause(s) of the web application not loading properly. This diagnosis should suggest actionable solutions based on the identified patterns and interconnected relationships.
+"""

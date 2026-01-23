@@ -9,6 +9,7 @@ cd "$(dirname "$0")"
 GITHUB_USER="ruvnet"
 MANIFEST_FILE="repos.dynamic.txt"
 BY_TIER_DIR="by-tier"
+GISTS_DIR="gists"
 
 # Function to URL encode strings (handles spaces, etc.)
 url_encode() {
@@ -287,12 +288,83 @@ done
 
 echo "All repository checks complete."
 
+# Step 4b: Download Gists
+echo "Checking Gists from GitHub user: $GITHUB_USER"
+mkdir -p "$GISTS_DIR"
+
+if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  # Get list of gists
+  # Using a temp file to handle large lists/multiline processing safely
+  GIST_TEMP=$(mktemp)
+  # Fields: id, git_pull_url, description
+  gh api "users/$GITHUB_USER/gists" --paginate --jq '.[] | [.id, .git_pull_url, .description] | @tsv' > "$GIST_TEMP"
+
+  while IFS=$'\t' read -r gist_id gist_url gist_desc; do
+    [ -z "$gist_id" ] && continue
+    echo "Checking Gist: $gist_id"
+
+    target_dir="$GISTS_DIR/$gist_id"
+
+    # --- Smart Sync Logic for Gists ---
+
+    # 1. Get Remote HEAD Commit Hash
+    remote_hash=$(git ls-remote "$gist_url" HEAD 2>/dev/null | awk '{print $1}' || true)
+
+    if [ -z "$remote_hash" ]; then
+        echo "  Warning: Could not fetch remote hash for gist $gist_id. Skipping."
+        continue
+    fi
+
+    local_hash=""
+    commit_file="$target_dir/.ruv_commit"
+    if [ -f "$commit_file" ]; then
+        local_hash=$(cat "$commit_file")
+    fi
+
+    if [ -d "$target_dir" ] && [ "$remote_hash" == "$local_hash" ]; then
+        echo "  Up-to-date: $gist_id ($remote_hash)"
+        continue
+    fi
+
+    if [ -d "$target_dir" ]; then
+        echo "  Updating: $gist_id (New commit: $remote_hash)"
+        rm -rf "$target_dir"
+    else
+        echo "  Cloning: $gist_id"
+    fi
+
+    if git clone --quiet "$gist_url" "$target_dir"; then
+        echo "  Cloned: $gist_id"
+
+        # Save description
+        if [ -n "$gist_desc" ]; then
+            echo "$gist_desc" > "$target_dir/_description.txt"
+        fi
+
+        # Remove .git (to match repo behavior)
+        if [ -d "$target_dir/.git" ]; then
+             rm -rf "$target_dir/.git"
+        fi
+
+        echo "$remote_hash" > "$target_dir/.ruv_commit"
+    else
+        echo "  Warning: failed to clone gist $gist_id"
+    fi
+
+  done < "$GIST_TEMP"
+  rm -f "$GIST_TEMP"
+else
+  echo "  Skipping Gists: gh CLI not authenticated."
+fi
+
+echo "All Gist checks complete."
+
 # Step 5: Cleanup Root Directory (Enforce Strict Tiered Structure)
 echo "Cleaning up root directory to enforce strict tiered organization..."
 # Loop through all directories in the script's directory (github root)
 for item in */ ; do
-    # Skip the by-tier directory itself and the scripts directory
-    if [[ "$item" == "$BY_TIER_DIR/" ]] || [[ "$item" == "scripts/" ]]; then
+    # Skip the by-tier directory itself, gists directory, and the scripts directory
+    if [[ "$item" == "$BY_TIER_DIR/" ]] || [[ "$item" == "$GISTS_DIR/" ]] || [[ "$item" == "scripts/" ]]; then
         continue
     fi
     

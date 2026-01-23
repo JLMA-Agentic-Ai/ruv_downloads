@@ -1,0 +1,1 @@
+automate the process of solving CAPTCHAs using a desktop computer, you can combine several approaches involving automation tools

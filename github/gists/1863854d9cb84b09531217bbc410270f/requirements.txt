@@ -1,0 +1,8 @@
+fastapi
+httpx
+pydantic
+uvicorn
+jupyter_client
+litellm
+lzstring
+starlette

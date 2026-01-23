@@ -25,8 +25,8 @@
 ,
   {
     "name": "ARCADIA",
-    "tier": "tier-1-active",
-    "tierNum": 1,
+    "tier": "tier-2-stable",
+    "tierNum": 2,
     "lastCommitDate": "2025-10-20",
     "lastCommitTs": 1761004068,
     "firstCommitDate": "2023-04-10",
@@ -61,8 +61,8 @@
 ,
   {
     "name": "AiCodeCalc",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2025-01-12",
     "lastCommitTs": 1736700378,
     "firstCommitDate": "2025-01-11",
@@ -181,12 +181,12 @@
 ,
   {
     "name": "QuDAG",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-06-23",
-    "lastCommitTs": 1750697142,
+    "tier": "tier-1-active",
+    "tierNum": 1,
+    "lastCommitDate": "2026-01-14",
+    "lastCommitTs": 1768403419,
     "firstCommitDate": "2025-06-15",
-    "commitCount": 66,
+    "commitCount": 69,
     "description": "> The Darkest of Darknets - Built for the Quantum Age and Autonomous AI Swarms",
     "tech": ["rust"]
   }
@@ -399,11 +399,11 @@
     "name": "agentic-flow",
     "tier": "tier-1-active",
     "tierNum": 1,
-    "lastCommitDate": "2025-12-01",
-    "lastCommitTs": 1764645825,
+    "lastCommitDate": "2026-01-01",
+    "lastCommitTs": 1767284503,
     "firstCommitDate": "2024-09-02",
-    "commitCount": 459,
-    "description": "**The First AI Agent Framework That Gets Smarter AND Faster Every Time It Runs**",
+    "commitCount": 521,
+    "description": "> **Production-ready AI agent orchestration platform with 66 self-learning agents, 213 MCP tools, SONA adaptive learning, advanced attention mechanisms, and autonomous multi-agent swarms.**",
     "tech": ["node", "typescript"]
   }
 ,
@@ -565,8 +565,8 @@
 ,
   {
     "name": "ai-browse",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2025-01-11",
     "lastCommitTs": 1736609397,
     "firstCommitDate": "2025-01-11",
@@ -673,8 +673,8 @@
 ,
   {
     "name": "auto-browser",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2025-01-20",
     "lastCommitTs": 1737404450,
     "firstCommitDate": "2025-01-20",
@@ -759,10 +759,10 @@
     "name": "claude-flow",
     "tier": "tier-1-active",
     "tierNum": 1,
-    "lastCommitDate": "2025-12-09",
-    "lastCommitTs": 1765295620,
+    "lastCommitDate": "2026-01-21",
+    "lastCommitTs": 1768959605,
     "firstCommitDate": "2025-06-02",
-    "commitCount": 3117,
+    "commitCount": 5097,
     "description": "",
     "tech": ["node", "typescript"]
   }
@@ -1117,8 +1117,8 @@
 ,
   {
     "name": "inflight",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2025-01-07",
     "lastCommitTs": 1736292572,
     "firstCommitDate": "2025-01-07",
@@ -1149,6 +1149,18 @@
     "commitCount": 242,
     "description": "*Created by rUv, because he could.*",
     "tech": []
+  }
+,
+  {
+    "name": "marketing",
+    "tier": "tier-1-active",
+    "tierNum": 1,
+    "lastCommitDate": "2026-01-20",
+    "lastCommitTs": 1768959252,
+    "firstCommitDate": "2026-01-13",
+    "commitCount": 17,
+    "description": "> **Autonomous AI agents that optimize your advertising campaigns 24/7**",
+    "tech": ["node", "typescript"]
   }
 ,
   {
@@ -1477,8 +1489,8 @@
 ,
   {
     "name": "reflective-engineer",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2024-12-18",
     "lastCommitTs": 1734544053,
     "firstCommitDate": "2024-11-27",
@@ -1587,18 +1599,18 @@
     "name": "ruvector",
     "tier": "tier-1-active",
     "tierNum": 1,
-    "lastCommitDate": "2025-12-13",
-    "lastCommitTs": 1765653232,
+    "lastCommitDate": "2026-01-20",
+    "lastCommitTs": 1768957710,
     "firstCommitDate": "2025-11-19",
-    "commitCount": 288,
-    "description": "",
+    "commitCount": 657,
+    "description": "**The vector database that gets smarter the more you use it.**",
     "tech": ["node", "rust"]
   }
 ,
   {
     "name": "ruvnet",
-    "tier": "tier-1-active",
-    "tierNum": 1,
+    "tier": "tier-2-stable",
+    "tierNum": 2,
     "lastCommitDate": "2025-10-04",
     "lastCommitTs": 1759588769,
     "firstCommitDate": "2023-04-10",
@@ -1609,8 +1621,8 @@
 ,
   {
     "name": "santa-ai-workshop",
-    "tier": "tier-3-maintenance",
-    "tierNum": 3,
+    "tier": "tier-4-archive",
+    "tierNum": 4,
     "lastCommitDate": "2023-12-22",
     "lastCommitTs": 1703279673,
     "firstCommitDate": "2023-12-22",
@@ -1633,8 +1645,8 @@
 ,
   {
     "name": "sparc",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
     "lastCommitDate": "2025-01-13",
     "lastCommitTs": 1736783942,
     "firstCommitDate": "2024-10-07",
@@ -1669,8 +1681,8 @@
 ,
   {
     "name": "sublinear-time-solver",
-    "tier": "tier-1-active",
-    "tierNum": 1,
+    "tier": "tier-2-stable",
+    "tierNum": 2,
     "lastCommitDate": "2025-10-07",
     "lastCommitTs": 1759854000,
     "firstCommitDate": "2025-09-19",
@@ -1812,6 +1824,18 @@
   }
 ,
   {
+    "name": "vibecast",
+    "tier": "tier-2-stable",
+    "tierNum": 2,
+    "lastCommitDate": "2025-05-01",
+    "lastCommitTs": 1746114286,
+    "firstCommitDate": "2025-05-01",
+    "commitCount": 1,
+    "description": "Weekly Vibecast Live coding sessions with rUv. Check branches for each week. ",
+    "tech": []
+  }
+,
+  {
     "name": "vibing",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -1849,12 +1873,12 @@
 ,
   {
     "name": "wifi-densepose",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-06-09",
-    "lastCommitTs": 1749489215,
+    "tier": "tier-1-active",
+    "tierNum": 1,
+    "lastCommitDate": "2026-01-13",
+    "lastCommitTs": 1768338266,
     "firstCommitDate": "2025-06-07",
-    "commitCount": 17,
+    "commitCount": 30,
     "description": "",
     "tech": ["python"]
   }
@@ -1872,6 +1896,18 @@
   }
 ,
   {
+    "name": "ARCADIA",
+    "tier": "tier-2-stable",
+    "tierNum": 2,
+    "lastCommitDate": "2025-10-20",
+    "lastCommitTs": 1761004068,
+    "firstCommitDate": "2023-04-10",
+    "commitCount": 13,
+    "description": "",
+    "tech": ["node", "rust"]
+  }
+,
+  {
     "name": "Agent-Name-Service",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -1880,18 +1916,6 @@
     "firstCommitDate": "2025-05-15",
     "commitCount": 5,
     "description": "A secure registry for AI agents based on the [OWASP GenAI Security Project's](https://genai.owasp.org/) Agent Name Service (ANS) Protocol. ANS provides a foundational framework for secure discovery an",
-    "tech": ["node", "typescript"]
-  }
-,
-  {
-    "name": "AiCodeCalc",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-01-12",
-    "lastCommitTs": 1736700378,
-    "firstCommitDate": "2025-01-11",
-    "commitCount": 7,
-    "description": "AiCodeCalc is a sophisticated calculator designed to analyze and compare the costs and efficiency of LLM-powered development versus traditional human development. This tool helps organizations make da",
     "tech": ["node", "typescript"]
   }
 ,
@@ -1917,18 +1941,6 @@
     "commitCount": 11,
     "description": "> Agentic Engineering for Data Analysis",
     "tech": ["python"]
-  }
-,
-  {
-    "name": "QuDAG",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-06-23",
-    "lastCommitTs": 1750697142,
-    "firstCommitDate": "2025-06-15",
-    "commitCount": 66,
-    "description": "> The Darkest of Darknets - Built for the Quantum Age and Autonomous AI Swarms",
-    "tech": ["rust"]
   }
 ,
   {
@@ -2016,18 +2028,6 @@
   }
 ,
   {
-    "name": "ai-browse",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-01-11",
-    "lastCommitTs": 1736609397,
-    "firstCommitDate": "2025-01-11",
-    "commitCount": 1,
-    "description": "",
-    "tech": []
-  }
-,
-  {
     "name": "alienator",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2037,18 +2037,6 @@
     "commitCount": 31,
     "description": "> *\"The greatest discovery would be to find that we are not alone, and that contact has already begun—hidden in plain sight within the very systems we've created.\"*",
     "tech": ["node", "typescript"]
-  }
-,
-  {
-    "name": "auto-browser",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-01-20",
-    "lastCommitTs": 1737404450,
-    "firstCommitDate": "2025-01-20",
-    "commitCount": 9,
-    "description": "Auto-Browser is an AI-powered web automation tool that makes complex web interactions simple through natural language commands. It combines the power of LLMs with browser automation to enable sophisti",
-    "tech": []
   }
 ,
   {
@@ -2196,18 +2184,6 @@
   }
 ,
   {
-    "name": "inflight",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-01-07",
-    "lastCommitTs": 1736292572,
-    "firstCommitDate": "2025-01-07",
-    "commitCount": 11,
-    "description": "In today’s rapidly evolving digital landscape, the sheer volume and velocity of data generated across various industries have surged exponentially. Traditional transactional event processing systems",
-    "tech": ["python"]
-  }
-,
-  {
     "name": "nova",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2304,18 +2280,6 @@
   }
 ,
   {
-    "name": "reflective-engineer",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2024-12-18",
-    "lastCommitTs": 1734544053,
-    "firstCommitDate": "2024-11-27",
-    "commitCount": 367,
-    "description": "A powerful LangChain-based development environment for building, testing, and deploying AI agents. Featuring advanced prompting techniques, sophisticated memory systems, and a comprehensive template l",
-    "tech": ["node", "typescript"]
-  }
-,
-  {
     "name": "roomodes",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2352,6 +2316,18 @@
   }
 ,
   {
+    "name": "ruvnet",
+    "tier": "tier-2-stable",
+    "tierNum": 2,
+    "lastCommitDate": "2025-10-04",
+    "lastCommitTs": 1759588769,
+    "firstCommitDate": "2023-04-10",
+    "commitCount": 43,
+    "description": "![Alt Hi. I'm @rUv](https://github.com/ruvnet/ruvnet/blob/main/assets/pp.png?raw=true)",
+    "tech": []
+  }
+,
+  {
     "name": "sparc-ide",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2364,15 +2340,15 @@
   }
 ,
   {
-    "name": "sparc",
+    "name": "sublinear-time-solver",
     "tier": "tier-2-stable",
     "tierNum": 2,
-    "lastCommitDate": "2025-01-13",
-    "lastCommitTs": 1736783942,
-    "firstCommitDate": "2024-10-07",
-    "commitCount": 320,
-    "description": "![SPARC CLI](assets/sparc_cli.png.png)",
-    "tech": ["python"]
+    "lastCommitDate": "2025-10-07",
+    "lastCommitTs": 1759854000,
+    "firstCommitDate": "2025-09-19",
+    "commitCount": 86,
+    "description": "",
+    "tech": ["node", "rust", "typescript"]
   }
 ,
   {
@@ -2412,6 +2388,18 @@
   }
 ,
   {
+    "name": "vibecast",
+    "tier": "tier-2-stable",
+    "tierNum": 2,
+    "lastCommitDate": "2025-05-01",
+    "lastCommitTs": 1746114286,
+    "firstCommitDate": "2025-05-01",
+    "commitCount": 1,
+    "description": "Weekly Vibecast Live coding sessions with rUv. Check branches for each week. ",
+    "tech": []
+  }
+,
+  {
     "name": "vibing",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2436,18 +2424,6 @@
   }
 ,
   {
-    "name": "wifi-densepose",
-    "tier": "tier-2-stable",
-    "tierNum": 2,
-    "lastCommitDate": "2025-06-09",
-    "lastCommitTs": 1749489215,
-    "firstCommitDate": "2025-06-07",
-    "commitCount": 17,
-    "description": "",
-    "tech": ["python"]
-  }
-,
-  {
     "name": "yyz-agentics-june",
     "tier": "tier-2-stable",
     "tierNum": 2,
@@ -2457,6 +2433,18 @@
     "commitCount": 2,
     "description": "",
     "tech": []
+  }
+,
+  {
+    "name": "AiCodeCalc",
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
+    "lastCommitDate": "2025-01-12",
+    "lastCommitTs": 1736700378,
+    "firstCommitDate": "2025-01-11",
+    "commitCount": 7,
+    "description": "AiCodeCalc is a sophisticated calculator designed to analyze and compare the costs and efficiency of LLM-powered development versus traditional human development. This tool helps organizations make da",
+    "tech": ["node", "typescript"]
   }
 ,
   {
@@ -2688,6 +2676,18 @@
   }
 ,
   {
+    "name": "ai-browse",
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
+    "lastCommitDate": "2025-01-11",
+    "lastCommitTs": 1736609397,
+    "firstCommitDate": "2025-01-11",
+    "commitCount": 1,
+    "description": "",
+    "tech": []
+  }
+,
+  {
     "name": "ai-gist",
     "tier": "tier-3-maintenance",
     "tierNum": 3,
@@ -2757,6 +2757,18 @@
     "commitCount": 33,
     "description": "Anthropic Quickstarts is a collection of projects designed to help developers quickly get started with building  applications using the Anthropic API. Each quickstart provides a foundation that you ca",
     "tech": ["python"]
+  }
+,
+  {
+    "name": "auto-browser",
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
+    "lastCommitDate": "2025-01-20",
+    "lastCommitTs": 1737404450,
+    "firstCommitDate": "2025-01-20",
+    "commitCount": 9,
+    "description": "Auto-Browser is an AI-powered web automation tool that makes complex web interactions simple through natural language commands. It combines the power of LLMs with browser automation to enable sophisti",
+    "tech": []
   }
 ,
   {
@@ -2916,6 +2928,18 @@
   }
 ,
   {
+    "name": "inflight",
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
+    "lastCommitDate": "2025-01-07",
+    "lastCommitTs": 1736292572,
+    "firstCommitDate": "2025-01-07",
+    "commitCount": 11,
+    "description": "In today’s rapidly evolving digital landscape, the sheer volume and velocity of data generated across various industries have surged exponentially. Traditional transactional event processing systems",
+    "tech": ["python"]
+  }
+,
+  {
     "name": "llamastack",
     "tier": "tier-3-maintenance",
     "tierNum": 3,
@@ -3060,6 +3084,18 @@
   }
 ,
   {
+    "name": "reflective-engineer",
+    "tier": "tier-3-maintenance",
+    "tierNum": 3,
+    "lastCommitDate": "2024-12-18",
+    "lastCommitTs": 1734544053,
+    "firstCommitDate": "2024-11-27",
+    "commitCount": 367,
+    "description": "A powerful LangChain-based development environment for building, testing, and deploying AI agents. Featuring advanced prompting techniques, sophisticated memory systems, and a comprehensive template l",
+    "tech": ["node", "typescript"]
+  }
+,
+  {
     "name": "retro-ai-ui",
     "tier": "tier-3-maintenance",
     "tierNum": 3,
@@ -3096,15 +3132,15 @@
   }
 ,
   {
-    "name": "santa-ai-workshop",
+    "name": "sparc",
     "tier": "tier-3-maintenance",
     "tierNum": 3,
-    "lastCommitDate": "2023-12-22",
-    "lastCommitTs": 1703279673,
-    "firstCommitDate": "2023-12-22",
-    "commitCount": 1,
-    "description": "",
-    "tech": []
+    "lastCommitDate": "2025-01-13",
+    "lastCommitTs": 1736783942,
+    "firstCommitDate": "2024-10-07",
+    "commitCount": 320,
+    "description": "![SPARC CLI](assets/sparc_cli.png.png)",
+    "tech": ["python"]
   }
 ,
   {
@@ -3549,6 +3585,18 @@
     "commitCount": 6,
     "description": "Created by [@rUv](https://github.com/ruvnet)",
     "tech": ["node", "typescript"]
+  }
+,
+  {
+    "name": "santa-ai-workshop",
+    "tier": "tier-4-archive",
+    "tierNum": 4,
+    "lastCommitDate": "2023-12-22",
+    "lastCommitTs": 1703279673,
+    "firstCommitDate": "2023-12-22",
+    "commitCount": 1,
+    "description": "",
+    "tech": []
   }
 ,
   {

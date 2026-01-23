@@ -1,0 +1,1 @@
+A cognitive framework for optimizing logic, reasoning, and comprehension when using ChatGPT. This framework ensures clear understanding, effective problem-solving, and accurate responses.

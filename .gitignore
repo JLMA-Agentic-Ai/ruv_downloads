@@ -14,11 +14,15 @@
 !crates/
 !github/
 !npmjs/
+!lib/
+!scripts/
 
 # Allow everything inside release directories
 !crates/**
 !npmjs/**
 !github/**
+!lib/**
+!scripts/**
 
 # ... But re-ignore build artifacts and large files
 crates/**/target/
