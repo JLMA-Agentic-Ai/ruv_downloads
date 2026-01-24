@@ -1,24 +1,36 @@
-# Strict Ignore all
-*
-
-# Whitelist root files
+# Whitelist core files
 !.gitignore
 !.github/
 !.github/**
 !README.md
-!*.sh
-!MANIFEST.md
 !RUV_DOWNLOADS_COMPLETE_GUIDE.md
+!ruv_world.sh
 
-# Whitelist directory structure
-!crates/
-!github/
-!npmjs/
+# Whitelist directory structure (but ignore contents by default)
+!manifests/
+!manifests/*.txt
+!scripts/
+!scripts/*.sh
+!lib/
+!lib/*.sh
+!artifacts/
+!artifacts/index.json
+!artifacts/**/.gitkeep
 
-# Allow everything inside release directories
-!crates/**
-!npmjs/**
-!github/**
+# Ignore large downloaded artifacts (Archives and Extracted code)
+# These should be managed by the scripts, not committed to Git (Standard Repo)
+# If a full backup in Git is desired, these can be whitelisted.
+artifacts/crates/archives/
+artifacts/crates/extracted/
+artifacts/npm/archives/
+artifacts/npm/extracted/
+artifacts/repos/*
+artifacts/gists/*
+
+# Ignore logs
+logs/*.log
+cache/
+
 
 # ... But re-ignore build artifacts and large files
 crates/**/target/

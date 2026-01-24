@@ -45,7 +45,7 @@ DISCOVERED_REPOS=()
 if [ "$DISCOVER" -eq 1 ]; then
   echo "Discovering repositories from GitHub for user: $GITHUB_USER ..."
   
-  if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  if command -v gh >/dev/null 2>&1 && { gh auth status >/dev/null 2>&1 || [ -n "${GITHUB_TOKEN:-}" ]; }; then
     echo "  Using gh CLI..."
     gh_repos=$(gh repo list "$GITHUB_USER" --limit 1000 --json name --jq '.[].name')
     if [ -n "$gh_repos" ]; then

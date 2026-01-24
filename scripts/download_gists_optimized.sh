@@ -45,7 +45,7 @@ DISCOVERED_GISTS=()
 if [ "$DISCOVER" -eq 1 ]; then
   echo "Discovering gists from GitHub for user: $GITHUB_USER ..."
   
-  if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  if command -v gh >/dev/null 2>&1 && { gh auth status >/dev/null 2>&1 || [ -n "${GITHUB_TOKEN:-}" ]; }; then
     GIST_TEMP=$(mktemp)
     gh api "users/$GITHUB_USER/gists" --paginate --jq '.[] | [.id, .description] | @tsv' > "$GIST_TEMP"
     
@@ -173,7 +173,3 @@ echo "All gist downloads complete!"
 echo "Cache stats:"
 get_cache_stats | grep "Gists:"
 
-
-echo "All gist downloads complete!"
-echo "Cache stats:"
-get_cache_stats | grep "Gists:"
