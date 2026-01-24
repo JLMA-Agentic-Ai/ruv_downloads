@@ -1,0 +1,15 @@
+# Ignore all artifacts (too large for git)
+*
+
+# But track the directory structure
+!.gitignore
+!crates/
+!crates/.gitkeep
+!npm/
+!npm/.gitkeep
+!repos/
+!repos/.gitkeep
+!repos/.metadata/
+!gists/
+!gists/.gitkeep
+!gists/.metadata/
