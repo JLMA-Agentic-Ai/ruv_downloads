@@ -1,6 +1,8 @@
 name: Update Ruvnet Packages
 
 on:
+  push:
+    branches: [ main ]
   schedule:
     # Run every 12 hours (e.g., 00:00 and 12:00)
     - cron: '0 */12 * * *'
@@ -31,6 +33,7 @@ jobs:
 
       - name: Run RUV WORLD - Centralized Downloader
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./ruv_world.sh
       
