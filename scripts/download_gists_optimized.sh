@@ -40,6 +40,17 @@ if [ -f "$MANIFEST_FILE" ]; then
   done < "$MANIFEST_FILE"
 fi
 
+# Helper: Sanitize description for directory name
+sanitize_description() {
+  local desc=$1
+  if [ -z "$desc" ] || [ "$desc" = "null" ]; then
+    echo "Untitled"
+    return
+  fi
+  # Remove special characters, replace spaces with underscores, limit length
+  echo "$desc" | sed 's/[^a-zA-Z0-9 ]//g' | sed 's/ /_/g' | cut -c1-50
+}
+
 # Step 2: Discovery
 DISCOVERED_GISTS=()
 DISCOVERED_DATA=$(mktemp)
@@ -53,7 +64,8 @@ if [ "$DISCOVER" -eq 1 ]; then
       [ -z "$gist_id" ] && continue
       # Extract date YYYY-MM-DD
       gist_date=$(echo "$updated_at" | cut -d'T' -f1)
-      DISCOVERED_GISTS+=("$gist_id|$gist_date")
+      safe_desc=$(sanitize_description "$gist_desc")
+      DISCOVERED_GISTS+=("$gist_id|$gist_date|$safe_desc")
     done < "$DISCOVERED_DATA"
   fi
   
@@ -61,14 +73,14 @@ if [ "$DISCOVER" -eq 1 ]; then
 fi
 
 # Step 3: Merge
-# We keep the manifest as just IDs for compatibility, but we use the date for processing
+# We keep the manifest as just IDs for compatibility
 TEMP_MERGED=$(mktemp)
 trap "rm -f $TEMP_MERGED $DISCOVERED_DATA" EXIT
 
 {
-  # Add existing from manifest (with placeholder date if unknown)
+  # Add existing from manifest (with placeholder data if unknown)
   for id in "${EXISTING_GISTS[@]}"; do
-    echo "$id|0000-00-00"
+    echo "$id|0000-00-00|unknown"
   done
   printf "%s\n" "${DISCOVERED_GISTS[@]}"
 } | grep -v '^$' | sort -t'|' -k1,1 -u > "$TEMP_MERGED"
@@ -99,19 +111,27 @@ process_gist() {
   local data=$1
   local gist_id=$(echo "$data" | cut -d'|' -f1)
   local gist_date=$(echo "$data" | cut -d'|' -f2)
+  local safe_desc=$(echo "$data" | cut -d'|' -f3)
   
-  # If date is unknown, try to fetch it
-  if [ "$gist_date" = "0000-00-00" ]; then
-    gist_date=$(gh api "gists/$gist_id" --jq '.updated_at' | cut -d'T' -f1 || echo "unknown")
+  # If data is unknown, try to fetch it
+  if [ "$gist_date" = "0000-00-00" ] || [ "$safe_desc" = "unknown" ]; then
+    gist_json=$(gh api "gists/$gist_id" --jq '{updated_at: .updated_at, description: .description}' 2>/dev/null || echo "")
+    if [ -n "$gist_json" ]; then
+      gist_date=$(echo "$gist_json" | jq -r '.updated_at' | cut -d'T' -f1)
+      gist_desc=$(echo "$gist_json" | jq -r '.description')
+      safe_desc=$(sanitize_description "$gist_desc")
+    else
+      gist_date="unknown"
+      safe_desc="unknown"
+    fi
   fi
 
-  echo "Checking Gist: $gist_id (Date: $gist_date)"
+  local folder_name="${safe_desc}_(${gist_id})"
+  echo "Checking Gist: $folder_name (Date: $gist_date)"
   
   local gist_url="https://gist.github.com/${gist_id}.git"
   local date_dir="$PROJECT_ROOT/artifacts/gists/by-date/$gist_date"
-  local target_dir="$date_dir/$gist_id"
-  
-  mkdir -p "$date_dir"
+  local target_dir="$date_dir/$folder_name"
   
   # Get remote hash
   local remote_hash=$(git ls-remote "$gist_url" HEAD 2>/dev/null | awk '{print $1}' || true)
@@ -129,10 +149,10 @@ process_gist() {
   if [ -n "$cached_path" ] && [ -d "$cached_path" ]; then
     local local_hash=$(get_git_commit_hash "$cached_path")
     if [ "$local_hash" = "$checksum" ]; then
-      echo "  ✓ Cache hit: $gist_id ($remote_hash)"
-      # Ensure it's in the right date folder (in case it moved)
-      if [ "$cached_path" != "$target_dir" ]; then
-         echo "  Moving to new date folder: $target_dir"
+      echo "  ✓ Cache hit: $gist_id"
+      # Migration/Reorganization: Move to the new descriptive folder if needed
+      if [ "$(basename "$cached_path")" != "$folder_name" ] || [[ "$cached_path" != *"/by-date/$gist_date/"* ]]; then
+         echo "  Re-organizing to: $target_dir"
          mkdir -p "$date_dir"
          mv "$cached_path" "$target_dir"
          update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
@@ -141,40 +161,29 @@ process_gist() {
     fi
   fi
   
-  # Check if exists locally in ANY date folder (cleanup old versions)
-  local found_old=0
-  for old_dir in "$PROJECT_ROOT/artifacts/gists/by-date"/*/"$gist_id"; do
-    if [ -d "$old_dir" ]; then
-      if [ "$old_dir" = "$target_dir" ]; then
-        local local_hash=$(get_git_commit_hash "$target_dir")
-        if [ "$local_hash" = "$checksum" ]; then
-          echo "  ✓ Up-to-date: $gist_id ($remote_hash)"
-          update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
-          return
-        fi
-      else
-        echo "  Found older version/different date: $old_dir"
-        rm -rf "$old_dir"
-        found_old=1
-      fi
-    fi
-  done
+  # Deep check locally for migration (find any folder containing the ID)
+  local found_local=$(find "$PROJECT_ROOT/artifacts/gists" -type d -name "*($gist_id)*" -o -name "$gist_id" | head -n 1)
   
-  # Fallback for old structure (by-id)
-  if [ -d "$GISTS_DIR/$gist_id" ]; then
-     echo "  Migrating from old ID structure: $gist_id"
-     rm -rf "$target_dir"
-     mv "$GISTS_DIR/$gist_id" "$target_dir"
-     local local_hash=$(get_git_commit_hash "$target_dir")
-     if [ "$local_hash" = "$checksum" ]; then
-       echo "  ✓ Migrated and Up-to-date"
-       update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
-       return
-     fi
+  if [ -n "$found_local" ] && [ -d "$found_local" ]; then
+    local local_hash=$(get_git_commit_hash "$found_local")
+    if [ "$local_hash" = "$checksum" ]; then
+      echo "  ✓ Found and Up-to-date: $(basename "$found_local")"
+      if [ "$found_local" != "$target_dir" ]; then
+        echo "    Migrating to new target: $target_dir"
+        mkdir -p "$date_dir"
+        mv "$found_local" "$target_dir"
+      fi
+      update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
+      return
+    else
+      echo "  Updating existing: $(basename "$found_local")"
+      rm -rf "$found_local"
+    fi
   fi
 
   # Clone
   echo "  Cloning: $gist_id into $target_dir"
+  mkdir -p "$date_dir"
   rm -rf "$target_dir" # Clean up any failed clones
   if git clone --depth=1 --quiet "$gist_url" "$target_dir"; then
     echo "  ✓ Cloned: $gist_id"
@@ -182,20 +191,17 @@ process_gist() {
     # Save commit hash
     echo "$remote_hash" > "$target_dir/.ruv_commit"
     
-    # Get description if available
-    local gist_desc=$(gh api "gists/$gist_id" --jq '.description' 2>/dev/null || echo "")
+    # Get metadata
+    gist_full_json=$(gh api "gists/$gist_id" 2>/dev/null || echo "")
     
     # Generate metadata safely using jq
-    jq -n \
-      --arg id "$gist_id" \
-      --arg description "$gist_desc" \
-      --arg created "$(gh api "gists/$gist_id" --jq '.created_at')" \
-      --arg updated "$(gh api "gists/$gist_id" --jq '.updated_at')" \
-      --arg lastUpdated "$(date -Iseconds)" \
-      --arg commit "$remote_hash" \
-      --arg url "https://gist.github.com/$gist_id" \
-      '{id: $id, type: "gist", description: $description, created: $created, updated: $updated, lastUpdated: $lastUpdated, commit: $commit, url: $url}' \
-      > "$METADATA_DIR/${gist_id}.json"
+    if [ -n "$gist_full_json" ]; then
+      echo "$gist_full_json" | jq -r \
+        --arg commit "$remote_hash" \
+        --arg lastUpdated "$(date -Iseconds)" \
+        '. + {type: "gist", commit: $commit, lastUpdated: $lastUpdated}' \
+        > "$METADATA_DIR/${gist_id}.json"
+    fi
     
     update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
   else
@@ -216,7 +222,10 @@ done
 
 wait # Wait for all remaining jobs
 
-echo "All gist downloads complete!"
+# Cleanup empty directories in by-date
+find "$PROJECT_ROOT/artifacts/gists/by-date" -type d -empty -delete 2>/dev/null || true
+
+echo "All gist downloads and reorganization complete!"
 echo "Cache stats:"
 get_cache_stats | grep "Gists:"
 
