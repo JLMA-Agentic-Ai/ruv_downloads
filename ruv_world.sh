@@ -104,24 +104,26 @@ update_documentation() {
     print_success "Updating README.md..."
     
     # Update stats badge
-    sed -i "s/[0-9]\\+ total artifacts/${total_count} total artifacts/g" README.md
-    sed -i "s/[0-9]\\+ Rust crates/${crates_count} Rust crates/g" README.md
-    sed -i "s/[0-9]\\+ NPM packages/${npm_count} NPM packages/g" README.md
-    sed -i "s/[0-9]\\+ GitHub repositories/${github_count} GitHub repositories/g" README.md
+    sed -i "s/[0-9]\+ total artifacts/${total_count} total artifacts/g" README.md
+    sed -i "s/[0-9]\+ Rust crates/${crates_count} Rust crates/g" README.md
+    sed -i "s/[0-9]\+ NPM packages/${npm_count} NPM packages/g" README.md
+    sed -i "s/[0-9]\+ GitHub repositories/${github_count} GitHub repositories/g" README.md
+    sed -i "s/[0-9]\+ GitHub gists/${gists_count} GitHub gists/g" README.md || sed -i "s/GitHub repositories/GitHub repositories | ${gists_count} GitHub gists/g" README.md
     
-    # Update structure comments (this might be tricky if structure changed, but let's try to update counts)
-    sed -i "s/# [0-9]\\+ Rust crates/# ${crates_count} Rust crates/g" README.md
-    sed -i "s/# [0-9]\\+ NPM packages/# ${npm_count} NPM packages/g" README.md
-    sed -i "s/# [0-9]\\+ GitHub repositories/# ${github_count} GitHub repositories/g" README.md
+    # Update structure comments
+    sed -i "s/# [0-9]\+ Rust crates/# ${crates_count} Rust crates/g" README.md
+    sed -i "s/# [0-9]\+ NPM packages/# ${npm_count} NPM packages/g" README.md
+    sed -i "s/# [0-9]\+ GitHub repositories/# ${github_count} GitHub repositories/g" README.md
+    sed -i "s/# [0-9]\+ GitHub gists/# ${gists_count} GitHub gists/g" README.md || true
     
     # Update verification counts
-    sed -i "s/manifests\\/crates.txt/s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" README.md || true
-    sed -i "s/manifests\\/packages.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" README.md || true
-    sed -i "s/manifests\\/repos.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" README.md || true
-    sed -i "s/manifests\\/gists.txt/s/Should be ~[0-9]\\+/Should be ~${gists_count}/g" README.md || true
+    sed -i "/manifests\/crates.txt/s/Should be ~[0-9]\+/Should be ~${crates_count}/g" README.md || true
+    sed -i "/manifests\/packages.txt/s/Should be ~[0-9]\+/Should be ~${npm_count}/g" README.md || true
+    sed -i "/manifests\/repos.txt/s/Should be ~[0-9]\+/Should be ~${github_count}/g" README.md || true
+    sed -i "/manifests\/gists.txt/s/Should be ~[0-9]\+/Should be ~${gists_count}/g" README.md || true
     
     # Update timestamp
-    sed -i "s/\\*\\*Last Updated\\*\\*: .*/\\*\\*Last Updated\\*\\*: ${current_date}/g" README.md
+    sed -i "s/\*\*Last Updated\*\*: .*/\*\*Last Updated\*\*: ${current_date}/g" README.md
     
     print_success "  ✓ README.md updated"
   fi
@@ -131,19 +133,21 @@ update_documentation() {
     print_success "Updating RUV_DOWNLOADS_COMPLETE_GUIDE.md..."
     
     # Update executive summary
-    sed -i "s/\\*\\*[0-9]\\+ total artifacts\\*\\*/**${total_count} total artifacts**/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/\\*\\*[0-9]\\+ Rust crates\\*\\*/**${crates_count} Rust crates**/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/\\*\\*[0-9]\\+ NPM packages\\*\\*/**${npm_count} NPM packages**/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
-    sed -i "s/\\*\\*[0-9]\\+ GitHub repositories\\*\\*/**${github_count} GitHub repositories**/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/\*\*[0-9]\+ total artifacts\*\*/\*\*${total_count} total artifacts\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/\*\*[0-9]\+ Rust crates\*\*/\*\*${crates_count} Rust crates\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/\*\*[0-9]\+ NPM packages\*\*/\*\*${npm_count} NPM packages\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/\*\*[0-9]\+ GitHub repositories\*\*/\*\*${github_count} GitHub repositories\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/\*\*[0-9]\+ GitHub gists\*\*/\*\*${gists_count} GitHub gists\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || sed -i "s/GitHub repositories/GitHub repositories, and \*\*${gists_count} GitHub gists\*\*/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
     
     # Update scope line
-    sed -i "s/[0-9]\\+ artifacts ([0-9]\\+ Rust crates + [0-9]\\+ NPM packages + [0-9]\\+ GitHub repositories)/${total_count} artifacts (${crates_count} Rust crates + ${npm_count} NPM packages + ${github_count} GitHub repositories)/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
+    sed -i "s/[0-9]\+ artifacts ([0-9]\+ Rust crates + [0-9]\+ NPM packages + [0-9]\+ GitHub repositories)/${total_count} artifacts (${crates_count} Rust crates + ${npm_count} NPM packages + ${github_count} GitHub repositories + ${gists_count} GitHub gists)/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
     
     # Update verification counts in usage section
-    sed -i "/manifests\\/crates.txt/s/Should be ~[0-9]\\+/Should be ~${crates_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
-    sed -i "/manifests\\/packages.txt/s/Should be ~[0-9]\\+/Should be ~${npm_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
-    sed -i "/manifests\\/repos.txt/s/Should be ~[0-9]\\+/Should be ~${github_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
-    sed -i "/manifests\\/gists.txt/s/Should be ~[0-9]\\+/Should be ~${gists_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\/crates.txt/s/Should be ~[0-9]\+/Should be ~${crates_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\/packages.txt/s/Should be ~[0-9]\+/Should be ~${npm_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\/repos.txt/s/Should be ~[0-9]\+/Should be ~${github_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+    sed -i "/manifests\/gists.txt/s/Should be ~[0-9]\+/Should be ~${gists_count}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md || true
+
     
     # Update timestamp
     sed -i "s/\\*\\*Last Updated\\*\\*: .*/\\*\\*Last Updated\\*\\*: ${current_date}/g" RUV_DOWNLOADS_COMPLETE_GUIDE.md
@@ -247,7 +251,7 @@ else
 fi
 
 echo -e "\n${CYAN}Final Count: ${YELLOW}${FINAL_TOTAL}${CYAN} total artifacts${NC}"
-echo -e "  ${FINAL_CRATES} Rust crates | ${FINAL_NPM} NPM packages | ${FINAL_GITHUB} GitHub repos\n"
+echo -e "  ${FINAL_CRATES} Rust crates | ${FINAL_NPM} NPM packages | ${FINAL_GITHUB} GitHub repos | ${FINAL_GISTS} Gists\n"
 
 print_success "RUV WORLD complete! 🚀"
 
