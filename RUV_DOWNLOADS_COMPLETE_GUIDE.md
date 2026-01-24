@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **854 total artifacts**: **197 Rust crates**, **204 NPM packages**, **163 GitHub repositories**, and **290 GitHub gists** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
+**RUV_DOWNLOADS** is a sophisticated repository that automatically discovers, downloads, and manages **867 total artifacts**: **197 Rust crates**, **217 NPM packages**, and **163 GitHub repositories** from the Ruvnet ecosystem. This represents a production-grade ecosystem for AI agents, robotics, financial trading systems, distributed networks, and advanced computation.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Repository Information
 - **Type**: Package discovery and distribution system
-- **Scope**: 854 artifacts (197 Rust crates + 204 NPM packages + 163 GitHub repositories + 290 GitHub gists)
+- **Scope**: 867 artifacts (197 Rust crates + 217 NPM packages + 163 GitHub repositories)
 - **Maintained by**: Ruvnet Community
 - **Update Frequency**: Automatic discovery and versioning
 - **Storage**: Organized archives with legacy support
@@ -45,57 +45,40 @@ ruv_downloads/
 ├── README.md                              # Main overview
 ├── RUV_DOWNLOADS_COMPLETE_GUIDE.md       # This document
 │
-├── artifacts/                             # All downloaded artifacts
-│   ├── crates/                            # Rust ecosystem
-│   │   ├── archives/                      # .crate files
-│   │   ├── extracted/                     # Unpacked code
-│   │   └── legacy/                        # Old versions
-│   ├── npm/                               # NPM ecosystem
+├── artifacts/                             # Centralized artifact storage
+│   ├── crates/                            # Rust crates (archives, extracted, legacy)
+│   ├── npm/                               # NPM packages (archives, extracted, legacy)
 │   ├── repos/                             # GitHub repositories
-│   └── gists/                             # GitHub gists
+│   ├── gists/                             # GitHub gists
+│   └── index.json                         # Search index
 │
-├── manifests/                             # Centralized manifests
-│   ├── crates.txt                         # Rust crates list
-│   ├── packages.txt                       # NPM packages list
-│   ├── repos.txt                          # Repositories list
-│   └── gists.txt                          # Gists list
+├── manifests/                             # Centralized manifests (.txt)
+│   ├── crates.txt
+│   ├── packages.txt
+│   ├── repos.txt
+│   └── gists.txt
 │
-├── scripts/                               # Optimized download system
+├── scripts/                               # Optimized scripts
 │   ├── download_all_optimized.sh          # Parallel orchestrator
-│   ├── ruv_index.sh                       # Metadata indexer
+│   ├── download_crates_optimized.sh
+│   ├── download_npm_optimized.sh
+│   ├── download_repos_optimized.sh
+│   ├── download_gists_optimized.sh
 │   └── ruv_query.sh                       # Search utility
 │
-├── lib/                                   # Core libraries
-│   ├── cache.sh                           # Unified cache
-│   ├── checksum.sh                        # Validation
-│   └── parallel.sh                        # Concurrent jobs
+├── lib/                                   # Shared libraries
+│   ├── cache.sh
+│   ├── checksum.sh
+│   └── parallel.sh
 │
-└── logs/                                  # Centralized logs
-
-│
-├── 00_crates/                             # Rust crate archives
-│   ├── *.crate                            # Downloaded .crate files
-│   └── legacy_crates/                     # Previous versions
-│
-├── 00_tgz/                                # NPM package archives
-│   ├── *.tgz                              # Downloaded .tgz files
-│   └── legacy_tgz/                        # Previous versions
-│
-└── [Configuration & Tools]
-    ├── .gitignore
-    ├── .github/workflows/
-    └── [Other config files]
+└── ruv_world.sh                           # Main entry point
 ```
 
 ---
 
 ## Complete Rust Crates Directory
 
-<<<<<<< HEAD
-### Total: 193 Rust Crates
-=======
-### Total: 196 Rust Crates
->>>>>>> origin/main
+### Total: 173 Rust Crates
 
 #### 1. AGENTIC SYSTEMS CRATES (8 total)
 
@@ -1727,16 +1710,9 @@ cd ruv_downloads
 ./npmjs/download_ruvnet_packages.sh --discover
 
 # Step 4: Check what was downloaded
-<<<<<<< HEAD
-cat manifests/crates.txt | wc -l      # Should be ~197
-cat manifests/packages.txt | wc -l    # Should be ~204
-cat manifests/repos.txt | wc -l       # Should be ~163
-cat manifests/gists.txt | wc -l       # Should be ~290
-=======
-cat crates/crates.dynamic.txt | wc -l      # Should be ~196
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~204
-cat github/repos.dynamic.txt | wc -l       # Should be ~166
->>>>>>> origin/main
+cat crates/crates.dynamic.txt | wc -l      # Should be ~173
+cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~192
+cat github/repos.dynamic.txt | wc -l       # Should be ~165
 ```
 
 ### Using Individual Crates
@@ -1873,17 +1849,10 @@ swarm.route_message(msg, "agent")?;
 
 ## Summary Statistics
 
-<<<<<<< HEAD
-- **Total Crates**: 193 (Rust)
-- **Total Packages**: 198 (NPM/TypeScript)
-- **Total GitHub Repositories**: 166
-- **Total Artifacts**: 557
-=======
-- **Total Crates**: 196 (Rust)
-- **Total Packages**: 204 (NPM/TypeScript)
-- **Total GitHub Repositories**: 166
-- **Total Artifacts**: 566
->>>>>>> origin/main
+- **Total Crates**: 173 (Rust)
+- **Total Packages**: 192 (NPM/TypeScript)
+- **Total GitHub Repositories**: 165
+- **Total Artifacts**: 530
 - **Documentation Pages**: 300+ README files
 - **Code Size**: ~50,000+ lines of documentation
 - **Performance Tested**: Yes, 95%+ of packages
@@ -1893,11 +1862,7 @@ swarm.route_message(msg, "agent")?;
 
 ---
 
-<<<<<<< HEAD
-**Last Updated**: January 21, 2026
-=======
-**Last Updated**: January 23, 2026
->>>>>>> origin/main
+**Last Updated**: January 24, 2026
 **Repository**: ruv_downloads
 **Maintained by**: Ruvnet Community
 **License**: MIT/Apache-2.0 (dual)

@@ -1,1 +1,0 @@
-Overview: OpenAI JSON Mode vs. Function Calling

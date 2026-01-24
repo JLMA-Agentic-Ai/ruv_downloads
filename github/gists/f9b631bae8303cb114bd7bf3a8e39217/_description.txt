@@ -1,1 +1,0 @@
-Ruvector: Next-Generation Vector Database

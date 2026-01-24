@@ -1,1 +1,0 @@
-Training and Deploying Large Reasoning Models (LRMs) for Competitive Programming

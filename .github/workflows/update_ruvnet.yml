@@ -31,15 +31,13 @@ jobs:
       - name: Make scripts executable
         run: |
           chmod +x ruv_world.sh
-          chmod +x scripts/*.sh
+          chmod +x crates/download_ruvnet_crates.sh
+          chmod +x npmjs/download_ruvnet_packages.sh
+          chmod +x github/download_ruvnet_repos.sh
+          chmod +x github/scripts/organize_repos.sh
 
-      - name: Run RUV WORLD - Optimized Parallel Downloader
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run RUV WORLD - Centralized Downloader
         run: ./ruv_world.sh
-
-      - name: Verify Search Index
-        run: ./scripts/ruv_query.sh --status
 
       - name: Commit and Push changes
         run: |

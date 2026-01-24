@@ -1,6 +1,6 @@
 # Ruvnet Ecosystem Downloader & Artifacts
 
-> **📊 Repository Stats**: 854 total artifacts | 197 Rust crates | 204 NPM packages | 163 GitHub repositories | 290 GitHub gists
+> **📊 Repository Stats**: 867 total artifacts | 197 Rust crates | 217 NPM packages | 163 GitHub repositories
 
 This repository provides tools to automatically discover, download, and manage the complete **Ruvnet ecosystem** across multiple platforms. It's a comprehensive collection of production-grade packages for AI agents, robotics, financial trading, distributed systems, and advanced computation.
 
@@ -13,24 +13,28 @@ This repository provides tools to automatically discover, download, and manage t
 
 ```
 ruv_downloads/
-├── artifacts/                # All downloaded artifacts
-│   ├── crates/               # Rust ecosystem
-│   │   ├── archives/         # .crate files
-│   │   ├── extracted/        # Unpacked code
-│   │   └── legacy/           # Old versions
-│   ├── npm/                  # NPM ecosystem
-│   ├── repos/                # GitHub repositories
-│   └── gists/                # GitHub gists
+├── artifacts/                 # Centralized artifact storage
+│   ├── crates/                # Rust crates (archives, extracted, legacy)
+│   ├── npm/                   # NPM packages (archives, extracted, legacy)
+│   ├── repos/                 # GitHub repositories
+│   ├── gists/                 # GitHub gists
+│   └── index.json             # Search index
 │
-├── manifests/                # Centralized manifests
-│   ├── crates.txt            # Rust crates list
-│   ├── packages.txt          # NPM packages list
-│   ├── repos.txt             # Repositories list
-│   └── gists.txt             # Gists list
+├── manifests/                 # Centralized manifests
+│   ├── crates.txt
+│   ├── packages.txt
+│   ├── repos.txt
+│   └── gists.txt
 │
-├── scripts/                  # Optimized download system
-├── lib/                      # Core libraries (cache, checksum, parallel)
-└── artifacts/index.json      # Metadata search index
+├── scripts/                   # Optimized scripts
+│   ├── download_all_optimized.sh
+│   ├── ruv_index.sh
+│   ├── ruv_query.sh
+│   └── ...
+│
+├── lib/                       # Shared libraries (cache, checksum, parallel)
+│
+└── ruv_world.sh               # Main orchestrator
 ```
 
 ## Key Features
@@ -80,33 +84,36 @@ The easiest way to download and update everything:
 # Navigate to repository
 cd ruv_downloads
 
-# Discover and download all artifacts in parallel
-./scripts/download_all_optimized.sh --discover
+# Discover and download all Rust crates
+./scripts/download_crates_optimized.sh --discover
+
+# Discover and download all NPM packages
+./scripts/download_npm_optimized.sh --discover
+
+# Discover and download all GitHub repositories
+./scripts/download_repos_optimized.sh --discover
+
+# Discover and download all GitHub Gists
+./scripts/download_gists_optimized.sh --discover
 
 # Verify downloads
-<<<<<<< HEAD
 cat manifests/crates.txt | wc -l      # Should be ~197
 cat manifests/packages.txt | wc -l    # Should be ~204
 cat manifests/repos.txt | wc -l       # Should be ~163
 cat manifests/gists.txt | wc -l       # Should be ~290
-=======
-cat crates/crates.dynamic.txt | wc -l      # Should be ~196
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~204
-cat github/repos.dynamic.txt | wc -l       # Should be ~166
->>>>>>> origin/main
 ```
 
 ### Update Existing Artifacts
 
 ```bash
 # Update Rust crates (no --discover flag)
-./crates/download_ruvnet_crates.sh
+./scripts/download_crates_optimized.sh
 
 # Update NPM packages
-./npmjs/download_ruvnet_packages.sh
+./scripts/download_npm_optimized.sh
 
 # Update GitHub repositories (incremental)
-./github/download_ruvnet_repos.sh
+./scripts/download_repos_optimized.sh
 ```
 
 ## Ecosystem Highlights
@@ -172,20 +179,17 @@ const robot = new RoboticSystem('warehouse-bot');
 
 ```bash
 # View downloaded .crate files
-ls -lh 00_crates/*.crate | head -20
+ls -lh artifacts/crates/archives/*.crate | head -20
 
 # View downloaded .tgz files  
-ls -lh 00_tgz/*.tgz | head -20
+ls -lh artifacts/npm/archives/*.tgz | head -20
 
 # Check legacy archives
-ls 00_crates/legacy_crates/
-ls 00_tgz/legacy_tgz/
+ls artifacts/crates/legacy/
+ls artifacts/npm/legacy/
 
-# Manually extract a crate
-cd 00_crates && tar xzf qudag-1.4.0.crate
-
-# Manually extract an NPM package
-cd 00_tgz && tar xzf neural-trader-2.6.3.tgz
+# Manually extract a crate (automatic extraction is enabled by default)
+tar xzf artifacts/crates/archives/qudag-1.4.0.crate -C artifacts/crates/extracted/
 ```
 
 ## Contributing
@@ -198,10 +202,6 @@ MIT/Apache-2.0 (dual) - See individual package licenses
 
 ---
 
-<<<<<<< HEAD
-**Last Updated**: January 21, 2026
-=======
-**Last Updated**: January 23, 2026
->>>>>>> origin/main
+**Last Updated**: January 24, 2026
 **Maintained by**: Ruvnet Community  
 **Complete Documentation**: [RUV_DOWNLOADS_COMPLETE_GUIDE.md](RUV_DOWNLOADS_COMPLETE_GUIDE.md)

@@ -1,8 +1,0 @@
-mutation CreateExtensionCellOutput($input: ReporterInput!) {
-  createExtensionCellOutput(input: $input) {
-   id
-   htmlUrl
-   exitCode
-   isSlackReady
-  }
-}

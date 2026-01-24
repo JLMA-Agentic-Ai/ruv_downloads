@@ -1,1 +1,0 @@
-A prediction framework & prompt uses a "future retrospective" approach where predictions are framed as historical analysis from a future date. This method has proven particularly effective for economic indicators, market trends, and event outcomes when combined with rigorous backtesting and statistical validation

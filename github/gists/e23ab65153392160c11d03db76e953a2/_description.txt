@@ -1,1 +1,0 @@
-Verifiy Microsoft Oauth Publisher Domain (python)

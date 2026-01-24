@@ -1,1 +1,0 @@
-An open source system, based on FSDP and QLoRA, that can train a 70b model on two 24GB GPUs

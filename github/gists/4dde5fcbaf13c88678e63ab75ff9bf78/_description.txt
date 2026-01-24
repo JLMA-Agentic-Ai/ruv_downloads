@@ -1,1 +1,0 @@
-A complete specification for Legal Documents using a Unified Hypergraph

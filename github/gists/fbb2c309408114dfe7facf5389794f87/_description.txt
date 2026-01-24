@@ -1,1 +1,0 @@
-Quantum Virtual Machine (QVM) Scheduler and Runtime (Rust Crate)

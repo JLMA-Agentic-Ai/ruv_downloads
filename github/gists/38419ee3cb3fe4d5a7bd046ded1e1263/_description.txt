@@ -1,1 +1,0 @@
-synth-ruv-1.ipynb

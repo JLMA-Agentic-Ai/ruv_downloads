@@ -1,1 +1,0 @@
-LLMscript, a system for executing TOML-defined scripts with Python libraries. It emphasizes security with whitelisting and input sanitization, supporting AI applications.

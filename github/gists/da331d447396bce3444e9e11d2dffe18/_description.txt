@@ -1,1 +1,0 @@
-The OpenAi Primary Prompt Instructions in Prompt Engine TOML

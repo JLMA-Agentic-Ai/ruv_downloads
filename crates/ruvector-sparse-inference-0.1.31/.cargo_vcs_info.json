@@ -1,7 +1,0 @@
-{
-  "git": {
-    "sha1": "aa3e9492821b592bc65c727c585660f7d53383c6",
-    "dirty": true
-  },
-  "path_in_vcs": "crates/ruvector-sparse-inference"
-}

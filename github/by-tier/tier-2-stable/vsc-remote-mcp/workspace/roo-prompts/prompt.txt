@@ -1,1 +1,0 @@
-How do I create a React component that fetches data from an API?

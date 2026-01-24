@@ -1,1 +1,0 @@
-A Rust-WASM Document Sanitization Middleware

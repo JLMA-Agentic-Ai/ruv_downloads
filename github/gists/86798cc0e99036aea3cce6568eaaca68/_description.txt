@@ -1,1 +1,0 @@
-Google Apps Script uses JavaScript to automate tasks in Google Workspace, enabling custom functions, integration with services, and creation of web apps without installing additional software.

@@ -1,1 +1,0 @@
-A cost-optimized proxy for routing between GPT-4o, Claude 3.5 Sonnet, and Gemini 1.5 Pro using LiteLLM.

@@ -1,1 +1,0 @@
-The Claude-SPARC Automated Development System is a comprehensive, agentic workflow for automated software development using the SPARC methodology with the Claude Code CLI

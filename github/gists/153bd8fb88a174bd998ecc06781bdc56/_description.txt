@@ -1,1 +1,0 @@
-Keeping Your Coding Agents on Track: A Complete Guide to Verification Hooks with Claude Flow

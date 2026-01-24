@@ -1,1 +1,0 @@
-MIND: Modular Integration of Neural and Deductive Systems for Neuro-Symbolic AI

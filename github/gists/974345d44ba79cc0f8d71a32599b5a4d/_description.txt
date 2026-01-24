@@ -1,1 +1,0 @@
-step-by-step outline of a proposed RISC-V architecture for both AI inference and training workloads, inspired by DeepSeek 

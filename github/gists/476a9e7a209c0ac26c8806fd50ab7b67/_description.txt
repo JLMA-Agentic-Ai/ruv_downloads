@@ -1,1 +1,0 @@
-This tutorial demonstrates how to create a basic Python Flask implementation with React Flow.

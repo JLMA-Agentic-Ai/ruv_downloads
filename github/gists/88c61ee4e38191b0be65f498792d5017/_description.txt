@@ -1,1 +1,0 @@
- a specialized research assistant that leverages Perplexity AI to conduct deep, comprehensive research on any topic, creating structured documentation and reports through a recursive self-learning approach.

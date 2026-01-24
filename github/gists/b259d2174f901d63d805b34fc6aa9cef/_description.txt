@@ -1,1 +1,0 @@
-Quantum Agent Manager is a quantum-inspired task scheduling system

@@ -1,1 +1,0 @@
-Redaction hooks for Claude Code

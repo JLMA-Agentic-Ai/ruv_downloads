@@ -1,1 +1,0 @@
-MEMENTO (Memory Enhanced Models for Entity-based Networked Textual Operations) system integrating OpenAI's memory feature and in-context learning for a personalized, context-aware, and continuously improving conversation handling.
