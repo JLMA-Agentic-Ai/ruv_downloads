@@ -23,21 +23,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Setup Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-        with:
-          toolchain: stable
-
       - name: Make scripts executable
         run: |
           chmod +x ruv_world.sh
-          chmod +x crates/download_ruvnet_crates.sh
-          chmod +x npmjs/download_ruvnet_packages.sh
-          chmod +x github/download_ruvnet_repos.sh
-          chmod +x github/scripts/organize_repos.sh
+          chmod +x scripts/*.sh
+          chmod +x lib/*.sh
 
       - name: Run RUV WORLD - Centralized Downloader
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./ruv_world.sh
+      
+      - name: Verify downloads
+        run: ./scripts/ruv_query.sh --status
 
       - name: Commit and Push changes
         run: |
