@@ -1,10 +1,10 @@
 {
-  "last_indexed": "2026-01-24T20:09:43+00:00",
+  "last_indexed": "2026-01-25T00:22:05+00:00",
   "artifacts": [
     {
       "name": "2BotTalk",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:35+00:00",
+      "lastUpdated": "2026-01-25T00:21:05+00:00",
       "commit": "bbe7824e9a9ae3513cd71f183aaf3a67fbf27294",
       "url": "https://github.com/ruvnet/2BotTalk.git",
       "tier": "tier-1-active"
@@ -12,7 +12,7 @@
     {
       "name": "AP-Casper",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:20+00:00",
+      "lastUpdated": "2026-01-25T00:20:52+00:00",
       "commit": "dee998fe5246d8a28e8dbd829252d1ae554aae9b",
       "url": "https://github.com/ruvnet/AP-Casper.git",
       "tier": "tier-1-active"
@@ -20,7 +20,7 @@
     {
       "name": "ARCADIA",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:19+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "13bb48fef4208892257f9ef3f30d7120a3e45f60",
       "url": "https://github.com/ruvnet/ARCADIA.git",
       "tier": "tier-1-active"
@@ -28,7 +28,7 @@
     {
       "name": "Agent-Name-Service",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:19+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "976e9e91e77213698cb7af479aa94bdaae084fa6",
       "url": "https://github.com/ruvnet/Agent-Name-Service.git",
       "tier": "tier-1-active"
@@ -36,7 +36,7 @@
     {
       "name": "Ai-Code-Generator-",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:19+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "b225bf7ce3827e1b9c8899a7411f0de6be42f272",
       "url": "https://github.com/ruvnet/Ai-Code-Generator-.git",
       "tier": "tier-1-active"
@@ -44,7 +44,7 @@
     {
       "name": "AiCodeCalc",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:19+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "29fbf90f42ae396f48d85d348bb886020a9dd082",
       "url": "https://github.com/ruvnet/AiCodeCalc.git",
       "tier": "tier-1-active"
@@ -52,7 +52,7 @@
     {
       "name": "AiHCC",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:18+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "a982abd795cfc7fb5b55e2224fb43f6804107649",
       "url": "https://github.com/ruvnet/AiHCC.git",
       "tier": "tier-1-active"
@@ -60,7 +60,7 @@
     {
       "name": "AiToml",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:18+00:00",
+      "lastUpdated": "2026-01-25T00:20:51+00:00",
       "commit": "85095f8230479f7afe9a54e93c395c0102e6ec6f",
       "url": "https://github.com/ruvnet/AiToml.git",
       "tier": "tier-1-active"
@@ -68,7 +68,7 @@
     {
       "name": "Bot-Generator-Bot",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:19+00:00",
+      "lastUpdated": "2026-01-25T00:20:52+00:00",
       "commit": "502bde81f7c1e346bd081e4ed15d88620a3aee79",
       "url": "https://github.com/ruvnet/Bot-Generator-Bot.git",
       "tier": "tier-1-active"
@@ -76,7 +76,7 @@
     {
       "name": "ChatGPT-Trading-Bot-for-KuCoin",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:01+00:00",
       "commit": "efa4a58cde8700fa0272d04d97fcf3659413da10",
       "url": "https://github.com/ruvnet/ChatGPT-Trading-Bot-for-KuCoin.git",
       "tier": "tier-1-active"
@@ -84,7 +84,7 @@
     {
       "name": "CodeGPT",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:20+00:00",
+      "lastUpdated": "2026-01-25T00:20:52+00:00",
       "commit": "3e79f75b4465fc4fdc12f42d6c97c579771aab27",
       "url": "https://github.com/ruvnet/CodeGPT.git",
       "tier": "tier-1-active"
@@ -92,7 +92,7 @@
     {
       "name": "Electo1",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:20+00:00",
+      "lastUpdated": "2026-01-25T00:20:53+00:00",
       "commit": "b77671bfc33df19617749667a517ca58696dd030",
       "url": "https://github.com/ruvnet/Electo1.git",
       "tier": "tier-1-active"
@@ -100,7 +100,7 @@
     {
       "name": "FACT",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:21+00:00",
+      "lastUpdated": "2026-01-25T00:20:54+00:00",
       "commit": "02379743d92a10a550707f8c072a2b15bd4fdfe3",
       "url": "https://github.com/ruvnet/FACT.git",
       "tier": "tier-1-active"
@@ -108,7 +108,7 @@
     {
       "name": "GenAI-Superstream",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:21+00:00",
+      "lastUpdated": "2026-01-25T00:20:54+00:00",
       "commit": "10f36b32853f3c8a6a370ea7d61e91a38ce705a7",
       "url": "https://github.com/ruvnet/GenAI-Superstream.git",
       "tier": "tier-1-active"
@@ -116,7 +116,7 @@
     {
       "name": "Prompt-Engine",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:20+00:00",
+      "lastUpdated": "2026-01-25T00:20:53+00:00",
       "commit": "21a9712fd4a58dbf52d11e36d981ecc4e73f6dfc",
       "url": "https://github.com/ruvnet/Prompt-Engine.git",
       "tier": "tier-1-active"
@@ -124,7 +124,7 @@
     {
       "name": "QuDAG",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:28+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "7bd52cd4c31acebd387b040a862dc11d5655d93c",
       "url": "https://github.com/ruvnet/QuDAG.git",
       "tier": "tier-1-active"
@@ -132,7 +132,7 @@
     {
       "name": "Quantum-Virtual-Machine",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:21+00:00",
+      "lastUpdated": "2026-01-25T00:20:54+00:00",
       "commit": "b8930802741c1680ad59dacc8d77a507836df4b9",
       "url": "https://github.com/ruvnet/Quantum-Virtual-Machine.git",
       "tier": "tier-1-active"
@@ -140,7 +140,7 @@
     {
       "name": "Roo-Code-Docs",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:26+00:00",
+      "lastUpdated": "2026-01-25T00:20:58+00:00",
       "commit": "d897706d7e1842c805cd378ce2480abf7061f474",
       "url": "https://github.com/ruvnet/Roo-Code-Docs.git",
       "tier": "tier-1-active"
@@ -148,7 +148,7 @@
     {
       "name": "SAFLA",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:23+00:00",
+      "lastUpdated": "2026-01-25T00:20:55+00:00",
       "commit": "d59e8967c094847efc4703a189cbb2c00190828e",
       "url": "https://github.com/ruvnet/SAFLA.git",
       "tier": "tier-1-active"
@@ -156,7 +156,7 @@
     {
       "name": "SVGart",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:27+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "0ed8d3243abfeaccd5aaa542718c349661ae5e32",
       "url": "https://github.com/ruvnet/SVGart.git",
       "tier": "tier-1-active"
@@ -164,7 +164,7 @@
     {
       "name": "Surfer",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:51+00:00",
+      "lastUpdated": "2026-01-25T00:21:16+00:00",
       "commit": "e7af25f8a2d2cd5c843e21a1068276d613493633",
       "url": "https://github.com/ruvnet/Surfer.git",
       "tier": "tier-1-active"
@@ -172,7 +172,7 @@
     {
       "name": "Swagger-ChatGPT-Plugin-Creator",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:23+00:00",
+      "lastUpdated": "2026-01-25T00:20:56+00:00",
       "commit": "b2e39f1fd717d0db20346048fed972ed9d508ee1",
       "url": "https://github.com/ruvnet/Swagger-ChatGPT-Plugin-Creator.git",
       "tier": "tier-1-active"
@@ -180,7 +180,7 @@
     {
       "name": "Synaptic-Mesh",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:38+00:00",
+      "lastUpdated": "2026-01-25T00:21:09+00:00",
       "commit": "358739069ccbd316d4f9feebaebdfde2e36f49f4",
       "url": "https://github.com/ruvnet/Synaptic-Mesh.git",
       "tier": "tier-1-active"
@@ -188,7 +188,7 @@
     {
       "name": "SynthLang",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:24+00:00",
+      "lastUpdated": "2026-01-25T00:20:57+00:00",
       "commit": "52e48d85bbcf49acf9a92f411da378a9cc05b792",
       "url": "https://github.com/ruvnet/SynthLang.git",
       "tier": "tier-1-active"
@@ -196,7 +196,7 @@
     {
       "name": "VIVIAN",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:24+00:00",
+      "lastUpdated": "2026-01-25T00:20:57+00:00",
       "commit": "70bd3a4b3502c970ad2c2780ba7767dbe0287e1e",
       "url": "https://github.com/ruvnet/VIVIAN.git",
       "tier": "tier-1-active"
@@ -204,7 +204,7 @@
     {
       "name": "agentX",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:24+00:00",
+      "lastUpdated": "2026-01-25T00:20:57+00:00",
       "commit": "73bc804ffc7557df7fd1ba6602b0decfb61c11ec",
       "url": "https://github.com/ruvnet/agentX.git",
       "tier": "tier-1-active"
@@ -212,7 +212,7 @@
     {
       "name": "agentXNG",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:25+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "82845cb32a198d649b2fa1250af889cae6a93cec",
       "url": "https://github.com/ruvnet/agentXNG.git",
       "tier": "tier-1-active"
@@ -220,7 +220,7 @@
     {
       "name": "agentic-artifacts",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:25+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "68406bfffe1157332c0aee9be588dc030f3e4f71",
       "url": "https://github.com/ruvnet/agentic-artifacts.git",
       "tier": "tier-1-active"
@@ -228,7 +228,7 @@
     {
       "name": "agentic-capacity-exchange",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:25+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "70f08e111e8e6671efada7ee16e0c76125e23235",
       "url": "https://github.com/ruvnet/agentic-capacity-exchange.git",
       "tier": "tier-1-active"
@@ -236,7 +236,7 @@
     {
       "name": "agentic-dashboard",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:26+00:00",
+      "lastUpdated": "2026-01-25T00:20:59+00:00",
       "commit": "ebce7a068ed1b2996bcf9d6898a9560a5ee3e86c",
       "url": "https://github.com/ruvnet/agentic-dashboard.git",
       "tier": "tier-1-active"
@@ -244,7 +244,7 @@
     {
       "name": "agentic-devops",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:26+00:00",
+      "lastUpdated": "2026-01-25T00:21:00+00:00",
       "commit": "520da11e3337e234b3193018d343adb33b5299f1",
       "url": "https://github.com/ruvnet/agentic-devops.git",
       "tier": "tier-1-active"
@@ -252,7 +252,7 @@
     {
       "name": "agentic-difusion",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:27+00:00",
+      "lastUpdated": "2026-01-25T00:21:01+00:00",
       "commit": "f068cb3a6f9162d81415d4ace23aaa2800ef6206",
       "url": "https://github.com/ruvnet/agentic-difusion.git",
       "tier": "tier-1-active"
@@ -260,7 +260,7 @@
     {
       "name": "agentic-employment",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:27+00:00",
+      "lastUpdated": "2026-01-25T00:21:00+00:00",
       "commit": "372d940279d65746a4336082c37ba0e61206b956",
       "url": "https://github.com/ruvnet/agentic-employment.git",
       "tier": "tier-1-active"
@@ -268,7 +268,7 @@
     {
       "name": "agentic-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:41+00:00",
+      "lastUpdated": "2026-01-25T00:21:12+00:00",
       "commit": "6a7b113f8219849acddd08074f56be374a52215e",
       "url": "https://github.com/ruvnet/agentic-flow.git",
       "tier": "tier-1-active"
@@ -276,7 +276,7 @@
     {
       "name": "agentic-flows",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:27+00:00",
+      "lastUpdated": "2026-01-25T00:21:01+00:00",
       "commit": "3ec27c798b50a355f70e8afa8a780b262b5beb8a",
       "url": "https://github.com/ruvnet/agentic-flows.git",
       "tier": "tier-1-active"
@@ -284,7 +284,7 @@
     {
       "name": "agentic-gradio",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:28+00:00",
+      "lastUpdated": "2026-01-25T00:21:01+00:00",
       "commit": "0472b249d9040836cbe73170f4de81e42cf24bf0",
       "url": "https://github.com/ruvnet/agentic-gradio.git",
       "tier": "tier-1-active"
@@ -292,7 +292,7 @@
     {
       "name": "agentic-music",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:28+00:00",
+      "lastUpdated": "2026-01-25T00:21:02+00:00",
       "commit": "75b5146e57f346d3bd0fb8e63f5d9ed4492769aa",
       "url": "https://github.com/ruvnet/agentic-music.git",
       "tier": "tier-1-active"
@@ -300,7 +300,7 @@
     {
       "name": "agentic-preview",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:29+00:00",
+      "lastUpdated": "2026-01-25T00:21:02+00:00",
       "commit": "3b677b8aa6461565b392c5260793b17d20028095",
       "url": "https://github.com/ruvnet/agentic-preview.git",
       "tier": "tier-1-active"
@@ -308,7 +308,7 @@
     {
       "name": "agentic-reports",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:29+00:00",
+      "lastUpdated": "2026-01-25T00:21:02+00:00",
       "commit": "c0627d9873c8f1d1bc3d2f8dcd929b584bc44699",
       "url": "https://github.com/ruvnet/agentic-reports.git",
       "tier": "tier-1-active"
@@ -316,7 +316,7 @@
     {
       "name": "agentic-robotics",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:29+00:00",
+      "lastUpdated": "2026-01-25T00:21:03+00:00",
       "commit": "4f0e80c92d7d013fa34d7f2e3d7759af5d95b3b1",
       "url": "https://github.com/ruvnet/agentic-robotics.git",
       "tier": "tier-1-active"
@@ -324,7 +324,7 @@
     {
       "name": "agentic-scraper",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:29+00:00",
+      "lastUpdated": "2026-01-25T00:21:02+00:00",
       "commit": "263e2af3676739ee5d36e6bb1ef5b599b8c14ce7",
       "url": "https://github.com/ruvnet/agentic-scraper.git",
       "tier": "tier-1-active"
@@ -332,7 +332,7 @@
     {
       "name": "agentic-search",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:29+00:00",
+      "lastUpdated": "2026-01-25T00:21:03+00:00",
       "commit": "c984310389e533ff12b20a2a857ff947363e7848",
       "url": "https://github.com/ruvnet/agentic-search.git",
       "tier": "tier-1-active"
@@ -340,7 +340,7 @@
     {
       "name": "agentic-security",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:30+00:00",
+      "lastUpdated": "2026-01-25T00:21:03+00:00",
       "commit": "cf762effa448ce773bdb11fd08c9206b5d79e67f",
       "url": "https://github.com/ruvnet/agentic-security.git",
       "tier": "tier-1-active"
@@ -348,7 +348,7 @@
     {
       "name": "agentic-voice",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:05+00:00",
       "commit": "7203b5e8ea2feacd5ee3b5fbb2aeca92640cb652",
       "url": "https://github.com/ruvnet/agentic-voice.git",
       "tier": "tier-1-active"
@@ -356,7 +356,7 @@
     {
       "name": "agentics-meetup",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:30+00:00",
+      "lastUpdated": "2026-01-25T00:21:04+00:00",
       "commit": "8ad3546031fd0e3acfdf0bd368684624a58bf244",
       "url": "https://github.com/ruvnet/agentics-meetup.git",
       "tier": "tier-1-active"
@@ -364,7 +364,7 @@
     {
       "name": "agenticsjs",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:04+00:00",
       "commit": "a08e8c8360f244888d515a79eb267598543a9f7a",
       "url": "https://github.com/ruvnet/agenticsjs.git",
       "tier": "tier-1-active"
@@ -372,7 +372,7 @@
     {
       "name": "agileagents",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:04+00:00",
       "commit": "f102a5d85c866a7e1bd7dd6547a20aafb7f44181",
       "url": "https://github.com/ruvnet/agileagents.git",
       "tier": "tier-1-active"
@@ -380,7 +380,7 @@
     {
       "name": "ai-browse",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:04+00:00",
       "commit": "1b1e1de8b16196eb77b631d3d9a3137b31aacc30",
       "url": "https://github.com/ruvnet/ai-browse.git",
       "tier": "tier-1-active"
@@ -388,7 +388,7 @@
     {
       "name": "ai-gist",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:31+00:00",
+      "lastUpdated": "2026-01-25T00:21:04+00:00",
       "commit": "02a8dad6363567134a5e76b60558334225ed9338",
       "url": "https://github.com/ruvnet/ai-gist.git",
       "tier": "tier-1-active"
@@ -396,7 +396,7 @@
     {
       "name": "ai-stream",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:32+00:00",
+      "lastUpdated": "2026-01-25T00:21:05+00:00",
       "commit": "012fdebdf36aa826550d4684563b53533d255c04",
       "url": "https://github.com/ruvnet/ai-stream.git",
       "tier": "tier-1-active"
@@ -404,7 +404,7 @@
     {
       "name": "ai-video",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:32+00:00",
+      "lastUpdated": "2026-01-25T00:21:06+00:00",
       "commit": "3b2a95bacd01d53c5781f8bf7ed78702af639328",
       "url": "https://github.com/ruvnet/ai-video.git",
       "tier": "tier-1-active"
@@ -412,7 +412,7 @@
     {
       "name": "aido",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:32+00:00",
+      "lastUpdated": "2026-01-25T00:21:06+00:00",
       "commit": "20429341646a6834019599e8ae313d5ee06208e4",
       "url": "https://github.com/ruvnet/aido.git",
       "tier": "tier-1-active"
@@ -420,7 +420,7 @@
     {
       "name": "aihl",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:34+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "8e80355b595cbc534f0f5f2097f978b0dfefc332",
       "url": "https://github.com/ruvnet/aihl.git",
       "tier": "tier-1-active"
@@ -428,7 +428,7 @@
     {
       "name": "aiscreenplay",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:32+00:00",
+      "lastUpdated": "2026-01-25T00:21:06+00:00",
       "commit": "76944cd94a418adf6f1dbf000f2f03e34ec78e62",
       "url": "https://github.com/ruvnet/aiscreenplay.git",
       "tier": "tier-1-active"
@@ -436,7 +436,7 @@
     {
       "name": "alienator",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:39+00:00",
+      "lastUpdated": "2026-01-25T00:21:12+00:00",
       "commit": "faf36f827d8c3f3d76bc5bdba47ee75c2cb6cf20",
       "url": "https://github.com/ruvnet/alienator.git",
       "tier": "tier-1-active"
@@ -444,7 +444,7 @@
     {
       "name": "anthropic-quickstarts",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:33+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "3347e36f7911f2cd2702108078b0ccbe5189cf7b",
       "url": "https://github.com/ruvnet/anthropic-quickstarts.git",
       "tier": "tier-1-active"
@@ -452,7 +452,7 @@
     {
       "name": "auto-browser",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:33+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "a7873b4f11e0b905a847ef240f4fac7b9830d95a",
       "url": "https://github.com/ruvnet/auto-browser.git",
       "tier": "tier-1-active"
@@ -460,7 +460,7 @@
     {
       "name": "aws-dev",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:34+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "101687cf16c25061a5301df684deb2fb24ff2e7e",
       "url": "https://github.com/ruvnet/aws-dev.git",
       "tier": "tier-1-active"
@@ -468,7 +468,7 @@
     {
       "name": "chatgpt-aws-price-list-plugin",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:34+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "efc6e5120fd4acb58bf672895904fb4576ad9c3c",
       "url": "https://github.com/ruvnet/chatgpt-aws-price-list-plugin.git",
       "tier": "tier-1-active"
@@ -476,7 +476,7 @@
     {
       "name": "chatgpt-dev-mode",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:34+00:00",
+      "lastUpdated": "2026-01-25T00:21:07+00:00",
       "commit": "bc038e524526ba25dcbd98adcc1fc431be7ec2a2",
       "url": "https://github.com/ruvnet/chatgpt-dev-mode.git",
       "tier": "tier-1-active"
@@ -484,7 +484,7 @@
     {
       "name": "chatgpt-openai-api-plugin",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:34+00:00",
+      "lastUpdated": "2026-01-25T00:21:08+00:00",
       "commit": "866d24bd1e28953b7496f7c547cc5d8755ea33a0",
       "url": "https://github.com/ruvnet/chatgpt-openai-api-plugin.git",
       "tier": "tier-1-active"
@@ -492,7 +492,7 @@
     {
       "name": "chatgpt_plugin_python",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:21+00:00",
       "commit": "0d78b8ddfd0ddb171543c270c7e7142edd8e7724",
       "url": "https://github.com/ruvnet/chatgpt_plugin_python.git",
       "tier": "tier-1-active"
@@ -500,7 +500,7 @@
     {
       "name": "chatgpt_tatum_plugin",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:35+00:00",
+      "lastUpdated": "2026-01-25T00:21:09+00:00",
       "commit": "804611405291c7d08fe05d8a708a07b658ab3e31",
       "url": "https://github.com/ruvnet/chatgpt_tatum_plugin.git",
       "tier": "tier-1-active"
@@ -508,7 +508,7 @@
     {
       "name": "claude-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:58+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "34d38c8b4227580b81dd78f4e4b75454f88eada4",
       "url": "https://github.com/ruvnet/claude-flow.git",
       "tier": "tier-1-active"
@@ -516,7 +516,7 @@
     {
       "name": "claude-test",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:35+00:00",
+      "lastUpdated": "2026-01-25T00:21:09+00:00",
       "commit": "294a32462f21c2bc3399b1dd85cdaee1b64912d4",
       "url": "https://github.com/ruvnet/claude-test.git",
       "tier": "tier-1-active"
@@ -524,7 +524,7 @@
     {
       "name": "code-mesh",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:37+00:00",
+      "lastUpdated": "2026-01-25T00:21:10+00:00",
       "commit": "3a6fe2f1df7a096b217cbdbc65d5f126ebf0b0b9",
       "url": "https://github.com/ruvnet/code-mesh.git",
       "tier": "tier-1-active"
@@ -532,7 +532,7 @@
     {
       "name": "codecraft",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:36+00:00",
+      "lastUpdated": "2026-01-25T00:21:10+00:00",
       "commit": "cd31ec634f180d6b310d60e7323b85faceeb6085",
       "url": "https://github.com/ruvnet/codecraft.git",
       "tier": "tier-1-active"
@@ -540,7 +540,7 @@
     {
       "name": "codespaces-jupyter",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:36+00:00",
+      "lastUpdated": "2026-01-25T00:21:10+00:00",
       "commit": "45ffb92abb2688217cd3d77333ec67b1e8f268d4",
       "url": "https://github.com/ruvnet/codespaces-jupyter.git",
       "tier": "tier-1-active"
@@ -548,7 +548,7 @@
     {
       "name": "codex-one",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:37+00:00",
+      "lastUpdated": "2026-01-25T00:21:10+00:00",
       "commit": "e752f7243ee62fd33f97ccfdef776a8a90f4b981",
       "url": "https://github.com/ruvnet/codex-one.git",
       "tier": "tier-1-active"
@@ -556,7 +556,7 @@
     {
       "name": "coding-wingman",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:37+00:00",
+      "lastUpdated": "2026-01-25T00:21:10+00:00",
       "commit": "5995accabd8ddf4f66f5f730d4401e0f7dbfd32f",
       "url": "https://github.com/ruvnet/coding-wingman.git",
       "tier": "tier-1-active"
@@ -564,7 +564,7 @@
     {
       "name": "console-streamer",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:37+00:00",
+      "lastUpdated": "2026-01-25T00:21:11+00:00",
       "commit": "0d26c2ead5bb852f6d806f8c8e5d7ef9d2bb94d4",
       "url": "https://github.com/ruvnet/console-streamer.git",
       "tier": "tier-1-active"
@@ -572,7 +572,7 @@
     {
       "name": "contextual-retrevial",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:38+00:00",
+      "lastUpdated": "2026-01-25T00:21:11+00:00",
       "commit": "b30673831e44d54225101e017875b950fed8ab90",
       "url": "https://github.com/ruvnet/contextual-retrevial.git",
       "tier": "tier-1-active"
@@ -580,7 +580,7 @@
     {
       "name": "daa",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:45+00:00",
+      "lastUpdated": "2026-01-25T00:21:16+00:00",
       "commit": "ca6f544c817348550f4c92b9a4206e86f8858e59",
       "url": "https://github.com/ruvnet/daa.git",
       "tier": "tier-1-active"
@@ -588,7 +588,7 @@
     {
       "name": "dapp-list",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:38+00:00",
+      "lastUpdated": "2026-01-25T00:21:12+00:00",
       "commit": "7ffef29909617b58d24c8c8867660c832afd224b",
       "url": "https://github.com/ruvnet/dapp-list.git",
       "tier": "tier-1-active"
@@ -596,7 +596,7 @@
     {
       "name": "deco",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:39+00:00",
+      "lastUpdated": "2026-01-25T00:21:12+00:00",
       "commit": "bd3ebfe0b3cb18a08a124854108a95e4ebf87bf5",
       "url": "https://github.com/ruvnet/deco.git",
       "tier": "tier-1-active"
@@ -604,7 +604,7 @@
     {
       "name": "demo-proxy-app",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:39+00:00",
+      "lastUpdated": "2026-01-25T00:21:13+00:00",
       "commit": "6aca049b5ea0c1b42bdcdc6b07f4fafbd0d131a6",
       "url": "https://github.com/ruvnet/demo-proxy-app.git",
       "tier": "tier-1-active"
@@ -612,7 +612,7 @@
     {
       "name": "dreamfactory",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:45+00:00",
+      "lastUpdated": "2026-01-25T00:21:17+00:00",
       "commit": "4dd4a4bd5cb1265781a3ad7669301440686e4f01",
       "url": "https://github.com/ruvnet/dreamfactory.git",
       "tier": "tier-1-active"
@@ -620,7 +620,7 @@
     {
       "name": "drupal",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:57+00:00",
+      "lastUpdated": "2026-01-25T00:21:26+00:00",
       "commit": "8877452481a878cc51814b8471a2a88ed018246f",
       "url": "https://github.com/ruvnet/drupal.git",
       "tier": "tier-1-active"
@@ -628,7 +628,7 @@
     {
       "name": "drupaljs",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:40+00:00",
+      "lastUpdated": "2026-01-25T00:21:14+00:00",
       "commit": "585b78fb9ccfb7560f11258eafe2ea9516d574a8",
       "url": "https://github.com/ruvnet/drupaljs.git",
       "tier": "tier-1-active"
@@ -636,7 +636,7 @@
     {
       "name": "dspy.ts",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:41+00:00",
+      "lastUpdated": "2026-01-25T00:21:15+00:00",
       "commit": "3d587c02d45523a19fcc2ac145f7c02e24189231",
       "url": "https://github.com/ruvnet/dspy.ts.git",
       "tier": "tier-1-active"
@@ -644,7 +644,7 @@
     {
       "name": "dynamo-mcp",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:48+00:00",
+      "lastUpdated": "2026-01-25T00:21:21+00:00",
       "commit": "4eaf6b54e35d063af20f4afb620130d6269eed24",
       "url": "https://github.com/ruvnet/dynamo-mcp.git",
       "tier": "tier-1-active"
@@ -652,7 +652,7 @@
     {
       "name": "electo1-js",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:42+00:00",
+      "lastUpdated": "2026-01-25T00:21:15+00:00",
       "commit": "b18b44e4f81cad34ef223c0dbcca99df6488461f",
       "url": "https://github.com/ruvnet/electo1-js.git",
       "tier": "tier-1-active"
@@ -660,7 +660,7 @@
     {
       "name": "federated-mcp",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:42+00:00",
+      "lastUpdated": "2026-01-25T00:21:16+00:00",
       "commit": "486dc9c022a51bea0775e645e206336ee66212de",
       "url": "https://github.com/ruvnet/federated-mcp.git",
       "tier": "tier-1-active"
@@ -668,7 +668,7 @@
     {
       "name": "fireflies-webook",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:42+00:00",
+      "lastUpdated": "2026-01-25T00:21:17+00:00",
       "commit": "7c636b241b8fc249e58bacfb840cdd78e9490746",
       "url": "https://github.com/ruvnet/fireflies-webook.git",
       "tier": "tier-1-active"
@@ -676,7 +676,7 @@
     {
       "name": "flow-nexus",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:43+00:00",
+      "lastUpdated": "2026-01-25T00:21:17+00:00",
       "commit": "1511b93c2abd82883b9234fa90231c4c3e207744",
       "url": "https://github.com/ruvnet/flow-nexus.git",
       "tier": "tier-1-active"
@@ -684,7 +684,7 @@
     {
       "name": "genesis",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:43+00:00",
+      "lastUpdated": "2026-01-25T00:21:18+00:00",
       "commit": "9f02f62e4e421f0c5970b70a387955c2bc6ca8f6",
       "url": "https://github.com/ruvnet/genesis.git",
       "tier": "tier-1-active"
@@ -692,7 +692,7 @@
     {
       "name": "gpts",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:44+00:00",
+      "lastUpdated": "2026-01-25T00:21:18+00:00",
       "commit": "df774213d52a20cd375e6a223b47444face741c6",
       "url": "https://github.com/ruvnet/gpts.git",
       "tier": "tier-1-active"
@@ -700,7 +700,7 @@
     {
       "name": "guardrail",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:44+00:00",
+      "lastUpdated": "2026-01-25T00:21:18+00:00",
       "commit": "67cc25b7c52acf69bcdea00b094962e06760efe5",
       "url": "https://github.com/ruvnet/guardrail.git",
       "tier": "tier-1-active"
@@ -708,7 +708,7 @@
     {
       "name": "hacker-league",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:45+00:00",
+      "lastUpdated": "2026-01-25T00:21:18+00:00",
       "commit": "f3d4d260f8ec527e52f1bf656c11c81d3a0c36ed",
       "url": "https://github.com/ruvnet/hacker-league.git",
       "tier": "tier-1-active"
@@ -716,7 +716,7 @@
     {
       "name": "hello_world_agent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:45+00:00",
+      "lastUpdated": "2026-01-25T00:21:18+00:00",
       "commit": "42584fa15554719b6eaf32e14f59008b2c59cdde",
       "url": "https://github.com/ruvnet/hello_world_agent.git",
       "tier": "tier-1-active"
@@ -724,7 +724,7 @@
     {
       "name": "hft",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:46+00:00",
+      "lastUpdated": "2026-01-25T00:21:19+00:00",
       "commit": "33d35f6b1275faa9402c16c58a8ff8aa795aa76f",
       "url": "https://github.com/ruvnet/hft.git",
       "tier": "tier-1-active"
@@ -732,7 +732,7 @@
     {
       "name": "image-agent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:46+00:00",
+      "lastUpdated": "2026-01-25T00:21:19+00:00",
       "commit": "4bf96fe1e944d9383e93fcdd2582e28c8cede618",
       "url": "https://github.com/ruvnet/image-agent.git",
       "tier": "tier-1-active"
@@ -740,7 +740,7 @@
     {
       "name": "infinity-ui",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:46+00:00",
+      "lastUpdated": "2026-01-25T00:21:20+00:00",
       "commit": "6b15c59db4a95b465f0f171520e52cd038943777",
       "url": "https://github.com/ruvnet/infinity-ui.git",
       "tier": "tier-1-active"
@@ -748,7 +748,7 @@
     {
       "name": "inflight",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:46+00:00",
+      "lastUpdated": "2026-01-25T00:21:20+00:00",
       "commit": "f77cc4c80760a645a5592eaa781189c21c354718",
       "url": "https://github.com/ruvnet/inflight.git",
       "tier": "tier-1-active"
@@ -756,7 +756,7 @@
     {
       "name": "llamastack",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:47+00:00",
+      "lastUpdated": "2026-01-25T00:21:20+00:00",
       "commit": "157d38208af6054d73931023f63c6ca213b9a673",
       "url": "https://github.com/ruvnet/llamastack.git",
       "tier": "tier-1-active"
@@ -764,7 +764,7 @@
     {
       "name": "local-logic",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:47+00:00",
+      "lastUpdated": "2026-01-25T00:21:20+00:00",
       "commit": "99b2d03045bd2d0319b8db545eb809348f461578",
       "url": "https://github.com/ruvnet/local-logic.git",
       "tier": "tier-1-active"
@@ -772,7 +772,7 @@
     {
       "name": "marketing",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:47+00:00",
+      "lastUpdated": "2026-01-25T00:21:21+00:00",
       "commit": "647851080ca4f6c0316363c71a2fc87962de0867",
       "url": "https://github.com/ruvnet/marketing.git",
       "tier": "tier-1-active"
@@ -780,7 +780,7 @@
     {
       "name": "markov-chains",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:47+00:00",
+      "lastUpdated": "2026-01-25T00:21:21+00:00",
       "commit": "f536b18e73eab5cf2bcc7df7a59f67c0728e0625",
       "url": "https://github.com/ruvnet/markov-chains.git",
       "tier": "tier-1-active"
@@ -788,7 +788,7 @@
     {
       "name": "micro-agent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:47+00:00",
+      "lastUpdated": "2026-01-25T00:21:21+00:00",
       "commit": "05070973b9c71bd7f3b6f24e203d67314954f5ad",
       "url": "https://github.com/ruvnet/micro-agent.git",
       "tier": "tier-1-active"
@@ -796,7 +796,7 @@
     {
       "name": "midstream",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:24+00:00",
       "commit": "30fe5eb7a1f1494aa1ad00d54160088a565ec766",
       "url": "https://github.com/ruvnet/midstream.git",
       "tier": "tier-1-active"
@@ -804,7 +804,7 @@
     {
       "name": "musicai",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:48+00:00",
+      "lastUpdated": "2026-01-25T00:21:22+00:00",
       "commit": "a54cea70a3e3475df11ef0a558c7ba7a30a2449f",
       "url": "https://github.com/ruvnet/musicai.git",
       "tier": "tier-1-active"
@@ -812,7 +812,7 @@
     {
       "name": "nova",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:48+00:00",
+      "lastUpdated": "2026-01-25T00:21:22+00:00",
       "commit": "952a21fe59aa5597ffc64ce2c2832914b37446da",
       "url": "https://github.com/ruvnet/nova.git",
       "tier": "tier-1-active"
@@ -820,7 +820,7 @@
     {
       "name": "omnipotent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:48+00:00",
+      "lastUpdated": "2026-01-25T00:21:22+00:00",
       "commit": "40681052f435a67a5b11cb39486460cbf01ff845",
       "url": "https://github.com/ruvnet/omnipotent.git",
       "tier": "tier-1-active"
@@ -828,7 +828,7 @@
     {
       "name": "onnx-agent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:49+00:00",
+      "lastUpdated": "2026-01-25T00:21:22+00:00",
       "commit": "7b3690f297197f5411cfdb9ce1f0553e5dfd6bad",
       "url": "https://github.com/ruvnet/onnx-agent.git",
       "tier": "tier-1-active"
@@ -836,7 +836,7 @@
     {
       "name": "open-agentics",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:23+00:00",
       "commit": "87d38b2387b4f29fdeccb53325b1b5279bcfc728",
       "url": "https://github.com/ruvnet/open-agentics.git",
       "tier": "tier-1-active"
@@ -844,7 +844,7 @@
     {
       "name": "open-claude-code",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:55+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "a2efad23df4e129cd0904b09c190e0ecdccefb84",
       "url": "https://github.com/ruvnet/open-claude-code.git",
       "tier": "tier-1-active"
@@ -852,7 +852,7 @@
     {
       "name": "open-space",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:23+00:00",
       "commit": "8fefd551b51b28439e70c2e366517072dba441f4",
       "url": "https://github.com/ruvnet/open-space.git",
       "tier": "tier-1-active"
@@ -860,7 +860,7 @@
     {
       "name": "openai-cost-estimator",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:23+00:00",
       "commit": "31556ff831bf2e9233e20455f8401e1695924416",
       "url": "https://github.com/ruvnet/openai-cost-estimator.git",
       "tier": "tier-1-active"
@@ -868,7 +868,7 @@
     {
       "name": "openai_devops",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:50+00:00",
+      "lastUpdated": "2026-01-25T00:21:24+00:00",
       "commit": "70aaa6f3b4549925914b78deb57429cde6218cc4",
       "url": "https://github.com/ruvnet/openai_devops.git",
       "tier": "tier-1-active"
@@ -876,15 +876,15 @@
     {
       "name": "optimizer",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:51+00:00",
-      "commit": "fac10a57b66c93c9cfb43ea22a1ad38b0156df53",
+      "lastUpdated": "2026-01-25T00:21:25+00:00",
+      "commit": "b60b9b86c5b6b444f453136bc40867e71ad02446",
       "url": "https://github.com/ruvnet/optimizer.git",
       "tier": "tier-1-active"
     },
     {
       "name": "p2pGPT",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:51+00:00",
+      "lastUpdated": "2026-01-25T00:21:24+00:00",
       "commit": "3024ab62879d7ec7c6c056d6f6b0960bb1694166",
       "url": "https://github.com/ruvnet/p2pGPT.git",
       "tier": "tier-1-active"
@@ -892,7 +892,7 @@
     {
       "name": "paris",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:51+00:00",
+      "lastUpdated": "2026-01-25T00:21:24+00:00",
       "commit": "79f3344fffb77eb07440f331eb872134557c896b",
       "url": "https://github.com/ruvnet/paris.git",
       "tier": "tier-1-active"
@@ -900,7 +900,7 @@
     {
       "name": "phoenix",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:06+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "be1a1030d19eb40b7d4edcab45c3991f6e6c7359",
       "url": "https://github.com/ruvnet/phoenix.git",
       "tier": "tier-1-active"
@@ -908,7 +908,7 @@
     {
       "name": "phone-agent",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:52+00:00",
+      "lastUpdated": "2026-01-25T00:21:25+00:00",
       "commit": "c38e310d6fb36478420a6de703beca71061a2c3f",
       "url": "https://github.com/ruvnet/phone-agent.git",
       "tier": "tier-1-active"
@@ -916,7 +916,7 @@
     {
       "name": "pipackager",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:52+00:00",
+      "lastUpdated": "2026-01-25T00:21:25+00:00",
       "commit": "fbd7b1d6dea39398de1343153ff238703c1279ff",
       "url": "https://github.com/ruvnet/pipackager.git",
       "tier": "tier-1-active"
@@ -924,7 +924,7 @@
     {
       "name": "powerprompt",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:53+00:00",
+      "lastUpdated": "2026-01-25T00:21:26+00:00",
       "commit": "1f280f9bbff04571bd151cdd9e1258f21a660d2e",
       "url": "https://github.com/ruvnet/powerprompt.git",
       "tier": "tier-1-active"
@@ -932,7 +932,7 @@
     {
       "name": "promptlang",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:52+00:00",
+      "lastUpdated": "2026-01-25T00:21:25+00:00",
       "commit": "791366aca806dcd4fe8fc68f69c850b3c98f638d",
       "url": "https://github.com/ruvnet/promptlang.git",
       "tier": "tier-1-active"
@@ -940,7 +940,7 @@
     {
       "name": "pygentic",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:52+00:00",
+      "lastUpdated": "2026-01-25T00:21:26+00:00",
       "commit": "828cfde2882b6a28fd79a20c53a0bbb953ec318d",
       "url": "https://github.com/ruvnet/pygentic.git",
       "tier": "tier-1-active"
@@ -948,7 +948,7 @@
     {
       "name": "q-space",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:52+00:00",
+      "lastUpdated": "2026-01-25T00:21:26+00:00",
       "commit": "7d854bcd61ff558737e7382c5fa82715911a0731",
       "url": "https://github.com/ruvnet/q-space.git",
       "tier": "tier-1-active"
@@ -956,7 +956,7 @@
     {
       "name": "q-star",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:53+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "833d4c921421781eae2bb552010eeed599c46ac1",
       "url": "https://github.com/ruvnet/q-star.git",
       "tier": "tier-1-active"
@@ -964,7 +964,7 @@
     {
       "name": "quantum-magnetic-navigation",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:53+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "e1334568d96236a6ee60c377191151a2e3ab8561",
       "url": "https://github.com/ruvnet/quantum-magnetic-navigation.git",
       "tier": "tier-1-active"
@@ -972,7 +972,7 @@
     {
       "name": "quantum_cryptocurrency",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:53+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "1e9dd478353b054efb08363a75cb133c557d6204",
       "url": "https://github.com/ruvnet/quantum_cryptocurrency.git",
       "tier": "tier-1-active"
@@ -980,7 +980,7 @@
     {
       "name": "r-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:54+00:00",
+      "lastUpdated": "2026-01-25T00:21:27+00:00",
       "commit": "721cfb17d1ce8523c52e23cf2e8d6b0f27afe1a2",
       "url": "https://github.com/ruvnet/r-flow.git",
       "tier": "tier-1-active"
@@ -988,7 +988,7 @@
     {
       "name": "rUv-Enterprise-AI-Guide",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:54+00:00",
+      "lastUpdated": "2026-01-25T00:21:28+00:00",
       "commit": "5536257d34d939ad73a20c667b547a0181e20bd4",
       "url": "https://github.com/ruvnet/rUv-Enterprise-AI-Guide.git",
       "tier": "tier-1-active"
@@ -996,7 +996,7 @@
     {
       "name": "rUv-dev",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:55+00:00",
+      "lastUpdated": "2026-01-25T00:21:28+00:00",
       "commit": "e28196d958d2bd844a7c595a9336a21a4f3ae2bc",
       "url": "https://github.com/ruvnet/rUv-dev.git",
       "tier": "tier-1-active"
@@ -1004,7 +1004,7 @@
     {
       "name": "reflective-engineer",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:55+00:00",
+      "lastUpdated": "2026-01-25T00:21:29+00:00",
       "commit": "2a6a80cef4c29fbd30924cce70911f06df162a31",
       "url": "https://github.com/ruvnet/reflective-engineer.git",
       "tier": "tier-1-active"
@@ -1012,7 +1012,7 @@
     {
       "name": "retro-ai-ui",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:04+00:00",
+      "lastUpdated": "2026-01-25T00:21:36+00:00",
       "commit": "9df0c607747d04260b4196b7172086259bdf7e34",
       "url": "https://github.com/ruvnet/retro-ai-ui.git",
       "tier": "tier-1-active"
@@ -1020,7 +1020,7 @@
     {
       "name": "roomodes",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:55+00:00",
+      "lastUpdated": "2026-01-25T00:21:28+00:00",
       "commit": "1ec9aa6c0ce39b5f9736e2a6132994afbf2a02c0",
       "url": "https://github.com/ruvnet/roomodes.git",
       "tier": "tier-1-active"
@@ -1028,7 +1028,7 @@
     {
       "name": "runme",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:01+00:00",
+      "lastUpdated": "2026-01-25T00:21:34+00:00",
       "commit": "54acee3c459facd4200fe6ae6c942e84b341c0e0",
       "url": "https://github.com/ruvnet/runme.git",
       "tier": "tier-1-active"
@@ -1036,7 +1036,7 @@
     {
       "name": "ruv-FANN",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:02+00:00",
+      "lastUpdated": "2026-01-25T00:21:33+00:00",
       "commit": "f0f837f0d22ca1dc09f058d0270c60c9bc07fad3",
       "url": "https://github.com/ruvnet/ruv-FANN.git",
       "tier": "tier-1-active"
@@ -1044,7 +1044,7 @@
     {
       "name": "ruv-code",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:59+00:00",
+      "lastUpdated": "2026-01-25T00:21:31+00:00",
       "commit": "836bbf75d04a4c9b01d882bb005690febaca2635",
       "url": "https://github.com/ruvnet/ruv-code.git",
       "tier": "tier-1-active"
@@ -1052,7 +1052,7 @@
     {
       "name": "ruv-engineer",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:00+00:00",
+      "lastUpdated": "2026-01-25T00:21:32+00:00",
       "commit": "b1cfb0d99b55c8763155e96e0e44051af7df2783",
       "url": "https://github.com/ruvnet/ruv-engineer.git",
       "tier": "tier-1-active"
@@ -1060,7 +1060,7 @@
     {
       "name": "ruv.io",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:56+00:00",
+      "lastUpdated": "2026-01-25T00:21:29+00:00",
       "commit": "68620d325b7f2322402137c322d62be103d2115f",
       "url": "https://github.com/ruvnet/ruv.io.git",
       "tier": "tier-1-active"
@@ -1068,7 +1068,7 @@
     {
       "name": "ruvbot",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:03+00:00",
+      "lastUpdated": "2026-01-25T00:21:35+00:00",
       "commit": "825b0f2d3b8660d6f22bb3806080e99f6ae91e36",
       "url": "https://github.com/ruvnet/ruvbot.git",
       "tier": "tier-1-active"
@@ -1076,7 +1076,7 @@
     {
       "name": "ruvector",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:11+00:00",
+      "lastUpdated": "2026-01-25T00:21:41+00:00",
       "commit": "aec62e54753bb2c7c7d26b4b2b13550b9717b029",
       "url": "https://github.com/ruvnet/ruvector.git",
       "tier": "tier-1-active"
@@ -1084,7 +1084,7 @@
     {
       "name": "ruvnet",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:00+00:00",
+      "lastUpdated": "2026-01-25T00:21:31+00:00",
       "commit": "90dc99dc62c53840f47cd3a3ec6cdc56499a586a",
       "url": "https://github.com/ruvnet/ruvnet.git",
       "tier": "tier-1-active"
@@ -1092,7 +1092,7 @@
     {
       "name": "santa-ai-workshop",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:08:59+00:00",
+      "lastUpdated": "2026-01-25T00:21:31+00:00",
       "commit": "f9daec0baf89a46c6d07b99f245396ae9b47ed3a",
       "url": "https://github.com/ruvnet/santa-ai-workshop.git",
       "tier": "tier-1-active"
@@ -1100,7 +1100,7 @@
     {
       "name": "sparc-ide",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:01+00:00",
+      "lastUpdated": "2026-01-25T00:21:33+00:00",
       "commit": "ffd5249e523ef5db6e9ddb2f526fc954cbf0563a",
       "url": "https://github.com/ruvnet/sparc-ide.git",
       "tier": "tier-1-active"
@@ -1108,7 +1108,7 @@
     {
       "name": "sparc",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:03+00:00",
+      "lastUpdated": "2026-01-25T00:21:35+00:00",
       "commit": "a8d7dae14ec541bd86ea9075d41c8ef064afdc57",
       "url": "https://github.com/ruvnet/sparc.git",
       "tier": "tier-1-active"
@@ -1116,7 +1116,7 @@
     {
       "name": "strawberry-phi",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:02+00:00",
+      "lastUpdated": "2026-01-25T00:21:34+00:00",
       "commit": "368ca6e6c12a3efe15938c4eb1ac51eb6383383f",
       "url": "https://github.com/ruvnet/strawberry-phi.git",
       "tier": "tier-1-active"
@@ -1124,7 +1124,7 @@
     {
       "name": "streamlit-example",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:01+00:00",
+      "lastUpdated": "2026-01-25T00:21:34+00:00",
       "commit": "7e810c53293ccdd9ab5924171dee2210b4c710a7",
       "url": "https://github.com/ruvnet/streamlit-example.git",
       "tier": "tier-1-active"
@@ -1132,7 +1132,7 @@
     {
       "name": "sublinear-time-solver",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:07+00:00",
+      "lastUpdated": "2026-01-25T00:21:39+00:00",
       "commit": "1210646955f33abe5c91f894cc7b04d024f62408",
       "url": "https://github.com/ruvnet/sublinear-time-solver.git",
       "tier": "tier-1-active"
@@ -1140,7 +1140,7 @@
     {
       "name": "supa-ruv",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:02+00:00",
+      "lastUpdated": "2026-01-25T00:21:35+00:00",
       "commit": "ceb1b2a07c0e6be7f1b63d88a05d26df2d8a0432",
       "url": "https://github.com/ruvnet/supa-ruv.git",
       "tier": "tier-1-active"
@@ -1148,7 +1148,7 @@
     {
       "name": "supabase-authentication",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:02+00:00",
+      "lastUpdated": "2026-01-25T00:21:35+00:00",
       "commit": "1606fb4e986593342771eed4974b970abefaf364",
       "url": "https://github.com/ruvnet/supabase-authentication.git",
       "tier": "tier-1-active"
@@ -1156,7 +1156,7 @@
     {
       "name": "swarm-world",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:03+00:00",
+      "lastUpdated": "2026-01-25T00:21:36+00:00",
       "commit": "c6eb5e7af089ab4f94806ba3a25b96882d0e2c90",
       "url": "https://github.com/ruvnet/swarm-world.git",
       "tier": "tier-1-active"
@@ -1164,7 +1164,7 @@
     {
       "name": "swirl-search",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:14+00:00",
+      "lastUpdated": "2026-01-25T00:21:44+00:00",
       "commit": "c008d3d24ab73855870cf0ee507d6eaabaaf5af7",
       "url": "https://github.com/ruvnet/swirl-search.git",
       "tier": "tier-1-active"
@@ -1172,7 +1172,7 @@
     {
       "name": "symbolic-scribe",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:03+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "7403d279444f943f2f5e91000960ab4c433720c0",
       "url": "https://github.com/ruvnet/symbolic-scribe.git",
       "tier": "tier-1-active"
@@ -1180,7 +1180,7 @@
     {
       "name": "tariffic",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:04+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "1e6ac196d88cd93230967d6b7237cd89fcd6eec3",
       "url": "https://github.com/ruvnet/tariffic.git",
       "tier": "tier-1-active"
@@ -1188,7 +1188,7 @@
     {
       "name": "test-react-lib",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:04+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "aa9cf6319fa4347dc488102eeb270bca56135344",
       "url": "https://github.com/ruvnet/test-react-lib.git",
       "tier": "tier-1-active"
@@ -1196,7 +1196,7 @@
     {
       "name": "textclassifier",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:04+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "ef4d8062d8edc88b70698d889ee692c92916be85",
       "url": "https://github.com/ruvnet/textclassifier.git",
       "tier": "tier-1-active"
@@ -1204,7 +1204,7 @@
     {
       "name": "tribe-knowledgegraph",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:04+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "fc6844dc0c705cde35c5a1f9bc5daf19452953c7",
       "url": "https://github.com/ruvnet/tribe-knowledgegraph.git",
       "tier": "tier-1-active"
@@ -1212,7 +1212,7 @@
     {
       "name": "ultrasonic",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:05+00:00",
+      "lastUpdated": "2026-01-25T00:21:37+00:00",
       "commit": "b6c1dfe50de68d76fa046d8049832c86e8990994",
       "url": "https://github.com/ruvnet/ultrasonic.git",
       "tier": "tier-1-active"
@@ -1220,7 +1220,7 @@
     {
       "name": "vcbot",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:05+00:00",
+      "lastUpdated": "2026-01-25T00:21:38+00:00",
       "commit": "52bb2d49b92686ed7d43389e32b5ab9716b1fdab",
       "url": "https://github.com/ruvnet/vcbot.git",
       "tier": "tier-1-active"
@@ -1228,7 +1228,7 @@
     {
       "name": "vibecast",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:05+00:00",
+      "lastUpdated": "2026-01-25T00:21:38+00:00",
       "commit": "2fdbbc51198c143203304534ba0f15263a4dfc52",
       "url": "https://github.com/ruvnet/vibecast.git",
       "tier": "tier-1-active"
@@ -1236,7 +1236,7 @@
     {
       "name": "vibing",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:05+00:00",
+      "lastUpdated": "2026-01-25T00:21:38+00:00",
       "commit": "035c43f06009142af14cee1395a330c343853cf3",
       "url": "https://github.com/ruvnet/vibing.git",
       "tier": "tier-1-active"
@@ -1244,7 +1244,7 @@
     {
       "name": "voicebot",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:06+00:00",
+      "lastUpdated": "2026-01-25T00:21:39+00:00",
       "commit": "33832620c9fa9d26de2efd61af7c449bd13522a7",
       "url": "https://github.com/ruvnet/voicebot.git",
       "tier": "tier-1-active"
@@ -1252,7 +1252,7 @@
     {
       "name": "vsc-remote-mcp",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:05+00:00",
+      "lastUpdated": "2026-01-25T00:21:39+00:00",
       "commit": "c80ebf76fe94613d71fa83a8f7fddb4ededd81f8",
       "url": "https://github.com/ruvnet/vsc-remote-mcp.git",
       "tier": "tier-1-active"
@@ -1260,7 +1260,7 @@
     {
       "name": "wifi-densepose",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:07+00:00",
+      "lastUpdated": "2026-01-25T00:21:40+00:00",
       "commit": "16c50abca362d6be1002f027d22a8fd259a809c4",
       "url": "https://github.com/ruvnet/wifi-densepose.git",
       "tier": "tier-1-active"
@@ -1268,7 +1268,7 @@
     {
       "name": "yyz-agentics-june",
       "type": "repository",
-      "lastUpdated": "2026-01-24T20:09:06+00:00",
+      "lastUpdated": "2026-01-25T00:21:39+00:00",
       "commit": "1f1ec86361dd6b4782a642a24afd77de857ba4f7",
       "url": "https://github.com/ruvnet/yyz-agentics-june.git",
       "tier": "tier-1-active"
