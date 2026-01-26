@@ -30,15 +30,11 @@ cache/
 *.tmp
 
 
-# ... But re-ignore build artifacts and large files
-crates/**/target/
-crates/**/*.crate
-npmjs/**/node_modules/
-npmjs/**/*.tgz
-github/**/node_modules/
-github/**/target/
-github/**/dist/
-github/**/.git/
+# Build artifacts and dependencies in extracted content (not archives)
+node_modules/**
+**/target/
+**/dist/
+**/.git/
 
 # Ignore metadata files that we don't want tracked (if any, previous file ignored some json/md)
 # Re-adding specific whitelists for metadata if they were previously strictly controlled
@@ -58,4 +54,7 @@ node_modules/**
 
 # Python virtual environments
 **/venv/**
-**/.venv/**
+
+# Tool configurations
+.claude-flow
+.claude/
