@@ -9,7 +9,11 @@
 
 # Track all files in specific artifact directories with LFS
 artifacts/crates/archives/** filter=lfs diff=lfs merge=lfs -text
+artifacts/crates/extracted/** filter=lfs diff=lfs merge=lfs -text
+artifacts/crates/legacy/** filter=lfs diff=lfs merge=lfs -text
 artifacts/npm/archives/** filter=lfs diff=lfs merge=lfs -text
+artifacts/npm/extracted/** filter=lfs diff=lfs merge=lfs -text
+artifacts/npm/legacy/** filter=lfs diff=lfs merge=lfs -text
 
 # Git repositories and gists (entire directories)
 artifacts/repos/** filter=lfs diff=lfs merge=lfs -text
