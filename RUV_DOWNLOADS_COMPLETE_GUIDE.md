@@ -1703,17 +1703,13 @@ The `github/` directory contains repositories cloned directly from the `ruvnet` 
 # Step 1: Navigate to repository
 cd ruv_downloads
 
-# Step 2: Discover and download all Rust crates
-./crates/download_ruvnet_crates.sh --discover
+# Step 2: Discover and download all artifacts (Parallel Orchestration)
+./ruv_world.sh --discover
 
-# Step 3: Discover and download all NPM packages
-./npmjs/download_ruvnet_packages.sh --discover
-
-# Step 4: Check what was downloaded
-cat crates/crates.dynamic.txt | wc -l      # Should be ~173
-cat npmjs/packagelist.dynamic.txt | wc -l  # Should be ~192
-cat github/repos.dynamic.txt | wc -l       # Should be ~165
+# Step 3: Check what was downloaded
+./scripts/ruv_query.sh --status
 ```
+
 
 ### Using Individual Crates
 
@@ -1732,38 +1728,37 @@ let trading_engine = TradingEngine::new();
 
 ```bash
 # Install from local
-npm install ./npmjs/neural-trader-2.6.3
+npm install ./artifacts/npm/extracted/neural-trader-2.6.3
 
 # Or link globally
-npm link ./npmjs/neural-trader-2.6.3
+npm link ./artifacts/npm/extracted/neural-trader-2.6.3
 
 # Import in your code
 import { NeuralTrader } from 'neural-trader';
 const trader = new NeuralTrader(config);
 ```
 
+
 ### Archive Operations
 
 ```bash
 # View all .crate files
-ls -lh 00_crates/*.crate | head -20
+ls -lh artifacts/crates/archives/*.crate | head -20
 
 # View all .tgz files
-ls -lh 00_tgz/*.tgz | head -20
+ls -lh artifacts/npm/archives/*.tgz | head -20
 
 # Check legacy archives
-ls 00_crates/legacy_crates/ | head
-ls 00_tgz/legacy_tgz/ | head
+ls artifacts/crates/legacy/ | head
+ls artifacts/npm/legacy/ | head
 
-# Manually extract a crate
-cd 00_crates
-tar xzf qudag-1.4.0.crate
+# Manually extract a crate (Automatic extraction is default)
+tar xzf artifacts/crates/archives/qudag-1.4.0.crate -C artifacts/crates/extracted/
 
 # Manually extract an NPM package
-cd 00_tgz
-tar xzf neural-trader-2.6.3.tgz
-cd package/
+tar xzf artifacts/npm/archives/neural-trader-2.6.3.tgz -C artifacts/npm/extracted/
 ```
+
 
 ---
 

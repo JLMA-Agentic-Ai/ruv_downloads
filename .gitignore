@@ -17,6 +17,12 @@
 !artifacts/
 !artifacts/**
 
+# Exclude extracted and legacy directories (archives are sufficient)
+artifacts/crates/extracted/
+artifacts/crates/legacy/
+artifacts/npm/extracted/
+artifacts/npm/legacy/
+
 # Ignore logs and temporary files
 logs/*.log
 logs/**/*.log

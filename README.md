@@ -168,7 +168,7 @@ let node = Node::new("robot")?;
 
 ```bash
 # Install from local directory
-npm install ./npmjs/agentic-robotics-2.1.5
+npm install ./artifacts/npm/extracted/agentic-robotics-2.1.5
 
 # Import in TypeScript/JavaScript
 import { RoboticSystem } from 'agentic-robotics';
