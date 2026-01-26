@@ -35,6 +35,7 @@
 @claude-flow/security
 @claude-flow/shared
 @claude-flow/swarm
+@claude-flow/teammate-plugin
 @claude-flow/testing
 @foxruv/e2b-runner
 @foxruv/iris
