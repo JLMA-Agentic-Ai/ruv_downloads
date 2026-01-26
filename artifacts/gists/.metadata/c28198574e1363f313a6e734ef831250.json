@@ -1,0 +1,8 @@
+{
+  "id": "c28198574e1363f313a6e734ef831250",
+  "type": "gist",
+  "description": "Leveraging advanced language models (LLMs) has become integral to enhancing coding efficiency and accuracy. Aider introduces a groundbreaking approach by **separating code reasoning from code editing**, utilizing two specialized models to tackle each aspect of the coding process. This bifurcation not only optimizes performance but also leverages the unique strengths of different models to achieve state-of-the-art (SOTA) results in code editing tasks.",
+  "lastUpdated": "2026-01-23T16:12:52+00:00",
+  "commit": "ddbf24f88463743d1b169338ac8a174d707226f2",
+  "url": "https://gist.github.com/c28198574e1363f313a6e734ef831250"
+}

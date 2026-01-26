@@ -1,0 +1,17 @@
+{
+  "name": "@ruvector/attention-darwin-arm64",
+  "version": "0.1.3",
+  "description": "macOS Apple Silicon ARM64 binary for @ruvector/attention",
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "main": "attention.darwin-arm64.node",
+  "files": ["attention.darwin-arm64.node"],
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/ruvector"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

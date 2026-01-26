@@ -1,6 +1,6 @@
 # Ruvnet Ecosystem Downloader & Artifacts
 
-> **📊 Repository Stats**: 871 total artifacts | 198 Rust crates | 219 NPM packages | 164 GitHub repositories
+> **📊 Repository Stats**: 872 total artifacts | 198 Rust crates | 219 NPM packages | 164 GitHub repositories
 
 This repository provides tools to automatically discover, download, and manage the complete **Ruvnet ecosystem** across multiple platforms. It's a comprehensive collection of production-grade packages for AI agents, robotics, financial trading, distributed systems, and advanced computation.
 
@@ -100,7 +100,7 @@ cd ruv_downloads
 cat manifests/crates.txt | wc -l      # Should be ~198
 cat manifests/packages.txt | wc -l    # Should be ~219
 cat manifests/repos.txt | wc -l       # Should be ~164
-cat manifests/gists.txt | wc -l       # Should be ~290
+cat manifests/gists.txt | wc -l       # Should be ~291
 ```
 
 ### Update Existing Artifacts

@@ -1,0 +1,8 @@
+{
+  "name": "sparc",
+  "type": "repository",
+  "lastUpdated": "2026-01-23T16:12:17+00:00",
+  "commit": "a8d7dae14ec541bd86ea9075d41c8ef064afdc57",
+  "url": "https://github.com/ruvnet/sparc.git",
+  "tier": "tier-1-active"
+}

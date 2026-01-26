@@ -1,0 +1,8 @@
+{
+  "id": "0928768dd1e4af8816e31dde0a0205d5",
+  "type": "gist",
+  "description": "A PyTorch implementation of a Mixture of Experts (MoE) model resembling the Mixtral 8x7B architecture, with detailed inline comments. This model combines transformer layers with an MoE layer consisting of 8 experts, aiming for high efficiency by activating only 2 experts per token. It's configured with dimensions reflecting the operational efficiency of a downscaled GPT-4 model, potentially suitable for a variety of AI tasks requiring adaptability and reduced computational load.",
+  "lastUpdated": "2026-01-23T16:12:07+00:00",
+  "commit": "1aad96b3f122536ad5ddecaa4f36b0ff23635c9f",
+  "url": "https://gist.github.com/0928768dd1e4af8816e31dde0a0205d5"
+}

@@ -1,0 +1,7 @@
+{
+  "git": {
+    "sha1": "92cf4499d7dbdd149e1015a21a6138985016d481",
+    "dirty": true
+  },
+  "path_in_vcs": "crates/ruqu/ruqu-qgat-mol"
+}

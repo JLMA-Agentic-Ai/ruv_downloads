@@ -1,0 +1,8 @@
+{
+  "name": "nova",
+  "type": "repository",
+  "lastUpdated": "2026-01-23T16:12:12+00:00",
+  "commit": "952a21fe59aa5597ffc64ce2c2832914b37446da",
+  "url": "https://github.com/ruvnet/nova.git",
+  "tier": "tier-1-active"
+}
