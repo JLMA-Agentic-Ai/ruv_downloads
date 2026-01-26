@@ -1,12 +1,13 @@
 # Whitelist core files
 !.gitignore
+!.gitattributes
 !.github/
 !.github/**
 !README.md
 !RUV_DOWNLOADS_COMPLETE_GUIDE.md
 !ruv_world.sh
 
-# Whitelist directory structure (but ignore contents by default)
+# Whitelist directory structure and allow artifacts (managed via Git LFS)
 !manifests/
 !manifests/*.txt
 !scripts/
@@ -14,22 +15,13 @@
 !lib/
 !lib/*.sh
 !artifacts/
-!artifacts/index.json
-!artifacts/**/.gitkeep
+!artifacts/**
 
-# Ignore large downloaded artifacts (Archives and Extracted code)
-# These should be managed by the scripts, not committed to Git (Standard Repo)
-# If a full backup in Git is desired, these can be whitelisted.
-artifacts/crates/archives/
-artifacts/crates/extracted/
-artifacts/npm/archives/
-artifacts/npm/extracted/
-artifacts/repos/*
-artifacts/gists/*
-
-# Ignore logs
+# Ignore logs and temporary files
 logs/*.log
+logs/**/*.log
 cache/
+*.tmp
 
 
 # ... But re-ignore build artifacts and large files

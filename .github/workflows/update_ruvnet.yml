@@ -19,6 +19,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          git lfs pull
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,12 +38,43 @@ jobs:
           chmod +x scripts/*.sh
           chmod +x lib/*.sh
 
-      - name: Run RUV WORLD - Centralized Downloader
+      - name: Download Crates
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./ruv_world.sh
-      
+        run: |
+          echo "=== Downloading Rust Crates ==="
+          ./scripts/download_crates_optimized.sh --discover || echo "Crate download had issues"
+          
+      - name: Download NPM Packages
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Downloading NPM Packages ==="
+          ./scripts/download_npm_optimized.sh --discover || echo "NPM download had issues"
+          
+      - name: Download Repositories
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Downloading GitHub Repositories ==="
+          ./scripts/download_repos_optimized.sh --discover || echo "Repo download had issues"
+          
+      - name: Download Gists
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Downloading GitHub Gists ==="
+          ./scripts/download_gists_optimized.sh --discover || echo "Gist download had issues"
+
+      - name: Build Index
+        run: |
+          echo "=== Building Metadata Index ==="
+          ./scripts/ruv_index.sh
+          
       - name: Verify downloads
         run: ./scripts/ruv_query.sh --status
 
@@ -44,12 +82,14 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git lfs track
+          git add .gitattributes
           git add .
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "chore: update ruvnet ecosystem [skip ci]"
+            git lfs push origin main
             git push
           else
             echo "No changes to commit"
           fi
-
