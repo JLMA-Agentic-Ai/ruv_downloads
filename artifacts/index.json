@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-01-26T13:23:21+00:00",
+  "last_indexed": "2026-01-27T00:43:10+00:00",
   "artifacts": [
     {
       "type": "crate",
@@ -2722,8 +2722,8 @@
     {
       "name": "claude-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-26T10:01:18+00:00",
-      "commit": "cb7bcc072633dc9fd04e86e813db4724e1d0c539",
+      "lastUpdated": "2026-01-27T00:43:09+00:00",
+      "commit": "d6d34069fc0a4308e0267606724f18a4014762ad",
       "url": "https://github.com/ruvnet/claude-flow.git",
       "tier": "tier-1-active"
     },
