@@ -195,6 +195,7 @@ psycho-symbolic-reasoner
 qudag
 research-swarm
 ruv-swarm
+ruvbot
 ruvector
 ruvector-attention-wasm
 ruvector-core

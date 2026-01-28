@@ -113,7 +113,7 @@ spinner() {
 print_banner() {
     echo ""
     echo -e "${CYAN}╔═══════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${CYAN}║${NC}  ${BOLD}🌊 Claude Flow${NC} - Enterprise AI Agent Orchestration     ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC}  ${BOLD}🌊 Claude Flow${NC} - Enterprise AI Agent Orchestration    ${CYAN}║${NC}"
     echo -e "${CYAN}╚═══════════════════════════════════════════════════════════╝${NC}"
     echo ""
 }
@@ -183,14 +183,17 @@ check_requirements() {
         print_substep "Claude Code ${GREEN}${CLAUDE_VERSION}${NC} ✓"
     else
         print_warning "Claude Code CLI not found"
-        print_substep "Installing Claude Code CLI..."
-        curl -fsSL https://claude.ai/install.sh | sh 2>/dev/null
-        if command -v claude &> /dev/null; then
-            CLAUDE_VERSION=$(claude --version 2>/dev/null | head -1 || echo "installed")
-            print_substep "Claude Code ${GREEN}${CLAUDE_VERSION}${NC} ✓"
+        print_substep "Installing Claude Code CLI via npm..."
+        if npm install -g @anthropic-ai/claude-code 2>/dev/null; then
+            if command -v claude &> /dev/null; then
+                CLAUDE_VERSION=$(claude --version 2>/dev/null | head -1 || echo "installed")
+                print_substep "Claude Code ${GREEN}${CLAUDE_VERSION}${NC} ✓"
+            else
+                print_substep "Installed. Restart terminal to use 'claude' command"
+            fi
         else
-            print_warning "Claude Code CLI install failed - install manually:"
-            print_substep "curl -fsSL https://claude.ai/install.sh | sh"
+            print_warning "npm install failed. Try manually:"
+            print_substep "${BOLD}npm install -g @anthropic-ai/claude-code${NC}"
         fi
     fi
 

@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-01-27T12:21:07+00:00",
+  "last_indexed": "2026-01-28T00:35:49+00:00",
   "artifacts": [
     {
       "type": "crate",
@@ -2722,8 +2722,8 @@
     {
       "name": "claude-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-27T00:43:09+00:00",
-      "commit": "d6d34069fc0a4308e0267606724f18a4014762ad",
+      "lastUpdated": "2026-01-28T00:35:48+00:00",
+      "commit": "8a89fc1ac4bb9c74438e0724ef7081431908ec09",
       "url": "https://github.com/ruvnet/claude-flow.git",
       "tier": "tier-1-active"
     },
@@ -3090,8 +3090,8 @@
     {
       "name": "optimizer",
       "type": "repository",
-      "lastUpdated": "2026-01-26T10:00:41+00:00",
-      "commit": "f5b087c00c52c78491e3f723cb44272ef5cc206c",
+      "lastUpdated": "2026-01-28T00:35:45+00:00",
+      "commit": "9bd5fdf316aa26f3befed33e092abd08e9af2192",
       "url": "https://github.com/ruvnet/optimizer.git",
       "tier": "tier-1-active"
     },
