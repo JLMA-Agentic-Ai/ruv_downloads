@@ -17,7 +17,7 @@ CRATES_IO_USER_URL="https://crates.io/users/ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/crates.txt"
 ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/crates"
 EXTRACTED_DIR="$PROJECT_ROOT/artifacts/crates/extracted"
-LEGACY_DIR="$PROJECT_ROOT/artifacts/crates/legacy"
+LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
 # Create directories
 mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR"

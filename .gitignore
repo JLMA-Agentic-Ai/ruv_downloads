@@ -16,7 +16,6 @@
 !lib/*.sh
 !artifacts/
 !artifacts/archives/
-!artifacts/archives/
 !artifacts/archives/**/*.tar.gz
 !artifacts/archives/**/*.tgz
 !artifacts/archives/**/*.crate
@@ -25,7 +24,6 @@
 artifacts/repos/
 artifacts/gists/
 artifacts/*/extracted/
-artifacts/*/legacy/
 
 # Ignore logs and temporary files
 logs/*.log

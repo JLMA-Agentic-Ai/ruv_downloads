@@ -14,10 +14,12 @@ ruv_downloads/
 ├── artifacts/                 # Centralized artifact storage
 │   ├── archives/              # Unified Backup Storage (LFS)
 │   │   ├── crates/            # .crate files
+│   │   │   └── 00_legacy/     # Old versions of crates
 │   │   ├── npm/               # .tgz files
+│   │   │   └── 00_legacy/     # Old versions of packages
 │   │   └── github/            # Repos (.tar.gz) & Gists (Source)
-│   ├── crates/                # Rust crates (extracted, legacy)
-│   ├── npm/                   # NPM packages (extracted, legacy)
+│   ├── crates/                # Rust crates (extracted)
+│   ├── npm/                   # NPM packages (extracted)
 │   ├── repos/                 # GitHub repositories (active clones)
 │   └── index.json             # Search index
 │
@@ -188,9 +190,9 @@ ls -lh artifacts/archives/npm/*.tgz | head -20
 # View uncompressed Gists
 ls -d artifacts/archives/github/gists/by-date/* | head -5
 
-# Check legacy extracts
-ls artifacts/crates/legacy/
-ls artifacts/npm/legacy/
+# Check legacy archives
+ls artifacts/archives/crates/00_legacy/
+ls artifacts/archives/npm/00_legacy/
 
 # Manually extract a crate (automatic extraction is enabled by default)
 tar xzf artifacts/crates/archives/qudag-1.4.0.crate -C artifacts/crates/extracted/
