@@ -1,8 +1,0 @@
-{
-  "id": "18c4c6920e3b8a6a734d0ad09d907c3e",
-  "type": "gist",
-  "description": "Hypergraph Generator using OpenAI GPT-4 128k context window, fastapi, async, concurrent ",
-  "lastUpdated": "2026-01-23T16:12:11+00:00",
-  "commit": "0042fa80496516a1688fda086dbdaf9d584e3a17",
-  "url": "https://gist.github.com/18c4c6920e3b8a6a734d0ad09d907c3e"
-}

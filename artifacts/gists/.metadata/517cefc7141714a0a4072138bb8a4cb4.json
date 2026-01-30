@@ -1,8 +1,0 @@
-{
-  "id": "517cefc7141714a0a4072138bb8a4cb4",
-  "type": "gist",
-  "description": "A guide to training or fine‑tuning, optimizing, and finally quantizing Phi‑4 models for ONNX Runtime",
-  "lastUpdated": "2026-01-23T16:12:27+00:00",
-  "commit": "d94a646c190ae3770f1eac17e710a96143fd3eb3",
-  "url": "https://gist.github.com/517cefc7141714a0a4072138bb8a4cb4"
-}

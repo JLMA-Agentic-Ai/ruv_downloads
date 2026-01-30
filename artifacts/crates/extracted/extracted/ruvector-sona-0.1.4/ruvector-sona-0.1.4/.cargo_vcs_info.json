@@ -1,7 +1,0 @@
-{
-  "git": {
-    "sha1": "cb9cd8b3be1fb8cf5aab2c320eeb7ee6273ba4f3",
-    "dirty": true
-  },
-  "path_in_vcs": "crates/sona"
-}

@@ -1,8 +1,0 @@
-{
-  "id": "6c3581142b51e985f0d37406d34f7acb",
-  "type": "gist",
-  "description": "agentic.js: A modern, secure, and scalable JavaScript/TypeScript library designed for Deno and Node.js environments. It provides a unified interface to interact with multiple AI language model providers like OpenAI and Anthropic. Incorporating agentic capabilities through LangChain.js integration, agentic.js allows for advanced AI applications, including custom tool creation and dynamic agent architectures. The library supports multiple models and providers using dynamic configurations and offers optional support for PostgreSQL/Supabase as a database backend for caching and data storage.",
-  "lastUpdated": "2026-01-23T16:12:34+00:00",
-  "commit": "d4cb3abcdd9917284b5fc0795128aacd4cb9cf38",
-  "url": "https://gist.github.com/6c3581142b51e985f0d37406d34f7acb"
-}

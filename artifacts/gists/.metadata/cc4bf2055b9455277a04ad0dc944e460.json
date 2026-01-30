@@ -1,8 +1,0 @@
-{
-  "id": "cc4bf2055b9455277a04ad0dc944e460",
-  "type": "gist",
-  "description": "QuDAG Vault is a Rust-based password and secret manager built on a quantum-resistant DAG architecture. It uses Kyber for key exchange, Dilithium for signatures, and AES-256-GCM for encrypting vault data. Secrets are stored as encrypted nodes in a DAG, enabling flexible organization, versioning, and delegation. It includes a CLI and bindings for Node.js (via napi-rs) and Python (via PyO3). Designed for extensibility, it supports future features like MFA, RBAC, and distributed vault replication.",
-  "lastUpdated": "2026-01-23T16:12:53+00:00",
-  "commit": "e7fdddf4e8026d53911f35f1c990cd2b08503130",
-  "url": "https://gist.github.com/cc4bf2055b9455277a04ad0dc944e460"
-}

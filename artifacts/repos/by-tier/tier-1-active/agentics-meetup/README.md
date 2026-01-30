@@ -1,2 +1,0 @@
-# agentics-meetup
-Sample Starting

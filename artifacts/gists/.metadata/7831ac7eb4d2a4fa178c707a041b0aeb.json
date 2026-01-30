@@ -1,8 +1,0 @@
-{
-  "id": "7831ac7eb4d2a4fa178c707a041b0aeb",
-  "type": "gist",
-  "description": "MEMENTO (Memory Enhanced Models for Entity-based Networked Textual Operations) system integrating OpenAI's memory feature and in-context learning for a personalized, context-aware, and continuously improving conversation handling.",
-  "lastUpdated": "2026-01-23T16:12:36+00:00",
-  "commit": "4ceeaac8f97945bf1c44ab0d7fc845ffa24e87be",
-  "url": "https://gist.github.com/7831ac7eb4d2a4fa178c707a041b0aeb"
-}
