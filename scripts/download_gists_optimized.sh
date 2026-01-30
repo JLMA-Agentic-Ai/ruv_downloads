@@ -14,8 +14,7 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 # Configuration
 GITHUB_USER="ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/gists.txt"
-GISTS_DIR="$PROJECT_ROOT/artifacts/gists/by-id"
-METADATA_DIR="$PROJECT_ROOT/artifacts/gists/.metadata"
+METADATA_DIR="$PROJECT_ROOT/artifacts/archives/github/gists/.metadata"
 
 mkdir -p "$GISTS_DIR" "$METADATA_DIR"
 
@@ -130,7 +129,7 @@ process_gist() {
   echo "Checking Gist: $folder_name (Date: $gist_date)"
   
   local gist_url="https://gist.github.com/${gist_id}.git"
-  local date_dir="$PROJECT_ROOT/artifacts/gists/by-date/$gist_date"
+  local date_dir="$GISTS_DIR/by-date/$gist_date"
   local target_dir="$date_dir/$folder_name"
   
   # Get remote hash
@@ -162,7 +161,7 @@ process_gist() {
   fi
   
   # Deep check locally for migration (find any folder containing the ID)
-  local found_local=$(find "$PROJECT_ROOT/artifacts/gists" -type d -name "*($gist_id)*" -o -name "$gist_id" | head -n 1)
+  local found_local=$(find "$GISTS_DIR" -type d -name "*($gist_id)*" -o -name "$gist_id" | head -n 1)
   
   if [ -n "$found_local" ] && [ -d "$found_local" ]; then
     local local_hash=$(get_git_commit_hash "$found_local")
@@ -223,7 +222,7 @@ done
 wait # Wait for all remaining jobs
 
 # Cleanup empty directories in by-date
-find "$PROJECT_ROOT/artifacts/gists/by-date" -type d -empty -delete 2>/dev/null || true
+find "$GISTS_DIR/by-date" -type d -empty -delete 2>/dev/null || true
 
 echo "All gist downloads and reorganization complete!"
 echo "Cache stats:"

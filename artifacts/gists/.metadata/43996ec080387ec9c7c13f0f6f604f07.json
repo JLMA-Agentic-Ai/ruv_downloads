@@ -1,8 +1,0 @@
-{
-  "id": "43996ec080387ec9c7c13f0f6f604f07",
-  "type": "gist",
-  "description": "An open source system, based on FSDP and QLoRA, that can train a 70b model on two 24GB GPUs",
-  "lastUpdated": "2026-01-23T16:12:23+00:00",
-  "commit": "891052c7bfc2b4f8494db6f4e198fd98823960ed",
-  "url": "https://gist.github.com/43996ec080387ec9c7c13f0f6f604f07"
-}

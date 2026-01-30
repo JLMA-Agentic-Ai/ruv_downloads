@@ -1,6 +1,0 @@
-{
-  "git": {
-    "sha1": "5a5874d403526cf742d71647700a94780ac8fd8b"
-  },
-  "path_in_vcs": "examples/onnx-embeddings-wasm"
-}

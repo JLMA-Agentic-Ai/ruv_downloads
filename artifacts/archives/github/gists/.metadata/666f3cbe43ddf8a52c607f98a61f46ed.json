@@ -1,0 +1,120 @@
+{
+  "url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed",
+  "forks_url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed/forks",
+  "commits_url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed/commits",
+  "id": "666f3cbe43ddf8a52c607f98a61f46ed",
+  "node_id": "G_kwDOACzGetoAIDY2NmYzY2JlNDNkZGY4YTUyYzYwN2Y5OGE2MWY0NmVk",
+  "git_pull_url": "https://gist.github.com/666f3cbe43ddf8a52c607f98a61f46ed.git",
+  "git_push_url": "https://gist.github.com/666f3cbe43ddf8a52c607f98a61f46ed.git",
+  "html_url": "https://gist.github.com/ruvnet/666f3cbe43ddf8a52c607f98a61f46ed",
+  "files": {
+    "align.json": {
+      "filename": "align.json",
+      "type": "application/json",
+      "language": "OASv3-json",
+      "raw_url": "https://gist.githubusercontent.com/ruvnet/666f3cbe43ddf8a52c607f98a61f46ed/raw/f21c1bfa158acaa9d24bc7f1a0a4ab8b4b9f7276/align.json",
+      "size": 3631,
+      "truncated": false,
+      "content": "{\n  \"openapi\": \"3.0.2\",\n  \"info\": {\n    \"title\": \"OpenAi API GPT\",\n    \"description\": \"API endpoints for OpenAi API GPT application\",\n    \"version\": \"0.0.1\"\n  },\n  \"paths\": {\n    \"/proxy_openai_api/completions/\": {\n      \"post\": {\n        \"tags\": [\"Chat\"],\n        \"summary\": \"Proxy Openai Api Completions\",\n        \"operationId\": \"proxy_openai_api_completions_proxy_openai_api_completions__post\",\n        \"requestBody\": {\n          \"content\": {\n            \"application/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/CompletionRequest\"\n              }\n            }\n          },\n          \"required\": true\n        },\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Successful Response\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {}\n              }\n            }\n          },\n          \"422\": {\n            \"description\": \"Validation Error\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/HTTPValidationError\"\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/align\": {\n      \"get\": {\n        \"summary\": \"Test Text Alignment\",\n        \"operationId\": \"test_text_alignment_align_get\",\n        \"parameters\": [\n          {\n            \"required\": true,\n            \"schema\": {\n              \"title\": \"Test Text\",\n              \"type\": \"string\"\n            },\n            \"name\": \"test_text\",\n            \"in\": \"query\"\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Successful Response\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/AlignAPIResponse\"\n                }\n              }\n            }\n          },\n          \"422\": {\n            \"description\": \"Validation Error\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/HTTPValidationError\"\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/conditional_completion/\": {\n      \"post\": {\n        \"tags\": [\"Conditional Completion\"],\n        \"summary\": \"Conditional Completion\",\n        \"operationId\": \"conditional_completion_conditional_completion__post\",\n        \"parameters\": [\n          {\n            \"required\": false,\n            \"schema\": {\n              \"title\": \"Threshold\",\n              \"type\": \"integer\",\n              \"default\": 1\n            },\n            \"name\": \"threshold\",\n            \"in\": \"query\"\n          }\n        ],\n        \"requestBody\": {\n          \"content\": {\n            \"application/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/CompletionRequest\"\n              }\n            }\n          },\n          \"required\": true\n        },\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Successful Response\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {}\n              }\n            }\n          },\n          \"422\": {\n            \"description\": \"Validation Error\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/HTTPValidationError\"\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  },\n  \"components\": {\n    \"schemas\": {\n    }\n  },\n  \"servers\": [\n    {\n      \"url\": \"yourserver.com\",\n      \"description\": \"Development server\"\n    }\n  ]\n}\n",
+      "encoding": "utf-8"
+    }
+  },
+  "public": true,
+  "created_at": "2023-12-01T21:42:10Z",
+  "updated_at": "2023-12-01T21:42:56Z",
+  "description": "AlignAPI x ruv Openapi.json",
+  "comments": 0,
+  "user": null,
+  "comments_enabled": true,
+  "comments_url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed/comments",
+  "owner": {
+    "login": "ruvnet",
+    "id": 2934394,
+    "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ruvnet",
+    "html_url": "https://github.com/ruvnet",
+    "followers_url": "https://api.github.com/users/ruvnet/followers",
+    "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+    "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+    "repos_url": "https://api.github.com/users/ruvnet/repos",
+    "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "forks": [],
+  "history": [
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "10eca98dfbeb22cf167c735953b2799e3474d6f4",
+      "committed_at": "2023-12-01T21:42:56Z",
+      "change_status": {
+        "total": 2,
+        "additions": 1,
+        "deletions": 1
+      },
+      "url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed/10eca98dfbeb22cf167c735953b2799e3474d6f4"
+    },
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "dc3d8900e1618ec670618a22f486d8b42562a8a7",
+      "committed_at": "2023-12-01T21:42:10Z",
+      "change_status": {
+        "total": 145,
+        "additions": 145,
+        "deletions": 0
+      },
+      "url": "https://api.github.com/gists/666f3cbe43ddf8a52c607f98a61f46ed/dc3d8900e1618ec670618a22f486d8b42562a8a7"
+    }
+  ],
+  "truncated": false,
+  "type": "gist",
+  "commit": "10eca98dfbeb22cf167c735953b2799e3474d6f4",
+  "lastUpdated": "2026-01-30T15:12:46+00:00"
+}

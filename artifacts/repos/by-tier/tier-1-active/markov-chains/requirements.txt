@@ -1,6 +1,0 @@
-markovify
-lionagi
-asyncio
-pytest
-spacy
-simple-term-menu

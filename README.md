@@ -5,19 +5,22 @@
 This repository provides tools to automatically discover, download, and manage the complete **Ruvnet ecosystem** across multiple platforms. It's a comprehensive collection of production-grade packages for AI agents, robotics, financial trading, distributed systems, and advanced computation.
 
 ## 📚 Documentation
-
-- **[Complete Ecosystem Guide](RUV_DOWNLOADS_COMPLETE_GUIDE.md)** - Comprehensive documentation with detailed package descriptions, performance metrics, and integration patterns
-- This README provides quick-start instructions and an overview
+- **[System Architecture](docs/ARCHITECTURE.md)** - Internal design and component details
 
 ## Repository Structure
 
 ```
 ruv_downloads/
 ├── artifacts/                 # Centralized artifact storage
-│   ├── crates/                # Rust crates (archives, extracted, legacy)
-│   ├── npm/                   # NPM packages (archives, extracted, legacy)
-│   ├── repos/                 # GitHub repositories
-│   ├── gists/                 # GitHub gists
+│   ├── archives/              # Unified Backup Storage (LFS)
+│   │   ├── crates/            # .crate files
+│   │   │   └── 00_legacy/     # Old versions of crates
+│   │   ├── npm/               # .tgz files
+│   │   │   └── 00_legacy/     # Old versions of packages
+│   │   └── github/            # Repos (.tar.gz) & Gists (Source)
+│   ├── crates/                # Rust crates (extracted)
+│   ├── npm/                   # NPM packages (extracted)
+│   ├── repos/                 # GitHub repositories (active clones)
 │   └── index.json             # Search index
 │
 ├── manifests/                 # Centralized manifests
@@ -179,14 +182,17 @@ const robot = new RoboticSystem('warehouse-bot');
 
 ```bash
 # View downloaded .crate files
-ls -lh artifacts/crates/archives/*.crate | head -20
+ls -lh artifacts/archives/crates/*.crate | head -20
 
 # View downloaded .tgz files  
-ls -lh artifacts/npm/archives/*.tgz | head -20
+ls -lh artifacts/archives/npm/*.tgz | head -20
+
+# View uncompressed Gists
+ls -d artifacts/archives/github/gists/by-date/* | head -5
 
 # Check legacy archives
-ls artifacts/crates/legacy/
-ls artifacts/npm/legacy/
+ls artifacts/archives/crates/00_legacy/
+ls artifacts/archives/npm/00_legacy/
 
 # Manually extract a crate (automatic extraction is enabled by default)
 tar xzf artifacts/crates/archives/qudag-1.4.0.crate -C artifacts/crates/extracted/
@@ -204,4 +210,4 @@ MIT/Apache-2.0 (dual) - See individual package licenses
 
 **Last Updated**: January 26, 2026
 **Maintained by**: Ruvnet Community  
-**Complete Documentation**: [RUV_DOWNLOADS_COMPLETE_GUIDE.md](RUV_DOWNLOADS_COMPLETE_GUIDE.md)
+**System Architecture**: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)

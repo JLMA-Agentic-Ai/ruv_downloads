@@ -1,0 +1,223 @@
+{
+  "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3",
+  "forks_url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/forks",
+  "commits_url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/commits",
+  "id": "69f44f0856d2c1717db67e317d66cef3",
+  "node_id": "G_kwDOACzGetoAIDY5ZjQ0ZjA4NTZkMmMxNzE3ZGI2N2UzMTdkNjZjZWYz",
+  "git_pull_url": "https://gist.github.com/69f44f0856d2c1717db67e317d66cef3.git",
+  "git_push_url": "https://gist.github.com/69f44f0856d2c1717db67e317d66cef3.git",
+  "html_url": "https://gist.github.com/ruvnet/69f44f0856d2c1717db67e317d66cef3",
+  "files": {
+    "Src.md": {
+      "filename": "Src.md",
+      "type": "text/markdown",
+      "language": "Markdown",
+      "raw_url": "https://gist.githubusercontent.com/ruvnet/69f44f0856d2c1717db67e317d66cef3/raw/1dd586e475f6d889c2ba00217268da2de168a7ad/Src.md",
+      "size": 4115,
+      "truncated": false,
+      "content": "The number of software developers in the United States has experienced significant growth over the past decade. According to the U.S. Bureau of Labor Statistics, the employment figures for software developers, quality assurance analysts, and testers are as follows:\n\n- **2014**: Approximately 1,018,000\n- **2015**: Approximately 1,114,000\n- **2016**: Approximately 1,256,000\n- **2017**: Approximately 1,365,000\n- **2018**: Approximately 1,469,000\n- **2019**: Approximately 1,535,000\n- **2020**: Approximately 1,847,900\n- **2021**: Approximately 1,981,000\n- **2022**: Approximately 2,189,000\n- **2023**: Approximately 2,409,000\n- **2024**: Approximately 2,650,000\n\nThese figures reflect a consistent upward trend in the employment of software developers in the U.S. over the past decade.\n\n*Note: The data for 2023 and 2024 are projections based on historical growth rates.*\n\n### Sources for Historical Data on Software Developers\n1. **U.S. Bureau of Labor Statistics (BLS)**: For historical data on employment figures in the software development sector, including trends and breakdowns by job type. You can access these details through the BLS Occupational Employment and Wage Statistics:\n   - [BLS Occupational Data](https://www.bls.gov/oes/)\n   - Look for roles such as \"Software Developers\" and \"Computer and Information Technology Occupations.\"\n\n2. **Statista**: Provides data on the software industry workforce and employment trends. Some data may require a subscription for access:\n   - [Statista - Software Developers in the US](https://www.statista.com/statistics/)\n\n3. **CompTIA’s IT Industry Outlook**: This report covers employment trends in the tech sector, including projections for software developer roles and the impact of automation.\n   - [CompTIA IT Industry Outlook](https://www.comptia.org/resources/it-industry-trends-analysis)\n\n4. **Industry Research from McKinsey, Deloitte, and Gartner**: These firms offer reports on workforce trends, automation, and the impact of AI on employment. They often project the potential influence of AI and bots in the industry.\n   - [McKinsey Reports](https://www.mckinsey.com/)\n   - [Deloitte Insights](https://www2.deloitte.com/global/en/insights.html)\n   - [Gartner Research](https://www.gartner.com/en)\n\n### Sources for AI and Automation Impact on Workforce\n1. **World Economic Forum (WEF) - Future of Jobs Report**: Provides insights into automation's projected impact on various industries, including software development.\n   - [WEF Future of Jobs Report](https://www.weforum.org/reports/the-future-of-jobs-report-2020)\n\n2. **OECD - AI and Future of Work**: The Organisation for Economic Co-operation and Development has published studies on the impact of AI on labor markets.\n   - [OECD AI and Work Studies](https://www.oecd.org/)\n\n3. **Brookings Institution - Reports on AI and Automation**: Analyzes how AI might displace or augment jobs, focusing on U.S. labor markets.\n   - [Brookings AI and Automation Reports](https://www.brookings.edu/)\n\n4. **International Labour Organization (ILO)**: Offers insights into technology’s impact on global employment trends and provides data on how automation could affect various sectors.\n   - [ILO Future of Work](https://www.ilo.org/global/topics/future-of-work/lang--en/index.htm)\n\n### Methodology for Forecasting\nFor forecast modeling, data from these sources can be combined with:\n1. **Exponential Smoothing and Linear Forecasting**: Using techniques such as the Holt-Winters method to predict future employment trends based on historical data.\n2. **Machine Learning Forecast Models**: Algorithms like ARIMA (Auto-Regressive Integrated Moving Average) or neural network-based models can provide forecasts, especially when using larger datasets.\n3. **Data Visualization Tools**: Libraries like `matplotlib` and `scipy` in Python enable smoothing and interpolation to create visual forecasts based on the processed data.\n\nThese sources and methodologies support accurate analysis and visualization for forecasting trends in the software development workforce and the projected influence of AI and automation.",
+      "encoding": "utf-8"
+    },
+    "X-Graph.py": {
+      "filename": "X-Graph.py",
+      "type": "application/x-python",
+      "language": "Python",
+      "raw_url": "https://gist.githubusercontent.com/ruvnet/69f44f0856d2c1717db67e317d66cef3/raw/ac5372b75038a2a6a00be05434e96a6877d5d412/X-Graph.py",
+      "size": 2495,
+      "truncated": false,
+      "content": "# Extending the forecast by 5 years (to 2035) and keeping the current trend for both developers and bots\n\n# Extend forecast years\nextended_forecast_years = list(range(2024, 2036))\n\n# Extend human developer forecast with a continued decline\nextended_forecast_human = pronounced_forecast + [pronounced_forecast[-1] * 0.9**i for i in range(1, 6)]\n\n# Extend bot forecast with continued growth\nextended_bots_millions_pronounced = bots_millions_pronounced + [bots_millions_pronounced[-1] * 1.2**i for i in range(1, 6)]\n\n# Smooth the entire extended range for human developers\nx_combined_human = np.array(historical_years + extended_forecast_years)\ny_combined_human = np.array(developers_millions + extended_forecast_human)\nx_smooth_combined_human = np.linspace(x_combined_human.min(), x_combined_human.max(), 350)\ny_smooth_combined_human = make_interp_spline(x_combined_human, y_combined_human, k=3)(x_smooth_combined_human)\n\n# Smooth the extended bot data\nx_bots_extended = np.array(extended_forecast_years)\ny_bots_millions_pronounced_extended = np.array(extended_bots_millions_pronounced)\n\nif len(x_bots_extended) >= 4:\n    spline_bots_extended = make_interp_spline(x_bots_extended, y_bots_millions_pronounced_extended, k=3)\nelse:\n    spline_bots_extended = make_interp_spline(x_bots_extended, y_bots_millions_pronounced_extended, k=1)\n\nx_smooth_bots_extended = np.linspace(x_bots_extended.min(), x_bots_extended.max(), 200)\ny_smooth_bots_extended = spline_bots_extended(x_smooth_bots_extended)\n\n# Plotting the extended forecast with current trends\nplt.figure(figsize=(12, 6))\n\n# Plot human developers as a single smoothed area in millions (historical + forecast extended)\nplt.fill_between(\n    x_smooth_combined_human, y_smooth_combined_human,\n    color=\"skyblue\", alpha=0.4, label=\"Human Developers (Historical & Extended Forecast)\"\n)\n\n# Plot bot data as a smoothed area in millions with extended growth\nplt.fill_between(\n    x_smooth_bots_extended, y_smooth_bots_extended,\n    color=\"lightgreen\", alpha=0.6, label=\"Estimated Bots Replacing Roles (Extended)\"\n)\n\n# Chart title and labels\nplt.title(\"US Software Developers vs. Estimated Bots Replacing Roles (2014-2035)\", fontsize=14)\nplt.xlabel(\"Year\", fontsize=12)\nplt.ylabel(\"Number (in millions)\", fontsize=12)\nplt.xticks(list(range(2014, 2036, 2)), rotation=45)  # Adjust x-ticks for readability\n\n# Legend and grid\nplt.legend(loc=\"upper left\")\nplt.grid(True, linestyle='--', alpha=0.7)\n\n# Adjust layout and display\nplt.tight_layout()\nplt.show()",
+      "encoding": "utf-8"
+    }
+  },
+  "public": true,
+  "created_at": "2024-11-09T01:32:46Z",
+  "updated_at": "2024-11-09T03:26:26Z",
+  "description": "",
+  "comments": 0,
+  "user": null,
+  "comments_enabled": true,
+  "comments_url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/comments",
+  "owner": {
+    "login": "ruvnet",
+    "id": 2934394,
+    "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ruvnet",
+    "html_url": "https://github.com/ruvnet",
+    "followers_url": "https://api.github.com/users/ruvnet/followers",
+    "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+    "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+    "repos_url": "https://api.github.com/users/ruvnet/repos",
+    "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "forks": [],
+  "history": [
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "d273bea2a473d035df15d25291d4ffc4a327e886",
+      "committed_at": "2024-11-09T01:39:01Z",
+      "change_status": {
+        "total": 17,
+        "additions": 17,
+        "deletions": 0
+      },
+      "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/d273bea2a473d035df15d25291d4ffc4a327e886"
+    },
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "c3663a2cf69e9110243fe30c9ead2dfa9ceb9afc",
+      "committed_at": "2024-11-09T01:35:36Z",
+      "change_status": {
+        "total": 1,
+        "additions": 0,
+        "deletions": 1
+      },
+      "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/c3663a2cf69e9110243fe30c9ead2dfa9ceb9afc"
+    },
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "55c82d3470facda5f52832c25719b3886375afce",
+      "committed_at": "2024-11-09T01:35:09Z",
+      "change_status": {
+        "total": 62,
+        "additions": 33,
+        "deletions": 29
+      },
+      "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/55c82d3470facda5f52832c25719b3886375afce"
+    },
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "028d018e676b7df99167b43aaec15ed710790f3b",
+      "committed_at": "2024-11-09T01:33:48Z",
+      "change_status": {
+        "total": 1,
+        "additions": 0,
+        "deletions": 1
+      },
+      "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/028d018e676b7df99167b43aaec15ed710790f3b"
+    },
+    {
+      "user": {
+        "login": "ruvnet",
+        "id": 2934394,
+        "node_id": "MDQ6VXNlcjI5MzQzOTQ=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2934394?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ruvnet",
+        "html_url": "https://github.com/ruvnet",
+        "followers_url": "https://api.github.com/users/ruvnet/followers",
+        "following_url": "https://api.github.com/users/ruvnet/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ruvnet/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ruvnet/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ruvnet/subscriptions",
+        "organizations_url": "https://api.github.com/users/ruvnet/orgs",
+        "repos_url": "https://api.github.com/users/ruvnet/repos",
+        "events_url": "https://api.github.com/users/ruvnet/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ruvnet/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "version": "83ab88dcd2db3141f1075ad67c6fc0f6b94ab5f7",
+      "committed_at": "2024-11-09T01:32:46Z",
+      "change_status": {
+        "total": 92,
+        "additions": 92,
+        "deletions": 0
+      },
+      "url": "https://api.github.com/gists/69f44f0856d2c1717db67e317d66cef3/83ab88dcd2db3141f1075ad67c6fc0f6b94ab5f7"
+    }
+  ],
+  "truncated": false,
+  "type": "gist",
+  "commit": "d273bea2a473d035df15d25291d4ffc4a327e886",
+  "lastUpdated": "2026-01-30T15:12:48+00:00"
+}

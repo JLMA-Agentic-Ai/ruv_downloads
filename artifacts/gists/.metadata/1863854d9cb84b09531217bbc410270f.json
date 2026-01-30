@@ -1,8 +1,0 @@
-{
-  "id": "1863854d9cb84b09531217bbc410270f",
-  "type": "gist",
-  "description": "This repository showcases a FastAPI application seamlessly orchestrating Gradio for crafting UIs, executing dynamic code, and managing interactive sessions. Experience the power of running code snippets, generating intuitive Gradio UIs from prompts, and handling session outputs with ease.",
-  "lastUpdated": "2026-01-23T16:12:10+00:00",
-  "commit": "e08bc07a23d58dcf7077d89a146f499f5c7d2e60",
-  "url": "https://gist.github.com/1863854d9cb84b09531217bbc410270f"
-}

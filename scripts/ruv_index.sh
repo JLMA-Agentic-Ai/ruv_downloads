@@ -71,8 +71,8 @@ if [ -d "$PROJECT_ROOT/artifacts/repos/.metadata" ]; then
 fi
 
 # Index Gists
-if [ -d "$PROJECT_ROOT/artifacts/gists/.metadata" ]; then
-  for meta in "$PROJECT_ROOT/artifacts/gists/.metadata"/*.json; do
+if [ -d "$PROJECT_ROOT/artifacts/archives/github/gists/.metadata" ]; then
+  for meta in "$PROJECT_ROOT/artifacts/archives/github/gists/.metadata"/*.json; do
     [ -f "$meta" ] || continue
     if [ "$first" = true ]; then first=false; else echo "," >> "$INDEX_FILE"; fi
     cat "$meta" >> "$INDEX_FILE"

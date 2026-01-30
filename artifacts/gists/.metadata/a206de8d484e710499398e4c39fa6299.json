@@ -1,8 +1,0 @@
-{
-  "id": "a206de8d484e710499398e4c39fa6299",
-  "type": "gist",
-  "description": "This guide introduces Roo Code and the innovative Boomerang task concept, now integrated into SPARC Orchestration. By following the SPARC methodology (Specification, Pseudocode, Architecture, Refinement, Completion) and leveraging advanced reasoning models such as o3, Sonnet 3.7 Thinking, and DeepSeek, you can efficiently break down complex projects into modular, secure, and testable subtasks.   This configuration ensures best practices throughout the development lifecycle—no hard-coded environment variables, file sizes under 500 lines, and a modular, extensible design. Use this comprehensive setup to drive high-quality output, robust testing, and continuous optimization.",
-  "lastUpdated": "2026-01-23T16:12:46+00:00",
-  "commit": "3b4b042f311573c38b34e77904d4cbb3dd5b7eab",
-  "url": "https://gist.github.com/a206de8d484e710499398e4c39fa6299"
-}

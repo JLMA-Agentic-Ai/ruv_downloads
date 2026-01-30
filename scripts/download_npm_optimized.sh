@@ -13,10 +13,10 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 
 # Configuration
 NPM_USER_URL="https://www.npmjs.com/~ruvnet"
-MANIFEST_FILE="$PROJECT_ROOT/manifests/packages.txt"
-ARCHIVE_DIR="$PROJECT_ROOT/artifacts/npm/archives"
+MANFIEST_FILE="$PROJECT_ROOT/manifests/packages.txt"
+ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/npm"
 EXTRACTED_DIR="$PROJECT_ROOT/artifacts/npm/extracted"
-LEGACY_DIR="$PROJECT_ROOT/artifacts/npm/legacy"
+LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
 mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR"
 

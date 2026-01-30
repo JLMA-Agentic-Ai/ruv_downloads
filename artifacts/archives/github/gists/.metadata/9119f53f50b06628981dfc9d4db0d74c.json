@@ -1,0 +1,8 @@
+{
+  "id": "9119f53f50b06628981dfc9d4db0d74c",
+  "type": "gist",
+  "description": "LLMscript, a system for executing TOML-defined scripts with Python libraries. It emphasizes security with whitelisting and input sanitization, supporting AI applications.",
+  "lastUpdated": "2026-01-23T16:12:42+00:00",
+  "commit": "2bbe3f278d0a3fc52e26a34f210f0d6f4d18fe14",
+  "url": "https://gist.github.com/9119f53f50b06628981dfc9d4db0d74c"
+}

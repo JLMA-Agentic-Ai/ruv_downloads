@@ -1,8 +1,0 @@
-{
-  "id": "f4ac76cb411c8da0b954f91197ca1774",
-  "type": "gist",
-  "description": "Deploying LLaMA 3 70B with AirLLM and Gradio on Hugging Face Spaces",
-  "lastUpdated": "2026-01-23T16:13:02+00:00",
-  "commit": "b17c95d0bd270a54ff11f03a381e74586bb6c2e5",
-  "url": "https://gist.github.com/f4ac76cb411c8da0b954f91197ca1774"
-}
