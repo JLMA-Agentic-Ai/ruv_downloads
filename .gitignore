@@ -15,7 +15,17 @@
 !lib/
 !lib/*.sh
 !artifacts/
-!artifacts/**
+!artifacts/archives/
+!artifacts/archives/
+!artifacts/archives/**/*.tar.gz
+!artifacts/archives/**/*.tgz
+!artifacts/archives/**/*.crate
+
+# Ignore huge artifact directories (they are downloaded on the fly)
+artifacts/repos/
+artifacts/gists/
+artifacts/*/extracted/
+artifacts/*/legacy/
 
 # Ignore logs and temporary files
 logs/*.log

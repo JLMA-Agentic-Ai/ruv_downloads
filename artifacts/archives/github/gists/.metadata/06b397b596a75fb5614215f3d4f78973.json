@@ -1,0 +1,8 @@
+{
+  "id": "06b397b596a75fb5614215f3d4f78973",
+  "type": "gist",
+  "description": "This setup provides a complete framework for deploying a video processing service on AWS ECS, integrating with the OpenAI GPT-4 Vision API, and testing it with a client script.",
+  "lastUpdated": "2026-01-23T16:12:03+00:00",
+  "commit": "7a1dbbbb4552085e2e6d43a6c46ea17845cd0287",
+  "url": "https://gist.github.com/06b397b596a75fb5614215f3d4f78973"
+}

@@ -1,171 +1,105 @@
 #!/bin/bash
-# scripts/download_repos_optimized.sh - GitHub repos download with cache integration
-# Version: 2.0.0
+# Top 30 Repository Downloader (Flat Structure)
+# Keeps strictly the top 30 most recently pushed repositories.
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
-
-# Load libraries
-source "$PROJECT_ROOT/lib/cache.sh"  
-source "$PROJECT_ROOT/lib/checksum.sh"
-
-# Configuration
 GITHUB_USER="ruvnet"
-MANIFEST_FILE="$PROJECT_ROOT/manifests/repos.txt"
-REPOS_DIR="$PROJECT_ROOT/artifacts/repos/by-tier/tier-1-active"
-METADATA_DIR="$PROJECT_ROOT/artifacts/repos/.metadata"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPOS_DIR="$PROJECT_ROOT/artifacts/repos"
 
-mkdir -p "$REPOS_DIR" "$METADATA_DIR"
+# --- Initial Setup ---
+ARCHIVES_DIR="$PROJECT_ROOT/artifacts/archives/github/repos"
+mkdir -p "$REPOS_DIR" "$ARCHIVES_DIR"
 
-echo "Checking repositories from GitHub user: $GITHUB_USER"
+echo "Fetching top 30 active repositories from GitHub..."
 
-# Arg parsing
-DISCOVER=0
-DISCOVER_ONLY=0
-for a in "$@"; do
-  case "$a" in
-    --discover) DISCOVER=1 ;;
-    --discover-only) DISCOVER=1; DISCOVER_ONLY=1 ;;
-  esac
+# Get top 30 repos sorted by push date (descending)
+REPOS=$(gh api "users/$GITHUB_USER/repos?per_page=30&sort=pushed&direction=desc" --jq '.[].name')
+
+# Convert to array
+mapfile -t REPO_ARRAY <<< "$REPOS"
+echo "Found active target list: ${#REPO_ARRAY[@]} repos"
+
+# Clean up legacy monolithic backup if it exists
+if [ -f "$PROJECT_ROOT/artifacts/backup_repos.tar.gz" ]; then
+    echo "🗑️ Removing legacy monolithic backup..."
+    rm "$PROJECT_ROOT/artifacts/backup_repos.tar.gz"
+fi
+
+# --- Cleanup Phase (Folder + Archive) ---
+echo "Running strict cleanup..."
+if [ -d "$REPOS_DIR" ]; then
+  for repo_path in "$REPOS_DIR"/*; do
+    if [ ! -d "$repo_path" ]; then continue; fi
+    repo_name=$(basename "$repo_path")
+    
+    # Check if existing local repo is in our Top 30 list
+    keep=0
+    for valid in "${REPO_ARRAY[@]}"; do
+      if [ "$valid" == "$repo_name" ]; then
+        keep=1
+        break
+      fi
+    done
+    
+    if [ "$keep" -eq 0 ]; then
+      echo "  🗑️  Removing outdated repo: $repo_name (No longer in Top 30)"
+      rm -rf "$repo_path"
+      # Also remove its backup if exists
+      rm -f "$ARCHIVES_DIR/${repo_name}.tar.gz"
+    fi
+  done
+fi
+
+# Also clean up archives for repos that don't exist anymore (orphaned archives)
+for archive_path in "$ARCHIVES_DIR"/*.tar.gz; do
+    [ -e "$archive_path" ] || continue
+    repo_name=$(basename "$archive_path" .tar.gz)
+    if [ ! -d "$REPOS_DIR/$repo_name" ]; then
+         echo "  🗑️  Removing orphaned archive: ${repo_name}.tar.gz"
+         rm -f "$archive_path"
+    fi
 done
 
-# Step 1: Load existing repos
-EXISTING_REPOS=()
-if [ -f "$MANIFEST_FILE" ]; then
-  while IFS= read -r line; do
-    [ -z "$line" ] && continue
-    EXISTING_REPOS+=("$line")
-  done < "$MANIFEST_FILE"
-fi
 
-# Step 2: Discovery
-DISCOVERED_REPOS=()
-if [ "$DISCOVER" -eq 1 ]; then
-  echo "Discovering repositories from GitHub for user: $GITHUB_USER ..."
-  
-  if command -v gh >/dev/null 2>&1 && { gh auth status >/dev/null 2>&1 || [ -n "${GITHUB_TOKEN:-}" ]; }; then
-    echo "  Using gh CLI..."
-    gh_repos=$(gh repo list "$GITHUB_USER" --limit 1000 --json name --jq '.[].name')
-    if [ -n "$gh_repos" ]; then
-      IFS=$'\n'
-      for name in $gh_repos; do
-        DISCOVERED_REPOS+=("$name")
-      done
-      unset IFS
-    fi
-  fi
-  
-  echo "  Discovered ${#DISCOVERED_REPOS[@]} repositories from GitHub"
-fi
+# --- Download Phase ---
+echo "Downloading/Updating Top 30..."
 
-# Step 3: Merge
-TEMP_MERGED=$(mktemp)
-trap "rm -f $TEMP_MERGED" EXIT
-
-{
-  printf "%s\n" "${EXISTING_REPOS[@]}"
-  printf "%s\n" "${DISCOVERED_REPOS[@]}"
-} | grep -v '^$' | sort -u > "$TEMP_MERGED"
-
-MERGED_REPOS=()
-while IFS= read -r line; do
-  [ -z "$line" ] && continue
-  MERGED_REPOS+=("$line")
-done < "$TEMP_MERGED"
-
-echo "  Total repositories (merged): ${#MERGED_REPOS[@]}"
-printf "%s\n" "${MERGED_REPOS[@]}" | sort -u > "$MANIFEST_FILE"
-
-if [ "$DISCOVER_ONLY" -eq 1 ]; then
-  echo "Discovery-only mode; listing unified repository manifest:"
-  printf "%s\n" "${MERGED_REPOS[@]}" | sort
-  exit 0
-fi
-
-REPOS=("${MERGED_REPOS[@]}")
-
-# Step 4: Download with cache (Parallel)
-MAX_JOBS=10
-current_jobs=0
-
-process_repo() {
-  local repo=$1
-  echo "Checking: $repo"
+for repo in "${REPO_ARRAY[@]}"; do
+  repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
+  target_dir="$REPOS_DIR/$repo"
+  archive_file="$ARCHIVES_DIR/${repo}.tar.gz"
   
-  local repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
-  local target_dir="$REPOS_DIR/$repo"
+  REPO_CHANGED=false
   
-  # Get remote hash
-  local remote_hash=$(git ls-remote "$repo_url" HEAD 2>/dev/null | awk '{print $1}' || true)
-  
-  if [ -z "$remote_hash" ]; then
-    echo "  Warning: Could not fetch remote hash for $repo -- skipping"
-    return
-  fi
-  
-  local checksum="git:$remote_hash"
-  
-  # Check cache
-  local cached_path=$(check_cache "repo" "$repo" "HEAD" "$checksum")
-  
-  if [ -n "$cached_path" ] && [ -d "$cached_path" ]; then
-    local local_hash=$(get_git_commit_hash "$cached_path")
-    if [ "$local_hash" = "$checksum" ]; then
-      echo "  ✓ Cache hit: $repo ($remote_hash)"
-      return
-    fi
-  fi
-  
-  # Check if exists locally
   if [ -d "$target_dir" ]; then
-    local local_hash=$(get_git_commit_hash "$target_dir")
-    if [ "$local_hash" = "$checksum" ]; then
-      echo "  ✓ Up-to-date: $repo ($remote_hash)"
-      update_cache "repo" "$repo" "HEAD" "$checksum" "$target_dir"
-      return
-    else
-      echo "  Updating: $repo (local: ${local_hash#git:} → remote: $remote_hash)"
-      rm -rf "$target_dir"
+    echo "  [UPDATE] $repo"
+    # Capture output to check if "Already up to date" or actually updated
+    output=$(cd "$target_dir" && git pull --quiet 2>&1) || echo "    ⚠ Update failed for $repo"
+    if [[ "$output" != *"Already up to date"* ]]; then
+        REPO_CHANGED=true
     fi
-  fi
-  
-  # Clone
-  echo "  Cloning: $repo"
-  if git clone --depth=1 --quiet "$repo_url" "$target_dir"; then
-    echo "  ✓ Cloned: $repo"
-    
-    # Save commit hash
-    echo "$remote_hash" > "$target_dir/.ruv_commit"
-    
-    # Generate metadata safely using jq
-    jq -n \
-      --arg name "$repo" \
-      --arg lastUpdated "$(date -Iseconds)" \
-      --arg commit "$remote_hash" \
-      --arg url "$repo_url" \
-      '{name: $name, type: "repository", lastUpdated: $lastUpdated, commit: $commit, url: $url, tier: "tier-1-active"}' \
-      > "$METADATA_DIR/${repo}.json"
-    
-    update_cache "repo" "$repo" "HEAD" "$checksum" "$target_dir"
   else
-    echo "  Warning: failed to clone $repo"
+    echo "  [CLONE] $repo"
+    git clone --depth=1 --quiet "$repo_url" "$target_dir" || echo "    ⚠ Clone failed for $repo"
+    REPO_CHANGED=true
   fi
-}
-
-for repo in "${REPOS[@]}"; do
-  process_repo "$repo" &
-  current_jobs=$((current_jobs + 1))
   
-  if [ "$current_jobs" -ge "$MAX_JOBS" ]; then
-    wait -n || true
-    current_jobs=$((current_jobs - 1))
+  # Check if archive exists, if not force creation
+  if [ ! -f "$archive_file" ]; then
+      REPO_CHANGED=true
+  fi
+  
+  # Create individual backup if needed
+  if [ "$REPO_CHANGED" = true ]; then
+      echo "    📦 Updating backup: ${repo}.tar.gz"
+      tar -czf "$archive_file" -C "$REPOS_DIR" "$repo"
   fi
 done
 
-wait # Wait for all remaining jobs
-
-echo "All repository downloads complete!"
-echo "Cache stats:"
-get_cache_stats | grep "Repos:"
+echo ""
+echo "check result:"
+echo "Repos: $(ls -1 "$REPOS_DIR" | wc -l)"
+echo "Archives: $(ls -1 "$ARCHIVES_DIR"/*.tar.gz 2>/dev/null | wc -l)"
+echo "Done."
