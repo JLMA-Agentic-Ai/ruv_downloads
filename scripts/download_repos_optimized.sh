@@ -107,31 +107,25 @@ for repo in "${REPO_ARRAY[@]}"; do
 
   # Fallback to local git check if folder exists
   if [ -d "$target_dir" ]; then
-    local_hash=$(cd "$target_dir" && git rev-parse HEAD)
-    
-    if [ "$remote_hash" == "$local_hash" ] && [ -f "$archive_file" ]; then
-        echo "  ✓ Up-to-date (git): $repo"
-        # Update/Create metadata receipt
-        cat > "$metadata_file" <<EOF
-{
-  "name": "$repo",
-  "type": "repository",
-  "lastUpdated": "$(date -Iseconds)",
-  "commit": "$remote_hash",
-  "url": "$repo_url",
-  "path": "artifacts/extracted/github/repos/$repo"
-}
-EOF
+    # Step A: Check metadata receipt for skip (crucial for CI)
+    if [ -f "$metadata_file" ] ; then
+      last_hash=$(jq -r '.commit' "$metadata_file" 2>/dev/null || echo "")
+      if [ "$remote_hash" == "$last_hash" ]; then
+        echo "  ✓ Skip-check passed (receipt matches): $repo"
         update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
         continue
+      fi
     fi
 
-    echo "  [UPDATE] $repo"
-    (cd "$target_dir" && git fetch --quiet --depth=1 origin main && git reset --hard --quiet origin/main) || echo "    ⚠ Update failed for $repo"
+    echo "  [UPDATE] $repo (Re-cloning to ensure fresh state without .git)"
+    rm -rf "$target_dir"
+    git clone --depth=1 --quiet "$repo_url" "$target_dir" || echo "    ⚠ Clone failed for $repo"
+    rm -rf "$target_dir/.git"
     REPO_CHANGED=true
   else
     echo "  [CLONE] $repo"
     git clone --depth=1 --quiet "$repo_url" "$target_dir" || echo "    ⚠ Clone failed for $repo"
+    rm -rf "$target_dir/.git"
     REPO_CHANGED=true
   fi
   

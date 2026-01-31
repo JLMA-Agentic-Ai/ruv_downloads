@@ -216,6 +216,8 @@ process_gist() {
   rm -rf "$target_dir" # Clean up any failed clones
   if git clone --depth=1 --quiet "$gist_url" "$target_dir"; then
     echo "  ✓ Cloned: $gist_id"
+    # Remove .git to prevent it from appearing as a submodule in the main repo
+    rm -rf "$target_dir/.git"
     
     # Save commit hash
     echo "$remote_hash" > "$target_dir/.ruv_commit"
