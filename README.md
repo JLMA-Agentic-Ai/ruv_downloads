@@ -9,19 +9,23 @@ This repository provides tools to automatically discover, download, and manage t
 
 ## Repository Structure
 
-```
 ruv_downloads/
 ├── artifacts/                 # Centralized artifact storage
-│   ├── archives/              # Unified Backup Storage (LFS)
-│   │   ├── crates/            # .crate files
-│   │   │   └── 00_legacy/     # Old versions of crates
-│   │   ├── npm/               # .tgz files
-│   │   │   └── 00_legacy/     # Old versions of packages
-│   │   └── github/            # Repos (.tar.gz) & Gists (Source)
-│   ├── crates/                # Rust crates (extracted)
-│   ├── npm/                   # NPM packages (extracted)
-│   ├── repos/                 # GitHub repositories (active clones)
-│   └── index.json             # Search index
+│   ├── archives/              # Zero-Waste Storage
+│   │   ├── crates/            # Metadata receipts (.json)
+│   │   ├── npm/               # Metadata receipts (.json)
+│   │   └── github/            
+│   │       ├── gists/         # Metadata receipts (.json)
+│   │       └── repos/         # Dual Storage: Receipts + Tarballs (.tar.gz)
+│   │
+│   ├── extracted/             # Working Code (Everything visible here)
+│   │   ├── crates/            # Unpacked Rust crates
+│   │   ├── npm/               # Unpacked NPM packages
+│   │   └── github/            
+│   │       ├── gists/         # Cloned Gists (regular folders)
+│   │       └── repos/         # Cloned Repositories
+│   │
+│   └── index.json             # Global Search Index (maps 874+ artifacts)
 │
 ├── manifests/                 # Centralized manifests
 │   ├── crates.txt
@@ -32,10 +36,7 @@ ruv_downloads/
 ├── scripts/                   # Optimized scripts
 │   ├── download_all_optimized.sh
 │   ├── ruv_index.sh
-│   ├── ruv_query.sh
 │   └── ...
-│
-├── lib/                       # Shared libraries (cache, checksum, parallel)
 │
 └── ruv_world.sh               # Main orchestrator
 ```
