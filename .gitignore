@@ -19,12 +19,8 @@
 !artifacts/index.json
 !artifacts/archives/
 !artifacts/archives/**
-
-# Ignore all other artifact content (extracted, repos, gists-source)
-artifacts/repos/
-artifacts/crates/extracted/
-artifacts/npm/extracted/
-artifacts/gists/
+!artifacts/extracted/
+!artifacts/extracted/**
 
 # Ignore logs and temporary files
 logs/*.log
