@@ -21,11 +21,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: false
-
-      - name: Setup Git LFS
-        run: |
-          git lfs install
-          git lfs pull
+          sparse-checkout: |
+            .github
+            scripts
+            lib
+            manifests
+            ruv_world.sh
+            README.md
+            docs
+            artifacts/index.json
+            .gitignore
+            .gitattributes
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
