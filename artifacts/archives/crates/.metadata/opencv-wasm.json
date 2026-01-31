@@ -1,0 +1,7 @@
+{
+  "name": "opencv-wasm",
+  "type": "crate",
+  "version": "4.8.1",
+  "checksum": "sha256:pending",
+  "lastUpdated": "2026-01-31T01:08:58+00:00"
+}

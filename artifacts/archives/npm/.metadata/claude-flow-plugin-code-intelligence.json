@@ -1,0 +1,7 @@
+{
+  "name": "@claude-flow/plugin-code-intelligence",
+  "type": "npm",
+  "version": "3.0.0-alpha.1",
+  "checksum": "sha1:a524c44d330867ea247ba07a8d7ecec3834a4f2c",
+  "lastUpdated": "2026-01-31T01:09:16+00:00"
+}

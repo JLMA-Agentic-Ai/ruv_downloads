@@ -142,14 +142,36 @@ process_gist() {
   fi
   
   local checksum="git:$remote_hash"
+  local metadata_file="$METADATA_DIR/${gist_id}.json"
   
-  # Check cache
+  # Step A: Check metadata receipt for skip (crucial for CI)
+  if [ -f "$metadata_file" ]; then
+    last_hash=$(jq -r '.commit' "$metadata_file" 2>/dev/null || echo "")
+    if [ "$remote_hash" == "$last_hash" ]; then
+      echo "  ✓ Skip-check passed (receipt matches): $gist_id"
+      update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"
+      return
+    fi
+  fi
+
+  # Step B: Check cache
   local cached_path=$(check_cache "gist" "$gist_id" "HEAD" "$checksum")
   
   if [ -n "$cached_path" ] && [ -d "$cached_path" ]; then
     local local_hash=$(get_git_commit_hash "$cached_path")
     if [ "$local_hash" = "$checksum" ]; then
       echo "  ✓ Cache hit: $gist_id"
+
+      # Update metadata receipt (ensure consistency)
+      gist_json=$(gh api "gists/$gist_id" 2>/dev/null || echo "")
+      if [ -n "$gist_json" ]; then
+        echo "$gist_json" | jq -r \
+          --arg commit "$remote_hash" \
+          --arg lastUpdated "$(date -Iseconds)" \
+          '. + {type: "gist", commit: $commit, lastUpdated: $lastUpdated}' \
+          > "$metadata_file"
+      fi
+
       # Migration/Reorganization: Move to the new descriptive folder if needed
       if [ "$(basename "$cached_path")" != "$folder_name" ] || [[ "$cached_path" != *"/by-date/$gist_date/"* ]]; then
          echo "  Re-organizing to: $target_dir"

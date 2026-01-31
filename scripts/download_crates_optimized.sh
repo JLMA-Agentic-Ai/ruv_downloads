@@ -20,7 +20,8 @@ EXTRACTED_DIR="$PROJECT_ROOT/artifacts/crates/extracted"
 LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
 # Create directories
-mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR"
+METADATA_DIR="$ARCHIVE_DIR/.metadata"
+mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR" "$METADATA_DIR"
 
 echo "Checking crates from: $CRATES_IO_USER_URL"
 
@@ -122,7 +123,21 @@ process_crate() {
     checksum="sha256:unknown"
   fi
   
-  # Check cache first
+  metadata_file="$METADATA_DIR/${crate}.json"
+  archive_path="$ARCHIVE_DIR/${crate}-${latest_version}.crate"
+  
+  # Step A: Check metadata receipt for skip (crucial for CI)
+  if [ -f "$metadata_file" ]; then
+    last_version=$(jq -r '.version' "$metadata_file" 2>/dev/null || echo "")
+    last_checksum=$(jq -r '.checksum' "$metadata_file" 2>/dev/null || echo "")
+    if [ "$latest_version" == "$last_version" ] && [ "$checksum" == "$last_checksum" ]; then
+      echo "  ✓ Skip-check passed (receipt matches): $crate@$latest_version"
+      update_cache "crate" "$crate" "$latest_version" "$checksum" "$archive_path"
+      return
+    fi
+  fi
+
+  # Step B: Check cache first
   cached_path=$(check_cache "crate" "$crate" "$latest_version" "$checksum")
   
   if [ -n "$cached_path" ] && [ -f "$cached_path" ]; then
@@ -130,6 +145,17 @@ process_crate() {
     if verify_crate_checksum "$cached_path" "$checksum"; then
       echo "  ✓ Cache hit: $crate@$latest_version"
       
+      # Update metadata receipt
+      cat > "$metadata_file" <<EOF
+{
+  "name": "$crate",
+  "type": "crate",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
+
       # Ensure extracted directory exists
       extracted_path="$EXTRACTED_DIR/${crate}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
@@ -142,13 +168,22 @@ process_crate() {
     fi
   fi
   
-  # Not in cache or corrupted, download
-  archive_path="$ARCHIVE_DIR/${crate}-${latest_version}.crate"
-  
+  # Step C: Not in cache or corrupted, download
   if [ -f "$archive_path" ]; then
     # Verify existing file
     if verify_crate_checksum "$archive_path" "$checksum"; then
       echo "  ✓ Already downloaded: $crate@$latest_version"
+      
+      # Update metadata receipt
+      cat > "$metadata_file" <<EOF
+{
+  "name": "$crate",
+  "type": "crate",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
       update_cache "crate" "$crate" "$latest_version" "$checksum" "$archive_path"
       
       # Ensure extracted
@@ -190,6 +225,17 @@ process_crate() {
     echo "  Warning: extraction failed: $crate"
   fi
   
+  # Update metadata receipt
+  cat > "$metadata_file" <<EOF
+{
+  "name": "$crate",
+  "type": "crate",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
+
   # Update cache
   update_cache "crate" "$crate" "$latest_version" "$checksum" "$archive_path"
   

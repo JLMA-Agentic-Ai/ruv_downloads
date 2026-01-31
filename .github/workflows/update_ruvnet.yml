@@ -30,7 +30,10 @@ jobs:
             README.md
             docs
             artifacts/index.json
+            artifacts/archives/crates/.metadata
+            artifacts/archives/npm/.metadata
             artifacts/archives/github/repos/.metadata
+            artifacts/archives/github/gists/.metadata
             .gitignore
             .gitattributes
 

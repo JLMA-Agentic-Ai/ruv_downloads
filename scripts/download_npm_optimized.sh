@@ -18,7 +18,8 @@ ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/npm"
 EXTRACTED_DIR="$PROJECT_ROOT/artifacts/npm/extracted"
 LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
-mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR"
+METADATA_DIR="$ARCHIVE_DIR/.metadata"
+mkdir -p "$ARCHIVE_DIR" "$EXTRACTED_DIR" "$LEGACY_DIR" "$METADATA_DIR"
 
 echo "Checking packages from: $NPM_USER_URL"
 
@@ -96,16 +97,41 @@ process_package() {
     checksum="sha1:pending"
   fi
   
-  # Check cache
+  local name_no_at=${pkg//@/}
+  local name_dash=${name_no_at//\//-}
+  metadata_file="$METADATA_DIR/${name_dash}.json"
+  archive_path="$ARCHIVE_DIR/${name_dash}-${latest_version}.tgz"
+
+  # Step A: Check metadata receipt for skip (crucial for CI)
+  if [ -f "$metadata_file" ]; then
+    last_version=$(jq -r '.version' "$metadata_file" 2>/dev/null || echo "")
+    last_checksum=$(jq -r '.checksum' "$metadata_file" 2>/dev/null || echo "")
+    if [ "$latest_version" == "$last_version" ] && [ "$checksum" == "$last_checksum" ]; then
+      echo "  ✓ Skip-check passed (receipt matches): $pkg@$latest_version"
+      update_cache "npm" "$pkg" "$latest_version" "$checksum" "$archive_path"
+      return
+    fi
+  fi
+  
+  # Step B: Check cache
   cached_path=$(check_cache "npm" "$pkg" "$latest_version" "$checksum")
   
   if [ -n "$cached_path" ] && [ -f "$cached_path" ]; then
     if verify_npm_checksum "$cached_path" "$checksum"; then
       echo "  ✓ Cache hit: $pkg@$latest_version"
       
+      # Update metadata receipt
+      cat > "$metadata_file" <<EOF
+{
+  "name": "$pkg",
+  "type": "npm",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
+
       # Ensure extracted
-      local name_no_at=${pkg//@/}
-      local name_dash=${name_no_at//\//-}
       local extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
       if [ ! -d "$extracted_path" ]; then
         echo "  Extracting from cache: $pkg"
@@ -116,14 +142,21 @@ process_package() {
     fi
   fi
   
-  #Prepare paths
-  local name_no_at=${pkg//@/}
-  local name_dash=${name_no_at//\//-}
-  local archive_path="$ARCHIVE_DIR/${name_dash}-${latest_version}.tgz"
-  
+  # Step C: Prepare paths and check existing archive
   if [ -f "$archive_path" ]; then
     if verify_npm_checksum "$archive_path" "$checksum"; then
       echo "  ✓ Already downloaded: $pkg@$latest_version"
+      
+      # Update metadata receipt
+      cat > "$metadata_file" <<EOF
+{
+  "name": "$pkg",
+  "type": "npm",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
       update_cache "npm" "$pkg" "$latest_version" "$checksum" "$archive_path"
       
       local extracted_path="$EXTRACTED_DIR/${name_dash}-${latest_version}"
@@ -180,6 +213,17 @@ process_package() {
   fi
   rm -rf "$temp_extract_dir"
   
+  # Update metadata receipt
+  cat > "$metadata_file" <<EOF
+{
+  "name": "$pkg",
+  "type": "npm",
+  "version": "$latest_version",
+  "checksum": "$checksum",
+  "lastUpdated": "$(date -Iseconds)"
+}
+EOF
+
   update_cache "npm" "$pkg" "$latest_version" "$checksum" "$archive_path"
   
   # Cleanup old versions

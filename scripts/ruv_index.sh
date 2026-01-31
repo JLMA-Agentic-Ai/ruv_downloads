@@ -20,43 +20,20 @@ EOF
 first=true
 
 # Index Crates
-if [ -d "$PROJECT_ROOT/artifacts/crates/extracted" ]; then
-  for dir in "$PROJECT_ROOT/artifacts/crates/extracted"/*/; do
-    [ -d "$dir" ] || continue
-    name_version=$(basename "$dir")
-    name="${name_version%-*}"
-    version="${name_version##*-}"
-    
+if [ -d "$PROJECT_ROOT/artifacts/archives/crates/.metadata" ]; then
+  for meta in "$PROJECT_ROOT/artifacts/archives/crates/.metadata"/*.json; do
+    [ -f "$meta" ] || continue
     if [ "$first" = true ]; then first=false; else echo "," >> "$INDEX_FILE"; fi
-    cat >> "$INDEX_FILE" <<EOF
-    {
-      "type": "crate",
-      "name": "$name",
-      "version": "$version",
-      "path": "artifacts/crates/extracted/$name_version"
-    }
-EOF
+    cat "$meta" >> "$INDEX_FILE"
   done
 fi
 
 # Index NPM
-if [ -d "$PROJECT_ROOT/artifacts/npm/extracted" ]; then
-  for dir in "$PROJECT_ROOT/artifacts/npm/extracted"/*/; do
-    [ -d "$dir" ] || continue
-    name_version=$(basename "$dir")
-    # NPM names might have scopes, but our extracted dir uses name-dash-version
-    name="${name_version%-*}"
-    version="${name_version##*-}"
-    
+if [ -d "$PROJECT_ROOT/artifacts/archives/npm/.metadata" ]; then
+  for meta in "$PROJECT_ROOT/artifacts/archives/npm/.metadata"/*.json; do
+    [ -f "$meta" ] || continue
     if [ "$first" = true ]; then first=false; else echo "," >> "$INDEX_FILE"; fi
-    cat >> "$INDEX_FILE" <<EOF
-    {
-      "type": "npm",
-      "name": "$name",
-      "version": "$version",
-      "path": "artifacts/npm/extracted/$name_version"
-    }
-EOF
+    cat "$meta" >> "$INDEX_FILE"
   done
 fi
 
