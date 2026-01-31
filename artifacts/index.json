@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-01-31T01:24:56+00:00",
+  "last_indexed": "2026-01-31T01:48:17+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -2586,12 +2586,12 @@
       "path": "artifacts/extracted/npm/ruvector-attention-unified-wasm-0.1.29"
     },
     {
-      "name": "@ruvector/attention-wasm",
+      "name": "ruvector-attention-wasm",
       "type": "npm",
-      "version": "0.1.0",
-      "checksum": "sha1:0fd0a8b78cde5e7520584867fc88c014a9db159f",
-      "lastUpdated": "2026-01-31T01:17:21+00:00",
-      "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.0"
+      "version": "0.1.32",
+      "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
+      "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
+      "lastUpdated": "2026-01-31T01:48:07+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2674,12 +2674,12 @@
       "path": "artifacts/extracted/npm/ruvector-core-win32-x64-msvc-0.1.29"
     },
     {
-      "name": "@ruvector/core",
+      "name": "ruvector-core",
       "type": "npm",
-      "version": "0.1.30",
-      "checksum": "sha1:153d71c6dc36623a960cfb8051fca7321dc116fe",
-      "lastUpdated": "2026-01-31T01:17:25+00:00",
-      "path": "artifacts/extracted/npm/ruvector-core-0.1.30"
+      "version": "0.1.26",
+      "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
+      "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
+      "lastUpdated": "2026-01-31T01:48:07+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2862,8 +2862,8 @@
       "type": "npm",
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
-      "lastUpdated": "2026-01-31T01:18:13+00:00",
-      "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32"
+      "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
+      "lastUpdated": "2026-01-31T01:48:10+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3162,12 +3162,12 @@
       "path": "artifacts/extracted/npm/ruvector-sona-win32-x64-msvc-0.1.5"
     },
     {
-      "name": "@ruvector/sona",
+      "name": "ruvector-sona",
       "type": "npm",
-      "version": "0.1.5",
-      "checksum": "sha1:519fd36fb3267fc21f239581cd978c06a3984752",
-      "lastUpdated": "2026-01-31T01:17:52+00:00",
-      "path": "artifacts/extracted/npm/ruvector-sona-0.1.5"
+      "version": "0.1.4",
+      "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
+      "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
+      "lastUpdated": "2026-01-31T01:48:10+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
