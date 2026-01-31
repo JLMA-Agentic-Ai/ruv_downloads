@@ -13,7 +13,7 @@ source "$PROJECT_ROOT/lib/parallel.sh"
 # Configuration
 DISCOVER_FLAG="${1:-}" # Allow empty flag to override default
 DISCOVER_FLAG="${DISCOVER_FLAG:---discover}" # If truly unset, use --discover
-if [ "$1" == "--no-discover" ]; then DISCOVER_FLAG=""; fi # Explicit check
+if [ "${1:-}" == "--no-discover" ]; then DISCOVER_FLAG=""; fi # Explicit check
 LOG_DIR="$PROJECT_ROOT/logs"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 

@@ -9,6 +9,9 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REPOS_DIR="$PROJECT_ROOT/artifacts/repos"
 
 # --- Initial Setup ---
+source "$PROJECT_ROOT/lib/cache.sh"
+source "$PROJECT_ROOT/lib/checksum.sh"
+
 ARCHIVES_DIR="$PROJECT_ROOT/artifacts/archives/github/repos"
 mkdir -p "$REPOS_DIR" "$ARCHIVES_DIR"
 
@@ -75,12 +78,21 @@ for repo in "${REPO_ARRAY[@]}"; do
   
   # Get remote hash for efficiency
   remote_hash=$(git ls-remote "$repo_url" HEAD | awk '{print $1}')
+  checksum="git:$remote_hash"
   
+  # Check cache
+  cached_path=$(check_cache "repo" "$repo" "main" "$checksum")
+  if [ -n "$cached_path" ] && [ -d "$cached_path" ] && [ -f "$archive_file" ]; then
+      echo "  ✓ Cache hit: $repo"
+      continue
+  fi
+
   if [ -d "$target_dir" ]; then
     local_hash=$(cd "$target_dir" && git rev-parse HEAD)
     
     if [ "$remote_hash" == "$local_hash" ] && [ -f "$archive_file" ]; then
         echo "  ✓ Up-to-date: $repo"
+        update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
         continue
     fi
 
@@ -98,6 +110,8 @@ for repo in "${REPO_ARRAY[@]}"; do
       echo "    📦 Updating backup: ${repo}.tar.gz"
       tar -czf "$archive_file" -C "$REPOS_DIR" "$repo"
   fi
+
+  update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
 done
 
 echo ""

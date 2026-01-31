@@ -189,7 +189,9 @@ print_header "📦 Running Optimized Parallel Downloader"
 
 # Execute the new orchestrator
 if [[ -x "scripts/download_all_optimized.sh" ]]; then
-  ./scripts/download_all_optimized.sh $DISCOVER_FLAG || print_warning "Optimized downloader reported some issues"
+  # Pass flag or --no-discover to ensure clear state
+  TARGET_FLAG="${DISCOVER_FLAG:- --no-discover}"
+  ./scripts/download_all_optimized.sh $TARGET_FLAG || print_warning "Optimized downloader reported some issues"
   
   # Run indexer after downloads
   if [[ -x "scripts/ruv_index.sh" ]]; then

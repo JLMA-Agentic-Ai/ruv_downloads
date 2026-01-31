@@ -15,7 +15,7 @@ else
   CACHE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/cache"
 fi
 
-CACHE_DB="$CACHE_DIR/cache.db"
+export CACHE_DB="$CACHE_DIR/cache.db"
 
 # Ensure cache directory exists
 mkdir -p "$CACHE_DIR"
@@ -28,7 +28,11 @@ if [ ! -f "$CACHE_DB" ]; then
 # Types: crate, npm, repo, gist
 # Hash format: sha256:... for crates/npm, git:... for repos/gists
 EOF
+EOF
 fi
+
+# Lock file for atomic updates
+export CACHE_LOCK="$CACHE_DB.lock"
 
 ################################################################################
 # check_cache - Check if an artifact exists in cache
@@ -45,10 +49,12 @@ check_cache() {
   local safe_version="${version//|/\\|}"
   local safe_hash="${hash//|/\\|}"
   
-  # Search for exact match
-  grep "^${safe_type}|${safe_name}|${safe_version}|${safe_hash}|" "$CACHE_DB" 2>/dev/null | \
-    cut -d'|' -f5 | \
-    head -n1
+  (
+    # Acquire shared lock for reading
+    flock -s 200
+    # Search for exact match (using || true to avoid pipefail crash on miss)
+    grep "^${safe_type}|${safe_name}|${safe_version}|${safe_hash}|" "$CACHE_DB" 2>/dev/null || true
+  ) 200>"$CACHE_LOCK" | cut -d'|' -f5 | head -n1
 }
 
 ################################################################################
@@ -60,15 +66,21 @@ update_cache() {
   local type=$1 name=$2 version=$3 hash=$4 path=$5
   local timestamp=$(date +%s)
   
-  # Remove old entry if exists (same type, name, version)
-  local temp_db=$(mktemp)
-  grep -v "^${type}|${name}|${version}|" "$CACHE_DB" > "$temp_db" 2>/dev/null || true
-  
-  # Add new entry
-  echo "${type}|${name}|${version}|${hash}|${path}|${timestamp}" >> "$temp_db"
-  
-  # Replace cache DB atomically
-  mv "$temp_db" "$CACHE_DB"
+  (
+    # Acquire exclusive lock
+    flock -x 200
+    
+    local temp_db=$(mktemp)
+    # Filter out existing entry
+    grep -v "^${type}|${name}|${version}|" "$CACHE_DB" > "$temp_db" 2>/dev/null || true
+    
+    # Add new entry
+    echo "${type}|${name}|${version}|${hash}|${path}|${timestamp}" >> "$temp_db"
+    
+    # Replace DB
+    cat "$temp_db" > "$CACHE_DB"
+    rm -f "$temp_db"
+  ) 200>"$CACHE_LOCK"
 }
 
 ################################################################################
