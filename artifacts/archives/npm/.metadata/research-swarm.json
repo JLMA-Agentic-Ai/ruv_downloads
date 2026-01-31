@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.2.2",
   "checksum": "sha1:c4e66ffb64dfe1cfa305c6656b7be6c8097af0be",
-  "lastUpdated": "2026-01-31T01:12:32+00:00"
+  "lastUpdated": "2026-01-31T01:12:32+00:00",
+  "path": "artifacts/extracted/npm/research-swarm-1.2.2"
 }

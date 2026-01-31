@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.2.3",
   "checksum": "sha1:cfba2b489c9979de98d32465e53cf10d91f67729",
-  "lastUpdated": "2026-01-31T01:12:15+00:00"
+  "lastUpdated": "2026-01-31T01:12:15+00:00",
+  "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-arm64-gnu-0.2.3"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.2.1",
   "checksum": "sha1:9385fe6d63723cbde055c41acefcddd9b7380dc4",
-  "lastUpdated": "2026-01-31T01:09:00+00:00"
+  "lastUpdated": "2026-01-31T01:09:00+00:00",
+  "path": "artifacts/extracted/npm/agentic-robotics-core-0.2.1"
 }

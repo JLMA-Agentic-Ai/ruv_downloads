@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.6.0",
   "checksum": "sha1:a7b1565d20bcd8a69aba32adc4f9adc407a4cc6a",
-  "lastUpdated": "2026-01-31T01:09:38+00:00"
+  "lastUpdated": "2026-01-31T01:09:38+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-backtesting-2.6.0"
 }

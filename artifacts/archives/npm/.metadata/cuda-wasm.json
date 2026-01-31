@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.1.1",
   "checksum": "sha1:2d43d813a9b6d2df69b89d99c529fa8afb56ed40",
-  "lastUpdated": "2026-01-31T01:12:28+00:00"
+  "lastUpdated": "2026-01-31T01:12:28+00:00",
+  "path": "artifacts/extracted/npm/cuda-wasm-1.1.1"
 }

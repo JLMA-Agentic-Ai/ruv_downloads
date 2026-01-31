@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.0.0",
   "checksum": "sha1:86304c96d5c6ce1e9f10be67208f276bb3ecc690",
-  "lastUpdated": "2026-01-31T01:11:39+00:00"
+  "lastUpdated": "2026-01-31T01:11:39+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-mcp-protocol-2.0.0"
 }

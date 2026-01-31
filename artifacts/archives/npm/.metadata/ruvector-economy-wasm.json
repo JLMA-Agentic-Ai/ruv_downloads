@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.29",
   "checksum": "sha1:32da9510c32e69422a37248e4ff333da9fc87943",
-  "lastUpdated": "2026-01-31T01:11:58+00:00"
+  "lastUpdated": "2026-01-31T01:11:58+00:00",
+  "path": "artifacts/extracted/npm/ruvector-economy-wasm-0.1.29"
 }

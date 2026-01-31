@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.29",
   "checksum": "sha1:32023d6cd0e3b29c14d786ddaeba197e4095ab7c",
-  "lastUpdated": "2026-01-31T01:12:37+00:00"
+  "lastUpdated": "2026-01-31T01:12:37+00:00",
+  "path": "artifacts/extracted/npm/ruvector-core-linux-arm64-gnu-0.1.29"
 }

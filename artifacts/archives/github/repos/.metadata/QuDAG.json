@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:11:56+00:00",
   "commit": "7bd52cd4c31acebd387b040a862dc11d5655d93c",
   "url": "https://github.com/ruvnet/QuDAG.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/QuDAG"
 }

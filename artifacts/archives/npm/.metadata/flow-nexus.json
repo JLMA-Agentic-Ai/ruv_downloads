@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.128",
   "checksum": "sha1:81e0ec5e4ecd70e9fb6bd28283769a5b6b537736",
-  "lastUpdated": "2026-01-31T01:12:29+00:00"
+  "lastUpdated": "2026-01-31T01:12:29+00:00",
+  "path": "artifacts/extracted/npm/flow-nexus-0.1.128"
 }

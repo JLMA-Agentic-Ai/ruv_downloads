@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.1",
   "checksum": "sha1:9057b8f546979aba29d5c51205d3ee5a02ce8b06",
-  "lastUpdated": "2026-01-31T01:09:18+00:00"
+  "lastUpdated": "2026-01-31T01:09:18+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-plugin-hyperbolic-reasoning-3.0.0-alpha.1"
 }

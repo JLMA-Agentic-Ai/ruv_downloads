@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:01+00:00",
   "commit": "4f0e80c92d7d013fa34d7f2e3d7759af5d95b3b1",
   "url": "https://github.com/ruvnet/agentic-robotics.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/agentic-robotics"
 }

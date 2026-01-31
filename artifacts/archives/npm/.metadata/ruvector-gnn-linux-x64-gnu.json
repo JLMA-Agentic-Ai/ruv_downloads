@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.22",
   "checksum": "sha1:01e1ea5754d1e2ef3846e94375668149fd38c0da",
-  "lastUpdated": "2026-01-31T01:12:04+00:00"
+  "lastUpdated": "2026-01-31T01:12:04+00:00",
+  "path": "artifacts/extracted/npm/ruvector-gnn-linux-x64-gnu-0.1.22"
 }

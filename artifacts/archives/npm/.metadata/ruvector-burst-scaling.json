@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:c54a2d2c2eeba6274c5e9714f6dc0522ab8322fb",
-  "lastUpdated": "2026-01-31T01:11:55+00:00"
+  "lastUpdated": "2026-01-31T01:11:55+00:00",
+  "path": "artifacts/extracted/npm/ruvector-burst-scaling-1.0.0"
 }

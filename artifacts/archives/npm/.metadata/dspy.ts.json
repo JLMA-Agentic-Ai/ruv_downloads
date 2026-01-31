@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.1.1",
   "checksum": "sha1:925508bbca77b9f9ee995cafca9ef96bc53109ea",
-  "lastUpdated": "2026-01-31T01:12:28+00:00"
+  "lastUpdated": "2026-01-31T01:12:28+00:00",
+  "path": "artifacts/extracted/npm/dspy.ts-2.1.1"
 }

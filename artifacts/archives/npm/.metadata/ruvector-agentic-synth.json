@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.6",
   "checksum": "sha1:12a71c458c7d8f1b3ba1f69d20100d9622f1f4fc",
-  "lastUpdated": "2026-01-31T01:11:48+00:00"
+  "lastUpdated": "2026-01-31T01:11:48+00:00",
+  "path": "artifacts/extracted/npm/ruvector-agentic-synth-0.1.6"
 }

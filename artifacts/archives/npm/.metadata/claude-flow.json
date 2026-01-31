@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.190",
   "checksum": "sha1:e585edde4d8754e79cf94c798f9b93cef673c8aa",
-  "lastUpdated": "2026-01-31T01:12:26+00:00"
+  "lastUpdated": "2026-01-31T01:12:26+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-3.0.0-alpha.190"
 }

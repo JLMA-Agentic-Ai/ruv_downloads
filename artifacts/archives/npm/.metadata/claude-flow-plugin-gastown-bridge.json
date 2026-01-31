@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.1",
   "checksum": "sha1:5210d3c6bd35e4a4ba50405c71aec31993e87618",
-  "lastUpdated": "2026-01-31T01:09:17+00:00"
+  "lastUpdated": "2026-01-31T01:09:17+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-plugin-gastown-bridge-0.1.1"
 }

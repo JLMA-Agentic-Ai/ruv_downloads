@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:06f392e07dbddf4f846bdbc0b4720232aaadd582",
-  "lastUpdated": "2026-01-31T01:12:41+00:00"
+  "lastUpdated": "2026-01-31T01:12:41+00:00",
+  "path": "artifacts/extracted/npm/strange-loops-mcp-1.0.0"
 }

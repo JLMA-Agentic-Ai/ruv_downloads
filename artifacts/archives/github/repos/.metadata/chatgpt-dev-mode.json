@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:05+00:00",
   "commit": "bc038e524526ba25dcbd98adcc1fc431be7ec2a2",
   "url": "https://github.com/ruvnet/chatgpt-dev-mode.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/chatgpt-dev-mode"
 }

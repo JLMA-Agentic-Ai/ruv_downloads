@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.29",
   "checksum": "sha1:918614b744bae2610d8488410f28b013642eaa15",
-  "lastUpdated": "2026-01-31T01:12:37+00:00"
+  "lastUpdated": "2026-01-31T01:12:37+00:00",
+  "path": "artifacts/extracted/npm/ruvector-core-darwin-x64-0.1.29"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.6.0",
   "checksum": "sha1:e6645a4d4ebee6b9a5904cf45965afab2cc6fceb",
-  "lastUpdated": "2026-01-31T01:11:33+00:00"
+  "lastUpdated": "2026-01-31T01:11:33+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-execution-2.6.0"
 }

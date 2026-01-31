@@ -1,8 +1,0 @@
-{
-  "id": "2074f5273796d1a1d2ec3fbdc1d90977",
-  "type": "gist",
-  "description": "a single‑file, ~200‑line Rust program that gives you both a central index server and a peer client in the spirit of the original Napster",
-  "lastUpdated": "2026-01-23T16:12:14+00:00",
-  "commit": "76141ecffd29013dfbcbe48d4539b078d296d6a0",
-  "url": "https://gist.github.com/2074f5273796d1a1d2ec3fbdc1d90977"
-}

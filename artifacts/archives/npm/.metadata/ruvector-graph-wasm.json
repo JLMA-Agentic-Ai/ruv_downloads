@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.25",
   "checksum": "sha1:91194517399acfe88e7b6d6d3ed4572c2f3305b3",
-  "lastUpdated": "2026-01-31T01:12:08+00:00"
+  "lastUpdated": "2026-01-31T01:12:08+00:00",
+  "path": "artifacts/extracted/npm/ruvector-graph-wasm-0.1.25"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.18",
   "checksum": "sha1:a0dd1a6950eca047a8fbec1f6715285a177f19ae",
-  "lastUpdated": "2026-01-31T01:12:11+00:00"
+  "lastUpdated": "2026-01-31T01:12:11+00:00",
+  "path": "artifacts/extracted/npm/ruvector-node-linux-x64-gnu-0.1.18"
 }

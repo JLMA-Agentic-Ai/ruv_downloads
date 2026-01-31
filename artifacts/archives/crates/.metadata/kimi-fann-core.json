@@ -3,5 +3,6 @@
   "type": "crate",
   "version": "0.1.4",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:08:54+00:00"
+  "lastUpdated": "2026-01-31T01:08:54+00:00",
+  "path": "artifacts/extracted/crates/kimi-fann-core-0.1.4"
 }

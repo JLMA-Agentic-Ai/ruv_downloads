@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:fc53b4e094c266e74cd4927ab07eaa2b933671ee",
-  "lastUpdated": "2026-01-31T01:11:46+00:00"
+  "lastUpdated": "2026-01-31T01:11:46+00:00",
+  "path": "artifacts/extracted/npm/qudag-cli-0.1.0"
 }

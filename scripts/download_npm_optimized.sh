@@ -15,7 +15,7 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 NPM_USER_URL="https://www.npmjs.com/~ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/packages.txt"
 ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/npm"
-EXTRACTED_DIR="$PROJECT_ROOT/artifacts/npm/extracted"
+EXTRACTED_DIR="$PROJECT_ROOT/artifacts/extracted/npm"
 LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
 METADATA_DIR="$ARCHIVE_DIR/.metadata"
@@ -127,6 +127,7 @@ process_package() {
   "type": "npm",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/npm/${name_dash}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF
@@ -154,6 +155,7 @@ EOF
   "type": "npm",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/npm/${name_dash}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF
@@ -220,6 +222,7 @@ EOF
   "type": "npm",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/npm/${name_dash}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF

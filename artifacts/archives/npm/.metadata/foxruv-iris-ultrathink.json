@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:58d28f500751cf9bc816c29658fb904ea9c40784",
-  "lastUpdated": "2026-01-31T01:09:32+00:00"
+  "lastUpdated": "2026-01-31T01:09:32+00:00",
+  "path": "artifacts/extracted/npm/foxruv-iris-ultrathink-1.0.0"
 }

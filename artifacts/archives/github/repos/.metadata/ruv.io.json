@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:17+00:00",
   "commit": "68620d325b7f2322402137c322d62be103d2115f",
   "url": "https://github.com/ruvnet/ruv.io.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/ruv.io"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.8",
   "checksum": "sha1:ac87538443a14d96c696b1c2a5410736c46097b2",
-  "lastUpdated": "2026-01-31T01:09:00+00:00"
+  "lastUpdated": "2026-01-31T01:09:00+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-claims-3.0.0-alpha.8"
 }

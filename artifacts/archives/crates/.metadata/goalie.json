@@ -3,5 +3,6 @@
   "type": "crate",
   "version": "1.0.3",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:08:54+00:00"
+  "lastUpdated": "2026-01-31T01:08:54+00:00",
+  "path": "artifacts/extracted/crates/goalie-1.0.3"
 }

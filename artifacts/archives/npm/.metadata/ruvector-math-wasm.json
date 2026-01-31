@@ -1,7 +1,8 @@
 {
-  "name": "@ruvector/math-wasm",
+  "name": "ruvector-math-wasm",
   "type": "npm",
-  "version": "0.1.31",
-  "checksum": "sha1:757896de418ac206404f2d0d79a90120266227a5",
-  "lastUpdated": "2026-01-31T01:12:08+00:00"
+  "version": "0.1.32",
+  "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
+  "lastUpdated": "2026-01-31T01:18:13+00:00",
+  "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32"
 }

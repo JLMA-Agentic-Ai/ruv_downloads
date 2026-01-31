@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.28",
   "checksum": "sha1:ccd60e1dbbddf9c7ebdd73ce9445a36ee811752c",
-  "lastUpdated": "2026-01-31T01:12:11+00:00"
+  "lastUpdated": "2026-01-31T01:12:11+00:00",
+  "path": "artifacts/extracted/npm/ruvector-router-0.1.28"
 }

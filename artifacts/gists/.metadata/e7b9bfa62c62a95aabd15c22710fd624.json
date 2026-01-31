@@ -1,8 +1,0 @@
-{
-  "id": "e7b9bfa62c62a95aabd15c22710fd624",
-  "type": "gist",
-  "description": "A cost-optimized proxy for routing between GPT-4o, Claude 3.5 Sonnet, and Gemini 1.5 Pro using LiteLLM.",
-  "lastUpdated": "2026-01-23T16:13:00+00:00",
-  "commit": "0a61ab1bf9590400e27a54c3b42b2789812374ce",
-  "url": "https://gist.github.com/e7b9bfa62c62a95aabd15c22710fd624"
-}

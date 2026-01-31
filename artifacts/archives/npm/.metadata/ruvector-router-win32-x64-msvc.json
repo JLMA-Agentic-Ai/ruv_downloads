@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.27",
   "checksum": "sha1:ce74eeb44214b6f909bfece8337ac36ec9d20a7e",
-  "lastUpdated": "2026-01-31T01:12:14+00:00"
+  "lastUpdated": "2026-01-31T01:12:14+00:00",
+  "path": "artifacts/extracted/npm/ruvector-router-win32-x64-msvc-0.1.27"
 }

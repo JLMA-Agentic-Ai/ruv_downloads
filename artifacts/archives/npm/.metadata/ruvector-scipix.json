@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.1",
   "checksum": "sha1:b6def483283badae03e072aa1a65392869d276ba",
-  "lastUpdated": "2026-01-31T01:12:18+00:00"
+  "lastUpdated": "2026-01-31T01:12:18+00:00",
+  "path": "artifacts/extracted/npm/ruvector-scipix-0.1.1"
 }

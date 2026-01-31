@@ -1,6 +1,0 @@
-{
-  "git": {
-    "sha1": "ec10561abf92848245afcc2e413e04beda9522f0"
-  },
-  "path_in_vcs": "crates/micro-hnsw-wasm"
-}

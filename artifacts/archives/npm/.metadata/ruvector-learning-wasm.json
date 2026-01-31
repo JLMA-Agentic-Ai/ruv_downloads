@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.29",
   "checksum": "sha1:15c2c4e82f6b1a5a0cca3710cfac69961f8e762a",
-  "lastUpdated": "2026-01-31T01:12:07+00:00"
+  "lastUpdated": "2026-01-31T01:12:07+00:00",
+  "path": "artifacts/extracted/npm/ruvector-learning-wasm-0.1.29"
 }

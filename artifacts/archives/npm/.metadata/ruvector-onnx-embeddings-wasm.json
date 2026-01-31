@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.2",
   "checksum": "sha1:3de033a137b8c409cbd06b0e26e515ac335be145",
-  "lastUpdated": "2026-01-31T01:12:39+00:00"
+  "lastUpdated": "2026-01-31T01:12:39+00:00",
+  "path": "artifacts/extracted/npm/ruvector-onnx-embeddings-wasm-0.1.2"
 }

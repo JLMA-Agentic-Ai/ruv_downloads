@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.15",
   "checksum": "sha1:a096379f1f45485cf6d47265df1f06a48de0b7b9",
-  "lastUpdated": "2026-01-31T01:12:21+00:00"
+  "lastUpdated": "2026-01-31T01:12:21+00:00",
+  "path": "artifacts/extracted/npm/ruvector-tiny-dancer-linux-x64-gnu-0.1.15"
 }

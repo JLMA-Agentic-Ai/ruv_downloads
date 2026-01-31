@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:457ef4ef40347299999a9a8002bf0fd1b497593f",
-  "lastUpdated": "2026-01-31T01:11:32+00:00"
+  "lastUpdated": "2026-01-31T01:11:32+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-example-portfolio-optimization-1.0.0"
 }

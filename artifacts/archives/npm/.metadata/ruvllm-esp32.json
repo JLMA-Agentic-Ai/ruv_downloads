@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.3.3",
   "checksum": "sha1:1baa15f3a219854544885e5b2a6a58eb68241e5b",
-  "lastUpdated": "2026-01-31T01:12:40+00:00"
+  "lastUpdated": "2026-01-31T01:12:40+00:00",
+  "path": "artifacts/extracted/npm/ruvllm-esp32-0.3.3"
 }

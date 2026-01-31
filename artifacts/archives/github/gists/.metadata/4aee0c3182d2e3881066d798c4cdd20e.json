@@ -1,8 +1,9 @@
 {
   "id": "4aee0c3182d2e3881066d798c4cdd20e",
   "type": "gist",
-  "description": "Quantum magnetic navigation uses a compact quantum magnetometer to detect Earth’s natural magnetic anomalies as passive landmarks. By matching sensor readings to preloaded magnetic maps, robots and vehicles achieve GPS‑level positioning without emitting signals. It operates indoors, underwater, and in GPS‑denied or jammed environments, offering stealth, resilience, and continuous accuracy.",
+  "description": "Quantum magnetic navigation uses a compact quantum magnetometer to detect Earth\u2019s natural magnetic anomalies as passive landmarks. By matching sensor readings to preloaded magnetic maps, robots and vehicles achieve GPS\u2011level positioning without emitting signals. It operates indoors, underwater, and in GPS\u2011denied or jammed environments, offering stealth, resilience, and continuous accuracy.",
   "lastUpdated": "2026-01-23T16:12:25+00:00",
   "commit": "b65f56d8241f66e1f456409a95407fd680e93084",
-  "url": "https://gist.github.com/4aee0c3182d2e3881066d798c4cdd20e"
+  "url": "https://gist.github.com/4aee0c3182d2e3881066d798c4cdd20e",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/Quantum_magnetic_navigation_uses_a_compact_quantum_(4aee0c3182d2e3881066d798c4cdd20e)"
 }

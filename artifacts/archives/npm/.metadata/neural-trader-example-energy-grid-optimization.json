@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:54c385e7f3fd7021599d0af1ad6da6ef12f8995c",
-  "lastUpdated": "2026-01-31T01:09:40+00:00"
+  "lastUpdated": "2026-01-31T01:09:40+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-example-energy-grid-optimization-0.1.0"
 }

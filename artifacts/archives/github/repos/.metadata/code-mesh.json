@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:05+00:00",
   "commit": "3a6fe2f1df7a096b217cbdbc65d5f126ebf0b0b9",
   "url": "https://github.com/ruvnet/code-mesh.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/code-mesh"
 }

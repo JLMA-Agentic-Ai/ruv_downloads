@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.1",
   "checksum": "sha1:cfd984dfb50acd09f074b97be794a4f03d34de45",
-  "lastUpdated": "2026-01-31T01:09:26+00:00"
+  "lastUpdated": "2026-01-31T01:09:26+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-shared-3.0.0-alpha.1"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.8",
   "checksum": "sha1:2e1831de30e6d6dbe48e18d92a3fd149664339b9",
-  "lastUpdated": "2026-01-31T01:09:10+00:00"
+  "lastUpdated": "2026-01-31T01:09:10+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-mcp-3.0.0-alpha.8"
 }

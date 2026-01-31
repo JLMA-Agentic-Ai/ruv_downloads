@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:dc35446ab54be6c58804b38cc1fc8c68fc21c66a",
-  "lastUpdated": "2026-01-31T01:11:58+00:00"
+  "lastUpdated": "2026-01-31T01:11:58+00:00",
+  "path": "artifacts/extracted/npm/ruvector-edge-full-0.1.0"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.1.0",
   "checksum": "sha1:b0a05c9a6d263613c2b9d55aeb01030ad7331a52",
-  "lastUpdated": "2026-01-31T01:12:40+00:00"
+  "lastUpdated": "2026-01-31T01:12:40+00:00",
+  "path": "artifacts/extracted/npm/ruvi-1.1.0"
 }

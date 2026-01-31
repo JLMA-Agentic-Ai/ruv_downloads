@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:28421b68337d2e31073eddfacb223921efc75eea",
-  "lastUpdated": "2026-01-31T01:12:42+00:00"
+  "lastUpdated": "2026-01-31T01:12:42+00:00",
+  "path": "artifacts/extracted/npm/temporal-lead-solver-0.1.0"
 }

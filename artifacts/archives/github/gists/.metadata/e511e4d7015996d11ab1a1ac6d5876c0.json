@@ -4,5 +4,6 @@
   "description": "A ruvector-based coherence engine that models state as a constrained graph, detects structural inconsistency via sheaf Laplacian residuals, and gates actions with auditable, deterministic witnesses instead of probabilistic confidence.",
   "lastUpdated": "2026-01-23T16:12:59+00:00",
   "commit": "b78457146ac4690eaf368d7ff1e85430d257ff5c",
-  "url": "https://gist.github.com/e511e4d7015996d11ab1a1ac6d5876c0"
+  "url": "https://gist.github.com/e511e4d7015996d11ab1a1ac6d5876c0",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/A_ruvector-based_coherence_engine_that_models_stat_(e511e4d7015996d11ab1a1ac6d5876c0)"
 }

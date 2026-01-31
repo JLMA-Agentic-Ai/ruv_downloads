@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.7",
   "checksum": "sha1:141fdff5668920b569ff6d43f8647ee20840646d",
-  "lastUpdated": "2026-01-31T01:12:32+00:00"
+  "lastUpdated": "2026-01-31T01:12:32+00:00",
+  "path": "artifacts/extracted/npm/psycho-symbolic-reasoner-1.0.7"
 }

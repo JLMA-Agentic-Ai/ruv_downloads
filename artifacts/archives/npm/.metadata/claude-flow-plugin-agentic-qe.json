@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.4",
   "checksum": "sha1:cc072e0837cfba2600b74763f65c6081f3e6239b",
-  "lastUpdated": "2026-01-31T01:09:11+00:00"
+  "lastUpdated": "2026-01-31T01:09:11+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-plugin-agentic-qe-3.0.0-alpha.4"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.27",
   "checksum": "sha1:f2ca8f0ff75fcd6bc8329fc1853271a466db8c0a",
-  "lastUpdated": "2026-01-31T01:12:12+00:00"
+  "lastUpdated": "2026-01-31T01:12:12+00:00",
+  "path": "artifacts/extracted/npm/ruvector-router-linux-arm64-gnu-0.1.27"
 }

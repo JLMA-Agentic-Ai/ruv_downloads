@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:78124aec9f790e990a072228ebf33d06d8055fe2",
-  "lastUpdated": "2026-01-31T01:09:45+00:00"
+  "lastUpdated": "2026-01-31T01:09:45+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-example-market-microstructure-1.0.0"
 }

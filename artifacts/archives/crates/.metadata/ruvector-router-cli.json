@@ -3,5 +3,6 @@
   "type": "crate",
   "version": "0.1.29",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:09:06+00:00"
+  "lastUpdated": "2026-01-31T01:09:06+00:00",
+  "path": "artifacts/extracted/crates/ruvector-router-cli-0.1.29"
 }

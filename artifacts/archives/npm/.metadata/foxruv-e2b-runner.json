@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.0.1",
   "checksum": "sha1:23f04033a776bfaf2b7059719492afd12d8a9dda",
-  "lastUpdated": "2026-01-31T01:09:26+00:00"
+  "lastUpdated": "2026-01-31T01:09:26+00:00",
+  "path": "artifacts/extracted/npm/foxruv-e2b-runner-2.0.1"
 }

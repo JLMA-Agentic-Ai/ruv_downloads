@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.6.0",
   "checksum": "sha1:c6e4d3e7c8607475568c990d3484d1ecdb5a41e3",
-  "lastUpdated": "2026-01-31T01:11:39+00:00"
+  "lastUpdated": "2026-01-31T01:11:39+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-portfolio-2.6.0"
 }

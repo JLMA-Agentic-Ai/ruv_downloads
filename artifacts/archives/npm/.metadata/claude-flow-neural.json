@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.7",
   "checksum": "sha1:0f1d7afa76451954855aaa80f714e90c1c7a400d",
-  "lastUpdated": "2026-01-31T01:09:11+00:00"
+  "lastUpdated": "2026-01-31T01:09:11+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-neural-3.0.0-alpha.7"
 }

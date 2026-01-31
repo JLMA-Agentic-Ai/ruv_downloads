@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:5caa06fc787169fae7c672a551851809df33ad45",
-  "lastUpdated": "2026-01-31T01:11:46+00:00"
+  "lastUpdated": "2026-01-31T01:11:46+00:00",
+  "path": "artifacts/extracted/npm/qudag-mcp-sse-0.1.0"
 }

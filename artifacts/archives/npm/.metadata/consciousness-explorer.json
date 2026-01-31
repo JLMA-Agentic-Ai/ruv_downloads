@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.1.1",
   "checksum": "sha1:c2d65e6b09d496fcd43988b6f464cca5253ad582",
-  "lastUpdated": "2026-01-31T01:12:28+00:00"
+  "lastUpdated": "2026-01-31T01:12:28+00:00",
+  "path": "artifacts/extracted/npm/consciousness-explorer-1.1.1"
 }

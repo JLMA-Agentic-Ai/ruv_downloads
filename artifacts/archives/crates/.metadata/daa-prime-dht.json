@@ -3,5 +3,6 @@
   "type": "crate",
   "version": "0.2.1",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:08:52+00:00"
+  "lastUpdated": "2026-01-31T01:08:52+00:00",
+  "path": "artifacts/extracted/crates/daa-prime-dht-0.2.1"
 }

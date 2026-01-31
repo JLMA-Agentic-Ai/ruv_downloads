@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.1",
   "checksum": "sha1:61c1e77123384560f24afddc31b0d7770f6ed79b",
-  "lastUpdated": "2026-01-31T01:09:25+00:00"
+  "lastUpdated": "2026-01-31T01:09:25+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-security-3.0.0-alpha.1"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:ab0ba12732ca211c8df31d414f900567cb69ee93",
-  "lastUpdated": "2026-01-31T01:09:45+00:00"
+  "lastUpdated": "2026-01-31T01:09:45+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-example-evolutionary-game-theory-1.0.0"
 }

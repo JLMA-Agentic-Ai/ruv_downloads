@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:09+00:00",
   "commit": "1511b93c2abd82883b9234fa90231c4c3e207744",
   "url": "https://github.com/ruvnet/flow-nexus.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/flow-nexus"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.4",
   "checksum": "sha1:9a13c8a3d5bc82c5545d6a5d1c123f294e288460",
-  "lastUpdated": "2026-01-31T01:12:42+00:00"
+  "lastUpdated": "2026-01-31T01:12:42+00:00",
+  "path": "artifacts/extracted/npm/vscode-remote-mcp-1.0.4"
 }

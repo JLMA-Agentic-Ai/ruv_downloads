@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.0.0-alpha.3.3",
   "checksum": "sha1:5f8eebff5597c503e188c0846ddbdfc93844c8b0",
-  "lastUpdated": "2026-01-31T01:12:23+00:00"
+  "lastUpdated": "2026-01-31T01:12:23+00:00",
+  "path": "artifacts/extracted/npm/agentdb-2.0.0-alpha.3.3"
 }

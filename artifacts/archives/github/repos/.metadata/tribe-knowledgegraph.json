@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:19+00:00",
   "commit": "fc6844dc0c705cde35c5a1f9bc5daf19452953c7",
   "url": "https://github.com/ruvnet/tribe-knowledgegraph.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/tribe-knowledgegraph"
 }

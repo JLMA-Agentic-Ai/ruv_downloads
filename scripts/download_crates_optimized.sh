@@ -16,7 +16,7 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 CRATES_IO_USER_URL="https://crates.io/users/ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/crates.txt"
 ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/crates"
-EXTRACTED_DIR="$PROJECT_ROOT/artifacts/crates/extracted"
+EXTRACTED_DIR="$PROJECT_ROOT/artifacts/extracted/crates"
 LEGACY_DIR="$ARCHIVE_DIR/00_legacy"
 
 # Create directories
@@ -152,6 +152,7 @@ process_crate() {
   "type": "crate",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/crates/${crate}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF
@@ -181,6 +182,7 @@ EOF
   "type": "crate",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/crates/${crate}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF
@@ -232,6 +234,7 @@ EOF
   "type": "crate",
   "version": "$latest_version",
   "checksum": "$checksum",
+  "path": "artifacts/extracted/crates/${crate}-${latest_version}",
   "lastUpdated": "$(date -Iseconds)"
 }
 EOF

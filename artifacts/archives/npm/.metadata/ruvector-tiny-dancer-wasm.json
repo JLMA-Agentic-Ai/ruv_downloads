@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:2898022ff28931eb772fffc51908fe872a39813a",
-  "lastUpdated": "2026-01-31T01:12:22+00:00"
+  "lastUpdated": "2026-01-31T01:12:22+00:00",
+  "path": "artifacts/extracted/npm/ruvector-tiny-dancer-wasm-0.1.0"
 }

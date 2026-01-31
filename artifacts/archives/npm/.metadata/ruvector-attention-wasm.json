@@ -1,7 +1,8 @@
 {
-  "name": "ruvector-attention-wasm",
+  "name": "@ruvector/attention-wasm",
   "type": "npm",
-  "version": "0.1.32",
-  "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
-  "lastUpdated": "2026-01-31T01:12:36+00:00"
+  "version": "0.1.0",
+  "checksum": "sha1:0fd0a8b78cde5e7520584867fc88c014a9db159f",
+  "lastUpdated": "2026-01-31T01:17:21+00:00",
+  "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.0"
 }

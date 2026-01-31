@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.2.3",
   "checksum": "sha1:05b91d0c7019c28fb6fee2ea060fc491cd8c586e",
-  "lastUpdated": "2026-01-31T01:08:59+00:00"
+  "lastUpdated": "2026-01-31T01:08:59+00:00",
+  "path": "artifacts/extracted/npm/agentic-robotics-cli-0.2.3"
 }

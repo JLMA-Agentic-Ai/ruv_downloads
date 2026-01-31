@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.5.3",
   "checksum": "sha1:0fd37be9705da5d515774c0981ecd9c1867e4d78",
-  "lastUpdated": "2026-01-31T01:12:00+00:00"
+  "lastUpdated": "2026-01-31T01:12:00+00:00",
+  "path": "artifacts/extracted/npm/ruvector-edge-net-0.5.3"
 }

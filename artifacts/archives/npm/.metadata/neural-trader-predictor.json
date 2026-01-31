@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:46a375e3b94b246b6dd97daef2cbbcb0886bac87",
-  "lastUpdated": "2026-01-31T01:11:40+00:00"
+  "lastUpdated": "2026-01-31T01:11:40+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-predictor-0.1.0"
 }

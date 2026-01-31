@@ -3,5 +3,6 @@
   "type": "repository",
   "lastUpdated": "2026-01-31T01:02:47+00:00",
   "commit": "7b88f32d5bb88099ce9628e6b9ce856bf315f4c4",
-  "url": "https://github.com/ruvnet/claude-flow.git"
+  "url": "https://github.com/ruvnet/claude-flow.git",
+  "path": "artifacts/extracted/github/repos/claude-flow"
 }

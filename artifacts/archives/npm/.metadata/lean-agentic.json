@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.3.2",
   "checksum": "sha1:25765b61811b9caa559b7947a05f220565e916ba",
-  "lastUpdated": "2026-01-31T01:12:29+00:00"
+  "lastUpdated": "2026-01-31T01:12:29+00:00",
+  "path": "artifacts/extracted/npm/lean-agentic-0.3.2"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:97408cfae276426d10887a420f4960e0c6f8bb66",
-  "lastUpdated": "2026-01-31T01:11:47+00:00"
+  "lastUpdated": "2026-01-31T01:11:47+00:00",
+  "path": "artifacts/extracted/npm/qudag-napi-core-0.1.0"
 }

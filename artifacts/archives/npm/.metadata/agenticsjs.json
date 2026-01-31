@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.5",
   "checksum": "sha1:92b0604a5062a9a11bcead6c9d0dd364409f9aa0",
-  "lastUpdated": "2026-01-31T01:12:26+00:00"
+  "lastUpdated": "2026-01-31T01:12:26+00:00",
+  "path": "artifacts/extracted/npm/agenticsjs-1.0.5"
 }

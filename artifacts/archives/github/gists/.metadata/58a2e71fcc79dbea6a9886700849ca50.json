@@ -4,5 +4,6 @@
   "description": "This project integrates OpenAI's GPT-4o large language model with Power Automate Desktop to create an advanced AI-powered automation system. It uses real-time streaming via WebSockets to enable the AI to observe and interact with your desktop, allowing for dynamic and intelligent automation of tasks.",
   "lastUpdated": "2026-01-23T16:12:27+00:00",
   "commit": "7fc7f910ee5b48c976c591361e1e5a3646b59b77",
-  "url": "https://gist.github.com/58a2e71fcc79dbea6a9886700849ca50"
+  "url": "https://gist.github.com/58a2e71fcc79dbea6a9886700849ca50",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/This_project_integrates_OpenAI_s_GPT-4o_large_lang_(58a2e71fcc79dbea6a9886700849ca50)"
 }

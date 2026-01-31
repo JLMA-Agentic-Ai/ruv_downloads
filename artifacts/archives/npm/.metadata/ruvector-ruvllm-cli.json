@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:1cabe4bc3dbf87fb18cd5e407329a4c5b411cb72",
-  "lastUpdated": "2026-01-31T01:12:15+00:00"
+  "lastUpdated": "2026-01-31T01:12:15+00:00",
+  "path": "artifacts/extracted/npm/ruvector-ruvllm-cli-0.1.0"
 }

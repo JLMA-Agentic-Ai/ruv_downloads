@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.1",
   "checksum": "sha1:2ea965838147209c76739ce5b93f579157d79660",
-  "lastUpdated": "2026-01-31T01:09:18+00:00"
+  "lastUpdated": "2026-01-31T01:09:18+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-plugin-perf-optimizer-3.0.0-alpha.1"
 }

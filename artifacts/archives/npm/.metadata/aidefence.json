@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.2.4",
   "checksum": "sha1:a546cac2977f8f0fb32697cbff787ea420a47815",
-  "lastUpdated": "2026-01-31T01:12:25+00:00"
+  "lastUpdated": "2026-01-31T01:12:25+00:00",
+  "path": "artifacts/extracted/npm/aidefence-2.2.4"
 }

@@ -1,6 +1,0 @@
-{
-  "git": {
-    "sha1": "4f758bf533bf2638bd95c25e54f5deea86df78b2"
-  },
-  "path_in_vcs": "crates/ruvector-dag-wasm"
-}

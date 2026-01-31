@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.26",
   "checksum": "sha1:511b612e8a37cc8590cf660f9f97a4955733d2af",
-  "lastUpdated": "2026-01-31T01:12:07+00:00"
+  "lastUpdated": "2026-01-31T01:12:07+00:00",
+  "path": "artifacts/extracted/npm/ruvector-graph-node-win32-x64-msvc-0.1.26"
 }

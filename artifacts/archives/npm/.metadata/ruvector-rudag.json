@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.1",
   "checksum": "sha1:17100fa7a1016fb5edd08f6936ac1c32483813d7",
-  "lastUpdated": "2026-01-31T01:12:14+00:00"
+  "lastUpdated": "2026-01-31T01:12:14+00:00",
+  "path": "artifacts/extracted/npm/ruvector-rudag-0.1.1"
 }

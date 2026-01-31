@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:03+00:00",
   "commit": "faf36f827d8c3f3d76bc5bdba47ee75c2cb6cf20",
   "url": "https://github.com/ruvnet/alienator.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/alienator"
 }

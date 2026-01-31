@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0-alpha.1",
   "checksum": "sha1:e335dd24ec2e68e8952c517794421a0b18dfb23f",
-  "lastUpdated": "2026-01-31T01:09:25+00:00"
+  "lastUpdated": "2026-01-31T01:09:25+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-teammate-plugin-1.0.0-alpha.1"
 }

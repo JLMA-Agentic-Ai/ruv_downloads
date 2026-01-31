@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.29",
   "checksum": "sha1:91c7c94e33dca5534e3c04de4170c9acb44e0c2e",
-  "lastUpdated": "2026-01-31T01:12:08+00:00"
+  "lastUpdated": "2026-01-31T01:12:08+00:00",
+  "path": "artifacts/extracted/npm/ruvector-nervous-system-wasm-0.1.29"
 }

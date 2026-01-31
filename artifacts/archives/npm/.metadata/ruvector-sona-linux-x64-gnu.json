@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.5",
   "checksum": "sha1:b43f1e68eb61f5623868eee8edb7e54c7c03722d",
-  "lastUpdated": "2026-01-31T01:12:18+00:00"
+  "lastUpdated": "2026-01-31T01:12:18+00:00",
+  "path": "artifacts/extracted/npm/ruvector-sona-linux-x64-gnu-0.1.5"
 }

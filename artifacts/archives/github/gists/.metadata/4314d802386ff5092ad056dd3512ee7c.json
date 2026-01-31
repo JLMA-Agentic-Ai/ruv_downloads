@@ -4,5 +4,6 @@
   "description": "This implementation follows the official MCP specification, including proper message framing, transport layer implementation, and complete protocol lifecycle management. It provides a foundation for building federated MCP systems that can scale across multiple servers while maintaining security and standardization requirements.",
   "lastUpdated": "2026-01-23T16:12:23+00:00",
   "commit": "39619773ea72333595452e029b15ba4e857b9845",
-  "url": "https://gist.github.com/4314d802386ff5092ad056dd3512ee7c"
+  "url": "https://gist.github.com/4314d802386ff5092ad056dd3512ee7c",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/This_implementation_follows_the_official_MCP_speci_(4314d802386ff5092ad056dd3512ee7c)"
 }

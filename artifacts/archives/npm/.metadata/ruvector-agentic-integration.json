@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:cf226eb24e7a69560fb31b28d41416487dfd40b8",
-  "lastUpdated": "2026-01-31T01:11:48+00:00"
+  "lastUpdated": "2026-01-31T01:11:48+00:00",
+  "path": "artifacts/extracted/npm/ruvector-agentic-integration-1.0.0"
 }

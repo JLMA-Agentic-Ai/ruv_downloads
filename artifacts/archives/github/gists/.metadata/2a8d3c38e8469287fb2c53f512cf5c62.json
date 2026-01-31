@@ -4,5 +4,6 @@
   "description": "This comprehensive guide outlines how to create a Model Context Protocol (MCP) server for VSCode that enables multiple workspaces or codespaces to collaborate seamlessly through STDIO communication. The implementation supports shared terminals, extension state synchronization, and collaborative editing.",
   "lastUpdated": "2026-01-23T16:12:19+00:00",
   "commit": "7a5c9dd54d57ca5f8c448cc1812f7b2508c90f48",
-  "url": "https://gist.github.com/2a8d3c38e8469287fb2c53f512cf5c62"
+  "url": "https://gist.github.com/2a8d3c38e8469287fb2c53f512cf5c62",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/This_comprehensive_guide_outlines_how_to_create_a__(2a8d3c38e8469287fb2c53f512cf5c62)"
 }

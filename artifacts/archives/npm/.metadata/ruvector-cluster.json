@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.0",
   "checksum": "sha1:4b28315cd6b92656513df29d0aa663b44b3ee32a",
-  "lastUpdated": "2026-01-31T01:11:58+00:00"
+  "lastUpdated": "2026-01-31T01:11:58+00:00",
+  "path": "artifacts/extracted/npm/ruvector-cluster-0.1.0"
 }

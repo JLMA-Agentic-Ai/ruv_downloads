@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.2.6",
   "checksum": "sha1:8e712d1ce4bc1addc7a1fa23dc2cb74d2db9d5ac",
-  "lastUpdated": "2026-01-31T01:12:10+00:00"
+  "lastUpdated": "2026-01-31T01:12:10+00:00",
+  "path": "artifacts/extracted/npm/ruvector-postgres-cli-0.2.6"
 }

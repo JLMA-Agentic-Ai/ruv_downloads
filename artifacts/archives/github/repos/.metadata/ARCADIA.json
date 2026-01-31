@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:11:55+00:00",
   "commit": "13bb48fef4208892257f9ef3f30d7120a3e45f60",
   "url": "https://github.com/ruvnet/ARCADIA.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/ARCADIA"
 }

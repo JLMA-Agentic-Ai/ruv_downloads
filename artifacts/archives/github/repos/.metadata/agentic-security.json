@@ -4,5 +4,6 @@
   "lastUpdated": "2026-01-23T16:12:00+00:00",
   "commit": "cf762effa448ce773bdb11fd08c9206b5d79e67f",
   "url": "https://github.com/ruvnet/agentic-security.git",
-  "tier": "tier-1-active"
+  "tier": "tier-1-active",
+  "path": "artifacts/extracted/github/repos/agentic-security"
 }

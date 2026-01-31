@@ -14,8 +14,8 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 # Configuration
 GITHUB_USER="ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/gists.txt"
-GISTS_DIR="$PROJECT_ROOT/artifacts/archives/github/gists"
-METADATA_DIR="$GISTS_DIR/.metadata"
+GISTS_DIR="$PROJECT_ROOT/artifacts/extracted/github/gists"
+METADATA_DIR="$PROJECT_ROOT/artifacts/archives/github/gists/.metadata"
 
 mkdir -p "$GISTS_DIR" "$METADATA_DIR"
 
@@ -228,8 +228,9 @@ process_gist() {
       echo "$gist_full_json" | jq -r \
         --arg commit "$remote_hash" \
         --arg lastUpdated "$(date -Iseconds)" \
-        '. + {type: "gist", commit: $commit, lastUpdated: $lastUpdated}' \
-        > "$METADATA_DIR/${gist_id}.json"
+        --arg path "artifacts/extracted/github/gists/by-date/$gist_date/$folder_name" \
+        '. + {type: "gist", commit: $commit, lastUpdated: $lastUpdated, path: $path}' \
+        > "$metadata_file"
     fi
     
     update_cache "gist" "$gist_id" "HEAD" "$checksum" "$target_dir"

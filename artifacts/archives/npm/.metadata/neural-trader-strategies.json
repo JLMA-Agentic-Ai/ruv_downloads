@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.6.0",
   "checksum": "sha1:ace03f8cf9c7e425af9178c93b79633abf1d37a8",
-  "lastUpdated": "2026-01-31T01:11:45+00:00"
+  "lastUpdated": "2026-01-31T01:11:45+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-strategies-2.6.0"
 }

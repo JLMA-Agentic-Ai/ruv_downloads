@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "2.0.6",
   "checksum": "sha1:bb7dfdd8be134be22af0d6b9e01af4212af84d55",
-  "lastUpdated": "2026-01-31T01:12:24+00:00"
+  "lastUpdated": "2026-01-31T01:12:24+00:00",
+  "path": "artifacts/extracted/npm/agentic-flow-2.0.6"
 }

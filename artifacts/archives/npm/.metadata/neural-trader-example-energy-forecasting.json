@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:4911c6a23b6d741644426bfeb9a6c7bfe7680938",
-  "lastUpdated": "2026-01-31T01:09:41+00:00"
+  "lastUpdated": "2026-01-31T01:09:41+00:00",
+  "path": "artifacts/extracted/npm/neural-trader-example-energy-forecasting-1.0.0"
 }

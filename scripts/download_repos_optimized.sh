@@ -6,7 +6,7 @@ set -euo pipefail
 
 GITHUB_USER="ruvnet"
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-REPOS_DIR="$PROJECT_ROOT/artifacts/repos"
+REPOS_DIR="$PROJECT_ROOT/artifacts/extracted/github/repos"
 
 # --- Initial Setup ---
 source "$PROJECT_ROOT/lib/cache.sh"
@@ -118,7 +118,8 @@ for repo in "${REPO_ARRAY[@]}"; do
   "type": "repository",
   "lastUpdated": "$(date -Iseconds)",
   "commit": "$remote_hash",
-  "url": "$repo_url"
+  "url": "$repo_url",
+  "path": "artifacts/extracted/github/repos/$repo"
 }
 EOF
         update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
@@ -147,7 +148,8 @@ EOF
   "type": "repository",
   "lastUpdated": "$(date -Iseconds)",
   "commit": "$remote_hash",
-  "url": "$repo_url"
+  "url": "$repo_url",
+  "path": "artifacts/extracted/github/repos/$repo"
 }
 EOF
 

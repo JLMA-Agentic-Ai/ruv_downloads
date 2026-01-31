@@ -4,5 +4,6 @@
   "description": "This ChatGPT prompt details synthetic time series data generation using ARIMA, emphasizing PII obfuscation. It includes stationarity checks, model fitting, forecasting, and evaluation, tailored for ChatGPT's computational limits. Outputs include CSV and JSON formats.",
   "lastUpdated": "2026-01-23T16:12:55+00:00",
   "commit": "41ce09e18f9da0f68b91c79b61ab27a0a98811f2",
-  "url": "https://gist.github.com/d2a3325aabffa57632a893fb25c357e7"
+  "url": "https://gist.github.com/d2a3325aabffa57632a893fb25c357e7",
+  "path": "artifacts/extracted/github/gists/by-date/unknown/This_ChatGPT_prompt_details_synthetic_time_series__(d2a3325aabffa57632a893fb25c357e7)"
 }

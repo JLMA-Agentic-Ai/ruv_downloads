@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.5.0",
   "checksum": "sha1:f41fc82ebf9849f14ed0e99bf01224450ed74d6d",
-  "lastUpdated": "2026-01-31T01:12:42+00:00"
+  "lastUpdated": "2026-01-31T01:12:42+00:00",
+  "path": "artifacts/extracted/npm/sublinear-time-solver-1.5.0"
 }

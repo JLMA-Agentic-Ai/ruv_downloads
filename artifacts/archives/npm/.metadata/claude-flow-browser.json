@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "3.0.0-alpha.1",
   "checksum": "sha1:e8d6090251096e22dac7edd224821b32aae5ea40",
-  "lastUpdated": "2026-01-31T01:08:58+00:00"
+  "lastUpdated": "2026-01-31T01:08:58+00:00",
+  "path": "artifacts/extracted/npm/claude-flow-browser-3.0.0-alpha.1"
 }

@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "0.1.19",
   "checksum": "sha1:89ae8b7f929480665fa9ee33f86c49be66590e98",
-  "lastUpdated": "2026-01-31T01:12:01+00:00"
+  "lastUpdated": "2026-01-31T01:12:01+00:00",
+  "path": "artifacts/extracted/npm/ruvector-gnn-darwin-arm64-0.1.19"
 }

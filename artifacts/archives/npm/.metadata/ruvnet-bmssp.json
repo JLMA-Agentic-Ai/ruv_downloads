@@ -3,5 +3,6 @@
   "type": "npm",
   "version": "1.0.0",
   "checksum": "sha1:6fdb8507dfc2424aae0459a8e57deec1ba06fb1a",
-  "lastUpdated": "2026-01-31T01:12:22+00:00"
+  "lastUpdated": "2026-01-31T01:12:22+00:00",
+  "path": "artifacts/extracted/npm/ruvnet-bmssp-1.0.0"
 }
