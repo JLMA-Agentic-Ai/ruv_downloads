@@ -1,0 +1,8 @@
+{
+  "name": "onnx-agent",
+  "type": "repository",
+  "lastUpdated": "2026-01-23T16:12:12+00:00",
+  "commit": "7b3690f297197f5411cfdb9ce1f0553e5dfd6bad",
+  "url": "https://github.com/ruvnet/onnx-agent.git",
+  "tier": "tier-1-active"
+}

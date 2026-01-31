@@ -1,0 +1,57 @@
+=== Started at 2026-01-30T15:21:38+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_npm_optimized.sh --discover
+
+Checking packages from: https://www.npmjs.com/~ruvnet
+Discovering packages from npm registry for user: ruvnet ...
+  Discovered 220 packages from npm registry
+  Total packages (merged): 220
+Checking: @agentic-robotics/cli
+Checking: @agentic-robotics/core
+Checking: @agentic-robotics/linux-x64-gnu
+Checking: @agentic-robotics/mcp
+Checking: @agentic-robotics/self-learning
+Checking: @agentics.org/agentic-mcp
+Checking: @agentics.org/sparc2
+Checking: @claude-flow/aidefence
+Checking: @claude-flow/browser
+Checking: @claude-flow/claims
+Checking: @claude-flow/cli
+Checking: @claude-flow/deployment
+Checking: @claude-flow/embeddings
+Checking: @claude-flow/hooks
+Checking: @claude-flow/integration
+Checking: @claude-flow/mcp
+Checking: @claude-flow/memory
+Checking: @claude-flow/neural
+Checking: @claude-flow/performance
+Checking: @claude-flow/plugin-agentic-qe
+Checking: @claude-flow/plugin-code-intelligence
+Checking: @claude-flow/plugin-cognitive-kernel
+Checking: @claude-flow/plugin-financial-risk
+Checking: @claude-flow/plugin-gastown-bridge
+Checking: @claude-flow/plugin-healthcare-clinical
+Checking: @claude-flow/plugin-hyperbolic-reasoning
+Checking: @claude-flow/plugin-legal-contracts
+Checking: @claude-flow/plugin-neural-coordination
+Checking: @claude-flow/plugin-perf-optimizer
+Checking: @claude-flow/plugin-prime-radiant
+Checking: @claude-flow/plugin-quantum-optimizer
+Checking: @claude-flow/plugin-test-intelligence
+Checking: @claude-flow/plugins
+Checking: @claude-flow/providers
+Checking: @claude-flow/security
+Checking: @claude-flow/shared
+Checking: @claude-flow/swarm
+Checking: @claude-flow/teammate-plugin
+Checking: @claude-flow/testing
+Checking: @foxruv/e2b-runner
+Checking: @foxruv/iris
+Checking: @foxruv/iris-agentic-synth
+Checking: @foxruv/iris-core
+Checking: @foxruv/iris-ultrathink
+Checking: @foxruv/nova-medicina
+Checking: @neural-trader/agentic-accounting-agents
+Checking: @neural-trader/agentic-accounting-cli
+Checking: @neural-trader/agentic-accounting-core
+Checking: @neural-trader/agentic-accounting-mcp
+Checking: @neural-trader/agentic-accounting-rust-core

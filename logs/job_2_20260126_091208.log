@@ -1,0 +1,62 @@
+=== Started at 2026-01-26T09:12:08+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_repos_optimized.sh --discover
+
+Checking repositories from GitHub user: ruvnet
+Discovering repositories from GitHub for user: ruvnet ...
+  Using gh CLI...
+  Discovered 164 repositories from GitHub
+  Total repositories (merged): 164
+Checking: 2BotTalk
+Checking: AP-Casper
+Checking: AiCodeCalc
+Checking: ARCADIA
+Checking: Agent-Name-Service
+Checking: Ai-Code-Generator-
+Checking: AiHCC
+Checking: AIConverse
+Checking: AiToml
+Checking: Auto-GPT
+  Warning: Could not fetch remote hash for AIConverse -- skipping
+  Warning: Could not fetch remote hash for Auto-GPT -- skipping
+Checking: Bot-Generator-Bot
+Checking: ChatGPT-Trading-Bot-for-KuCoin
+  ✓ Up-to-date: AiToml (85095f8230479f7afe9a54e93c395c0102e6ec6f)
+  ✓ Up-to-date: Agent-Name-Service (976e9e91e77213698cb7af479aa94bdaae084fa6)
+  ✓ Up-to-date: ARCADIA (13bb48fef4208892257f9ef3f30d7120a3e45f60)
+  ✓ Up-to-date: Ai-Code-Generator- (b225bf7ce3827e1b9c8899a7411f0de6be42f272)
+  ✓ Up-to-date: AP-Casper (dee998fe5246d8a28e8dbd829252d1ae554aae9b)
+  ✓ Up-to-date: AiHCC (a982abd795cfc7fb5b55e2224fb43f6804107649)
+  ✓ Up-to-date: AiCodeCalc (29fbf90f42ae396f48d85d348bb886020a9dd082)
+  ✓ Up-to-date: 2BotTalk (bbe7824e9a9ae3513cd71f183aaf3a67fbf27294)
+mv: cannot create regular file '/home/vscode/.cache/ruv_downloads/cache.db': File exists
+mv: cannot create regular file '/home/vscode/.cache/ruv_downloads/cache.db': File exists
+Checking: CodeGPT
+Checking: FACT
+Checking: Electo1
+Checking: GenAI-Superstream
+Checking: Prompt-Engine
+Checking: QuDAG
+Checking: Quantum-Virtual-Machine
+Checking: Roo-Code-Docs
+  ✓ Up-to-date: ChatGPT-Trading-Bot-for-KuCoin (efa4a58cde8700fa0272d04d97fcf3659413da10)
+  ✓ Up-to-date: Bot-Generator-Bot (502bde81f7c1e346bd081e4ed15d88620a3aee79)
+mv: cannot create regular file '/home/vscode/.cache/ruv_downloads/cache.db': File exists
+Checking: SAFLA
+Checking: SVGart
+  ✓ Up-to-date: Prompt-Engine (21a9712fd4a58dbf52d11e36d981ecc4e73f6dfc)
+  ✓ Up-to-date: Quantum-Virtual-Machine (b8930802741c1680ad59dacc8d77a507836df4b9)
+  ✓ Up-to-date: Roo-Code-Docs (d897706d7e1842c805cd378ce2480abf7061f474)
+  ✓ Up-to-date: CodeGPT (3e79f75b4465fc4fdc12f42d6c97c579771aab27)
+  ✓ Up-to-date: Electo1 (b77671bfc33df19617749667a517ca58696dd030)
+  ✓ Up-to-date: QuDAG (7bd52cd4c31acebd387b040a862dc11d5655d93c)
+  ✓ Up-to-date: GenAI-Superstream (10f36b32853f3c8a6a370ea7d61e91a38ce705a7)
+  ✓ Up-to-date: FACT (02379743d92a10a550707f8c072a2b15bd4fdfe3)
+Checking: Surfer
+Checking: Swagger-ChatGPT-Plugin-Creator
+Checking: Synaptic-Mesh
+Checking: SynthLang
+Checking: VIVIAN
+Checking: agentX
+mv: cannot create regular file '/home/vscode/.cache/ruv_downloads/cache.db': File exists
+Checking: agentXNG
+Checking: agentic-artifacts

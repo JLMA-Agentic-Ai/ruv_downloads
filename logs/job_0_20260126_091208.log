@@ -1,0 +1,95 @@
+=== Started at 2026-01-26T09:12:08+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_crates_optimized.sh --discover
+
+Checking crates from: https://crates.io/users/ruvnet
+Discovering crates from crates.io for user: ruvnet ...
+    Fetching page 1...
+    Fetching page 2...
+    Fetching page 3...
+  Discovered 197 crates from crates.io
+  Total crates (merged): 198
+Checking: agentic-jujutsu
+Checking: agentic-payments
+Checking: agentic-robotics-core
+Checking: agentic-robotics-embedded
+Checking: agentic-robotics-mcp
+Checking: agentic-robotics-node
+Checking: agentic-robotics-rt
+Checking: aimds-analysis
+Checking: aimds-core
+Checking: aimds-detection
+Checking: aimds-response
+Checking: bit-parallel-search
+Checking: bitchat-qudag
+Checking: claude-parser
+Checking: claude_market
+Checking: code-mesh-cli
+Checking: code-mesh-core
+Checking: code-mesh-tui
+Checking: code-mesh-wasm
+Checking: cognitum-gate-kernel
+Checking: cognitum-gate-tilezero
+Checking: conformal-prediction
+Checking: cuda-rust-wasm
+Checking: daa-ai
+Checking: daa-chain
+Checking: daa-cli
+Checking: daa-economy
+Checking: daa-orchestrator
+Checking: daa-prime-cli
+Checking: daa-prime-coordinator
+Checking: daa-prime-core
+Checking: daa-prime-dht
+Checking: daa-prime-trainer
+Checking: daa-rules
+Checking: exo-backend-classical
+Checking: exo-core
+Checking: exo-exotic
+Checking: exo-federation
+Checking: exo-hypergraph
+Checking: exo-manifold
+Checking: exo-node
+Checking: exo-wasm
+Checking: fact-tools
+Checking: exo-temporal
+Checking: geometric-langlands-cli
+Checking: fact-wasm-core
+Checking: geometric-langlands
+Checking: goalie
+Checking: governance
+Checking: intrinsic-dim
+Checking: kimi-expert-analyzer
+Checking: kimi-fann-core
+Checking: leanr-rag-gateway
+Checking: lean-agentic
+Checking: micro-hnsw-wasm
+Checking: leanr-wasm
+Checking: micro_cartan_attn
+Checking: micro_core
+Checking: micro_metrics
+Checking: micro_routing
+Checking: micro_swarm
+Checking: midstreamer-neural-solver
+Checking: midstreamer-quic
+Checking: midstreamer-scheduler
+Checking: midstreamer-strange-loop
+Checking: midstreamer-attractor
+Checking: midstreamer-temporal-compare
+Checking: nano-consciousness
+Checking: neural-trader-predictor
+Checking: nanosecond-scheduler
+Checking: neuro-divergent
+Checking: neuro-divergent-core
+Checking: neuro-divergent-models
+Checking: neuro-divergent-registry
+Checking: neuro-divergent-training
+Checking: neurodna
+Checking: nt-agentdb-client
+Checking: nt-backtesting
+Checking: nt-execution
+Checking: nt-core
+Checking: nt-features
+Checking: nt-market-data
+Checking: nt-memory
+Checking: nt-napi-bindings
+Checking: nt-neural

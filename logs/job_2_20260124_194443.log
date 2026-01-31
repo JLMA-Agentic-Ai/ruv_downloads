@@ -1,0 +1,341 @@
+=== Started at 2026-01-24T19:44:43+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_repos_optimized.sh --discover
+
+Checking repositories from GitHub user: ruvnet
+Discovering repositories from GitHub for user: ruvnet ...
+  Using gh CLI...
+  Discovered 164 repositories from GitHub
+  Total repositories (merged): 164
+Checking: 2BotTalk
+Checking: AIConverse
+Checking: AP-Casper
+Checking: ARCADIA
+Checking: Agent-Name-Service
+Checking: Ai-Code-Generator-
+Checking: AiHCC
+Checking: AiToml
+Checking: AiCodeCalc
+Checking: Auto-GPT
+  ✓ Cache hit: Ai-Code-Generator- (b225bf7ce3827e1b9c8899a7411f0de6be42f272)
+Checking: Bot-Generator-Bot
+  Warning: Could not fetch remote hash for Auto-GPT -- skipping
+Checking: ChatGPT-Trading-Bot-for-KuCoin
+  ✓ Cache hit: ARCADIA (13bb48fef4208892257f9ef3f30d7120a3e45f60)
+Checking: CodeGPT
+  ✓ Cache hit: AiToml (85095f8230479f7afe9a54e93c395c0102e6ec6f)
+  ✓ Cache hit: Agent-Name-Service (976e9e91e77213698cb7af479aa94bdaae084fa6)
+Checking: Electo1
+Checking: FACT
+  Warning: Could not fetch remote hash for AIConverse -- skipping
+Checking: GenAI-Superstream
+  ✓ Cache hit: AP-Casper (dee998fe5246d8a28e8dbd829252d1ae554aae9b)
+Checking: Prompt-Engine
+  ✓ Cache hit: AiHCC (a982abd795cfc7fb5b55e2224fb43f6804107649)
+Checking: QuDAG
+  ✓ Cache hit: 2BotTalk (bbe7824e9a9ae3513cd71f183aaf3a67fbf27294)
+Checking: Quantum-Virtual-Machine
+  ✓ Cache hit: AiCodeCalc (29fbf90f42ae396f48d85d348bb886020a9dd082)
+Checking: Roo-Code-Docs
+  ✓ Cache hit: Prompt-Engine (21a9712fd4a58dbf52d11e36d981ecc4e73f6dfc)
+Checking: SAFLA
+  ✓ Cache hit: Bot-Generator-Bot (502bde81f7c1e346bd081e4ed15d88620a3aee79)
+Checking: SVGart
+  ✓ Cache hit: CodeGPT (3e79f75b4465fc4fdc12f42d6c97c579771aab27)
+Checking: Surfer
+  ✓ Cache hit: QuDAG (7bd52cd4c31acebd387b040a862dc11d5655d93c)
+Checking: Swagger-ChatGPT-Plugin-Creator
+  ✓ Cache hit: Electo1 (b77671bfc33df19617749667a517ca58696dd030)
+Checking: Synaptic-Mesh
+  ✓ Cache hit: ChatGPT-Trading-Bot-for-KuCoin (efa4a58cde8700fa0272d04d97fcf3659413da10)
+Checking: SynthLang
+  ✓ Cache hit: FACT (02379743d92a10a550707f8c072a2b15bd4fdfe3)
+Checking: VIVIAN
+  ✓ Cache hit: GenAI-Superstream (10f36b32853f3c8a6a370ea7d61e91a38ce705a7)
+Checking: agentX
+  ✓ Cache hit: Roo-Code-Docs (d897706d7e1842c805cd378ce2480abf7061f474)
+Checking: agentXNG
+  ✓ Cache hit: Quantum-Virtual-Machine (b8930802741c1680ad59dacc8d77a507836df4b9)
+Checking: agentic-artifacts
+  ✓ Cache hit: SAFLA (d59e8967c094847efc4703a189cbb2c00190828e)
+Checking: agentic-capacity-exchange
+  ✓ Cache hit: Swagger-ChatGPT-Plugin-Creator (b2e39f1fd717d0db20346048fed972ed9d508ee1)
+Checking: agentic-dashboard
+  ✓ Cache hit: Synaptic-Mesh (358739069ccbd316d4f9feebaebdfde2e36f49f4)
+  ✓ Cache hit: SVGart (0ed8d3243abfeaccd5aaa542718c349661ae5e32)
+Checking: agentic-devops
+Checking: agentic-difusion
+  ✓ Cache hit: Surfer (e7af25f8a2d2cd5c843e21a1068276d613493633)
+Checking: agentic-employment
+  ✓ Cache hit: SynthLang (52e48d85bbcf49acf9a92f411da378a9cc05b792)
+Checking: agentic-flow
+  ✓ Cache hit: agentic-artifacts (68406bfffe1157332c0aee9be588dc030f3e4f71)
+Checking: agentic-flows
+  ✓ Cache hit: agentX (73bc804ffc7557df7fd1ba6602b0decfb61c11ec)
+Checking: agentic-gradio
+  ✓ Cache hit: VIVIAN (70bd3a4b3502c970ad2c2780ba7767dbe0287e1e)
+Checking: agentic-music
+  ✓ Cache hit: agentXNG (82845cb32a198d649b2fa1250af889cae6a93cec)
+Checking: agentic-preview
+  ✓ Cache hit: agentic-capacity-exchange (70f08e111e8e6671efada7ee16e0c76125e23235)
+Checking: agentic-reports
+  ✓ Cache hit: agentic-devops (520da11e3337e234b3193018d343adb33b5299f1)
+Checking: agentic-robotics
+  ✓ Cache hit: agentic-employment (372d940279d65746a4336082c37ba0e61206b956)
+Checking: agentic-scraper
+  ✓ Cache hit: agentic-dashboard (ebce7a068ed1b2996bcf9d6898a9560a5ee3e86c)
+Checking: agentic-search
+  ✓ Cache hit: agentic-flows (3ec27c798b50a355f70e8afa8a780b262b5beb8a)
+Checking: agentic-security
+  ✓ Cache hit: agentic-flow (6a7b113f8219849acddd08074f56be374a52215e)
+  ✓ Cache hit: agentic-difusion (f068cb3a6f9162d81415d4ace23aaa2800ef6206)
+  ✓ Cache hit: agentic-gradio (0472b249d9040836cbe73170f4de81e42cf24bf0)
+Checking: agentic-voice
+Checking: agentics-meetup
+Checking: agenticsjs
+  ✓ Cache hit: agentic-preview (3b677b8aa6461565b392c5260793b17d20028095)
+Checking: agileagents
+  ✓ Cache hit: agentic-music (75b5146e57f346d3bd0fb8e63f5d9ed4492769aa)
+Checking: ai-browse
+  ✓ Cache hit: agentic-reports (c0627d9873c8f1d1bc3d2f8dcd929b584bc44699)
+Checking: ai-gist
+  ✓ Cache hit: agentic-robotics (4f0e80c92d7d013fa34d7f2e3d7759af5d95b3b1)
+Checking: ai-stream
+  ✓ Cache hit: agentic-scraper (263e2af3676739ee5d36e6bb1ef5b599b8c14ce7)
+Checking: ai-video
+  ✓ Cache hit: agentic-search (c984310389e533ff12b20a2a857ff947363e7848)
+Checking: aido
+  ✓ Cache hit: agentics-meetup (8ad3546031fd0e3acfdf0bd368684624a58bf244)
+Checking: aihl
+  ✓ Cache hit: agileagents (f102a5d85c866a7e1bd7dd6547a20aafb7f44181)
+Checking: aiscreenplay
+  ✓ Cache hit: agentic-security (cf762effa448ce773bdb11fd08c9206b5d79e67f)
+Checking: alienator
+  ✓ Cache hit: agenticsjs (a08e8c8360f244888d515a79eb267598543a9f7a)
+Checking: anthropic-quickstarts
+  ✓ Cache hit: agentic-voice (7203b5e8ea2feacd5ee3b5fbb2aeca92640cb652)
+Checking: auto-browser
+  ✓ Cache hit: ai-browse (1b1e1de8b16196eb77b631d3d9a3137b31aacc30)
+Checking: aws-dev
+  ✓ Cache hit: ai-gist (02a8dad6363567134a5e76b60558334225ed9338)
+Checking: chatgpt-aws-price-list-plugin
+  ✓ Cache hit: ai-video (3b2a95bacd01d53c5781f8bf7ed78702af639328)
+Checking: chatgpt-dev-mode
+  ✓ Cache hit: aihl (8e80355b595cbc534f0f5f2097f978b0dfefc332)
+Checking: chatgpt-openai-api-plugin
+  ✓ Cache hit: aido (20429341646a6834019599e8ae313d5ee06208e4)
+Checking: chatgpt_plugin_python
+  ✓ Cache hit: ai-stream (012fdebdf36aa826550d4684563b53533d255c04)
+Checking: chatgpt_tatum_plugin
+  ✓ Cache hit: alienator (faf36f827d8c3f3d76bc5bdba47ee75c2cb6cf20)
+Checking: claude-flow
+  ✓ Cache hit: anthropic-quickstarts (3347e36f7911f2cd2702108078b0ccbe5189cf7b)
+  ✓ Cache hit: aws-dev (101687cf16c25061a5301df684deb2fb24ff2e7e)
+Checking: claude-test
+Checking: code-mesh
+  ✓ Cache hit: auto-browser (a7873b4f11e0b905a847ef240f4fac7b9830d95a)
+  ✓ Cache hit: aiscreenplay (76944cd94a418adf6f1dbf000f2f03e34ec78e62)
+Checking: codecraft
+Checking: codespaces-jupyter
+  ✓ Cache hit: chatgpt-aws-price-list-plugin (efc6e5120fd4acb58bf672895904fb4576ad9c3c)
+Checking: codex-one
+  ✓ Cache hit: chatgpt-dev-mode (bc038e524526ba25dcbd98adcc1fc431be7ec2a2)
+Checking: coding-wingman
+  ✓ Cache hit: chatgpt-openai-api-plugin (866d24bd1e28953b7496f7c547cc5d8755ea33a0)
+Checking: console-streamer
+  ✓ Cache hit: chatgpt_plugin_python (0d78b8ddfd0ddb171543c270c7e7142edd8e7724)
+Checking: contextual-retrevial
+  ✓ Cache hit: claude-flow (34d38c8b4227580b81dd78f4e4b75454f88eada4)
+Checking: daa
+  ✓ Cache hit: chatgpt_tatum_plugin (804611405291c7d08fe05d8a708a07b658ab3e31)
+Checking: dapp-list
+  ✓ Cache hit: claude-test (294a32462f21c2bc3399b1dd85cdaee1b64912d4)
+Checking: deco
+  ✓ Cache hit: code-mesh (3a6fe2f1df7a096b217cbdbc65d5f126ebf0b0b9)
+Checking: demo-proxy-app
+  ✓ Cache hit: codespaces-jupyter (45ffb92abb2688217cd3d77333ec67b1e8f268d4)
+Checking: dreamfactory
+  ✓ Cache hit: codecraft (cd31ec634f180d6b310d60e7323b85faceeb6085)
+Checking: drupal
+  ✓ Cache hit: codex-one (e752f7243ee62fd33f97ccfdef776a8a90f4b981)
+Checking: drupaljs
+  ✓ Cache hit: console-streamer (0d26c2ead5bb852f6d806f8c8e5d7ef9d2bb94d4)
+Checking: dspy.ts
+  ✓ Cache hit: coding-wingman (5995accabd8ddf4f66f5f730d4401e0f7dbfd32f)
+  ✓ Cache hit: daa (ca6f544c817348550f4c92b9a4206e86f8858e59)
+Checking: dynamo-mcp
+Checking: electo1-js
+  ✓ Cache hit: contextual-retrevial (b30673831e44d54225101e017875b950fed8ab90)
+Checking: federated-mcp
+  ✓ Cache hit: dapp-list (7ffef29909617b58d24c8c8867660c832afd224b)
+Checking: fireflies-webook
+  ✓ Cache hit: demo-proxy-app (6aca049b5ea0c1b42bdcdc6b07f4fafbd0d131a6)
+Checking: flow-nexus
+  ✓ Cache hit: dreamfactory (4dd4a4bd5cb1265781a3ad7669301440686e4f01)
+Checking: genesis
+  ✓ Cache hit: deco (bd3ebfe0b3cb18a08a124854108a95e4ebf87bf5)
+Checking: gpts
+  ✓ Cache hit: drupal (8877452481a878cc51814b8471a2a88ed018246f)
+Checking: guardrail
+  ✓ Cache hit: drupaljs (585b78fb9ccfb7560f11258eafe2ea9516d574a8)
+Checking: hacker-league
+  ✓ Cache hit: dynamo-mcp (4eaf6b54e35d063af20f4afb620130d6269eed24)
+Checking: hello_world_agent
+  ✓ Cache hit: dspy.ts (3d587c02d45523a19fcc2ac145f7c02e24189231)
+Checking: hft
+  ✓ Cache hit: fireflies-webook (7c636b241b8fc249e58bacfb840cdd78e9490746)
+  ✓ Cache hit: genesis (9f02f62e4e421f0c5970b70a387955c2bc6ca8f6)
+Checking: image-agent
+Checking: infinity-ui
+  ✓ Cache hit: flow-nexus (1511b93c2abd82883b9234fa90231c4c3e207744)
+Checking: inflight
+  ✓ Cache hit: federated-mcp (486dc9c022a51bea0775e645e206336ee66212de)
+Checking: llamastack
+  ✓ Cache hit: electo1-js (b18b44e4f81cad34ef223c0dbcca99df6488461f)
+Checking: local-logic
+  ✓ Cache hit: guardrail (67cc25b7c52acf69bcdea00b094962e06760efe5)
+Checking: marketing
+  ✓ Cache hit: gpts (df774213d52a20cd375e6a223b47444face741c6)
+Checking: markov-chains
+  ✓ Cache hit: hello_world_agent (42584fa15554719b6eaf32e14f59008b2c59cdde)
+Checking: micro-agent
+  ✓ Cache hit: hft (33d35f6b1275faa9402c16c58a8ff8aa795aa76f)
+Checking: midstream
+  ✓ Cache hit: hacker-league (f3d4d260f8ec527e52f1bf656c11c81d3a0c36ed)
+Checking: musicai
+  ✓ Cache hit: image-agent (4bf96fe1e944d9383e93fcdd2582e28c8cede618)
+Checking: nova
+  ✓ Cache hit: marketing (647851080ca4f6c0316363c71a2fc87962de0867)
+Checking: omnipotent
+  ✓ Cache hit: llamastack (157d38208af6054d73931023f63c6ca213b9a673)
+  ✓ Cache hit: local-logic (99b2d03045bd2d0319b8db545eb809348f461578)
+  ✓ Cache hit: inflight (f77cc4c80760a645a5592eaa781189c21c354718)
+Checking: onnx-agent
+Checking: open-agentics
+  ✓ Cache hit: infinity-ui (6b15c59db4a95b465f0f171520e52cd038943777)
+Checking: open-space
+Checking: open-claude-code
+  ✓ Cache hit: micro-agent (05070973b9c71bd7f3b6f24e203d67314954f5ad)
+  ✓ Cache hit: markov-chains (f536b18e73eab5cf2bcc7df7a59f67c0728e0625)
+Checking: openai-cost-estimator
+Checking: openai_devops
+  ✓ Cache hit: midstream (30fe5eb7a1f1494aa1ad00d54160088a565ec766)
+Checking: optimizer
+  ✓ Cache hit: nova (952a21fe59aa5597ffc64ce2c2832914b37446da)
+Checking: p2pGPT
+  ✓ Cache hit: musicai (a54cea70a3e3475df11ef0a558c7ba7a30a2449f)
+Checking: paris
+  ✓ Cache hit: omnipotent (40681052f435a67a5b11cb39486460cbf01ff845)
+Checking: phoenix
+  ✓ Cache hit: open-agentics (87d38b2387b4f29fdeccb53325b1b5279bcfc728)
+Checking: phone-agent
+  ✓ Cache hit: onnx-agent (7b3690f297197f5411cfdb9ce1f0553e5dfd6bad)
+Checking: pipackager
+  ✓ Cache hit: open-space (8fefd551b51b28439e70c2e366517072dba441f4)
+Checking: powerprompt
+  ✓ Cache hit: openai-cost-estimator (31556ff831bf2e9233e20455f8401e1695924416)
+  ✓ Cache hit: open-claude-code (a2efad23df4e129cd0904b09c190e0ecdccefb84)
+Checking: promptlang
+Checking: pygentic
+  ✓ Cache hit: openai_devops (70aaa6f3b4549925914b78deb57429cde6218cc4)
+Checking: q-space
+  ✓ Cache hit: optimizer (fac10a57b66c93c9cfb43ea22a1ad38b0156df53)
+Checking: q-star
+  ✓ Cache hit: paris (79f3344fffb77eb07440f331eb872134557c896b)
+Checking: quantum-magnetic-navigation
+  ✓ Cache hit: p2pGPT (3024ab62879d7ec7c6c056d6f6b0960bb1694166)
+Checking: quantum_cryptocurrency
+  ✓ Cache hit: powerprompt (1f280f9bbff04571bd151cdd9e1258f21a660d2e)
+Checking: r-flow
+  ✓ Cache hit: q-space (7d854bcd61ff558737e7382c5fa82715911a0731)
+Checking: rUv-Enterprise-AI-Guide
+  ✓ Cache hit: phone-agent (c38e310d6fb36478420a6de703beca71061a2c3f)
+  ✓ Cache hit: phoenix (be1a1030d19eb40b7d4edcab45c3991f6e6c7359)
+Checking: rUv-dev
+  ✓ Cache hit: pipackager (fbd7b1d6dea39398de1343153ff238703c1279ff)
+Checking: rUvGPT
+Checking: reflective-engineer
+  ✓ Cache hit: pygentic (828cfde2882b6a28fd79a20c53a0bbb953ec318d)
+Checking: retro-ai-ui
+  ✓ Cache hit: promptlang (791366aca806dcd4fe8fc68f69c850b3c98f638d)
+Checking: roomodes
+  ✓ Cache hit: quantum-magnetic-navigation (e1334568d96236a6ee60c377191151a2e3ab8561)
+Checking: runme
+  ✓ Cache hit: q-star (833d4c921421781eae2bb552010eeed599c46ac1)
+Checking: ruv-FANN
+  Warning: Could not fetch remote hash for rUvGPT -- skipping
+Checking: ruv-code
+  ✓ Cache hit: quantum_cryptocurrency (1e9dd478353b054efb08363a75cb133c557d6204)
+Checking: ruv-engineer
+  ✓ Cache hit: r-flow (721cfb17d1ce8523c52e23cf2e8d6b0f27afe1a2)
+Checking: ruv.io
+  ✓ Cache hit: rUv-Enterprise-AI-Guide (5536257d34d939ad73a20c667b547a0181e20bd4)
+Checking: ruvGPT2
+  ✓ Cache hit: reflective-engineer (2a6a80cef4c29fbd30924cce70911f06df162a31)
+Checking: ruvbot
+  ✓ Cache hit: rUv-dev (e28196d958d2bd844a7c595a9336a21a4f3ae2bc)
+Checking: ruvector
+  ✓ Cache hit: retro-ai-ui (9df0c607747d04260b4196b7172086259bdf7e34)
+Checking: ruvnet
+  ✓ Cache hit: roomodes (1ec9aa6c0ce39b5f9736e2a6132994afbf2a02c0)
+Checking: santa-ai-workshop
+  ✓ Cache hit: ruv-FANN (f0f837f0d22ca1dc09f058d0270c60c9bc07fad3)
+Checking: socket
+  ✓ Cache hit: runme (54acee3c459facd4200fe6ae6c942e84b341c0e0)
+Checking: sparc
+  ✓ Cache hit: ruv-code (836bbf75d04a4c9b01d882bb005690febaca2635)
+Checking: sparc-ide
+  ✓ Cache hit: ruv-engineer (b1cfb0d99b55c8763155e96e0e44051af7df2783)
+Checking: strawberry-phi
+  ✓ Cache hit: ruv.io (68620d325b7f2322402137c322d62be103d2115f)
+Checking: streamlit-example
+  Warning: Could not fetch remote hash for ruvGPT2 -- skipping
+Checking: sublinear-time-solver
+  ✓ Cache hit: santa-ai-workshop (f9daec0baf89a46c6d07b99f245396ae9b47ed3a)
+Checking: supa-ruv
+  ✓ Cache hit: ruvnet (90dc99dc62c53840f47cd3a3ec6cdc56499a586a)
+  ✓ Cache hit: ruvector (aec62e54753bb2c7c7d26b4b2b13550b9717b029)
+Checking: supabase-authentication
+Checking: swarm-world
+  ✓ Cache hit: ruvbot (825b0f2d3b8660d6f22bb3806080e99f6ae91e36)
+Checking: swirl-search
+  ✓ Cache hit: sparc (a8d7dae14ec541bd86ea9075d41c8ef064afdc57)
+Checking: symbolic-scribe
+  Warning: Could not fetch remote hash for socket -- skipping
+Checking: tariffic
+  ✓ Cache hit: strawberry-phi (368ca6e6c12a3efe15938c4eb1ac51eb6383383f)
+Checking: test-react-lib
+  ✓ Cache hit: sparc-ide (ffd5249e523ef5db6e9ddb2f526fc954cbf0563a)
+Checking: textclassifier
+  ✓ Cache hit: supabase-authentication (1606fb4e986593342771eed4974b970abefaf364)
+Checking: tribe-knowledgegraph
+  ✓ Cache hit: sublinear-time-solver (1210646955f33abe5c91f894cc7b04d024f62408)
+Checking: ultrasonic
+  ✓ Cache hit: streamlit-example (7e810c53293ccdd9ab5924171dee2210b4c710a7)
+Checking: vcbot
+  ✓ Cache hit: swarm-world (c6eb5e7af089ab4f94806ba3a25b96882d0e2c90)
+Checking: vibecast
+  ✓ Cache hit: supa-ruv (ceb1b2a07c0e6be7f1b63d88a05d26df2d8a0432)
+Checking: vibing
+  ✓ Cache hit: symbolic-scribe (7403d279444f943f2f5e91000960ab4c433720c0)
+Checking: voicebot
+  ✓ Cache hit: tariffic (1e6ac196d88cd93230967d6b7237cd89fcd6eec3)
+Checking: vsc-remote-mcp
+  ✓ Cache hit: swirl-search (c008d3d24ab73855870cf0ee507d6eaabaaf5af7)
+Checking: wifi-densepose
+  ✓ Cache hit: test-react-lib (aa9cf6319fa4347dc488102eeb270bca56135344)
+Checking: yyz-agentics-june
+  ✓ Cache hit: textclassifier (ef4d8062d8edc88b70698d889ee692c92916be85)
+  ✓ Cache hit: ultrasonic (b6c1dfe50de68d76fa046d8049832c86e8990994)
+  ✓ Cache hit: tribe-knowledgegraph (fc6844dc0c705cde35c5a1f9bc5daf19452953c7)
+  ✓ Cache hit: vcbot (52bb2d49b92686ed7d43389e32b5ab9716b1fdab)
+  ✓ Cache hit: vibing (035c43f06009142af14cee1395a330c343853cf3)
+  ✓ Cache hit: voicebot (33832620c9fa9d26de2efd61af7c449bd13522a7)
+  ✓ Cache hit: vibecast (2fdbbc51198c143203304534ba0f15263a4dfc52)
+  ✓ Cache hit: vsc-remote-mcp (c80ebf76fe94613d71fa83a8f7fddb4ededd81f8)
+  ✓ Cache hit: wifi-densepose (16c50abca362d6be1002f027d22a8fd259a809c4)
+  ✓ Cache hit: yyz-agentics-june (1f1ec86361dd6b4782a642a24afd77de857ba4f7)
+All repository downloads complete!
+Cache stats:
+  - Git Repos: 159
+
+=== Finished at 2026-01-24T19:45:09+00:00 with exit code 0 ===

@@ -1,0 +1,318 @@
+=== Started at 2026-01-30T15:13:14+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_repos.sh --discover
+
+Fetching top 30 repositories from GitHub...
+Total repos fetched: 30
+Tier 1 (Active): 15 repos
+Tier 2 (Archive): 15 repos
+Cleaning up Tier 1...
+  🗑️  Removing outdated repo: aiscreenplay (No longer in Top 30)
+  🗑️  Removing outdated repo: anthropic-quickstarts (No longer in Top 30)
+  🗑️  Removing outdated repo: auto-browser (No longer in Top 30)
+  🗑️  Removing outdated repo: aws-dev (No longer in Top 30)
+  🗑️  Removing outdated repo: chatgpt-aws-price-list-plugin (No longer in Top 30)
+  🗑️  Removing outdated repo: chatgpt-openai-api-plugin (No longer in Top 30)
+  🗑️  Removing outdated repo: chatgpt_plugin_python (No longer in Top 30)
+  🗑️  Removing outdated repo: chatgpt_tatum_plugin (No longer in Top 30)
+  🗑️  Removing outdated repo: claude-test (No longer in Top 30)
+  🗑️  Removing outdated repo: codecraft (No longer in Top 30)
+  🗑️  Removing outdated repo: codespaces-jupyter (No longer in Top 30)
+  🗑️  Removing outdated repo: codex-one (No longer in Top 30)
+  🗑️  Removing outdated repo: coding-wingman (No longer in Top 30)
+  🗑️  Removing outdated repo: console-streamer (No longer in Top 30)
+  🗑️  Removing outdated repo: contextual-retrevial (No longer in Top 30)
+  🗑️  Removing outdated repo: dapp-list (No longer in Top 30)
+  🗑️  Removing outdated repo: deco (No longer in Top 30)
+  🗑️  Removing outdated repo: demo-proxy-app (No longer in Top 30)
+  🗑️  Removing outdated repo: dreamfactory (No longer in Top 30)
+  🗑️  Removing outdated repo: drupal (No longer in Top 30)
+  🗑️  Removing outdated repo: drupaljs (No longer in Top 30)
+  🗑️  Removing outdated repo: dynamo-mcp (No longer in Top 30)
+  🗑️  Removing outdated repo: electo1-js (No longer in Top 30)
+  🗑️  Removing outdated repo: federated-mcp (No longer in Top 30)
+  🗑️  Removing outdated repo: fireflies-webook (No longer in Top 30)
+  🗑️  Removing outdated repo: gpts (No longer in Top 30)
+  🗑️  Removing outdated repo: guardrail (No longer in Top 30)
+  🗑️  Removing outdated repo: hacker-league (No longer in Top 30)
+  🗑️  Removing outdated repo: hello_world_agent (No longer in Top 30)
+  🗑️  Removing outdated repo: hft (No longer in Top 30)
+  🗑️  Removing outdated repo: image-agent (No longer in Top 30)
+  🗑️  Removing outdated repo: infinity-ui (No longer in Top 30)
+  🗑️  Removing outdated repo: inflight (No longer in Top 30)
+  🗑️  Removing outdated repo: llamastack (No longer in Top 30)
+  🗑️  Removing outdated repo: local-logic (No longer in Top 30)
+  🗑️  Removing outdated repo: markov-chains (No longer in Top 30)
+  🗑️  Removing outdated repo: micro-agent (No longer in Top 30)
+  🗑️  Removing outdated repo: nova (No longer in Top 30)
+  🗑️  Removing outdated repo: omnipotent (No longer in Top 30)
+  🗑️  Removing outdated repo: onnx-agent (No longer in Top 30)
+  🗑️  Removing outdated repo: open-agentics (No longer in Top 30)
+  🗑️  Removing outdated repo: open-claude-code (No longer in Top 30)
+  🗑️  Removing outdated repo: open-space (No longer in Top 30)
+  🗑️  Removing outdated repo: openai-cost-estimator (No longer in Top 30)
+  🗑️  Removing outdated repo: openai_devops (No longer in Top 30)
+  🗑️  Removing outdated repo: p2pGPT (No longer in Top 30)
+  🗑️  Removing outdated repo: paris (No longer in Top 30)
+  🗑️  Removing outdated repo: phoenix (No longer in Top 30)
+  🗑️  Removing outdated repo: phone-agent (No longer in Top 30)
+  🗑️  Removing outdated repo: pipackager (No longer in Top 30)
+  🗑️  Removing outdated repo: powerprompt (No longer in Top 30)
+  🗑️  Removing outdated repo: promptlang (No longer in Top 30)
+  🗑️  Removing outdated repo: pygentic (No longer in Top 30)
+  🗑️  Removing outdated repo: q-space (No longer in Top 30)
+  🗑️  Removing outdated repo: q-star (No longer in Top 30)
+  🗑️  Removing outdated repo: quantum-magnetic-navigation (No longer in Top 30)
+  🗑️  Removing outdated repo: quantum_cryptocurrency (No longer in Top 30)
+  🗑️  Removing outdated repo: r-flow (No longer in Top 30)
+  🗑️  Removing outdated repo: rUv-Enterprise-AI-Guide (No longer in Top 30)
+  🗑️  Removing outdated repo: rUv-dev (No longer in Top 30)
+  🗑️  Removing outdated repo: reflective-engineer (No longer in Top 30)
+  🗑️  Removing outdated repo: retro-ai-ui (No longer in Top 30)
+  🗑️  Removing outdated repo: roomodes (No longer in Top 30)
+  🗑️  Removing outdated repo: runme (No longer in Top 30)
+  🗑️  Removing outdated repo: ruv-code (No longer in Top 30)
+  🗑️  Removing outdated repo: ruv-engineer (No longer in Top 30)
+  🗑️  Removing outdated repo: ruvbot (No longer in Top 30)
+  🗑️  Removing outdated repo: santa-ai-workshop (No longer in Top 30)
+  🗑️  Removing outdated repo: sparc (No longer in Top 30)
+  🗑️  Removing outdated repo: sparc-ide (No longer in Top 30)
+  🗑️  Removing outdated repo: strawberry-phi (No longer in Top 30)
+  🗑️  Removing outdated repo: streamlit-example (No longer in Top 30)
+  🗑️  Removing outdated repo: supa-ruv (No longer in Top 30)
+  🗑️  Removing outdated repo: supabase-authentication (No longer in Top 30)
+  🗑️  Removing outdated repo: swirl-search (No longer in Top 30)
+  🗑️  Removing outdated repo: symbolic-scribe (No longer in Top 30)
+  🗑️  Removing outdated repo: tariffic (No longer in Top 30)
+  🗑️  Removing outdated repo: test-react-lib (No longer in Top 30)
+  🗑️  Removing outdated repo: textclassifier (No longer in Top 30)
+  🗑️  Removing outdated repo: ultrasonic (No longer in Top 30)
+  🗑️  Removing outdated repo: vcbot (No longer in Top 30)
+  🗑️  Removing outdated repo: vibing (No longer in Top 30)
+  🗑️  Removing outdated repo: voicebot (No longer in Top 30)
+  🗑️  Removing outdated repo: vsc-remote-mcp (No longer in Top 30)
+Cleaning up Tier 2...
+
+Downloading Tier 1 (Active)...
+  [TIER-1] Updating: claude-flow
+error: Your local changes to the following files would be overwritten by merge:
+	.github/workflows/ci.yml
+	.github/workflows/verification-pipeline.yml
+	README.md
+	agents/architect.yaml
+	agents/coder.yaml
+	agents/reviewer.yaml
+	agents/security-architect.yaml
+	agents/tester.yaml
+	package-lock.json
+	package.json
+	v3/@claude-flow/cli/README.md
+	v3/@claude-flow/cli/agents/architect.yaml
+	v3/@claude-flow/cli/agents/coder.yaml
+	v3/@claude-flow/cli/agents/reviewer.yaml
+	v3/@claude-flow/cli/agents/security-architect.yaml
+	v3/@claude-flow/cli/agents/tester.yaml
+	v3/@claude-flow/cli/package.json
+	v3/@claude-flow/cli/src/commands/index.ts
+	v3/@claude-flow/cli/src/index.ts
+	v3/@claude-flow/cli/src/mcp-tools/memory-tools.ts
+	v3/package-lock.json
+Please commit your changes or stash them before you merge.
+error: The following untracked working tree files would be overwritten by merge:
+	scripts/install.sh
+Please move or remove them before you merge.
+Aborting
+    Warning: Update failed for claude-flow
+  [TIER-1] Updating: optimizer
+error: Your local changes to the following files would be overwritten by merge:
+	Cargo.lock
+	Cargo.toml
+	src/accel/cpu.rs
+	src/accel/simd.rs
+	src/algorithms/mincut.rs
+	src/algorithms/pagerank.rs
+	src/bench/advanced.rs
+	src/bench/mod.rs
+	src/core/mod.rs
+	src/core/process_scorer.rs
+	src/dashboard/mod.rs
+	src/dashboard/server.rs
+	src/launcher.rs
+	src/lib.rs
+	src/main.rs
+	src/monitor/dashboard.rs
+	src/monitor/mod.rs
+	src/monitor/realtime.rs
+	src/neural/mod.rs
+	src/tray/mod.rs
+	src/tray/settings.rs
+	src/tray_main.rs
+	src/windows/process.rs
+	src/windows/system.rs
+Please commit your changes or stash them before you merge.
+error: The following untracked working tree files would be overwritten by merge:
+	src/browser/mod.rs
+Please move or remove them before you merge.
+Aborting
+    Warning: Update failed for optimizer
+  [TIER-1] Updating: ruvector
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+    Warning: Update failed for ruvector
+  [TIER-1] Updating: midstream
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for midstream
+  [TIER-1] Updating: vibecast
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for vibecast
+  [TIER-1] Updating: agentic-flow
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for agentic-flow
+  [TIER-1] Updating: ruvnet
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for ruvnet
+  [TIER-1] Updating: marketing
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for marketing
+  [TIER-1] Updating: wifi-densepose
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for wifi-densepose
+  [TIER-1] Updating: QuDAG
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for QuDAG
+  [TIER-1] Updating: dspy.ts
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for dspy.ts
+  [TIER-1] Updating: tribe-knowledgegraph
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for tribe-knowledgegraph
+  [TIER-1] Updating: musicai
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for musicai
+  [TIER-1] Updating: agentic-robotics
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for agentic-robotics
+  [TIER-1] Updating: ruv.io
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> fix/lfs-budget
+
+    Warning: Update failed for ruv.io
+
+Downloading Tier 2 (Archive)...
+  [TIER-2] Cloning: agentic-security

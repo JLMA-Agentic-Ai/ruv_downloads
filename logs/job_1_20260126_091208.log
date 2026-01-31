@@ -1,0 +1,17 @@
+=== Started at 2026-01-26T09:12:08+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_npm_optimized.sh --discover
+
+Checking packages from: https://www.npmjs.com/~ruvnet
+Discovering packages from npm registry for user: ruvnet ...
+  Discovered 219 packages from npm registry
+  Total packages (merged): 219
+Checking: @agentic-robotics/cli
+Checking: @agentic-robotics/core
+Checking: @agentic-robotics/mcp
+Checking: @agentic-robotics/linux-x64-gnu
+Checking: @agentic-robotics/self-learning
+Checking: @agentics.org/agentic-mcp
+Checking: @agentics.org/sparc2
+Checking: @claude-flow/aidefence
+Checking: @claude-flow/browser
+Checking: @claude-flow/claims

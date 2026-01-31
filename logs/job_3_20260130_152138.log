@@ -1,0 +1,67 @@
+=== Started at 2026-01-30T15:21:38+00:00 ===
+Command: /workspaces/jlmaworkspace/base_projects/ruv_downloads/scripts/download_gists_optimized.sh --discover
+
+Checking gists from GitHub user: ruvnet
+Discovering gists from GitHub for user: ruvnet ...
+  Discovered 291 gists from GitHub
+  Total gists (merged): 291
+Checking Gist: Idea_Loop_(066594d482cd66a95e3f5bbee48aa1f4) (Date: 2025-08-21)
+Checking Gist: Security_Audit_Agent_Capability_Negotiation_and_Bi_(0521440d54c1a7b8ab8b89296de29f30) (Date: 2025-11-07)
+Checking Gist: Agentic_Flow_164__QUIC__Transform_the_internet_int_(02fe6aee1aa8def78fd2661d8a1fa67d) (Date: 2025-11-26)
+Checking Gist: This_setup_provides_a_complete_framework_for_deplo_(06b397b596a75fb5614215f3d4f78973) (Date: 2024-05-22)
+Checking Gist: Conformal_Prediction_(046874471068d330962e8955fcc098b9) (Date: 2025-11-26)
+Checking Gist: An_encrypted_prompt_injection_(01ed072e3399643746754117a30c4e8e) (Date: 2024-01-23)
+Checking Gist: Untitled_(0020d02e9ce85a773412f8bf518737a0) (Date: 2025-04-17)
+Checking Gist: Training_and_Deploying_Large_Reasoning_Models_LRMs_(08e4dbe579185a9df9162fca6d5ae7ff) (Date: 2025-11-04)
+Checking Gist: Building_the_Worlds_Best_MicroClimate_Model_A_Comp_(028ac08590d2a844baf85158685e6a14) (Date: 2025-10-14)
+Checking Gist: An_algorithmic_outline_to_implement_a_ReasoningBan_(0670d2070a4a75bb70949d7d55d26cd1) (Date: 2025-11-07)
+  ✓ Cache hit: 02fe6aee1aa8def78fd2661d8a1fa67d
+  ✓ Cache hit: 0521440d54c1a7b8ab8b89296de29f30
+  ✓ Cache hit: 046874471068d330962e8955fcc098b9
+  ✓ Cache hit: 066594d482cd66a95e3f5bbee48aa1f4
+  ✓ Cache hit: 06b397b596a75fb5614215f3d4f78973
+  ✓ Cache hit: 01ed072e3399643746754117a30c4e8e
+  ✓ Cache hit: 08e4dbe579185a9df9162fca6d5ae7ff
+  ✓ Cache hit: 0020d02e9ce85a773412f8bf518737a0
+  ✓ Cache hit: 0670d2070a4a75bb70949d7d55d26cd1
+  ✓ Cache hit: 028ac08590d2a844baf85158685e6a14
+Checking Gist: Sentient_Systems_A_Declarative_Approach_to_Cogniti_(091cbb5f3ae694f824053afda65d1918) (Date: 2024-05-07)
+Checking Gist: Teaching_Large_Language_Models_to_Reason_with_Rein_(08e99abaa3b34ba7f2948f6db4a52049) (Date: 2024-03-09)
+Checking Gist: Research_Swarm__Local_AI_Research_Agent_System_(08edfd463d1b946b2060ddbff86da8ad) (Date: 2025-11-26)
+Checking Gist: A_PyTorch_implementation_of_a_Mixture_of_Experts_M_(0928768dd1e4af8816e31dde0a0205d5) (Date: 2025-11-07)
+Checking Gist: Neural_Network_Creator_(0af724320ac9015a23cc25a7585a2fe5) (Date: 2023-12-01)
+Checking Gist: AgenticFlow_v2_Benchmarks_(0b331dbcab6b07d8f79440ccdfbd6756) (Date: 2025-12-03)
+Checking Gist: A_thought_experiment_exploring_the_very_nature_of__(0d6606a20e5b2e2ee533fb712dd68d42) (Date: 2024-06-16)
+Checking Gist: LionAGI_Jupyter_rUv_MoE_toolkit_(0976add69cdb8bca803df48b60098774) (Date: 2024-04-12)
+Checking Gist: Microsoft_Graph_openapijson_for_OpenAi_GPT_(0e9148ea25d019782fae5ddf5bf6636d) (Date: 2023-12-11)
+Checking Gist: Claude_Code__Claude_Flow_Self_learning_Hooks_(112519ceca0cf1c7159f4b3b3252e948) (Date: 2025-11-05)
+  ✓ Cache hit: 091cbb5f3ae694f824053afda65d1918
+  ✓ Cache hit: 08e99abaa3b34ba7f2948f6db4a52049
+  ✓ Cache hit: 08edfd463d1b946b2060ddbff86da8ad
+  ✓ Cache hit: 0b331dbcab6b07d8f79440ccdfbd6756
+  ✓ Cache hit: 0e9148ea25d019782fae5ddf5bf6636d
+  ✓ Cache hit: 0976add69cdb8bca803df48b60098774
+  ✓ Cache hit: 0d6606a20e5b2e2ee533fb712dd68d42
+  ✓ Cache hit: 112519ceca0cf1c7159f4b3b3252e948
+  ✓ Cache hit: 0af724320ac9015a23cc25a7585a2fe5
+  ✓ Cache hit: 0928768dd1e4af8816e31dde0a0205d5
+Checking Gist: 11cfb552fb85585a1dcc4a783f072527_(11cfb552fb85585a1dcc4a783f072527) (Date: 2025-11-07)
+Checking Gist: designer_(13647858bcfb63304e70) (Date: 2015-08-29)
+Checking Gist: Keeping_Your_Coding_Agents_on_Track_A_Complete_Gui_(153bd8fb88a174bd998ecc06781bdc56) (Date: 2025-10-23)
+Checking Gist: Hypergraph_Generator_using_OpenAI_GPT4_128k_contex_(18c4c6920e3b8a6a734d0ad09d907c3e) (Date: 2024-03-13)
+Checking Gist: Comprehensive_production_deployment_strategy_for_q_(17e6c936b98fdd1b7873fb2e9115f24f) (Date: 2025-11-15)
+Checking Gist: TikTok_recommendation_system_using_DSPy_(155e46b3e99db37ce3c448e3ada893dc) (Date: 2024-08-15)
+Checking Gist: Architectural_Comparison_Claude_Flow_V3_vs_Claude__(18dc8d060194017b989d1f8993919ee4) (Date: 2026-01-30)
+Checking Gist: Dark_Enlightenment_A_Gonzo_Chronicle_(19284dbb891c97bbf25b981ab8fc2cd2) (Date: 2025-08-25)
+Checking Gist: Gdel_Agent_for_Recursive_SelfImprovement_A_Compreh_(15c6ef556be49e173ab0ecd6d252a7b9) (Date: 2026-01-20)
+Checking Gist: This_repository_showcases_a_FastAPI_application_se_(1863854d9cb84b09531217bbc410270f) (Date: 2025-11-07)
+  ✓ Cache hit: 11cfb552fb85585a1dcc4a783f072527
+  ✓ Cache hit: 13647858bcfb63304e70
+  ✓ Cache hit: 153bd8fb88a174bd998ecc06781bdc56
+  ✓ Cache hit: 18c4c6920e3b8a6a734d0ad09d907c3e
+  ✓ Cache hit: 17e6c936b98fdd1b7873fb2e9115f24f
+  ✓ Cache hit: 19284dbb891c97bbf25b981ab8fc2cd2
+  ✓ Cache hit: 155e46b3e99db37ce3c448e3ada893dc
+  ✓ Cache hit: 15c6ef556be49e173ab0ecd6d252a7b9
+  ✓ Cache hit: 18dc8d060194017b989d1f8993919ee4
+  ✓ Cache hit: 1863854d9cb84b09531217bbc410270f
