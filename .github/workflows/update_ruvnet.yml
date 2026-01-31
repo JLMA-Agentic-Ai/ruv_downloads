@@ -99,7 +99,11 @@ jobs:
           git add .gitattributes
           
           # Explicitly add only metadata and docs to avoid touching artifacts/extracted (which is outside sparse-checkout)
-          git add docs artifacts/index.json artifacts/archives
+          git add docs artifacts/index.json
+          git add artifacts/archives/crates/.metadata
+          git add artifacts/archives/npm/.metadata
+          git add artifacts/archives/github/repos/.metadata
+          git add artifacts/archives/github/gists/.metadata
           
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
