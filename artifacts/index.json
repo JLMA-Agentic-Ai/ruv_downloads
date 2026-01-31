@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
-  "last_indexed": "2026-01-31T01:48:17+00:00",
-=======
-  "last_indexed": "2026-01-31T01:46:06+00:00",
->>>>>>> Stashed changes
+  "last_indexed": "2026-01-31T02:07:47+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -2595,11 +2591,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-<<<<<<< Updated upstream
-      "lastUpdated": "2026-01-31T01:48:07+00:00"
-=======
-      "lastUpdated": "2026-01-31T01:45:58+00:00"
->>>>>>> Stashed changes
+      "lastUpdated": "2026-01-31T02:07:37+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2687,11 +2679,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-<<<<<<< Updated upstream
-      "lastUpdated": "2026-01-31T01:48:07+00:00"
-=======
-      "lastUpdated": "2026-01-31T01:45:58+00:00"
->>>>>>> Stashed changes
+      "lastUpdated": "2026-01-31T02:07:37+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2875,7 +2863,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-01-31T01:48:10+00:00"
+      "lastUpdated": "2026-01-31T02:07:40+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3179,11 +3167,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-<<<<<<< Updated upstream
-      "lastUpdated": "2026-01-31T01:48:10+00:00"
-=======
-      "lastUpdated": "2026-01-31T01:46:03+00:00"
->>>>>>> Stashed changes
+      "lastUpdated": "2026-01-31T02:07:40+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
