@@ -1,0 +1,31 @@
+[Author]
+author = "rUv"
+version = "0.01"
+ 
+[CARE]
+description = "A framework for evaluating AI prompt responses."
+
+[Completeness]
+description = "Measures how fully an AI response covers the expected content."
+minimum_length = 100 # Minimum response length in characters to consider as complete.
+key_points_covered = ["point1", "point2", "point3"] # Key points that must be addressed in the response.
+
+[Accuracy]
+description = "Evaluates the correctness of information in the AI response."
+data_source_verification = true # Whether the response's information is verified against a trusted data source.
+error_tolerance_percentage = 5 # Acceptable percentage of inaccuracies in the response.
+
+[Relevance]
+description = "Assesses how relevant the AI response is to the prompt."
+topic_alignment_score_threshold = 0.8 # Minimum score (0-1) indicating alignment with the prompt's topic.
+irrelevant_content_percentage = 10 # Maximum percentage of the response that can be off-topic.
+
+[Efficiency]
+description = "Evaluates the response's efficiency in terms of computational resources and time."
+response_time_seconds = 5 # Maximum acceptable response time in seconds.
+computational_resource_usage = "low" # Expected level of computational resource usage (low, medium, high).
+
+[KPI]
+description = "Overall performance indicator for AI prompt responses."
+success_criteria = { completeness = "high", accuracy = "high", relevance = "high", efficiency = "medium" }
+# Defines the success criteria for each aspect of CARE to consider the prompt response as meeting the KPI.

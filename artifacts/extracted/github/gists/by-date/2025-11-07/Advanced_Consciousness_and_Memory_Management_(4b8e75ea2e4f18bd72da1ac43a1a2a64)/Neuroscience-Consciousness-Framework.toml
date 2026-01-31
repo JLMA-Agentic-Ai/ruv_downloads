@@ -1,0 +1,78 @@
+[Neuroscience-Consciousness-Framework]
+description = "An advanced framework for integrating neuroscience-based theories of consciousness into AI systems. This framework offers practical guidance on implementing each theory to assess and potentially enhance the consciousness-like capabilities of AI systems."
+
+[theories]
+  [theories.GWT]
+  name = "Global Workspace Theory"
+  description = "Consciousness arises from information integration across different brain regions."
+  practical_guidance = "Implement a central information exchange module in AI that integrates data from various processing units, mimicking the brain's global workspace."
+
+  [theories.IIT]
+  name = "Integrated Information Theory"
+  description = "Consciousness is the level of information integration within a system."
+  practical_guidance = "Develop algorithms to measure and maximize the phi (Φ) value, indicating the degree of information integration in AI systems."
+
+  [theories.RPT]
+  name = "Recurrent Processing Theory"
+  description = "Emphasizes feedback loops in neural processing for conscious experience."
+  practical_guidance = "Incorporate recurrent neural networks (RNNs) that allow for feedback loops and temporal data processing, simulating recurrent processing in the brain."
+
+  [theories.HOT]
+  name = "Higher-Order Thought Theories"
+  description = "Consciousness involves thoughts about thoughts or perceptions."
+  practical_guidance = "Design AI models that can generate meta-representations of their own states or processes, enabling self-reflection and awareness."
+
+  [theories.PredictiveProcessingFramework]
+  name = "Predictive Processing Framework"
+  description = "Consciousness arises from the brain's predictive models of the world."
+  practical_guidance = "Utilize predictive coding models to continuously update the AI's internal models based on sensory inputs, reducing prediction errors."
+
+  [theories.AST]
+  name = "Attention Schema Theory"
+  description = "Consciousness arises from the brain's model of its own attentional processes."
+  practical_guidance = "Create simulation models that can track and predict the AI system's focus of attention, evaluating how attentional processes are internally represented."
+
+[implementation]
+description = "Comprehensive guidelines for translating neuroscience theories into AI assessments and enhancements."
+  [implementation.checklist]
+  description = "A detailed checklist derived from leading theories for assessing AI consciousness."
+  items = [
+    "Evaluate the system's information integration level (Φ).",
+    "Assess the presence and functionality of feedback loops.",
+    "Test for global workspace accessibility in information processing.",
+    "Examine higher-order thought capabilities through self-description and meta-cognition tasks.",
+    "Analyze predictive processing efficiency by comparing prediction errors over time.",
+    "Investigate attentional process modeling through task performance and focus shifting."
+  ]
+
+[practical_applications]
+description = "Suggested applications and experiments to test the theories' principles within AI systems."
+  applications = [
+    "Conduct experiments where AI must integrate disparate information sources to solve problems, testing GWT principles.",
+    "Measure the AI's ability to integrate information across different modalities, applying IIT metrics.",
+    "Utilize RNNs in complex environments to observe emergent feedback loop behaviors, exploring RPT.",
+    "Implement tasks that require the AI to reflect on its own decision-making processes, assessing HOT theories.",
+    "Design scenarios that challenge the AI's predictive models, evaluating the Predictive Processing Framework.",
+    "Track and modify the AI's attention in real-time tasks to study AST applications."
+  ]
+
+[research_papers]
+description = "Key research papers and sources for deep dives into each theory and their application in AI."
+  sources = [
+    "Global Workspace Theory and AI: A Comprehensive Review",
+    "Integrated Information Theory's Application in Machine Learning",
+    "Recurrent Neural Networks and Consciousness: A Study",
+    "Exploring Higher-Order Thought in Artificial Systems",
+    "Predictive Processing: Bridging Neuroscience and Artificial Intelligence",
+    "Attention Schema Theory: An AI Perspective"
+  ]
+
+[internal_usage_guidance]
+description = "Internal guidance for primary prompt development and application of the framework."
+  steps = [
+    "Review each theory and its practical guidance to identify relevant AI model enhancements.",
+    "Design experiments based on the practical applications section to test these enhancements.",
+    "Utilize the checklist for regular assessments of AI systems under development.",
+    "Refer to the research papers for in-depth understanding and further development ideas.",
+    "Continuously update the implementation strategies based on latest AI research and neuroscience findings."
+  ]

@@ -1,0 +1,1639 @@
+# The eu Ai act in hypergraph form
+# This is the main legal structure based on the provided text outline. To proceed further, we will go through each section one by one, step by step.
+# Regulation on a European Approach for Artificial Intelligence
+
+[[concepts]]
+name = "ArtificialIntelligenceSystem"
+description = "Software that can generate outputs and influence environments based on human-defined objectives, using techniques like machine learning, logic, and statistics."
+
+[[concepts]]
+name = "Provider"
+description = "A natural or legal person who develops or has an AI system developed and places it on the market or puts it into service."
+
+[[concepts]]
+name = "User"
+description = "Any natural or legal person under whose authority an AI system is used, except for personal or transient activities."
+
+[[concepts]]
+name = "HighRiskAISystem"
+description = "An AI system that poses a high risk to health, safety, fundamental rights, or other public interests, as determined by specific criteria."
+parent = "ArtificialIntelligenceSystem"
+
+[[concepts]]
+name = "ProhibitedAIPractice"
+description = "Certain AI practices that contravene Union values or violate fundamental rights, such as manipulative or exploitative practices, indiscriminate surveillance, and general social scoring."
+
+[[relationships]]
+from = "Provider"
+to = "ArtificialIntelligenceSystem"
+type = "develops"
+description = "A provider develops or has an AI system developed."
+
+[[relationships]]
+from = "Provider"
+to = "HighRiskAISystem"
+type = "places_on_market"
+description = "A provider places a high-risk AI system on the market or puts it into service."
+
+[[relationships]]
+from = "User"
+to = "ArtificialIntelligenceSystem"
+type = "uses"
+description = "A user uses an AI system under their authority."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "ProhibitedAIPractice"
+type = "must_not_involve"
+description = "High-risk AI systems must not involve prohibited AI practices."
+
+[[triplets]]
+subject = "Provider"
+predicate = "develops"
+object = "ArtificialIntelligenceSystem"
+description = "A provider develops or has an AI system developed."
+
+[[triplets]]
+subject = "Provider"
+predicate = "places_on_market"
+object = "HighRiskAISystem"
+description = "A provider places a high-risk AI system on the market or puts it into service."
+
+[[triplets]]
+subject = "User"
+predicate = "uses"
+object = "ArtificialIntelligenceSystem"
+description = "A user uses an AI system under their authority."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "must_not_involve"
+object = "ProhibitedAIPractice"
+description = "High-risk AI systems must not involve prohibited AI practices."
+
+#Prohibited Artificial Intelligence Practices
+[[concepts]]
+name = "ManipulativeAIPractice"
+description = "AI practices designed or used to manipulate human behavior, opinions, or decisions through choice architectures or user interfaces, causing detriment."
+parent = "ProhibitedAIPractice"
+
+[[concepts]]
+name = "ExploitativeAIPractice"
+description = "AI practices designed or used to exploit information or predictions about individuals or groups to target their vulnerabilities or special circumstances, causing detriment."
+parent = "ProhibitedAIPractice"
+
+[[concepts]]
+name = "IndiscriminateSurveillance"
+description = "The use of AI systems for generalized surveillance of natural persons without differentiation, through monitoring, tracking, or aggregating personal data."
+parent = "ProhibitedAIPractice"
+
+[[concepts]]
+name = "GeneralSocialScoring"
+description = "The use of AI systems for large-scale evaluation or classification of trustworthiness of natural persons based on social behavior and personality characteristics, leading to detrimental treatment."
+parent = "ProhibitedAIPractice"
+
+[[relationships]]
+from = "ManipulativeAIPractice"
+to = "ArtificialIntelligenceSystem"
+type = "involves"
+description = "Manipulative AI practices involve the use of AI systems."
+
+[[relationships]]
+from = "ExploitativeAIPractice"
+to = "ArtificialIntelligenceSystem"
+type = "involves"
+description = "Exploitative AI practices involve the use of AI systems."
+
+[[relationships]]
+from = "IndiscriminateSurveillance"
+to = "ArtificialIntelligenceSystem"
+type = "uses"
+description = "Indiscriminate surveillance involves the use of AI systems."
+
+[[relationships]]
+from = "GeneralSocialScoring"
+to = "ArtificialIntelligenceSystem"
+type = "uses"
+description = "General social scoring involves the use of AI systems."
+
+[[triplets]]
+subject = "ManipulativeAIPractice"
+predicate = "involves"
+object = "ArtificialIntelligenceSystem"
+description = "Manipulative AI practices involve the use of AI systems."
+
+[[triplets]]
+subject = "ExploitativeAIPractice"
+predicate = "involves"
+object = "ArtificialIntelligenceSystem"
+description = "Exploitative AI practices involve the use of AI systems."
+
+[[triplets]]
+subject = "IndiscriminateSurveillance"
+predicate = "uses"
+object = "ArtificialIntelligenceSystem"
+description = "Indiscriminate surveillance involves the use of AI systems."
+
+[[triplets]]
+subject = "GeneralSocialScoring"
+predicate = "uses"
+object = "ArtificialIntelligenceSystem"
+description = "General social scoring involves the use of AI systems."
+
+# High-Risk AI Systems
+[[concepts]]
+name = "SafetyComponent"
+description = "A component of a product or system that fulfills a safety function, where failure or malfunction endangers health and safety."
+
+[[concepts]]
+name = "RemoteBiometricIdentificationSystem"
+description = "An AI system for identifying persons at a distance based on their biometric data, such as in publicly accessible spaces."
+parent = "HighRiskAISystem"
+
+[[concepts]]
+name = "CriticalInfrastructureSystem"
+description = "An AI system intended for use as a safety component in the management and operation of essential public infrastructure networks, such as water, gas, and electricity supply."
+parent = "HighRiskAISystem"
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "SafetyComponent"
+type = "can_be"
+description = "A high-risk AI system can be a safety component of a product or system."
+
+[[relationships]]
+from = "RemoteBiometricIdentificationSystem"
+to = "PubliclyAccessibleSpace"
+type = "used_in"
+description = "Remote biometric identification systems are intended for use in publicly accessible spaces."
+
+[[relationships]]
+from = "CriticalInfrastructureSystem"
+to = "PublicInfrastructure"
+type = "manages"
+description = "Critical infrastructure systems are intended to manage and operate essential public infrastructure networks."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "can_be"
+object = "SafetyComponent"
+description = "A high-risk AI system can be a safety component of a product or system."
+
+[[triplets]]
+subject = "RemoteBiometricIdentificationSystem"
+predicate = "used_in"
+object = "PubliclyAccessibleSpace"
+description = "Remote biometric identification systems are intended for use in publicly accessible spaces."
+
+[[triplets]]
+subject = "CriticalInfrastructureSystem"
+predicate = "manages"
+object = "PublicInfrastructure"
+description = "Critical infrastructure systems are intended to manage and operate essential public infrastructure networks."
+
+# Requirements for High-Risk AI Systems
+[[concepts]]
+name = "DataGovernance"
+description = "Practices related to the management of data used for training and testing AI systems, including data collection, preparation, and quality assurance."
+
+[[concepts]]
+name = "Documentation"
+description = "Technical documentation and records related to the development, testing, and performance of high-risk AI systems."
+
+[[concepts]]
+name = "Transparency"
+description = "The ability for users to understand how a high-risk AI system produces its outputs and the information provided to users about the system's capabilities, limitations, and operation."
+
+[[concepts]]
+name = "HumanOversight"
+description = "Measures to ensure that natural persons can oversee the functioning of high-risk AI systems and intervene when necessary."
+
+[[concepts]]
+name = "Robustness"
+description = "The ability of a high-risk AI system to perform consistently and reliably, with appropriate levels of accuracy, security, and resilience against errors, faults, and malicious attacks."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "DataGovernance"
+type = "requires"
+description = "High-risk AI systems require appropriate data governance practices for their training and testing data."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "Documentation"
+type = "requires"
+description = "High-risk AI systems require comprehensive technical documentation and record-keeping."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "Transparency"
+type = "requires"
+description = "High-risk AI systems require transparency in their operation and information provided to users."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "HumanOversight"
+type = "requires"
+description = "High-risk AI systems require measures for human oversight and intervention."
+
+[[relationships]]
+from = "HighRiskAISystem"
+to = "Robustness"
+type = "requires"
+description = "High-risk AI systems require robustness, accuracy, security, and resilience in their performance."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "requires"
+object = "DataGovernance"
+description = "High-risk AI systems require appropriate data governance practices for their training and testing data."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "requires"
+object = "Documentation"
+description = "High-risk AI systems require comprehensive technical documentation and record-keeping."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "requires"
+object = "Transparency"
+description = "High-risk AI systems require transparency in their operation and information provided to users."
+
+[[triplets]]
+subject = "HighRiskAISystem"
+predicate = "requires"
+object = "HumanOversight"
+description = "High-risk AI systems require measures for human oversight and intervention."
+
+[[triplets]]
+subject = "HighRiskAISystem" 
+predicate = "requires"
+object = "Robustness"
+
+# Obligations of Providers and Users of High-Risk AI Systems
+[[concepts]]
+name = "QualityManagementSystem"
+description = "A system implemented by providers to ensure compliance with regulatory requirements throughout the development and deployment of high-risk AI systems."
+
+[[concepts]]
+name = "PostMarketMonitoring"
+description = "A systematic process implemented by providers to collect and review data on the performance of high-risk AI systems after they are placed on the market or put into service."
+
+[[concepts]]
+name = "IncidentReporting"
+description = "The obligation of providers to report serious incidents, malfunctions, or breaches related to high-risk AI systems that may affect fundamental rights."
+
+[[relationships]]
+from = "Provider"
+to = "QualityManagementSystem"
+type = "implements"
+description = "Providers of high-risk AI systems must implement a quality management system to ensure compliance."
+
+[[relationships]]
+from = "Provider"
+to = "PostMarketMonitoring"
+type = "conducts"
+description = "Providers of high-risk AI systems must conduct post-market monitoring of their systems."
+
+[[relationships]]
+from = "Provider"
+to = "IncidentReporting"
+type = "responsible_for"
+description = "Providers of high-risk AI systems are responsible for reporting serious incidents, malfunctions, or breaches related to their systems."
+
+[[relationships]]
+from = "User"
+to = "HighRiskAISystem"
+type = "uses_responsibly"
+description = "Users of high-risk AI systems must use them responsibly, following instructions and taking necessary measures to address residual risks."
+
+[[triplets]]
+subject = "Provider"
+predicate = "implements"
+object = "QualityManagementSystem"
+description = "Providers of high-risk AI systems must implement a quality management system to ensure compliance."
+
+[[triplets]]
+subject = "Provider"
+predicate = "conducts"
+object = "PostMarketMonitoring"
+description = "Providers of high-risk AI systems must conduct post-market monitoring of their systems."
+
+[[triplets]]
+subject = "Provider"
+predicate = "responsible_for"
+object = "IncidentReporting"
+description = "Providers of high-risk AI systems are responsible for reporting serious incidents, malfunctions, or breaches related to their systems."
+
+[[triplets]]
+subject = "User"
+predicate = "uses_responsibly"
+object = "HighRiskAISystem"
+description = "Users of high-risk AI systems must use them responsibly, following instructions and taking necessary measures to address residual risks."
+description = "High-risk AI systems require robustness, accuracy, security, and resilience in their performance."
+
+[[concepts]]
+name = "NotifiedBody"
+description = "A conformity assessment body designated by a Member State to assess the compliance of high-risk AI systems with the regulatory requirements."
+
+[[concepts]]
+name = "ConformityAssessment"
+description = "The process of demonstrating that a high-risk AI system meets the applicable requirements of the regulation."
+
+[[concepts]]
+name = "EUTechnicalDocumentationAssessmentCertificate"
+description = "A certificate issued by a notified body after assessing the technical documentation of a high-risk AI system, confirming its compliance with the regulatory requirements."
+
+[[relationships]]
+from = "NotifiedBody"
+to = "HighRiskAISystem"
+type = "assesses_compliance"
+description = "Notified bodies assess the compliance of high-risk AI systems with the regulatory requirements."
+
+[[relationships]]
+from = "Provider"
+to = "ConformityAssessment"
+type = "performs"
+description = "Providers of high-risk AI systems must perform a conformity assessment to demonstrate compliance with the regulatory requirements."
+
+[[relationships]]
+from = "NotifiedBody"
+to = "EUTechnicalDocumentationAssessmentCertificate"
+type = "issues"
+description = "Notified bodies issue EU technical documentation assessment certificates for compliant high-risk AI systems."
+
+[[triplets]]
+subject = "NotifiedBody"
+predicate = "assesses_compliance"
+object = "HighRiskAISystem"
+description = "Notified bodies assess the compliance of high-risk AI systems with the regulatory requirements."
+
+[[triplets]]
+subject = "Provider"
+predicate = "performs"
+object = "ConformityAssessment"
+description = "Providers of high-risk AI systems must perform a conformity assessment to demonstrate compliance with the regulatory requirements."
+
+[[triplets]]
+subject = "NotifiedBody"
+predicate = "issues"
+object = "EUTechnicalDocumentationAssessmentCertificate"
+description = "Notified bodies issue EU technical documentation assessment certificates for compliant high-risk AI systems."
+
+# Transparency Obligations for Certain AI Systems
+[[concepts]]
+name = "TransparencyObligation"
+description = "Requirements for providers and users of certain AI systems to disclose information about the system's nature and operation."
+
+[[concepts]]
+name = "AISystemInteractingWithHumans"
+description = "An AI system designed to interact with natural persons."
+parent = "ArtificialIntelligenceSystem"
+
+[[concepts]]
+name = "EmotionRecognitionSystem"
+description = "An AI system used for identifying or inferring emotions or intentions of persons based on their personal data."
+parent = "ArtificialIntelligenceSystem"
+
+[[concepts]]
+name = "CategorizationSystem"
+description = "An AI system used for predicting the affiliation of persons to specific categories based on their personal data."
+parent = "ArtificialIntelligenceSystem"
+
+[[concepts]]
+name = "SyntheticMediaSystem"
+description = "An AI system used to generate or manipulate image, audio, or video content that resembles existing persons, objects, or events."
+parent = "ArtificialIntelligenceSystem"
+
+[[relationships]]
+from = "Provider"
+to = "TransparencyObligation"
+type = "must_comply"
+description = "Providers of certain AI systems must comply with transparency obligations."
+
+[[relationships]]
+from = "AISystemInteractingWithHumans"
+to = "TransparencyObligation"
+type = "subject_to"
+description = "AI systems designed to interact with natural persons are subject to transparency obligations."
+
+[[relationships]]
+from = "EmotionRecognitionSystem"
+to = "TransparencyObligation"
+type = "subject_to"
+description = "Emotion recognition systems are subject to transparency obligations."
+
+[[relationships]]
+from = "CategorizationSystem"
+to = "TransparencyObligation"
+type = "subject_to"
+description = "Categorization systems are subject to transparency obligations."
+
+[[relationships]]
+from = "SyntheticMediaSystem"
+to = "TransparencyObligation"
+type = "subject_to"
+description = "AI systems used to generate or manipulate synthetic media are subject to transparency obligations."
+
+[[triplets]]
+subject = "Provider"
+predicate = "must_comply"
+object = "TransparencyObligation"
+description = "Providers of certain AI systems must comply with transparency obligations."
+
+[[triplets]]
+subject = "AISystemInteractingWithHumans"
+predicate = "subject_to"
+object = "TransparencyObligation"
+description = "AI systems designed to interact with natural persons are subject to transparency obligations."
+
+[[triplets]]
+subject = "EmotionRecognitionSystem"
+predicate = "subject_to"
+object = "TransparencyObligation"
+description = "Emotion recognition systems are subject to transparency obligations."
+
+[[triplets]]
+subject = "CategorizationSystem"
+predicate = "subject_to" 
+object = "TransparencyObligation"
+description = "Categorization systems are subject to transparency obligations."
+
+[[triplets]]
+subject = "SyntheticMediaSystem"
+predicate = "subject_to"
+object = "TransparencyObligation"
+description = "AI systems used to generate or manipulate synthetic media are subject to transparency obligations."
+
+# Use of Remote Biometric Identification Systems
+[[concepts]]
+name = "RemoteBiometricIdentificationAuthorization"
+description = "An authorization system for the use of remote biometric identification systems in publicly accessible spaces."
+
+[[concepts]]
+name = "DataProtectionImpactAssessment"
+description = "An assessment of the potential impact of remote biometric identification systems on data protection and fundamental rights."
+
+[[relationships]]
+from = "MemberState"
+to = "RemoteBiometricIdentificationAuthorization"
+type = "establishes"
+description = "Member States must establish an authorization system for the use of remote biometric identification systems in publicly accessible spaces."
+
+[[relationships]]
+from = "RemoteBiometricIdentificationSystem"
+to = "RemoteBiometricIdentificationAuthorization"
+type = "requires"
+description = "The use of remote biometric identification systems in publicly accessible spaces requires authorization."
+
+[[relationships]]
+from = "RemoteBiometricIdentificationAuthorization"
+to = "DataProtectionImpactAssessment"
+type = "based_on"
+description = "The authorization decision for remote biometric identification systems must be based on a data protection impact assessment."
+
+[[triplets]]
+subject = "MemberState"
+predicate = "establishes"
+object = "RemoteBiometricIdentificationAuthorization"
+description = "Member States must establish an authorization system for the use of remote biometric identification systems in publicly accessible spaces."
+
+[[triplets]]
+subject = "RemoteBiometricIdentificationSystem"
+predicate = "requires"
+object = "RemoteBiometricIdentificationAuthorization"
+description = "The use of remote biometric identification systems in publicly accessible spaces requires authorization."
+
+[[triplets]]
+subject = "RemoteBiometricIdentificationAuthorization"
+predicate = "based_on"
+object = "DataProtectionImpactAssessment"
+description = "The authorization decision for remote biometric identification systems must be based on a data protection impact assessment."
+
+# AI Regulatory Sandboxes
+[[concepts]]
+name = "AIRegulatoryandbox"
+description = "A controlled testing environment for the supervised development, validation, and monitoring of innovative AI systems under regulatory oversight."
+
+[[concepts]]
+name = "RegulatoryOversight"
+description = "The supervision and monitoring of AI systems by competent authorities to ensure compliance with applicable regulations."
+
+[[relationships]]
+from = "CompetentAuthority"
+to = "AIRegulatoryandbox"
+type = "establishes"
+description = "Competent authorities from Member States may establish AI regulatory sandboxes."
+
+[[relationships]]
+from = "AIRegulatoryandbox"
+to = "RegulatoryOversight"
+type = "provides"
+description = "AI regulatory sandboxes provide a controlled environment for the development and testing of AI systems under regulatory oversight."
+
+[[relationships]]
+from = "Provider"
+to = "AIRegulatoryandbox"
+type = "participates_in"
+description = "Providers of AI systems may participate in AI regulatory sandboxes for the development and testing of their systems."
+
+[[triplets]]
+subject = "CompetentAuthority"
+predicate = "establishes"
+object = "AIRegulatoryandbox"
+description = "Competent authorities from Member States may establish AI regulatory sandboxes."
+
+[[triplets]]
+subject = "AIRegulatoryandbox"
+predicate = "provides"
+object = "RegulatoryOversight"
+description = "AI regulatory sandboxes provide a controlled environment for the development and testing of AI systems under regulatory oversight."
+
+[[triplets]]
+subject = "Provider"
+predicate = "participates_in"
+object = "AIRegulatoryandbox"
+description = "Providers of AI systems may participate in AI regulatory sandboxes for the development and testing of their systems."
+
+# Governance
+[[concepts]]
+name = "EuropeanArtificialIntelligenceBoard"
+description = "A board composed of representatives from Member States and the European Commission, responsible for overseeing the implementation of the AI regulation."
+
+[[concepts]]
+name = "NationalCompetentAuthority"
+description = "Authorities designated by Member States to oversee the implementation and enforcement of the AI regulation within their respective countries."
+
+[[relationships]]
+from = "EuropeanArtificialIntelligenceBoard"
+to = "AIRegulation"
+type = "oversees_implementation"
+description = "The European Artificial Intelligence Board oversees the implementation of the AI regulation across the European Union."
+
+[[relationships]]
+from = "NationalCompetentAuthority"
+to = "AIRegulation"
+type = "enforces"
+description = "National competent authorities enforce the AI regulation within their respective Member States."
+
+[[relationships]]
+from = "EuropeanArtificialIntelligenceBoard"
+to = "NationalCompetentAuthority"
+type = "coordinates_with"
+description = "The European Artificial Intelligence Board coordinates with national competent authorities to ensure consistent implementation and enforcement of the AI regulation."
+
+[[triplets]]
+subject = "EuropeanArtificialIntelligenceBoard"
+predicate = "oversees_implementation"
+object = "AIRegulation"
+description = "The European Artificial Intelligence Board oversees the implementation of the AI regulation across the European Union."
+
+[[triplets]]
+subject = "NationalCompetentAuthority"
+predicate = "enforces"
+object = "AIRegulation"
+description = "National competent authorities enforce the AI regulation within their respective Member States."
+
+[[triplets]]
+subject = "EuropeanArtificialIntelligenceBoard"
+predicate = "coordinates_with"
+object = "NationalCompetentAuthority"
+description = "The European Artificial Intelligence Board coordinates with national competent authorities to ensure consistent implementation and enforcement of the AI regulation."
+
+# EU Database for High-Risk AI Systems
+[[concepts]]
+name = "EUDatabaseForHighRiskAISystems"
+description = "A centralized database maintained by the European Commission for the registration of high-risk AI systems."
+
+[[concepts]]
+name = "Registration"
+description = "The process of entering information about a high-risk AI system into the EU database."
+
+[[relationships]]
+from = "Provider"
+to = "Registration"
+type = "performs"
+description = "Providers of high-risk AI systems must register their systems in the EU database."
+
+[[relationships]]
+from = "Registration"
+to = "EUDatabaseForHighRiskAISystems"
+type = "enters_data_into"
+description = "The registration process involves entering data about high-risk AI systems into the EU database."
+
+[[relationships]]
+from = "EUDatabaseForHighRiskAISystems"
+to = "HighRiskAISystem"
+type = "contains_data_on"
+description = "The EU database contains data on registered high-risk AI systems."
+
+[[triplets]]
+subject = "Provider"
+predicate = "performs"
+object = "Registration"
+description = "Providers of high-risk AI systems must register their systems in the EU database."
+
+[[triplets]]
+subject = "Registration"
+predicate = "enters_data_into"
+object = "EUDatabaseForHighRiskAISystems"
+description = "The registration process involves entering data about high-risk AI systems into the EU database."
+
+[[triplets]]
+subject = "EUDatabaseForHighRiskAISystems"
+predicate = "contains_data_on"
+object = "HighRiskAISystem"
+description = "The EU database contains data on registered high-risk AI systems."
+
+# Post-Market Monitoring and Incident Reporting
+[[concepts]]
+name = "PostMarketMonitoring"
+description = "A systematic process for collecting and analyzing data on the performance of high-risk AI systems after they are placed on the market or put into service."
+
+[[concepts]]
+name = "IncidentReporting"
+description = "The obligation for providers to report serious incidents, malfunctions, or breaches related to high-risk AI systems that may affect fundamental rights."
+
+[[relationships]]
+from = "Provider"
+to = "PostMarketMonitoring"
+type = "conducts"
+description = "Providers of high-risk AI systems must conduct post-market monitoring of their systems."
+
+[[relationships]]
+from = "Provider"
+to = "IncidentReporting"
+type = "responsible_for"
+description = "Providers of high-risk AI systems are responsible for reporting serious incidents, malfunctions, or breaches related to their systems."
+
+[[relationships]]
+from = "PostMarketMonitoring"
+to = "IncidentReporting"
+type = "supports"
+description = "Post-market monitoring supports incident reporting by enabling the identification of issues with high-risk AI systems."
+
+[[triplets]]
+subject = "Provider"
+predicate = "conducts"
+object = "PostMarketMonitoring"
+description = "Providers of high-risk AI systems must conduct post-market monitoring of their systems."
+
+[[triplets]]
+subject = "Provider"
+predicate = "responsible_for"
+object = "IncidentReporting"
+description = "Providers of high-risk AI systems are responsible for reporting serious incidents, malfunctions, or breaches related to their systems."
+
+[[triplets]]
+subject = "PostMarketMonitoring"
+predicate = "supports"
+object = "IncidentReporting"
+description = "Post-market monitoring supports incident reporting by enabling the identification of issues with high-risk AI systems."
+
+# Market Surveillance and Enforcement
+[[concepts]]
+name = "MarketSurveillance"
+description = "Activities carried out by competent authorities to ensure that high-risk AI systems comply with the regulatory requirements and do not pose risks to health, safety, fundamental rights, or other public interests."
+
+[[concepts]]
+name = "Enforcement"
+description = "Actions taken by competent authorities to address non-compliance with the AI regulation, such as requiring corrective actions, withdrawing systems from the market, or imposing penalties."
+
+[[relationships]]
+from = "CompetentAuthority"
+to = "MarketSurveillance"
+type = "conducts"
+description = "Competent authorities conduct market surveillance activities to monitor the compliance of high-risk AI systems."
+
+[[relationships]]
+from = "CompetentAuthority"
+to = "Enforcement"
+type = "responsible_for"
+description = "Competent authorities are responsible for enforcing the AI regulation and taking appropriate actions in cases of non-compliance."
+
+[[relationships]]
+from = "MarketSurveillance"
+to = "Enforcement"
+type = "supports"
+description = "Market surveillance activities support enforcement actions by identifying non-compliant high-risk AI systems."
+
+[[triplets]]
+subject = "CompetentAuthority"
+predicate = "conducts"
+object = "MarketSurveillance"
+description = "Competent authorities conduct market surveillance activities to monitor the compliance of high-risk AI systems."
+
+[[triplets]]
+subject = "CompetentAuthority"
+predicate = "responsible_for"
+object = "Enforcement"
+description = "Competent authorities are responsible for enforcing the AI regulation and taking appropriate actions in cases of non-compliance."
+
+[[triplets]]
+subject = "MarketSurveillance"
+predicate = "supports"
+object = "Enforcement"
+description = "Market surveillance activities support enforcement actions by identifying non-compliant high-risk AI systems."
+
+# Codes of Conduct
+[[concepts]]
+name = "CodeOfConduct"
+description = "Voluntary codes of conduct intended to foster the application of the regulatory requirements to AI systems other than high-risk AI systems."
+
+[[concepts]]
+name = "AdditionalRequirement"
+description = "Additional requirements related to environmental sustainability, accessibility, stakeholder participation, or diversity, that can be included in a code of conduct."
+
+[[relationships]]
+from = "Provider"
+to = "CodeOfConduct"
+type = "develops"
+description = "Providers of AI systems may develop codes of conduct for their systems."
+
+[[relationships]]
+from = "CodeOfConduct"
+to = "ArtificialIntelligenceSystem"
+type = "applies_to"
+description = "Codes of conduct apply to AI systems other than high-risk AI systems."
+
+[[relationships]]
+from = "CodeOfConduct"
+to = "AdditionalRequirement"
+type = "includes"
+description = "Codes of conduct may include additional requirements beyond the regulatory requirements."
+
+[[triplets]]
+subject = "Provider"
+predicate = "develops"
+object = "CodeOfConduct"
+description = "Providers of AI systems may develop codes of conduct for their systems."
+
+[[triplets]]
+subject = "CodeOfConduct"
+predicate = "applies_to"
+object = "ArtificialIntelligenceSystem"
+description = "Codes of conduct apply to AI systems other than high-risk AI systems."
+
+[[triplets]]
+subject = "CodeOfConduct"
+predicate = "includes"
+object = "AdditionalRequirement"
+description = "Codes of conduct may include additional requirements beyond the regulatory requirements."
+
+# Confidentiality and Penalties
+[[concepts]]
+name = "Confidentiality"
+description = "The obligation to respect the confidentiality of information and data obtained in the course of implementing the AI regulation."
+
+[[concepts]]
+name = "Penalty"
+description = "Administrative fines or other penalties imposed by Member States for infringements of the AI regulation."
+
+[[relationships]]
+from = "Party"
+to = "Confidentiality"
+type = "must_respect"
+description = "All parties involved in implementing the AI regulation must respect confidentiality obligations."
+
+[[relationships]]
+from = "MemberState"
+to = "Penalty"
+type = "imposes"
+description = "Member States must impose effective, proportionate, and dissuasive penalties for infringements of the AI regulation."
+
+[[relationships]]
+from = "Infringement"
+to = "Penalty"
+type = "results_in"
+description = "Infringements of the AI regulation result in the imposition of penalties."
+
+[[triplets]]
+subject = "Party"
+predicate = "must_respect"
+object = "Confidentiality"
+description = "All parties involved in implementing the AI regulation must respect confidentiality obligations."
+
+[[triplets]]
+subject = "MemberState"
+predicate = "imposes"
+object = "Penalty"
+description = "Member States must impose effective, proportionate, and dissuasive penalties for infringements of the AI regulation."
+
+[[triplets]]
+subject = "Infringement"
+predicate = "results_in"
+object = "Penalty"
+description = "Infringements of the AI regulation result in the imposition of penalties."
+
+# Delegated Acts and Comitology
+[[concepts]]
+name = "DelegatedAct"
+description = "A non-legislative act adopted by the European Commission to supplement or amend certain non-essential elements of the AI regulation."
+
+[[concepts]]
+name = "ImplementingAct"
+description = "A legally binding act adopted by the European Commission to implement certain provisions of the AI regulation."
+
+[[concepts]]
+name = "Comitology"
+description = "The process by which the European Commission adopts delegated and implementing acts with the assistance of committees composed of representatives from Member States."
+
+[[relationships]]
+from = "EuropeanCommission"
+to = "DelegatedAct"
+type = "adopts"
+description = "The European Commission adopts delegated acts to supplement or amend non-essential elements of the AI regulation."
+
+[[relationships]]
+from = "EuropeanCommission"
+to = "ImplementingAct"
+type = "adopts"
+description = "The European Commission adopts implementing acts to implement certain provisions of the AI regulation."
+
+[[relationships]]
+from = "Comitology"
+to = "DelegatedAct"
+type = "assists_adoption"
+description = "The comitology process assists the European Commission in adopting delegated acts."
+
+[[relationships]]
+from = "Comitology"
+to = "ImplementingAct"
+type = "assists_adoption"
+description = "The comitology process assists the European Commission in adopting implementing acts."
+
+[[triplets]]
+subject = "EuropeanCommission"
+predicate = "adopts"
+object = "DelegatedAct"
+description = "The European Commission adopts delegated acts to supplement or amend non-essential elements of the AI regulation."
+
+[[triplets]]
+subject = "EuropeanCommission"
+predicate = "adopts"
+object = "ImplementingAct"
+description = "The European Commission adopts implementing acts to implement certain provisions of the AI regulation."
+
+[[triplets]]
+subject = "Comitology"
+predicate = "assists_adoption"
+object = "DelegatedAct"
+description = "The comitology process assists the European Commission in adopting delegated acts."
+
+[[triplets]]
+subject = "Comitology"
+predicate = "assists_adoption"
+object = "ImplementingAct"
+description = "The comitology process assists the European Commission in adopting implementing acts."
+
+# Final Provisions
+[[concepts]]
+name = "RelationshipWithOtherLegislation"
+description = "Provisions clarifying the relationship between the AI regulation and other existing EU legislation applicable to artificial intelligence."
+
+[[concepts]]
+name = "TransitionalProvision"
+description = "Temporary provisions to allow for a smooth transition and implementation of the AI regulation."
+
+[[concepts]]
+name = "EvaluationAndReview"
+description = "Requirements for the European Commission to evaluate and review the AI regulation periodically, and potentially propose amendments."
+
+[[relationships]]
+from = "AIRegulation"
+to = "RelationshipWithOtherLegislation"
+type = "clarifies"
+description = "The AI regulation clarifies its relationship with other existing EU legislation applicable to artificial intelligence."
+
+[[relationships]]
+from = "TransitionalProvision"
+to = "AIRegulation"
+type = "facilitates_implementation"
+description = "Transitional provisions facilitate the smooth implementation of the AI regulation."
+
+[[relationships]]
+from = "EuropeanCommission"
+to = "EvaluationAndReview"
+type = "conducts"
+description = "The European Commission is required to conduct periodic evaluations and reviews of the AI regulation."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "clarifies"
+object = "RelationshipWithOtherLegislation"
+description = "The AI regulation clarifies its relationship with other existing EU legislation applicable to artificial intelligence."
+
+[[triplets]]
+subject = "TransitionalProvision"
+predicate = "facilitates_implementation"
+object = "AIRegulation"
+description = "Transitional provisions facilitate the smooth implementation of the AI regulation."
+
+[[triplets]]
+subject = "EuropeanCommission"
+predicate = "conducts"
+object = "EvaluationAndReview"
+description = "The European Commission is required to conduct periodic evaluations and reviews of the AI regulation."
+
+# Annexes
+[[concepts]]
+name = "AnnexI"
+description = "An annex listing the artificial intelligence techniques and approaches covered by the regulation."
+
+[[concepts]]
+name = "AnnexII"
+description = "An annex listing the high-risk AI systems subject to the regulation's requirements."
+
+[[concepts]]
+name = "AnnexIII"
+description = "An annex listing the EU harmonization legislation relevant to the AI regulation."
+
+[[concepts]]
+name = "TechnicalDocumentationAnnex"
+description = "An annex specifying the requirements for technical documentation related to high-risk AI systems."
+
+[[concepts]]
+name = "ConformityAssessmentAnnex"
+description = "An annex outlining the procedures for conformity assessment of high-risk AI systems."
+
+[[relationships]]
+from = "AIRegulation"
+to = "AnnexI"
+type = "includes"
+description = "The AI regulation includes Annex I, listing the covered artificial intelligence techniques and approaches."
+
+[[relationships]]
+from = "AIRegulation"
+to = "AnnexII"
+type = "includes"
+description = "The AI regulation includes Annex II, listing the high-risk AI systems subject to its requirements."
+
+[[relationships]]
+from = "AIRegulation"
+to = "AnnexIII"
+type = "includes"
+description = "The AI regulation includes Annex III, listing the relevant EU harmonization legislation."
+
+[[relationships]]
+from = "AIRegulation"
+to = "TechnicalDocumentationAnnex"
+type = "includes"
+description = "The AI regulation includes an annex specifying the requirements for technical documentation related to high-risk AI systems."
+
+[[relationships]]
+from = "AIRegulation"
+to = "ConformityAssessmentAnnex"
+type = "includes"
+description = "The AI regulation includes an annex outlining the procedures for conformity assessment of high-risk AI systems."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "includes"
+object = "AnnexI"
+description = "The AI regulation includes Annex I, listing the covered artificial intelligence techniques and approaches."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "includes"
+object = "AnnexII"
+description = "The AI regulation includes Annex II, listing the high-risk AI systems subject to its requirements."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "includes"
+object = "AnnexIII"
+description = "The AI regulation includes Annex III, listing the relevant EU harmonization legislation."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "includes"
+object = "TechnicalDocumentationAnnex"
+description = "The AI regulation includes an annex specifying the requirements for technical documentation related to high-risk AI systems."
+
+[[triplets]]
+subject = "AIRegulation"
+predicate = "includes"
+object = "ConformityAssessmentAnnex"
+description = "The AI regulation includes an annex outlining the procedures for conformity assessment of high-risk AI systems."
+
+# Layers
+
+[[layers]]
+name = "RiskManagement"
+description = "This layer encompasses the elements related to identifying, assessing, and mitigating risks associated with high-risk AI systems."
+elements = ["HighRiskAISystem", "Requirements", "NotifiedBody", "ConformityAssessment", "DataGovernance", "Documentation", "Transparency", "HumanOversight", "Robustness", "PostMarketMonitoring", "IncidentReporting"]
+
+[[layers]]
+name = "Governance"
+description = "This layer represents the governance structure and mechanisms established to oversee the implementation and enforcement of the AI regulation."
+elements = ["EuropeanArtificialIntelligenceBoard", "NationalCompetentAuthority", "MarketSurveillance", "Enforcement", "Penalty", "Confidentiality", "AIRegulatoryandbox", "RegulatoryOversight"]
+
+[[layers]]
+name = "Innovation"
+description = "This layer focuses on fostering innovation and providing support mechanisms for the development and testing of AI systems within the regulatory framework."
+elements = ["AIRegulatoryandbox", "CodeOfConduct", "AdditionalRequirement", "DigitalHub", "TestingExperimentationFacility"]
+
+# Layer: RiskManagement
+# This layer encompasses the elements related to identifying, assessing, and mitigating risks associated with high-risk AI systems. It includes the following elements:
+
+# HighRiskAISystem: The core concept of AI systems that pose a high risk to health, safety, fundamental rights, or other public interests, and are subject to the regulation's requirements.
+
+# Requirements: The various mandatory requirements that high-risk AI systems must comply with, such as data governance, documentation, transparency, human oversight, and robustness.
+
+# NotifiedBody: Independent conformity assessment bodies designated by Member States to assess the compliance of high-risk AI systems with the regulatory requirements.
+
+# ConformityAssessment: The process of demonstrating that a high-risk AI system meets the applicable requirements of the regulation, typically carried out by notified bodies.
+
+# DataGovernance: Practices related to the management of data used for training and testing AI systems, including data collection, preparation, and quality assurance.
+
+# Documentation: Technical documentation and records related to the development, testing, and performance of high-risk AI systems.
+
+# Transparency: The ability for users to understand how a high-risk AI system produces its outputs and the information provided to users about the system's capabilities, limitations, and operation.
+
+# HumanOversight: Measures to ensure that natural persons can oversee the functioning of high-risk AI systems and intervene when necessary.
+
+# Robustness: The ability of a high-risk AI system to perform consistently and reliably, with appropriate levels of accuracy, security, and resilience against errors, faults, and malicious attacks.
+
+# PostMarketMonitoring: A systematic process for collecting and analyzing data on the performance of high-risk AI systems after they are placed on the market or put into service.
+
+# IncidentReporting: The obligation for providers to report serious incidents, malfunctions, or breaches related to high-risk AI systems that may affect fundamental rights.
+
+# Layer: Governance
+# This layer represents the governance structure and mechanisms established to oversee the implementation and enforcement of the AI regulation. It includes the following elements:
+
+# EuropeanArtificialIntelligenceBoard: A board composed of representatives from Member States and the European Commission, responsible for overseeing the implementation of the AI regulation across the European Union.
+
+# NationalCompetentAuthority: Authorities designated by Member States to oversee the implementation and enforcement of the AI regulation within their respective countries.
+
+# MarketSurveillance: Activities carried out by competent authorities to ensure that high-risk AI systems comply with the regulatory requirements and do not pose risks to health, safety, fundamental rights, or other public interests.
+
+# Enforcement: Actions taken by competent authorities to address non-compliance with the AI regulation, such as requiring corrective actions, withdrawing systems from the market, or imposing penalties.
+
+# Penalty: Administrative fines or other penalties imposed by Member States for infringements of the AI regulation.
+
+# Confidentiality: The obligation to respect the confidentiality of information and data obtained in the course of implementing the AI regulation.
+
+# AIRegulatoryandbox: A controlled testing environment established by competent authorities for the supervised development, validation, and monitoring of innovative AI systems under regulatory oversight.
+
+# RegulatoryOversight: The supervision and monitoring of AI systems by competent authorities to ensure compliance with applicable regulations within the AI regulatory sandboxes.
+
+# Layer: Innovation
+# This layer focuses on fostering innovation and providing support mechanisms for the development and testing of AI systems within the regulatory framework. It includes the following elements:
+
+# AIRegulatoryandbox: A controlled testing environment established by competent authorities for the supervised development, validation, and monitoring of innovative AI systems under regulatory oversight.
+
+# CodeOfConduct: Voluntary codes of conduct intended to foster the application of the regulatory requirements to AI systems other than high-risk AI systems, developed by providers.
+
+# AdditionalRequirement: Additional requirements related to environmental sustainability, accessibility, stakeholder participation, or diversity that can be included in a code of conduct.
+
+# DigitalHub: Facilities established to provide technical and scientific advice, as well as testing facilities, to support providers and notified bodies in ensuring compliance with the regulation.
+
+# TestingExperimentationFacility: Facilities established to provide testing and experimentation environments for the development and validation of AI systems, supporting the AI regulatory sandboxes.
+
+# Temporal Information
+
+[[temporal]]
+name = "ImplementationPhase"
+start = "YYYY-MM-DD"  # Regulation entry into force date
+end = "YYYY-MM-DD"  # Date when regulation becomes fully applicable
+description = "The initial phase for implementing the AI regulation, during which various provisions and requirements come into effect."
+
+[[temporal]]
+name = "ReviewPeriod"
+start = "YYYY-MM-DD"  # 3 years after regulation becomes applicable
+end = "YYYY-MM-DD"  # 4 years after regulation becomes applicable
+description = "The period for the European Commission to conduct an evaluation and review of the AI regulation, and potentially propose amendments."
+recurring = true
+recurrence_interval = "P4Y"  # Recurring every 4 years
+
+[[temporal]]
+name = "TransitionalPeriod"
+start = "YYYY-MM-DD"  # Regulation entry into force date
+end = "YYYY-MM-DD"  # Date when regulation becomes fully applicable
+description = "A transitional period to allow for a smooth implementation of the AI regulation, during which certain temporary provisions apply."
+
+[[temporal]]
+name = "NotifiedBodyDesignation"
+start = "YYYY-MM-DD"  # 3 months after regulation entry into force
+end = "YYYY-MM-DD"  # Date when regulation becomes fully applicable
+description = "The period during which Member States must designate notified bodies responsible for conformity assessment of high-risk AI systems."
+
+[[temporal]]
+name = "GovernanceEstablishment"
+start = "YYYY-MM-DD"  # 6 months after regulation entry into force
+end = "YYYY-MM-DD"  # Date when regulation becomes fully applicable
+description = "The period during which the governance structure, including the European Artificial Intelligence Board, must be established and operational."
+
+# Temporal Information
+# This section introduces temporal elements to capture the timelines, deadlines, or phases associated with various aspects of the AI regulation. It includes the following elements:
+
+# ImplementationPhase: The initial phase for implementing the AI regulation, during which various provisions and requirements come into effect. This phase starts on the regulation's entry into force date and ends on the date when the regulation becomes fully applicable.
+
+# ReviewPeriod: The period for the European Commission to conduct an evaluation and review of the AI regulation, and potentially propose amendments. This period starts 3 years after the regulation becomes applicable and ends 4 years after the regulation becomes applicable. It is a recurring event that happens every 4 years.
+
+# TransitionalPeriod: A transitional period to allow for a smooth implementation of the AI regulation, during which certain temporary provisions apply. This period starts on the regulation's entry into force date and ends on the date when the regulation becomes fully applicable.
+
+# NotifiedBodyDesignation: The period during which Member States must designate notified bodies responsible for conformity assessment of high-risk AI systems. This period starts 3 months after the regulation's entry into force and ends on the date when the regulation becomes fully applicable.
+
+# GovernanceEstablishment: The period during which the governance structure, including the European Artificial Intelligence Board, must be established and operational. This period starts 6 months after the regulation's entry into force and ends on the date when the regulation becomes fully applicable.
+
+# These temporal elements help define the various phases, deadlines, and recurring events associated with the implementation, review, and governance of the AI regulation, providing a clear timeline for different activities and requirements to take effect.
+
+# Quantitative Metrics
+
+[[quantitative_metrics]]
+name = "MaximumAdministrativeFine"
+entity = "Penalty"
+metric = "MaximumFine"
+value = 20000000
+description = "The maximum administrative fine, in euros, that can be imposed on undertakings for certain infringements of the AI regulation."
+
+[[quantitative_metrics]]
+name = "MaximumTurnoverPercentageFine"
+entity = "Penalty"
+metric = "MaximumTurnoverPercentageFine"
+value = 4
+description = "The maximum administrative fine, expressed as a percentage of the total worldwide annual turnover of the preceding financial year, that can be imposed on undertakings for certain infringements of the AI regulation."
+
+[[quantitative_metrics]]
+name = "MinimumMarketSurveillanceInspections"
+entity = "MarketSurveillance"
+metric = "MinimumInspections"
+value = 100
+description = "The minimum number of market surveillance inspections to be conducted annually by competent authorities to monitor the compliance of high-risk AI systems."
+
+[[quantitative_metrics]]
+name = "MaximumRemoteBiometricIdentificationCoverage"
+entity = "RemoteBiometricIdentificationSystem"
+metric = "MaximumGeographicCoverage"
+value = 30
+description = "The maximum geographic coverage, expressed as a percentage of a given local entity, allowed for the use of remote biometric identification systems in publicly accessible spaces, unless exceptional circumstances apply."
+
+[[quantitative_metrics]]
+name = "MaximumRemoteBiometricIdentificationDuration"
+entity = "RemoteBiometricIdentificationSystem"
+metric = "MaximumDuration"
+value = 6
+description = "The maximum duration, in hours per day, allowed for the use of remote biometric identification systems in publicly accessible spaces, unless exceptional circumstances apply."
+
+# Quantitative Metrics
+# This section introduces quantitative metrics to capture numerical targets, thresholds, or measurements associated with certain elements of the AI regulation. It includes the following metrics:
+
+# MaximumAdministrativeFine: This metric defines the maximum administrative fine, in euros, that can be imposed on undertakings for certain infringements of the AI regulation.
+
+# MaximumTurnoverPercentageFine: This metric defines the maximum administrative fine, expressed as a percentage of the total worldwide annual turnover of the preceding financial year, that can be imposed on undertakings for certain infringements of the AI regulation.
+
+# MinimumMarketSurveillanceInspections: This metric specifies the minimum number of market surveillance inspections to be conducted annually by competent authorities to monitor the compliance of high-risk AI systems.
+
+# MaximumRemoteBiometricIdentificationCoverage: This metric defines the maximum geographic coverage, expressed as a percentage of a given local entity, allowed for the use of remote biometric identification systems in publicly accessible spaces, unless exceptional circumstances apply.
+
+# MaximumRemoteBiometricIdentificationDuration: This metric specifies the maximum duration, in hours per day, allowed for the use of remote biometric identification systems in publicly accessible spaces, unless exceptional circumstances apply.
+
+# These quantitative metrics help establish numerical thresholds, limits, or targets for various aspects of the AI regulation, such as penalties, market surveillance activities, and the use of specific AI systems like remote biometric identification systems. They provide a quantitative framework for enforcing and monitoring compliance with the regulation.
+
+# Interpolation
+
+[[interpolation]]
+name = "TechnicalStandardAdaptation"
+concept = "TechnicalStandard"
+from = "YYYY-MM-DD"  # Regulation entry into force date
+to = "YYYY-MM-DD"  # 5 years after regulation entry into force
+method = "Linear"
+description = "The gradual adaptation and update of technical standards related to AI systems over a specified period, to keep pace with technological advancements and market developments."
+
+[[interpolation]]
+name = "AITechniqueEvolution"
+concept = "ArtificialIntelligenceTechnique"
+from = "YYYY-MM-DD"  # Regulation entry into force date
+to = "YYYY-MM-DD"  # No specific end date, ongoing process
+method = "NonLinear"
+description = "The continuous evolution and emergence of new artificial intelligence techniques and approaches, which may require updates to the regulation's scope and definitions over time."
+
+[[interpolation]]
+name = "RiskCriteriaRefinement"
+concept = "HighRiskAISystem"
+from = "YYYY-MM-DD"  # 2 years after regulation entry into force
+to = "YYYY-MM-DD"  # 5 years after regulation entry into force
+method = "StepWise"
+description = "The refinement and potential adjustment of the criteria used to determine high-risk AI systems, based on practical experience and emerging risks identified during the initial implementation phase."
+
+# Interpolation
+# This section introduces interpolation elements to capture how certain concepts or requirements may evolve or change over time, such as the adaptation of technical standards or the evolution of AI techniques. It includes the following elements:
+
+# TechnicalStandardAdaptation: This element represents the gradual adaptation and update of technical standards related to AI systems over a specified period, to keep pace with technological advancements and market developments. The adaptation follows a linear interpolation method.
+
+# AITechniqueEvolution: This element captures the continuous evolution and emergence of new artificial intelligence techniques and approaches, which may require updates to the regulation's scope and definitions over time. The evolution follows a non-linear interpolation method, as it is an ongoing process without a specific end date.
+
+# RiskCriteriaRefinement: This element represents the refinement and potential adjustment of the criteria used to determine high-risk AI systems, based on practical experience and emerging risks identified during the initial implementation phase. The refinement follows a step-wise interpolation method, occurring over a specific period.
+
+# These interpolation elements acknowledge the dynamic nature of the AI landscape and the need for the regulation to adapt and evolve over time. They provide a framework for updating and refining various aspects of the regulation, such as technical standards, definitions, and risk criteria, to ensure its continued relevance and effectiveness in addressing emerging challenges and developments in the field of artificial intelligence.
+
+# Events
+
+[[events]]
+name = "DelegatedActIssued"
+date = "YYYY-MM-DD"
+description = "The European Commission issued a delegated act amending the list of high-risk AI systems in Annex II."
+
+[[events]]
+name = "ImplementingActAdopted"
+date = "YYYY-MM-DD"
+description = "The European Commission adopted an implementing act specifying common specifications for the technical documentation of high-risk AI systems."
+
+[[events]]
+name = "IncidentReported"
+date = "YYYY-MM-DD"
+description = "A provider reported a serious incident involving a high-risk AI system, triggering an investigation by the competent authorities."
+
+[[events]]
+name = "NonComplianceIdentified"
+date = "YYYY-MM-DD"
+description = "Market surveillance activities identified a non-compliant high-risk AI system, leading to enforcement actions and potential penalties."
+
+[[events]]
+name = "GovernanceBodyEstablished"
+date = "YYYY-MM-DD"
+description = "The European Artificial Intelligence Board and the national competent authorities were officially established, marking the operationalization of the governance structure."
+
+[[events]]
+name = "AIRegulatoryandboxLaunched"
+date = "YYYY-MM-DD"
+description = "A Member State launched an AI regulatory sandbox, providing a controlled environment for the development and testing of innovative AI systems under regulatory oversight."
+
+# Events
+# This section introduces events to capture significant occurrences or milestones related to the implementation or enforcement of the AI regulation. It includes the following events:
+
+# DelegatedActIssued: This event represents the issuance of a delegated act by the European Commission, amending the list of high-risk AI systems in Annex II.
+
+# ImplementingActAdopted: This event represents the adoption of an implementing act by the European Commission, specifying common specifications for the technical documentation of high-risk AI systems.
+
+# IncidentReported: This event captures the reporting of a serious incident involving a high-risk AI system by a provider, triggering an investigation by the competent authorities.
+
+# NonComplianceIdentified: This event represents the identification of a non-compliant high-risk AI system through market surveillance activities, leading to enforcement actions and potential penalties.
+
+# GovernanceBodyEstablished: This event marks the official establishment of the European Artificial Intelligence Board and the national competent authorities, operationalizing the governance structure of the AI regulation.
+
+# AIRegulatoryandboxLaunched: This event represents the launch of an AI regulatory sandbox by a Member State, providing a controlled environment for the development and testing of innovative AI systems under regulatory oversight.
+
+# These events capture significant occurrences and milestones throughout the lifecycle of the AI regulation, such as the issuance of delegated and implementing acts, the reporting of incidents, the identification of non-compliance, the establishment of governance bodies, and the launch of AI regulatory sandboxes. Tracking and recording these events can help monitor the implementation and enforcement of the regulation, as well as facilitate the analysis of its impact and effectiveness over time.
+
+
+# Cross References
+
+[[cross_references]]
+name = "TerminationProvisions"
+target = "Termination"
+related_to = ["Term", "Renewal", "Effective", "Temporal", "Events"]
+description = "The termination or expiration provisions for high-risk AI systems are related to the term, renewal, effective date, temporal information, and termination events."
+
+[[cross_references]]
+name = "DisputeResolutionMechanisms"
+target = "Dispute"
+related_to = ["Breach", "Events", "Remedy", "Governing"]
+description = "Dispute resolution mechanisms for high-risk AI systems are related to breach events, remedies, and governing law and jurisdiction."
+
+[[cross_references]]
+name = "DataProtectionCompliance"
+target = "Data"
+related_to = ["RemoteBiometricIdentificationSystem", "DataProtectionImpactAssessment", "Confidentiality", "Ethical"]
+description = "Data privacy and protection clauses for high-risk AI systems are related to remote biometric identification systems, data protection impact assessments, confidentiality obligations, and ethical considerations."
+
+[[cross_references]]
+name = "EnvironmentalSustainability"
+target = "Environmental"
+related_to = ["AdditionalRequirement", "CodeOfConduct", "Ethical", "Social"]
+description = "Environmental and sustainability provisions for high-risk AI systems are related to additional requirements, codes of conduct, ethical considerations, and social responsibility provisions."
+
+[[cross_references]]
+name = "IntellectualPropertyRights"
+target = "Intellectual"
+related_to = ["Documentation", "Confidentiality", "Penalty"]
+description = "Intellectual property rights and provisions for high-risk AI systems are related to technical documentation, confidentiality obligations, and potential penalties for infringement."
+
+# Cross References
+# This section introduces cross-references to capture the relationships and connections between different concepts, elements, or requirements within the AI regulation. It includes the following cross-references:
+
+# TerminationProvisions
+# DisputeResolutionMechanisms
+# DataProtectionCompliance
+# EnvironmentalSustainability
+# IntellectualPropertyRights
+
+# Implementation Details
+
+[[implementation_details]]
+name = "ContractManagementSystem"
+concept = "LegalDocument"
+technology = "Contract Management System"
+description = "A software system for managing the lifecycle of legal documents related to high-risk AI systems, including creation, execution, storage, and compliance monitoring."
+
+[[implementation_details]]
+name = "NaturalLanguageProcessing"
+concept = "Clause"
+technology = "Natural Language Processing"
+description = "Natural language processing techniques for analyzing and extracting clauses from legal documents related to high-risk AI systems."
+
+[[implementation_details]]
+name = "RiskModelingFramework"
+concept = "RiskManagement"
+technology = "Risk Modeling and Simulation"
+description = "A risk modeling and simulation framework for assessing and quantifying the potential risks associated with high-risk AI systems, including scenario analysis and impact assessment."
+
+[[implementation_details]]
+name = "AIGovernancePlatform"
+concept = "Governance"
+technology = "Governance, Risk, and Compliance (GRC) Platform"
+description = "A governance, risk, and compliance (GRC) platform for managing the governance structure, monitoring compliance, and facilitating collaboration between the European Artificial Intelligence Board, national competent authorities, and other stakeholders."
+
+[[implementation_details]]
+name = "AIRegulatoryandboxEnvironment"
+concept = "AIRegulatoryandbox"
+technology = "Containerization and Virtualization"
+description = "A containerized and virtualized environment for the development, testing, and validation of innovative AI systems within the AI regulatory sandboxes, providing isolated and controlled environments for experimentation."
+
+# Implementation Details
+# This section outlines potential implementation details and technologies that could be employed to support various concepts and requirements within the AI regulation. It includes the following implementation details:
+
+# ContractManagementSystem
+# NaturalLanguageProcessing
+# RiskModelingFramework
+# AIGovernancePlatform
+# AIRegulatoryandboxEnvironment
+
+# Validation and Evidence
+
+[[validation_evidence]]
+name = "LegalPrecedents"
+entity = "LegalDocument"
+reference = "Legal Precedents"
+link = "https://example.com/legal-precedents"
+description = "The legal documents related to high-risk AI systems are based on established legal precedents and industry standards."
+
+[[validation_evidence]]
+name = "RegulatoryGuidelines"
+entity = "Clause"
+reference = "Regulatory Guidelines"
+link = "https://example.com/regulatory-guidelines"
+description = "Specific clauses in legal documents for high-risk AI systems are derived from regulatory guidelines or best practices."
+
+[[validation_evidence]]
+name = "TechnicalStandards"
+entity = "Documentation"
+reference = "Technical Standards"
+link = "https://example.com/technical-standards"
+description = "The technical documentation for high-risk AI systems adheres to relevant technical standards and specifications."
+
+[[validation_evidence]]
+name = "EthicalFrameworks"
+entity = "Ethical"
+reference = "Ethical Frameworks"
+link = "https://example.com/ethical-frameworks"
+description = "The ethical considerations and provisions for high-risk AI systems are based on established ethical frameworks and principles."
+
+[[validation_evidence]]
+name = "DataProtectionLaws"
+entity = "Data"
+reference = "Data Protection Laws"
+link = "https://example.com/data-protection-laws"
+description = "The data privacy and protection clauses for high-risk AI systems comply with applicable data protection laws and regulations."
+
+# Validation and Evidence
+# This section introduces validation and evidence elements to support the compliance and validity of various aspects of the AI regulation. It includes the following elements:
+
+# LegalPrecedents
+# RegulatoryGuidelines
+# TechnicalStandards
+# EthicalFrameworks
+# DataProtectionLaws
+
+# Visualization Tools
+
+[[visualization_tools]]
+name = "LegalDocumentVisualization"
+tool = "Legal Document Visualization"
+description = "A tool for visualizing the structure, clauses, and relationships within legal documents related to high-risk AI systems."
+features = [
+    "Interactive graphical representation",
+    "Clause dependency mapping",
+    "Cross-referencing and navigation",
+    "Annotation and collaboration capabilities"
+]
+
+[[visualization_tools]]
+name = "ClauseDependencyVisualization"
+tool = "Clause Dependency Visualization"
+description = "A tool for visualizing the dependencies and cross-references between clauses in legal documents related to high-risk AI systems."
+features = [
+    "Clause dependency graphs",
+    "Hierarchical and network visualizations",
+    "Impact analysis for clause modifications",
+    "Integration with natural language processing"
+]
+
+[[visualization_tools]]
+name = "AIRiskDashboard"
+tool = "AI Risk Dashboard"
+description = "A dashboard for visualizing and monitoring the potential risks associated with high-risk AI systems throughout their lifecycle."
+features = [
+    "Risk heatmaps and risk scoring",
+    "Risk factor analysis and correlation",
+    "Scenario simulations and impact assessments",
+    "Integration with risk modeling frameworks"
+]
+
+[[visualization_tools]]
+name = "GovernanceOverview"
+tool = "Governance Overview"
+description = "A visualization tool for providing an overview of the governance structure, roles, and responsibilities related to the AI regulation."
+features = [
+    "Organizational charts and hierarchies",
+    "Stakeholder mapping and collaboration networks",
+    "Workflow and decision-making processes",
+    "Integration with governance platforms"
+]
+
+# Visualization Tools
+# This section introduces various visualization tools that can be employed to support the understanding, analysis, and monitoring of different aspects of the AI regulation. These tools can aid in visualizing legal documents, clause dependencies, potential risks, and governance structures, among others.
+
+# LegalDocumentVisualization: This tool provides an interactive graphical representation of legal documents related to high-risk AI systems. It allows for clause dependency mapping, cross-referencing, navigation, annotation, and collaboration capabilities.
+
+# ClauseDependencyVisualization: This tool focuses on visualizing the dependencies and cross-references between clauses in legal documents related to high-risk AI systems. It offers clause dependency graphs, hierarchical and network visualizations, impact analysis for clause modifications, and integration with natural language processing techniques.
+
+# AIRiskDashboard: This dashboard is designed for visualizing and monitoring the potential risks associated with high-risk AI systems throughout their lifecycle. It provides risk heatmaps, risk scoring, risk factor analysis and correlation, scenario simulations, impact assessments, and integration with risk modeling frameworks.
+
+# GovernanceOverview: This visualization tool offers an overview of the governance structure, roles, and responsibilities related to the AI regulation. It includes organizational charts, stakeholder mapping, collaboration networks, workflow and decision-making processes, and integration with governance platforms.
+
+# Update Mechanisms
+
+[[update_mechanisms]]
+name = "LegalUpdates"
+method = "Legal Updates"
+frequency = "Continuous"
+description = "The hypergraph should be updated whenever new legal developments, regulations, or precedents emerge that are relevant to the AI regulation."
+
+[[update_mechanisms]]
+name = "IndustryBestPractices"
+method = "Industry Best Practices"
+frequency = "Annual"
+description = "The hypergraph should be reviewed and updated annually to align with industry best practices, standards, and guidelines related to AI governance and compliance."
+
+[[update_mechanisms]]
+name = "TechnologicalAdvances"
+method = "Technological Advances"
+frequency = "Continuous"
+description = "The hypergraph should be updated to reflect advancements in AI technologies, techniques, and applications, ensuring that the regulation remains relevant and applicable to emerging developments."
+
+[[update_mechanisms]]
+name = "StakeholderFeedback"
+method = "Stakeholder Feedback"
+frequency = "Continuous"
+description = "The hypergraph should be updated based on feedback and input from various stakeholders, including AI developers, regulatory bodies, legal professionals, and civil society organizations, to address emerging concerns and incorporate diverse perspectives."
+
+[[update_mechanisms]]
+name = "PeriodicReviews"
+method = "Periodic Reviews"
+frequency = "Biennial"
+description = "In addition to continuous updates, the hypergraph should undergo a comprehensive review and update process every two years, aligning with the evaluation and review cycles of the AI regulation itself."
+
+# Update Mechanisms
+# This section outlines various mechanisms and processes for keeping the hypergraph representation of the AI regulation up-to-date and aligned with the latest developments, best practices, and stakeholder feedback. These update mechanisms ensure that the hypergraph remains a relevant and accurate representation of the regulation over time.
+
+# LegalUpdates: The hypergraph should be updated whenever new legal developments, regulations, or precedents emerge that are relevant to the AI regulation. This update mechanism operates on a continuous basis.
+
+# IndustryBestPractices: The hypergraph should be reviewed and updated annually to align with industry best practices, standards, and guidelines related to AI governance and compliance.
+
+# TechnologicalAdvances: The hypergraph should be updated to reflect advancements in AI technologies, techniques, and applications, ensuring that the regulation remains relevant and applicable to emerging developments. This update mechanism operates on a continuous basis.
+
+# StakeholderFeedback: The hypergraph should be updated based on feedback and input from various stakeholders, including AI developers, regulatory bodies, legal professionals, and civil society organizations, to address emerging concerns and incorporate diverse perspectives. This update mechanism operates on a continuous basis.
+
+# PeriodicReviews: In addition to continuous updates, the hypergraph should undergo a comprehensive review and update process every two years, aligning with the evaluation and review cycles of the AI regulation itself.
+
+# Ethical Considerations
+
+[[ethical_considerations]]
+name = "FairAndEquitableAgreements"
+issue = "Fair and Equitable Agreements"
+strategies = [
+    "Ensure balanced and non-discriminatory provisions",
+    "Incorporate principles of fairness, transparency, and accountability",
+    "Provide mechanisms for redress and dispute resolution"
+]
+description = "Legal documents related to high-risk AI systems should be fair and equitable, without unfair or discriminatory clauses, and should incorporate principles of fairness, transparency, and accountability, while providing mechanisms for redress and dispute resolution."
+
+[[ethical_considerations]]
+name = "PrivacyAndDataProtection"
+issue = "Privacy and Data Protection"
+strategies = [
+    "Comply with data protection laws and regulations",
+    "Implement privacy-by-design and privacy-enhancing technologies",
+    "Ensure transparency and user control over personal data"
+]
+description = "The development and deployment of high-risk AI systems should prioritize privacy and data protection, complying with relevant laws and regulations, implementing privacy-by-design and privacy-enhancing technologies, and ensuring transparency and user control over personal data."
+
+[[ethical_considerations]]
+name = "ResponsibleAIDevelopment"
+issue = "Responsible AI Development"
+strategies = [
+    "Promote ethical AI principles and values",
+    "Encourage diversity and inclusivity in development teams",
+    "Implement rigorous testing and validation processes",
+    "Establish accountability and oversight mechanisms"
+]
+description = "The development of high-risk AI systems should be guided by ethical AI principles and values, promoting diversity and inclusivity in development teams, implementing rigorous testing and validation processes, and establishing accountability and oversight mechanisms to ensure responsible and trustworthy AI."
+
+[[ethical_considerations]]
+name = "EnvironmentalSustainability"
+issue = "Environmental Sustainability"
+strategies = [
+    "Assess and mitigate the environmental impact of AI systems",
+    "Promote energy-efficient and resource-efficient AI solutions",
+    "Encourage the use of renewable energy sources"
+]
+description = "The development and deployment of high-risk AI systems should consider environmental sustainability, assessing and mitigating their environmental impact, promoting energy-efficient and resource-efficient solutions, and encouraging the use of renewable energy sources."
+
+# Ethical Considerations
+# This section outlines various ethical considerations that should be addressed in the context of the AI regulation, particularly concerning the development and deployment of high-risk AI systems. Each ethical consideration includes the issue or concern, strategies or approaches to address the issue, and a description providing further context and guidance.
+
+# FairAndEquitableAgreements
+# PrivacyAndDataProtection
+# ResponsibleAIDevelopment
+# EnvironmentalSustainability
+
+# Use Cases
+
+[[use_cases]]
+name = "ContractReviewAndAnalysis"
+scenario = "Contract Review and Analysis"
+description = "The hypergraph can be used to analyze and review legal documents related to high-risk AI systems, identifying potential issues, risks, or areas of concern based on the regulation's requirements and provisions."
+
+[[use_cases]]
+name = "ClauseLibraryManagement"
+scenario = "Clause Library Management"
+description = "The hypergraph can be used to manage and organize a library of reusable clauses for efficient creation of legal documents related to high-risk AI systems, ensuring compliance with the regulation's requirements."
+
+[[use_cases]]
+name = "RiskAssessmentAndModeling"
+scenario = "Risk Assessment and Modeling"
+description = "The hypergraph can be used to perform risk assessments and modeling for high-risk AI systems, leveraging the regulation's risk criteria, quantitative metrics, and risk management frameworks to identify and mitigate potential risks."
+
+[[use_cases]]
+name = "ComplianceMonitoring"
+scenario = "Compliance Monitoring"
+description = "The hypergraph can be used to monitor and assess the compliance of high-risk AI systems with the regulation's requirements throughout their lifecycle, integrating with post-market monitoring, incident reporting, and market surveillance mechanisms."
+
+[[use_cases]]
+name = "GovernanceAndCollaboration"
+scenario = "Governance and Collaboration"
+description = "The hypergraph can be used to facilitate governance and collaboration among stakeholders involved in the implementation and enforcement of the AI regulation, leveraging the governance structure, visualization tools, and update mechanisms."
+
+[[use_cases]]
+name = "RegulatoryandboxSimulation"
+scenario = "Regulatory Sandbox Simulation"
+description = "The hypergraph can be used to simulate and evaluate the development and testing of innovative AI systems within the AI regulatory sandboxes, providing a controlled environment for experimentation and validation against the regulation's requirements."
+
+# Use Cases
+# This section outlines various use cases and scenarios where the hypergraph representation of the AI regulation can be applied and leveraged. These use cases demonstrate the versatility and potential applications of the hypergraph in supporting compliance, risk management, governance, and innovation within the context of the AI regulation.
+
+# ContractReviewAndAnalysis
+# ClauseLibraryManagement
+# RiskAssessmentAndModeling
+# ComplianceMonitoring
+# GovernanceAndCollaboration
+# RegulatoryandboxSimulation
+
+# Future Extensions Guidelines
+
+[[future_extensions]]
+name = "DomainSpecificCustomization"
+recommendation = "Domain-Specific Customization"
+description = "Extend the hypergraph to accommodate domain-specific legal requirements and industry-specific clauses related to the development and deployment of high-risk AI systems in various sectors, such as healthcare, finance, transportation, and manufacturing."
+
+[[future_extensions]]
+name = "IntelligentClauseRecommendation"
+recommendation = "Intelligent Clause Recommendation"
+description = "Incorporate machine learning techniques and natural language processing capabilities to enable intelligent clause recommendation for legal documents related to high-risk AI systems, based on the document context, party information, and regulatory requirements."
+
+[[future_extensions]]
+name = "IntegratedRiskManagement"
+recommendation = "Integrated Risk Management"
+description = "Enhance the hypergraph's risk management capabilities by integrating with external risk modeling frameworks, scenario simulations, and impact assessment tools, providing a comprehensive and holistic approach to risk management for high-risk AI systems."
+
+[[future_extensions]]
+name = "AutomatedComplianceChecking"
+recommendation = "Automated Compliance Checking"
+description = "Develop automated compliance checking mechanisms by leveraging the hypergraph's structure and relationships, enabling real-time verification of high-risk AI systems against the regulation's requirements throughout their lifecycle."
+
+[[future_extensions]]
+name = "StakeholderCollaboration"
+recommendation = "Stakeholder Collaboration and Feedback"
+description = "Implement collaborative features and feedback mechanisms within the hypergraph, allowing stakeholders (e.g., AI developers, regulatory bodies, legal professionals, civil society organizations) to contribute their insights, share best practices, and provide feedback to improve the regulation's effectiveness."
+
+# Future Extensions Guidelines
+# This section provides guidelines and recommendations for potential future extensions and enhancements to the hypergraph representation of the AI regulation. These future extensions aim to expand the hypergraph's capabilities, address emerging needs, and ensure its continued relevance and adaptability in the rapidly evolving AI landscape.
+
+# DomainSpecificCustomization
+# IntelligentClauseRecommendation
+# IntegratedRiskManagement
+# AutomatedComplianceChecking
+# StakeholderCollaboration
