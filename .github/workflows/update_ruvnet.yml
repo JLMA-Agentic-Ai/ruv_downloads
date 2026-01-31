@@ -30,6 +30,7 @@ jobs:
             README.md
             docs
             artifacts/index.json
+            artifacts/archives/github/repos/.metadata
             .gitignore
             .gitattributes
 

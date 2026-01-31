@@ -12,8 +12,9 @@ REPOS_DIR="$PROJECT_ROOT/artifacts/repos"
 source "$PROJECT_ROOT/lib/cache.sh"
 source "$PROJECT_ROOT/lib/checksum.sh"
 
+METADATA_DIR="$PROJECT_ROOT/artifacts/archives/github/repos/.metadata"
 ARCHIVES_DIR="$PROJECT_ROOT/artifacts/archives/github/repos"
-mkdir -p "$REPOS_DIR" "$ARCHIVES_DIR"
+mkdir -p "$REPOS_DIR" "$ARCHIVES_DIR" "$METADATA_DIR"
 
 echo "Fetching top 30 active repositories from GitHub..."
 
@@ -30,7 +31,7 @@ if [ -f "$PROJECT_ROOT/artifacts/backup_repos.tar.gz" ]; then
     rm "$PROJECT_ROOT/artifacts/backup_repos.tar.gz"
 fi
 
-# --- Cleanup Phase (Folder + Archive) ---
+# --- Cleanup Phase (Folder + Archive + Metadata) ---
 echo "Running strict cleanup..."
 if [ -d "$REPOS_DIR" ]; then
   for repo_path in "$REPOS_DIR"/*; do
@@ -49,8 +50,9 @@ if [ -d "$REPOS_DIR" ]; then
     if [ "$keep" -eq 0 ]; then
       echo "  🗑️  Removing outdated repo: $repo_name (No longer in Top 30)"
       rm -rf "$repo_path"
-      # Also remove its backup if exists
+      # Also remove its backup and metadata if exists
       rm -f "$ARCHIVES_DIR/${repo_name}.tar.gz"
+      rm -f "$METADATA_DIR/${repo_name}.json"
     fi
   done
 fi
@@ -59,9 +61,19 @@ fi
 for archive_path in "$ARCHIVES_DIR"/*.tar.gz; do
     [ -e "$archive_path" ] || continue
     repo_name=$(basename "$archive_path" .tar.gz)
-    if [ ! -d "$REPOS_DIR/$repo_name" ]; then
+    if [ ! -d "$REPOS_DIR/$repo_name" ] && [[ ! " ${REPO_ARRAY[@]} " =~ " ${repo_name} " ]]; then
          echo "  🗑️  Removing orphaned archive: ${repo_name}.tar.gz"
          rm -f "$archive_path"
+    fi
+done
+
+# Clean up orphaned metadata
+for meta_path in "$METADATA_DIR"/*.json; do
+    [ -e "$meta_path" ] || continue
+    repo_name=$(basename "$meta_path" .json)
+    if [[ ! " ${REPO_ARRAY[@]} " =~ " ${repo_name} " ]]; then
+         echo "  🗑️  Removing orphaned metadata: ${repo_name}.json"
+         rm -f "$meta_path"
     fi
 done
 
@@ -73,6 +85,7 @@ for repo in "${REPO_ARRAY[@]}"; do
   repo_url="https://github.com/${GITHUB_USER}/${repo}.git"
   target_dir="$REPOS_DIR/$repo"
   archive_file="$ARCHIVES_DIR/${repo}.tar.gz"
+  metadata_file="$METADATA_DIR/${repo}.json"
   
   REPO_CHANGED=false
   
@@ -80,18 +93,34 @@ for repo in "${REPO_ARRAY[@]}"; do
   remote_hash=$(git ls-remote "$repo_url" HEAD | awk '{print $1}')
   checksum="git:$remote_hash"
   
-  # Check cache
-  cached_path=$(check_cache "repo" "$repo" "main" "$checksum")
-  if [ -n "$cached_path" ] && [ -d "$cached_path" ] && [ -f "$archive_file" ]; then
-      echo "  ✓ Cache hit: $repo"
-      continue
+  # Check metadata receipt for skip (crucial for CI where folder is missing)
+  if [ -f "$metadata_file" ] && [ -f "$archive_file" ]; then
+      last_hash=$(jq -r '.commit' "$metadata_file" 2>/dev/null || echo "")
+      if [ "$remote_hash" == "$last_hash" ]; then
+          # Even if folder is missing (Sparse Checkout), if hash matches, we skip
+          echo "  ✓ Skip-check passed (receipt matches): $repo"
+          # Ensure cache is updated even on skip to maintain stats
+          update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
+          continue
+      fi
   fi
 
+  # Fallback to local git check if folder exists
   if [ -d "$target_dir" ]; then
     local_hash=$(cd "$target_dir" && git rev-parse HEAD)
     
     if [ "$remote_hash" == "$local_hash" ] && [ -f "$archive_file" ]; then
-        echo "  ✓ Up-to-date: $repo"
+        echo "  ✓ Up-to-date (git): $repo"
+        # Update/Create metadata receipt
+        cat > "$metadata_file" <<EOF
+{
+  "name": "$repo",
+  "type": "repository",
+  "lastUpdated": "$(date -Iseconds)",
+  "commit": "$remote_hash",
+  "url": "$repo_url"
+}
+EOF
         update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
         continue
     fi
@@ -111,6 +140,17 @@ for repo in "${REPO_ARRAY[@]}"; do
       tar -czf "$archive_file" -C "$REPOS_DIR" "$repo"
   fi
 
+  # Update/Create metadata receipt
+  cat > "$metadata_file" <<EOF
+{
+  "name": "$repo",
+  "type": "repository",
+  "lastUpdated": "$(date -Iseconds)",
+  "commit": "$remote_hash",
+  "url": "$repo_url"
+}
+EOF
+
   update_cache "repo" "$repo" "main" "$checksum" "$target_dir"
 done
 
@@ -118,4 +158,5 @@ echo ""
 echo "check result:"
 echo "Repos: $(ls -1 "$REPOS_DIR" | wc -l)"
 echo "Archives: $(ls -1 "$ARCHIVES_DIR"/*.tar.gz 2>/dev/null | wc -l)"
+echo "Metadata Receipts: $(ls -1 "$METADATA_DIR"/*.json 2>/dev/null | wc -l)"
 echo "Done."

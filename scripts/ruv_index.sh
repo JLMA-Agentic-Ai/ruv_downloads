@@ -61,8 +61,8 @@ EOF
 fi
 
 # Index Repos
-if [ -d "$PROJECT_ROOT/artifacts/repos/.metadata" ]; then
-  for meta in "$PROJECT_ROOT/artifacts/repos/.metadata"/*.json; do
+if [ -d "$PROJECT_ROOT/artifacts/archives/github/repos/.metadata" ]; then
+  for meta in "$PROJECT_ROOT/artifacts/archives/github/repos/.metadata"/*.json; do
     [ -f "$meta" ] || continue
     if [ "$first" = true ]; then first=false; else echo "," >> "$INDEX_FILE"; fi
     # Just include the metadata content as an object
