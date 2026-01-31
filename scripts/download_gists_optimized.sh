@@ -161,8 +161,15 @@ process_gist() {
     fi
   fi
   
-  # Deep check locally for migration (find any folder containing the ID)
-  local found_local=$(find "$GISTS_DIR" -type d -name "*($gist_id)*" -o -name "$gist_id" | head -n 1)
+  # Deep check locally for migration 
+  local found_local=""
+  if [ -d "$date_dir" ]; then
+    found_local=$(find "$date_dir" -maxdepth 1 -type d -name "*($gist_id)*" | head -n 1)
+  fi
+  
+  if [ -z "$found_local" ]; then
+    found_local=$(find "$GISTS_DIR" -type d -name "*($gist_id)*" -o -name "$gist_id" | head -n 1)
+  fi
   
   if [ -n "$found_local" ] && [ -d "$found_local" ]; then
     local local_hash=$(get_git_commit_hash "$found_local")
