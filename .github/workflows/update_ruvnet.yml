@@ -92,9 +92,15 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          # Ignore sparse path advice to prevent errors if we touch non-sparse dirs
+          git config --global advice.updateSparsePath false
+          
           git lfs track
           git add .gitattributes
-          git add .
+          
+          # Explicitly add only metadata and docs to avoid touching artifacts/extracted (which is outside sparse-checkout)
+          git add docs artifacts/index.json artifacts/archives
+          
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "chore: update ruvnet ecosystem [skip ci]"
