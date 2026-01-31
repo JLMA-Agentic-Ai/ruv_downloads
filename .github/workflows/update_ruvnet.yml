@@ -98,7 +98,12 @@ jobs:
           git lfs track
           git add .gitattributes
           
-          # Explicitly add only metadata and docs to avoid touching artifacts/extracted (which is outside sparse-checkout)
+          # CRITICAL: Remove extracted artifacts to prevent sparse-checkout conflicts
+          # Git complains if tracked-but-sparse files exist on disk during add.
+          echo "Cleaning up extracted artifacts before commit..."
+          rm -rf artifacts/extracted
+          
+          # Explicitly add only metadata and docs
           git add docs artifacts/index.json
           git add artifacts/archives/crates/.metadata
           git add artifacts/archives/npm/.metadata
