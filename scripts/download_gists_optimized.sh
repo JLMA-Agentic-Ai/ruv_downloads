@@ -14,7 +14,8 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 # Configuration
 GITHUB_USER="ruvnet"
 MANIFEST_FILE="$PROJECT_ROOT/manifests/gists.txt"
-METADATA_DIR="$PROJECT_ROOT/artifacts/archives/github/gists/.metadata"
+GISTS_DIR="$PROJECT_ROOT/artifacts/archives/github/gists"
+METADATA_DIR="$GISTS_DIR/.metadata"
 
 mkdir -p "$GISTS_DIR" "$METADATA_DIR"
 

@@ -13,7 +13,9 @@ source "$PROJECT_ROOT/lib/checksum.sh"
 
 # Configuration
 NPM_USER_URL="https://www.npmjs.com/~ruvnet"
-MANFIEST_FILE="$PROJECT_ROOT/manifests/packages.txt"
+MANIFEST_FILE="$PROJECT_ROOT/manifests/gists.txt"
+GISTS_DIR="$PROJECT_ROOT/artifacts/archives/github/gists"
+METADATA_DIR="$GISTS_DIR/.metadata"
 ARCHIVE_DIR="$PROJECT_ROOT/artifacts/archives/npm"
 EXTRACTED_DIR="$PROJECT_ROOT/artifacts/npm/extracted"
 LEGACY_DIR="$ARCHIVE_DIR/00_legacy"

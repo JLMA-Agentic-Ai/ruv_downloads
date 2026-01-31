@@ -4,26 +4,27 @@
 !.github/
 !.github/**
 !README.md
-!RUV_DOWNLOADS_COMPLETE_GUIDE.md
 !ruv_world.sh
 
-# Whitelist directory structure and allow artifacts (managed via Git LFS)
+# Whitelist directory structure and allow manifests
 !manifests/
 !manifests/*.txt
 !scripts/
 !scripts/*.sh
 !lib/
 !lib/*.sh
-!artifacts/
-!artifacts/archives/
-!artifacts/archives/**/*.tar.gz
-!artifacts/archives/**/*.tgz
-!artifacts/archives/**/*.crate
 
-# Ignore huge artifact directories (they are downloaded on the fly)
+# Only track global archives and index
+!artifacts/
+!artifacts/index.json
+!artifacts/archives/
+!artifacts/archives/**
+
+# Ignore all other artifact content (extracted, repos, gists-source)
 artifacts/repos/
+artifacts/crates/extracted/
+artifacts/npm/extracted/
 artifacts/gists/
-artifacts/*/extracted/
 
 # Ignore logs and temporary files
 logs/*.log
@@ -31,31 +32,16 @@ logs/**/*.log
 cache/
 *.tmp
 
-
-# Build artifacts and dependencies in extracted content (not archives)
+# Build artifacts and dependencies
 node_modules/**
 **/target/
 **/dist/
 **/.git/
 
-# Ignore metadata files that we don't want tracked (if any, previous file ignored some json/md)
-# Re-adding specific whitelists for metadata if they were previously strictly controlled
-# The user wants "all full files", so we err on the side of including everything.
-# We will keep the specific script ignores if they were important?
-# Previous file: !crates/*.sh, !crates/*.dynamic.txt - These are now covered by !crates/**
-
-
-# OS files
+# OS and Env files
 .DS_Store
 .env
 *.log
-
-# Node/npm cache - explicitly ignore these recursively
-node_modules/**
-.npm/**
-
-# Python virtual environments
-**/venv/**
 
 # Tool configurations
 .claude-flow
