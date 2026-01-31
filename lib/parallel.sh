@@ -51,12 +51,26 @@ run_parallel_with_logging() {
   local idx=0
   for cmd in "${commands[@]}"; do
     local log_file="$log_dir/job_${idx}_${timestamp}.log"
+    local job_name=$(basename "${cmd%% *}")
+    
+    echo "[PARALLEL] Starting $job_name (log: $(basename "$log_file"))"
+    
     (
       echo "=== Started at $(date -Iseconds) ===" > "$log_file"
       echo "Command: $cmd" >> "$log_file"
       echo "" >> "$log_file"
+      
+      # Execute and prefix with job name for live terminal feedback if needed
+      # but we prefer to keep terminal clean and only show completion
       eval "$cmd" >> "$log_file" 2>&1
       local exit_code=$?
+      
+      if [ $exit_code -eq 0 ]; then
+        echo "[PARALLEL] ✓ Completed: $job_name"
+      else
+        echo "[PARALLEL] ⚠ Failed ($exit_code): $job_name"
+      fi
+      
       echo "" >> "$log_file"
       echo "=== Finished at $(date -Iseconds) with exit code $exit_code ===" >> "$log_file"
       exit $exit_code

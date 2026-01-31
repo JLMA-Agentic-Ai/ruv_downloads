@@ -73,26 +73,28 @@ for repo in "${REPO_ARRAY[@]}"; do
   
   REPO_CHANGED=false
   
+  # Get remote hash for efficiency
+  remote_hash=$(git ls-remote "$repo_url" HEAD | awk '{print $1}')
+  
   if [ -d "$target_dir" ]; then
-    echo "  [UPDATE] $repo"
-    # Capture output to check if "Already up to date" or actually updated
-    output=$(cd "$target_dir" && git pull --quiet 2>&1) || echo "    ⚠ Update failed for $repo"
-    if [[ "$output" != *"Already up to date"* ]]; then
-        REPO_CHANGED=true
+    local_hash=$(cd "$target_dir" && git rev-parse HEAD)
+    
+    if [ "$remote_hash" == "$local_hash" ] && [ -f "$archive_file" ]; then
+        echo "  ✓ Up-to-date: $repo"
+        continue
     fi
+
+    echo "  [UPDATE] $repo"
+    (cd "$target_dir" && git fetch --quiet --depth=1 origin main && git reset --hard --quiet origin/main) || echo "    ⚠ Update failed for $repo"
+    REPO_CHANGED=true
   else
     echo "  [CLONE] $repo"
     git clone --depth=1 --quiet "$repo_url" "$target_dir" || echo "    ⚠ Clone failed for $repo"
     REPO_CHANGED=true
   fi
   
-  # Check if archive exists, if not force creation
-  if [ ! -f "$archive_file" ]; then
-      REPO_CHANGED=true
-  fi
-  
   # Create individual backup if needed
-  if [ "$REPO_CHANGED" = true ]; then
+  if [ "$REPO_CHANGED" = true ] || [ ! -f "$archive_file" ]; then
       echo "    📦 Updating backup: ${repo}.tar.gz"
       tar -czf "$archive_file" -C "$REPOS_DIR" "$repo"
   fi
