@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# Iris Prime CLI - Simple wrapper for npm scripts
+# Usage: iris <command> [options]
+
+set -euo pipefail
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Get script directory (resolve symlinks for global installation)
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+while [ -L "$SCRIPT_PATH" ]; do
+  SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+  SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
+  [[ $SCRIPT_PATH != /* ]] && SCRIPT_PATH="$SCRIPT_DIR/$SCRIPT_PATH"
+done
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+# Change to project root
+cd "$PROJECT_ROOT"
+
+# Show help
+show_help() {
+  cat << EOF
+${GREEN}Iris Prime CLI${NC} - AI Operations Orchestration
+
+${YELLOW}Usage:${NC}
+  iris <command> [options]
+
+${YELLOW}Commands:${NC}
+  ${GREEN}discover${NC} --project <path>       Discover & instrument experts
+  ${GREEN}evaluate${NC} <project>              Evaluate single project health
+  ${GREEN}evaluate:all${NC}                    Evaluate all configured projects
+  ${GREEN}evaluate-batch${NC} --queue <file>   Process evaluation queue
+  ${GREEN}auto-invoke${NC} [options]           Smart trigger-based invocation
+  ${GREEN}retrain${NC} <project>               Auto-retrain drifting experts
+  ${GREEN}patterns${NC}                        Discover cross-project patterns
+  ${GREEN}health${NC}                          Quick health check
+
+${YELLOW}Examples:${NC}
+  iris discover --project ../nfl-predictor-api
+  iris discover --project ../nfl-predictor-api --dry-run
+  iris evaluate nfl-predictor
+  iris evaluate:all --verbose
+  iris auto-invoke --event file_edit --file src/foo.ts
+  iris retrain nfl-predictor --expert TheAnalyst
+  iris health --detailed
+
+${YELLOW}Options:${NC}
+  --help, -h    Show this help message
+  --version     Show version
+
+${YELLOW}Full Documentation:${NC}
+  docs/IRIS_AUTO_INVOCATION_COMPLETE.md
+  docs/TECHNICAL_GUIDE.md
+
+EOF
+}
+
+# Show version
+show_version() {
+  VERSION=$(node -e "console.log(require('./package.json').version)")
+  echo "Iris Prime CLI v${VERSION}"
+}
+
+# Main logic
+main() {
+  # No arguments or --help
+  if [ $# -eq 0 ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    show_help
+    exit 0
+  fi
+
+  # Version
+  if [ "$1" = "--version" ] || [ "$1" = "-v" ]; then
+    show_version
+    exit 0
+  fi
+
+  # Get command
+  COMMAND="$1"
+  shift
+
+  # Map command to npm script
+  case "$COMMAND" in
+    discover)
+      NPM_SCRIPT="iris:discover"
+      ;;
+    evaluate)
+      NPM_SCRIPT="iris:evaluate"
+      ;;
+    evaluate:all|evaluate-all)
+      NPM_SCRIPT="iris:evaluate:all"
+      ;;
+    evaluate-batch|batch)
+      NPM_SCRIPT="iris:evaluate-batch"
+      ;;
+    auto-invoke|invoke)
+      NPM_SCRIPT="iris:auto-invoke"
+      ;;
+    retrain)
+      NPM_SCRIPT="iris:retrain"
+      ;;
+    patterns)
+      NPM_SCRIPT="iris:patterns"
+      ;;
+    health|check)
+      NPM_SCRIPT="iris:health"
+      ;;
+    *)
+      echo -e "${RED}Error:${NC} Unknown command '$COMMAND'"
+      echo ""
+      echo "Run 'iris --help' for usage information"
+      exit 1
+      ;;
+  esac
+
+  # Execute npm script with remaining args
+  echo -e "${GREEN}→${NC} Running: npm run $NPM_SCRIPT ${*:---}"
+
+  # Ensure we're in the package root for npm scripts to work
+  if [ ! -f "$PROJECT_ROOT/package.json" ]; then
+    echo -e "${RED}Error:${NC} Cannot find package.json in $PROJECT_ROOT"
+    exit 1
+  fi
+
+  # Run from package root so node_modules and tsx are available
+  (cd "$PROJECT_ROOT" && npm run "$NPM_SCRIPT" -- "$@")
+}
+
+main "$@"

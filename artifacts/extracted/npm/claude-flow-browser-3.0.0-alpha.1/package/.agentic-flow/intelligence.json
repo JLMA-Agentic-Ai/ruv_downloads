@@ -1,0 +1,17 @@
+{
+  "patterns": {
+    "command:": {
+      "success": 0.947665236697264,
+      "failure": -0.343094701955
+    }
+  },
+  "sequences": {},
+  "memories": [],
+  "dirPatterns": {},
+  "errorPatterns": [],
+  "metrics": {
+    "totalRoutes": 39,
+    "successfulRoutes": 28,
+    "routingHistory": []
+  }
+}

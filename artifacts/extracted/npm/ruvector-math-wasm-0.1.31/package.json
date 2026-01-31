@@ -1,0 +1,36 @@
+{
+  "name": "@ruvector/math-wasm",
+  "type": "module",
+  "collaborators": [
+    "Ruvector Team"
+  ],
+  "description": "WebAssembly bindings for ruvector-math: Optimal Transport, Information Geometry, Product Manifolds",
+  "version": "0.1.31",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/ruvector"
+  },
+  "files": [
+    "ruvector_math_wasm_bg.wasm",
+    "ruvector_math_wasm.js",
+    "ruvector_math_wasm.d.ts",
+    "ruvector_math_wasm_bg.wasm.d.ts",
+    "README.md"
+  ],
+  "main": "ruvector_math_wasm.js",
+  "types": "ruvector_math_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "keywords": [
+    "wasm",
+    "wasserstein",
+    "vector-search",
+    "optimal-transport",
+    "information-geometry",
+    "product-manifold",
+    "machine-learning",
+    "webassembly"
+  ]
+}

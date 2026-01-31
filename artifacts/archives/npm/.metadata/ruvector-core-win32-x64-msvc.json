@@ -1,0 +1,8 @@
+{
+  "name": "ruvector-core-win32-x64-msvc",
+  "type": "npm",
+  "version": "0.1.29",
+  "checksum": "sha1:4b8a904eb28e8ecd8db7a7ee13f4ffd764b876ca",
+  "lastUpdated": "2026-01-31T01:18:11+00:00",
+  "path": "artifacts/extracted/npm/ruvector-core-win32-x64-msvc-0.1.29"
+}

@@ -1,0 +1,67 @@
+{
+  "name": "@neural-trader/example-energy-grid-optimization",
+  "version": "0.1.0",
+  "description": "Self-learning energy grid optimization with load forecasting, unit commitment, and swarm scheduling",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "bench": "vitest bench",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "energy-grid",
+    "load-forecasting",
+    "unit-commitment",
+    "optimization",
+    "renewable-energy",
+    "battery-storage",
+    "demand-response",
+    "swarm-intelligence",
+    "neural-trader"
+  ],
+  "dependencies": {
+    "@neural-trader/predictor": "workspace:*",
+    "agentdb": "^1.6.1",
+    "sublinear-time-solver": "^1.5.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.55.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruvnet/neural-trader",
+    "directory": "packages/examples/energy-grid-optimization"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "name": "aidefense",
+  "version": "2.2.4",
+  "description": "AI Defense System - Production-ready security middleware for protecting AI applications from prompt injection, manipulation attacks, and adversarial inputs. Available as both 'aidefence' (British) and 'aidefense' (American).",
+  "main": "dist/lib.js",
+  "module": "dist/esm/lib.js",
+  "types": "dist/lib.d.ts",
+  "bin": {
+    "aimds": "dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/lib.d.ts",
+      "import": "./dist/esm/lib.js",
+      "require": "./dist/lib.js"
+    },
+    "./server": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "!dist/**/*.js.map",
+    "!dist/**/*.d.ts.map",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:lib && npm run build:bundle",
+    "build:lib": "tsc",
+    "build:bundle": "node scripts/build.js",
+    "build:prod": "NODE_ENV=production npm run build",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "start:prod": "NODE_ENV=production node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run tests/integration",
+    "test:unit": "vitest run tests/unit",
+    "test:core": "vitest run tests/unit/embedding.test.ts tests/unit/hash-cons.test.ts tests/unit/theorem-prover.test.ts tests/unit/middleware.test.ts",
+    "test:coverage": "vitest run --coverage",
+    "bench": "vitest bench",
+    "bench:startup": "vitest bench tests/benchmarks/startup.bench.ts",
+    "bench:perf": "vitest bench tests/benchmarks/performance.bench.ts",
+    "lint": "eslint src tests --ext .ts",
+    "format": "prettier --write 'src/**/*.ts' 'tests/**/*.ts'",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist node_modules/.cache",
+    "prepublishOnly": "npm run clean && npm run typecheck && npm run build:prod",
+    "postversion": "git push && git push --tags",
+    "prepack": "npm run build:prod",
+    "publish:both": "npm run publish:aidefence && npm run publish:aidefense",
+    "publish:aidefence": "npm pkg set name=aidefence && npm publish --access public",
+    "publish:aidefense": "npm pkg set name=aidefense && npm publish --access public",
+    "size": "npm run build:prod && du -sh dist/",
+    "profile:startup": "node --prof dist/index.js & sleep 2 && kill %1 && node --prof-process isolate*.log > startup-profile.txt",
+    "rust:build": "cd .. && cargo build --release",
+    "rust:bench": "cd .. && cargo bench",
+    "rust:test": "cd .. && cargo test --release"
+  },
+  "keywords": [
+    "aidefence",
+    "aidefense",
+    "ai-security",
+    "ai-defense",
+    "ai-defence",
+    "ai-safety",
+    "prompt-injection",
+    "llm-security",
+    "llm-defense",
+    "security-middleware",
+    "rate-limiting",
+    "api-security",
+    "input-validation",
+    "threat-detection",
+    "pii-detection",
+    "xss-prevention",
+    "sql-injection"
+  ],
+  "author": "AIMDS Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruvnet/midstream.git",
+    "directory": "AIMDS"
+  },
+  "bugs": {
+    "url": "https://github.com/ruvnet/midstream/issues"
+  },
+  "homepage": "https://github.com/ruvnet/midstream/tree/main/AIMDS#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "agentdb": "^1.6.1",
+    "compression": "^1.7.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.3",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "lean-agentic": "^0.3.2",
+    "prom-client": "^15.1.0",
+    "winston": "^3.11.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "esbuild": "^0.25.0",
+    "esbuild-visualizer": "^0.6.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.4.0",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "@xenova/transformers": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@xenova/transformers": {
+      "optional": true
+    }
+  },
+  "sideEffects": false
+}
