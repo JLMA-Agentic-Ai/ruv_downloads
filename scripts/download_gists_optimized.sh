@@ -227,5 +227,5 @@ find "$GISTS_DIR/by-date" -type d -empty -delete 2>/dev/null || true
 
 echo "All gist downloads and reorganization complete!"
 echo "Cache stats:"
-get_cache_stats | grep "Gists:"
+get_cache_stats | grep "Gists:" || true
 

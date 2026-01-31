@@ -228,4 +228,4 @@ wait # Wait for all remaining jobs
 
 echo "All crate checks complete. Only missing/new versions were downloaded."
 echo "Cache stats:"
-get_cache_stats | grep "Crates:"
+get_cache_stats | grep "Crates:" || true

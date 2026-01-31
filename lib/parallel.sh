@@ -62,8 +62,10 @@ run_parallel_with_logging() {
       
       # Execute and prefix with job name for live terminal feedback if needed
       # but we prefer to keep terminal clean and only show completion
+      set +e
       eval "$cmd" >> "$log_file" 2>&1
       local exit_code=$?
+      set -e
       
       if [ $exit_code -eq 0 ]; then
         echo "[PARALLEL] ✓ Completed: $job_name"

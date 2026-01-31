@@ -205,4 +205,4 @@ wait # Wait for all remaining jobs
 
 echo "All npm package downloads complete!"
 echo "Cache stats:"
-get_cache_stats | grep "NPM:"
+get_cache_stats | grep "NPM Packages:" || true
