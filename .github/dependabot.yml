@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Only monitor GitHub Actions workflows for updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # npm: disabled — this repo archives third-party packages in
+  # artifacts/extracted/ and has no project-level npm dependencies.
+  # Dependabot was incorrectly scanning downloaded archives.
