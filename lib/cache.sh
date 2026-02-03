@@ -28,7 +28,6 @@ if [ ! -f "$CACHE_DB" ]; then
 # Types: crate, npm, repo, gist
 # Hash format: sha256:... for crates/npm, git:... for repos/gists
 EOF
-EOF
 fi
 
 # Lock file for atomic updates
