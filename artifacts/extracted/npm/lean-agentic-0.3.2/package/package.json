@@ -119,7 +119,7 @@
     "agentdb": "^1.5.5"
   },
   "devDependencies": {
-    "esbuild": "^0.20.0"
+    "esbuild": "^0.27.2"
   },
   "engines": {
     "node": ">=18.0.0"
