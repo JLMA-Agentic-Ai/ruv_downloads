@@ -19,6 +19,31 @@ METADATA_DIR="$PROJECT_ROOT/artifacts/archives/github/gists/.metadata"
 
 mkdir -p "$GISTS_DIR" "$METADATA_DIR"
 
+# Helper: fetch gist JSON from API (gh -> curl fallback)
+fetch_gist_json() {
+  local gist_id=$1
+  local jq_filter=${2:-}
+  local result=""
+
+  if [ -n "$jq_filter" ]; then
+    result=$(gh api "gists/$gist_id" --jq "$jq_filter" 2>/dev/null || echo "")
+  else
+    result=$(gh api "gists/$gist_id" 2>/dev/null || echo "")
+  fi
+
+  # Fallback to curl if gh failed
+  if [ -z "$result" ]; then
+    local raw=$(curl -s "https://api.github.com/gists/$gist_id" 2>/dev/null || echo "")
+    if [ -n "$jq_filter" ] && [ -n "$raw" ]; then
+      result=$(echo "$raw" | jq -r "$jq_filter" 2>/dev/null || echo "")
+    else
+      result="$raw"
+    fi
+  fi
+
+  echo "$result"
+}
+
 echo "Checking gists from GitHub user: $GITHUB_USER"
 
 # Arg parsing
@@ -57,9 +82,35 @@ DISCOVERED_DATA=$(mktemp)
 if [ "$DISCOVER" -eq 1 ]; then
   echo "Discovering gists from GitHub for user: $GITHUB_USER ..."
   
+  # Try gh api first, fallback to curl for public gists API (GITHUB_TOKEN may lack gist scope)
+  gist_fetch_ok=0
   if command -v gh >/dev/null 2>&1 && { gh auth status >/dev/null 2>&1 || [ -n "${GITHUB_TOKEN:-}" ]; }; then
-    gh api "users/$GITHUB_USER/gists" --paginate --jq '.[] | [.id, .updated_at, .description] | @tsv' > "$DISCOVERED_DATA"
-    
+    if gh api "users/$GITHUB_USER/gists" --paginate --jq '.[] | [.id, .updated_at, .description] | @tsv' > "$DISCOVERED_DATA" 2>/dev/null; then
+      gist_fetch_ok=1
+    fi
+  fi
+
+  # Fallback: use curl to hit the public GitHub API (no auth needed for public gists)
+  if [ "$gist_fetch_ok" -eq 0 ]; then
+    echo "  gh api failed (token may lack gist scope), falling back to curl..."
+    page=1
+    > "$DISCOVERED_DATA"
+    while true; do
+      page_data=$(curl -s "https://api.github.com/users/$GITHUB_USER/gists?per_page=100&page=$page")
+      page_count=$(echo "$page_data" | jq -r 'length' 2>/dev/null || echo "0")
+      if [ "$page_count" -eq 0 ] || [ "$page_count" = "null" ]; then
+        break
+      fi
+      echo "$page_data" | jq -r '.[] | [.id, .updated_at, .description] | @tsv' >> "$DISCOVERED_DATA" 2>/dev/null || true
+      if [ "$page_count" -lt 100 ]; then
+        break
+      fi
+      ((page++))
+      if [ "$page" -gt 10 ]; then break; fi
+    done
+  fi
+
+  if [ -s "$DISCOVERED_DATA" ]; then
     while IFS=$'\t' read -r gist_id updated_at gist_desc; do
       [ -z "$gist_id" ] && continue
       # Extract date YYYY-MM-DD
@@ -115,7 +166,7 @@ process_gist() {
   
   # If data is unknown, try to fetch it
   if [ "$gist_date" = "0000-00-00" ] || [ "$safe_desc" = "unknown" ]; then
-    gist_json=$(gh api "gists/$gist_id" --jq '{updated_at: .updated_at, description: .description}' 2>/dev/null || echo "")
+    gist_json=$(fetch_gist_json "$gist_id" '{updated_at: .updated_at, description: .description}')
     if [ -n "$gist_json" ]; then
       gist_date=$(echo "$gist_json" | jq -r '.updated_at' | cut -d'T' -f1)
       gist_desc=$(echo "$gist_json" | jq -r '.description')
@@ -163,7 +214,7 @@ process_gist() {
       echo "  ✓ Cache hit: $gist_id"
 
       # Update metadata receipt (ensure consistency)
-      gist_json=$(gh api "gists/$gist_id" 2>/dev/null || echo "")
+      gist_json=$(fetch_gist_json "$gist_id")
       if [ -n "$gist_json" ]; then
         echo "$gist_json" | jq -r \
           --arg commit "$remote_hash" \
@@ -223,7 +274,7 @@ process_gist() {
     echo "$remote_hash" > "$target_dir/.ruv_commit"
     
     # Get metadata
-    gist_full_json=$(gh api "gists/$gist_id" 2>/dev/null || echo "")
+    gist_full_json=$(fetch_gist_json "$gist_id")
     
     # Generate metadata safely using jq
     if [ -n "$gist_full_json" ]; then

@@ -115,7 +115,8 @@ jobs:
             git commit -m "chore: update ruvnet ecosystem [skip ci]"
             git lfs push origin main
             # Pull-rebase to handle race conditions with concurrent runs
-            git pull --rebase origin main || true
+            # Use --autostash to handle any unstaged changes from LFS or other operations
+            git pull --rebase --autostash origin main || true
             git push
           else
             echo "No changes to commit"
