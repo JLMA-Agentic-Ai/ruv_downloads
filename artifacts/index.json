@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-03T00:25:11+00:00",
+  "last_indexed": "2026-02-03T12:12:56+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -2599,7 +2599,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-03T00:24:55+00:00"
+      "lastUpdated": "2026-02-03T12:12:38+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2687,7 +2687,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-03T00:24:55+00:00"
+      "lastUpdated": "2026-02-03T12:12:38+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2871,7 +2871,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-03T00:24:57+00:00"
+      "lastUpdated": "2026-02-03T12:12:40+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3175,7 +3175,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-03T00:24:58+00:00"
+      "lastUpdated": "2026-02-03T12:12:41+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3457,6 +3457,14 @@
       "path": "artifacts/extracted/github/repos/genesis"
     },
     {
+      "name": "huron-bangalore",
+      "type": "repository",
+      "lastUpdated": "2026-02-03T12:12:48+00:00",
+      "commit": "a07286bab05493f2093250b75e8b316c79f07997",
+      "url": "https://github.com/ruvnet/huron-bangalore.git",
+      "path": "artifacts/extracted/github/repos/huron-bangalore"
+    },
+    {
       "name": "marketing",
       "type": "repository",
       "lastUpdated": "2026-01-23T16:12:11+00:00",
@@ -3570,15 +3578,6 @@
       "url": "https://github.com/ruvnet/wifi-densepose.git",
       "tier": "tier-1-active",
       "path": "artifacts/extracted/github/repos/wifi-densepose"
-    },
-    {
-      "name": "yyz-agentics-june",
-      "type": "repository",
-      "lastUpdated": "2026-01-23T16:12:21+00:00",
-      "commit": "1f1ec86361dd6b4782a642a24afd77de857ba4f7",
-      "url": "https://github.com/ruvnet/yyz-agentics-june.git",
-      "tier": "tier-1-active",
-      "path": "artifacts/extracted/github/repos/yyz-agentics-june"
     },
     {
       "id": "0020d02e9ce85a773412f8bf518737a0",
