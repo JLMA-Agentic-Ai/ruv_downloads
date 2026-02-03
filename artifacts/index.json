@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-02T12:13:34+00:00",
+  "last_indexed": "2026-02-03T00:25:11+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -1756,10 +1756,10 @@
     {
       "name": "@claude-flow/cli",
       "type": "npm",
-      "version": "3.1.0-alpha.2",
-      "checksum": "sha1:fb4951857b6fd2a7e1fc928efdaf74c4f21b79cd",
-      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.2",
-      "lastUpdated": "2026-02-02T12:12:06+00:00"
+      "version": "3.1.0-alpha.3",
+      "checksum": "sha1:2b01634860d20c91100e508fbd417dd240fb450a",
+      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.3",
+      "lastUpdated": "2026-02-03T00:24:07+00:00"
     },
     {
       "name": "@claude-flow/deployment",
@@ -2004,10 +2004,10 @@
     {
       "name": "claude-flow",
       "type": "npm",
-      "version": "3.1.0-alpha.2",
-      "checksum": "sha1:5dd49b336ee6de489aece3c0b2b8e54a071f512f",
-      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.2",
-      "lastUpdated": "2026-02-02T12:12:53+00:00"
+      "version": "3.1.0-alpha.3",
+      "checksum": "sha1:1434a8e46f2324030f8c1a02f6faf9f5294df046",
+      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.3",
+      "lastUpdated": "2026-02-03T00:24:51+00:00"
     },
     {
       "name": "consciousness-explorer",
@@ -2599,7 +2599,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-02T12:12:57+00:00"
+      "lastUpdated": "2026-02-03T00:24:55+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2687,7 +2687,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-02T12:12:59+00:00"
+      "lastUpdated": "2026-02-03T00:24:55+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2871,7 +2871,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-02T12:13:00+00:00"
+      "lastUpdated": "2026-02-03T00:24:57+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3175,7 +3175,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-02T12:13:01+00:00"
+      "lastUpdated": "2026-02-03T00:24:58+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
