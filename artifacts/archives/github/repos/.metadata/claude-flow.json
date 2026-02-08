@@ -1,8 +1,8 @@
 {
   "name": "claude-flow",
   "type": "repository",
-  "lastUpdated": "2026-02-02T12:13:20+00:00",
-  "commit": "e82a79419c6a648a36de3529ab5d44a8a4d818a4",
+  "lastUpdated": "2026-02-08T00:30:48+00:00",
+  "commit": "22e986e829ca08f0720c79f224e6e09c8dbcfb1a",
   "url": "https://github.com/ruvnet/claude-flow.git",
   "path": "artifacts/extracted/github/repos/claude-flow"
 }

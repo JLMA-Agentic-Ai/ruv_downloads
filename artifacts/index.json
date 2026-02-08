@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-07T12:09:47+00:00",
+  "last_indexed": "2026-02-08T00:31:19+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -1756,10 +1756,18 @@
     {
       "name": "@claude-flow/cli",
       "type": "npm",
-      "version": "3.1.0-alpha.3",
-      "checksum": "sha1:2b01634860d20c91100e508fbd417dd240fb450a",
-      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.3",
-      "lastUpdated": "2026-02-03T00:24:07+00:00"
+      "version": "3.1.0-alpha.14",
+      "checksum": "sha1:6139b1d61473649fb26fd079378d40d1e532e8a8",
+      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.14",
+      "lastUpdated": "2026-02-08T00:29:34+00:00"
+    },
+    {
+      "name": "@claude-flow/codex",
+      "type": "npm",
+      "version": "3.0.0-alpha.9",
+      "checksum": "sha1:8d944c18e92573c6ef924f378f5e6ca1a8a750b4",
+      "path": "artifacts/extracted/npm/claude-flow-codex-3.0.0-alpha.9",
+      "lastUpdated": "2026-02-08T00:29:34+00:00"
     },
     {
       "name": "@claude-flow/deployment",
@@ -2004,10 +2012,10 @@
     {
       "name": "claude-flow",
       "type": "npm",
-      "version": "3.1.0-alpha.3",
-      "checksum": "sha1:1434a8e46f2324030f8c1a02f6faf9f5294df046",
-      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.3",
-      "lastUpdated": "2026-02-03T00:24:51+00:00"
+      "version": "3.1.0-alpha.14",
+      "checksum": "sha1:b69547712ffeef24d08a2d740b30452eef5f598a",
+      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.14",
+      "lastUpdated": "2026-02-08T00:30:22+00:00"
     },
     {
       "name": "consciousness-explorer",
@@ -2599,7 +2607,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-07T12:09:07+00:00"
+      "lastUpdated": "2026-02-08T00:30:27+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2687,7 +2695,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-07T12:09:07+00:00"
+      "lastUpdated": "2026-02-08T00:30:28+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2871,7 +2879,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-07T12:09:09+00:00"
+      "lastUpdated": "2026-02-08T00:30:30+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3175,7 +3183,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-07T12:09:10+00:00"
+      "lastUpdated": "2026-02-08T00:30:31+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3406,10 +3414,18 @@
     {
       "name": "claude-flow",
       "type": "repository",
-      "lastUpdated": "2026-02-02T12:13:20+00:00",
-      "commit": "e82a79419c6a648a36de3529ab5d44a8a4d818a4",
+      "lastUpdated": "2026-02-08T00:30:48+00:00",
+      "commit": "22e986e829ca08f0720c79f224e6e09c8dbcfb1a",
       "url": "https://github.com/ruvnet/claude-flow.git",
       "path": "artifacts/extracted/github/repos/claude-flow"
+    },
+    {
+      "name": "claude-test",
+      "type": "repository",
+      "lastUpdated": "2026-02-08T00:30:53+00:00",
+      "commit": "294a32462f21c2bc3399b1dd85cdaee1b64912d4",
+      "url": "https://github.com/ruvnet/claude-test.git",
+      "path": "artifacts/extracted/github/repos/claude-test"
     },
     {
       "name": "code-mesh",
@@ -3455,14 +3471,6 @@
       "url": "https://github.com/ruvnet/genesis.git",
       "tier": "tier-1-active",
       "path": "artifacts/extracted/github/repos/genesis"
-    },
-    {
-      "name": "huron-bangalore",
-      "type": "repository",
-      "lastUpdated": "2026-02-07T12:09:16+00:00",
-      "commit": "a07286bab05493f2093250b75e8b316c79f07997",
-      "url": "https://github.com/ruvnet/huron-bangalore.git",
-      "path": "artifacts/extracted/github/repos/huron-bangalore"
     },
     {
       "name": "marketing",
