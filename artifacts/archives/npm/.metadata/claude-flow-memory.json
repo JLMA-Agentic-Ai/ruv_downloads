@@ -1,8 +1,8 @@
 {
   "name": "@claude-flow/memory",
   "type": "npm",
-  "version": "3.0.0-alpha.1",
-  "checksum": "sha1:bb1ca34fcf4caf5bafe64460c291969e2e01aebb",
-  "lastUpdated": "2026-01-31T01:09:11+00:00",
-  "path": "artifacts/extracted/npm/claude-flow-memory-3.0.0-alpha.1"
+  "version": "3.0.0-alpha.8",
+  "checksum": "sha1:6e7293077b214b924e82bd0e4276f0b7a173222a",
+  "path": "artifacts/extracted/npm/claude-flow-memory-3.0.0-alpha.8",
+  "lastUpdated": "2026-02-09T00:24:31+00:00"
 }
