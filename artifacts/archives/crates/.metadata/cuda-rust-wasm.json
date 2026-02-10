@@ -1,8 +1,8 @@
 {
   "name": "cuda-rust-wasm",
   "type": "crate",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:08:51+00:00",
-  "path": "artifacts/extracted/crates/cuda-rust-wasm-0.1.6"
+  "path": "artifacts/extracted/crates/cuda-rust-wasm-0.1.7",
+  "lastUpdated": "2026-02-10T00:29:12+00:00"
 }
