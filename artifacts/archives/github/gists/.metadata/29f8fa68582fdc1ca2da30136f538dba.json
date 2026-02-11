@@ -1,0 +1,9 @@
+{
+  "message": "Resource not accessible by integration",
+  "documentation_url": "https://docs.github.com/rest/gists/gists#get-a-gist",
+  "status": "403",
+  "type": "gist",
+  "commit": "a6758fbb01e1077b180de1711e434f188a904d16",
+  "lastUpdated": "2026-02-11T00:29:24+00:00",
+  "path": "artifacts/extracted/github/gists/by-date/2026-02-10/_Infinite_Context_via_CompactiontoMemory_Bridge_(29f8fa68582fdc1ca2da30136f538dba)"
+}

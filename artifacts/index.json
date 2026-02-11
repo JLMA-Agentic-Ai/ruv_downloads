@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-10T12:20:21+00:00",
+  "last_indexed": "2026-02-11T00:29:36+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -2655,7 +2655,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-10T12:19:42+00:00"
+      "lastUpdated": "2026-02-11T00:28:58+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2743,7 +2743,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-10T12:19:43+00:00"
+      "lastUpdated": "2026-02-11T00:28:57+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2927,7 +2927,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-10T12:19:44+00:00"
+      "lastUpdated": "2026-02-11T00:29:00+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3239,7 +3239,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-10T12:19:44+00:00"
+      "lastUpdated": "2026-02-11T00:29:00+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3478,7 +3478,7 @@
     {
       "name": "claude-test",
       "type": "repository",
-      "lastUpdated": "2026-02-10T12:19:52+00:00",
+      "lastUpdated": "2026-02-11T00:29:09+00:00",
       "commit": "294a32462f21c2bc3399b1dd85cdaee1b64912d4",
       "url": "https://github.com/ruvnet/claude-test.git",
       "path": "artifacts/extracted/github/repos/claude-test"
@@ -4302,6 +4302,15 @@
       "commit": "23c81b83b5e64421330e4bd65206a865f05a913a",
       "url": "https://gist.github.com/29d28cf48c2be8e75704b7474c6a78ba",
       "path": "artifacts/extracted/github/gists/by-date/unknown/Multi-Agent_Collaborative_Coding_with_Jujutsu_VCS_(29d28cf48c2be8e75704b7474c6a78ba)"
+    },
+    {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/gists/gists#get-a-gist",
+      "status": "403",
+      "type": "gist",
+      "commit": "a6758fbb01e1077b180de1711e434f188a904d16",
+      "lastUpdated": "2026-02-11T00:29:24+00:00",
+      "path": "artifacts/extracted/github/gists/by-date/2026-02-10/_Infinite_Context_via_CompactiontoMemory_Bridge_(29f8fa68582fdc1ca2da30136f538dba)"
     },
     {
       "id": "2a2d4257ae0ee7a928450dacf4e22e41",
