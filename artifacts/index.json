@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-11T12:19:12+00:00",
+  "last_indexed": "2026-02-12T00:24:56+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -1804,10 +1804,10 @@
     {
       "name": "@claude-flow/cli",
       "type": "npm",
-      "version": "3.1.0-alpha.28",
-      "checksum": "sha1:16e3fa8744a0dc7a7b8c76283201e7fc5e95847b",
-      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.28",
-      "lastUpdated": "2026-02-10T00:29:24+00:00"
+      "version": "3.1.0-alpha.34",
+      "checksum": "sha1:8c7633c367587a4470ee7d621a6143c481fe8b56",
+      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.34",
+      "lastUpdated": "2026-02-12T00:23:09+00:00"
     },
     {
       "name": "@claude-flow/codex",
@@ -1868,10 +1868,10 @@
     {
       "name": "@claude-flow/memory",
       "type": "npm",
-      "version": "3.0.0-alpha.8",
-      "checksum": "sha1:6e7293077b214b924e82bd0e4276f0b7a173222a",
-      "path": "artifacts/extracted/npm/claude-flow-memory-3.0.0-alpha.8",
-      "lastUpdated": "2026-02-09T00:24:31+00:00"
+      "version": "3.0.0-alpha.9",
+      "checksum": "sha1:0c7f959ba53e91682a9fe5b2f1980b243ae30016",
+      "path": "artifacts/extracted/npm/claude-flow-memory-3.0.0-alpha.9",
+      "lastUpdated": "2026-02-12T00:23:10+00:00"
     },
     {
       "name": "@claude-flow/neural",
@@ -2060,10 +2060,10 @@
     {
       "name": "claude-flow",
       "type": "npm",
-      "version": "3.1.0-alpha.28",
-      "checksum": "sha1:d2268524a3fdc239b794f2f99b34b799fcb9acf9",
-      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.28",
-      "lastUpdated": "2026-02-10T00:30:11+00:00"
+      "version": "3.1.0-alpha.34",
+      "checksum": "sha1:37b168eb289ea18403b2bde33db21af6242634a2",
+      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.34",
+      "lastUpdated": "2026-02-12T00:23:59+00:00"
     },
     {
       "name": "consciousness-explorer",
@@ -2655,7 +2655,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-11T12:18:33+00:00"
+      "lastUpdated": "2026-02-12T00:24:03+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2743,7 +2743,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-11T12:18:35+00:00"
+      "lastUpdated": "2026-02-12T00:24:04+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2927,7 +2927,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-11T12:18:37+00:00"
+      "lastUpdated": "2026-02-12T00:24:06+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3239,7 +3239,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-11T12:18:37+00:00"
+      "lastUpdated": "2026-02-12T00:24:07+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3476,14 +3476,6 @@
       "path": "artifacts/extracted/github/repos/claude-flow"
     },
     {
-      "name": "claude-test",
-      "type": "repository",
-      "lastUpdated": "2026-02-11T12:18:44+00:00",
-      "commit": "294a32462f21c2bc3399b1dd85cdaee1b64912d4",
-      "url": "https://github.com/ruvnet/claude-test.git",
-      "path": "artifacts/extracted/github/repos/claude-test"
-    },
-    {
       "name": "code-mesh",
       "type": "repository",
       "lastUpdated": "2026-01-23T16:12:05+00:00",
@@ -3527,6 +3519,14 @@
       "url": "https://github.com/ruvnet/genesis.git",
       "tier": "tier-1-active",
       "path": "artifacts/extracted/github/repos/genesis"
+    },
+    {
+      "name": "huron-portland",
+      "type": "repository",
+      "lastUpdated": "2026-02-12T00:24:13+00:00",
+      "commit": "6d9a1c6c30a9fe163be2b65bfcb86b9d63a1273f",
+      "url": "https://github.com/ruvnet/huron-portland.git",
+      "path": "artifacts/extracted/github/repos/huron-portland"
     },
     {
       "name": "marketing",
