@@ -1,8 +1,8 @@
 {
   "name": "ruvector-collections",
   "type": "crate",
-  "version": "0.1.30",
+  "version": "2.0.2",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:09:03+00:00",
-  "path": "artifacts/extracted/crates/ruvector-collections-0.1.30"
+  "path": "artifacts/extracted/crates/ruvector-collections-2.0.2",
+  "lastUpdated": "2026-02-13T00:25:30+00:00"
 }

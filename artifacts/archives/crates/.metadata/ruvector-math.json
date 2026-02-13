@@ -1,8 +1,8 @@
 {
   "name": "ruvector-math",
   "type": "crate",
-  "version": "0.1.31",
+  "version": "2.0.2",
   "checksum": "sha256:pending",
-  "lastUpdated": "2026-01-31T01:09:04+00:00",
-  "path": "artifacts/extracted/crates/ruvector-math-0.1.31"
+  "path": "artifacts/extracted/crates/ruvector-math-2.0.2",
+  "lastUpdated": "2026-02-13T00:25:31+00:00"
 }

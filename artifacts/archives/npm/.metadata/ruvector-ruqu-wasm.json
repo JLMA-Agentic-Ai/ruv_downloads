@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/ruqu-wasm",
   "type": "npm",
-  "version": "2.0.3",
-  "checksum": "sha1:e733aecb3b67256dae2316836b0a0ebc4f08d09c",
-  "path": "artifacts/extracted/npm/ruvector-ruqu-wasm-2.0.3",
-  "lastUpdated": "2026-02-09T00:25:09+00:00"
+  "version": "2.0.5",
+  "checksum": "sha1:1e53500c768c10b762135102fffbd152a2bc1c3e",
+  "path": "artifacts/extracted/npm/ruvector-ruqu-wasm-2.0.5",
+  "lastUpdated": "2026-02-13T00:26:18+00:00"
 }
