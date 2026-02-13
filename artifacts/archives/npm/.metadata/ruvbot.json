@@ -1,8 +1,8 @@
 {
   "name": "ruvbot",
   "type": "npm",
-  "version": "0.1.8",
-  "checksum": "sha1:3ba87af807762d41491f3622cd9e513a8b335a0d",
-  "lastUpdated": "2026-01-31T01:12:32+00:00",
-  "path": "artifacts/extracted/npm/ruvbot-0.1.8"
+  "version": "0.2.0",
+  "checksum": "sha1:e971148821721b1f158073501489b3f8a969a025",
+  "path": "artifacts/extracted/npm/ruvbot-0.2.0",
+  "lastUpdated": "2026-02-13T12:12:16+00:00"
 }

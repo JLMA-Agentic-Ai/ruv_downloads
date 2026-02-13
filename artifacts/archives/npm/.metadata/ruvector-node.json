@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/node",
   "type": "npm",
-  "version": "0.1.18",
-  "checksum": "sha1:34bf25ee1028d62b23366901c5136c8c91e0896e",
-  "lastUpdated": "2026-01-31T01:12:08+00:00",
-  "path": "artifacts/extracted/npm/ruvector-node-0.1.18"
+  "version": "0.1.22",
+  "checksum": "sha1:a44e5a908800b9e04eaf0844aab043f988cebb4a",
+  "path": "artifacts/extracted/npm/ruvector-node-0.1.22",
+  "lastUpdated": "2026-02-13T12:11:54+00:00"
 }

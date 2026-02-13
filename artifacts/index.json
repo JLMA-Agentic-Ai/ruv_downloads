@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-13T00:27:44+00:00",
+  "last_indexed": "2026-02-13T12:13:21+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -738,6 +738,14 @@
       "path": "artifacts/extracted/crates/opencv-wasm-4.8.1"
     },
     {
+      "name": "ospipe",
+      "type": "crate",
+      "version": "0.1.0",
+      "checksum": "sha256:pending",
+      "path": "artifacts/extracted/crates/ospipe-0.1.0",
+      "lastUpdated": "2026-02-13T12:11:15+00:00"
+    },
+    {
       "name": "prime-radiant",
       "type": "crate",
       "version": "0.1.0",
@@ -1068,10 +1076,10 @@
     {
       "name": "ruvector-cluster",
       "type": "crate",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "checksum": "sha256:pending",
-      "path": "artifacts/extracted/crates/ruvector-cluster-2.0.1",
-      "lastUpdated": "2026-02-09T00:24:21+00:00"
+      "path": "artifacts/extracted/crates/ruvector-cluster-2.0.2",
+      "lastUpdated": "2026-02-13T12:11:16+00:00"
     },
     {
       "name": "ruvector-collections",
@@ -1120,6 +1128,14 @@
       "checksum": "sha256:pending",
       "lastUpdated": "2026-01-31T01:09:03+00:00",
       "path": "artifacts/extracted/crates/ruvector-data-framework-0.3.0"
+    },
+    {
+      "name": "ruvector-delta-core",
+      "type": "crate",
+      "version": "0.1.0",
+      "checksum": "sha256:pending",
+      "path": "artifacts/extracted/crates/ruvector-delta-core-0.1.0",
+      "lastUpdated": "2026-02-13T12:11:16+00:00"
     },
     {
       "name": "ruvector-filter",
@@ -1316,10 +1332,10 @@
     {
       "name": "ruvector-router-core",
       "type": "crate",
-      "version": "0.1.30",
+      "version": "2.0.2",
       "checksum": "sha256:pending",
-      "lastUpdated": "2026-01-31T01:09:06+00:00",
-      "path": "artifacts/extracted/crates/ruvector-router-core-0.1.30"
+      "path": "artifacts/extracted/crates/ruvector-router-core-2.0.2",
+      "lastUpdated": "2026-02-13T12:11:17+00:00"
     },
     {
       "name": "ruvector-router-ffi",
@@ -2074,6 +2090,14 @@
       "lastUpdated": "2026-02-13T00:26:30+00:00"
     },
     {
+      "name": "@cognitum/gate",
+      "type": "npm",
+      "version": "0.1.0",
+      "checksum": "sha1:a743d203303733c8ceec77d40dabdfb72f012876",
+      "path": "artifacts/extracted/npm/cognitum-gate-0.1.0",
+      "lastUpdated": "2026-02-13T12:11:32+00:00"
+    },
+    {
       "name": "consciousness-explorer",
       "type": "npm",
       "version": "1.1.1",
@@ -2588,10 +2612,10 @@
     {
       "name": "ruvbot",
       "type": "npm",
-      "version": "0.1.8",
-      "checksum": "sha1:3ba87af807762d41491f3622cd9e513a8b335a0d",
-      "lastUpdated": "2026-01-31T01:12:32+00:00",
-      "path": "artifacts/extracted/npm/ruvbot-0.1.8"
+      "version": "0.2.0",
+      "checksum": "sha1:e971148821721b1f158073501489b3f8a969a025",
+      "path": "artifacts/extracted/npm/ruvbot-0.2.0",
+      "lastUpdated": "2026-02-13T12:12:16+00:00"
     },
     {
       "name": "@ruvector/agentic-integration",
@@ -2663,7 +2687,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-13T00:26:35+00:00"
+      "lastUpdated": "2026-02-13T12:12:17+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2751,7 +2775,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-13T00:26:35+00:00"
+      "lastUpdated": "2026-02-13T12:12:17+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2908,10 +2932,10 @@
     {
       "name": "@ruvector/graph-node",
       "type": "npm",
-      "version": "0.1.26",
-      "checksum": "sha1:c5aa0eb7dad80575ab58f00c3177a3e51fc54701",
-      "lastUpdated": "2026-01-31T01:12:05+00:00",
-      "path": "artifacts/extracted/npm/ruvector-graph-node-0.1.26"
+      "version": "2.0.2",
+      "checksum": "sha1:810c42672b07edb5693c21619c0a6122bdc9509c",
+      "path": "artifacts/extracted/npm/ruvector-graph-node-2.0.2",
+      "lastUpdated": "2026-02-13T12:11:51+00:00"
     },
     {
       "name": "@ruvector/graph-wasm",
@@ -2935,7 +2959,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-13T00:26:37+00:00"
+      "lastUpdated": "2026-02-13T12:12:19+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -2988,10 +3012,10 @@
     {
       "name": "@ruvector/node",
       "type": "npm",
-      "version": "0.1.18",
-      "checksum": "sha1:34bf25ee1028d62b23366901c5136c8c91e0896e",
-      "lastUpdated": "2026-01-31T01:12:08+00:00",
-      "path": "artifacts/extracted/npm/ruvector-node-0.1.18"
+      "version": "0.1.22",
+      "checksum": "sha1:a44e5a908800b9e04eaf0844aab043f988cebb4a",
+      "path": "artifacts/extracted/npm/ruvector-node-0.1.22",
+      "lastUpdated": "2026-02-13T12:11:54+00:00"
     },
     {
       "name": "ruvector-onnx-embeddings-wasm",
@@ -3000,6 +3024,22 @@
       "checksum": "sha1:3de033a137b8c409cbd06b0e26e515ac335be145",
       "lastUpdated": "2026-01-31T01:12:39+00:00",
       "path": "artifacts/extracted/npm/ruvector-onnx-embeddings-wasm-0.1.2"
+    },
+    {
+      "name": "@ruvector/ospipe-wasm",
+      "type": "npm",
+      "version": "0.1.0",
+      "checksum": "sha1:d5a97ddd324e19b6775b4417120ef0266ef38775",
+      "path": "artifacts/extracted/npm/ruvector-ospipe-wasm-0.1.0",
+      "lastUpdated": "2026-02-13T12:11:56+00:00"
+    },
+    {
+      "name": "@ruvector/ospipe",
+      "type": "npm",
+      "version": "0.1.2",
+      "checksum": "sha1:83fd952a308bd760cd77a3bb85b61efdaff0b248",
+      "path": "artifacts/extracted/npm/ruvector-ospipe-0.1.2",
+      "lastUpdated": "2026-02-13T12:11:56+00:00"
     },
     {
       "name": "@ruvector/postgres-cli",
@@ -3108,34 +3148,34 @@
     {
       "name": "@ruvector/ruvllm-darwin-arm64",
       "type": "npm",
-      "version": "0.2.3",
-      "checksum": "sha1:c400cb360988b6b9eecce0aaae5798c1dc30bbb0",
-      "lastUpdated": "2026-01-31T01:12:15+00:00",
-      "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-arm64-0.2.3"
+      "version": "2.0.0",
+      "checksum": "sha1:95a3dda231e88d5044bd5fa2f03099c32486a74b",
+      "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-arm64-2.0.0",
+      "lastUpdated": "2026-02-13T12:12:00+00:00"
     },
     {
       "name": "@ruvector/ruvllm-darwin-x64",
       "type": "npm",
-      "version": "0.2.3",
-      "checksum": "sha1:5533b774191814a6a26db33f7614928bf3f6468c",
-      "lastUpdated": "2026-01-31T01:12:14+00:00",
-      "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-x64-0.2.3"
+      "version": "2.0.0",
+      "checksum": "sha1:d09d5ebaa577172b53feab11a3fe99d4dac40540",
+      "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-x64-2.0.0",
+      "lastUpdated": "2026-02-13T12:12:00+00:00"
     },
     {
       "name": "@ruvector/ruvllm-linux-arm64-gnu",
       "type": "npm",
-      "version": "0.2.3",
-      "checksum": "sha1:cfba2b489c9979de98d32465e53cf10d91f67729",
-      "lastUpdated": "2026-01-31T01:12:15+00:00",
-      "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-arm64-gnu-0.2.3"
+      "version": "2.0.0",
+      "checksum": "sha1:031686b1e71d35d300c092a56b92db88c80aebfe",
+      "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-arm64-gnu-2.0.0",
+      "lastUpdated": "2026-02-13T12:12:01+00:00"
     },
     {
       "name": "@ruvector/ruvllm-linux-x64-gnu",
       "type": "npm",
-      "version": "0.2.3",
-      "checksum": "sha1:4d25ddf5af3f433ac5a2cd5061de65fe1e74ba8d",
-      "lastUpdated": "2026-01-31T01:12:15+00:00",
-      "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-x64-gnu-0.2.3"
+      "version": "2.0.0",
+      "checksum": "sha1:638dfe8e120ec5ab595241f9f7e95d2c07c41d6e",
+      "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-x64-gnu-2.0.0",
+      "lastUpdated": "2026-02-13T12:12:00+00:00"
     },
     {
       "name": "@ruvector/ruvllm-wasm",
@@ -3148,10 +3188,10 @@
     {
       "name": "@ruvector/ruvllm-win32-x64-msvc",
       "type": "npm",
-      "version": "0.2.3",
-      "checksum": "sha1:e8860468618725c062205cc0588704d6eb83e14b",
-      "lastUpdated": "2026-01-31T01:12:16+00:00",
-      "path": "artifacts/extracted/npm/ruvector-ruvllm-win32-x64-msvc-0.2.3"
+      "version": "2.0.0",
+      "checksum": "sha1:377d554f06ba3314679339f22828e609f42a28c2",
+      "path": "artifacts/extracted/npm/ruvector-ruvllm-win32-x64-msvc-2.0.0",
+      "lastUpdated": "2026-02-13T12:12:02+00:00"
     },
     {
       "name": "@ruvector/ruvllm",
@@ -3255,7 +3295,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-13T00:26:37+00:00"
+      "lastUpdated": "2026-02-13T12:12:20+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3264,6 +3304,22 @@
       "checksum": "sha1:d77be8cff114583ea14c544ce6bf4510a1b32e73",
       "lastUpdated": "2026-01-31T01:12:21+00:00",
       "path": "artifacts/extracted/npm/ruvector-spiking-neural-1.0.1"
+    },
+    {
+      "name": "@ruvector/tiny-dancer-darwin-arm64",
+      "type": "npm",
+      "version": "0.1.15",
+      "checksum": "sha1:36f84f4c2a559fa057b8507de5f326b9745efe9e",
+      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-darwin-arm64-0.1.15",
+      "lastUpdated": "2026-02-13T12:12:06+00:00"
+    },
+    {
+      "name": "@ruvector/tiny-dancer-darwin-x64",
+      "type": "npm",
+      "version": "0.1.15",
+      "checksum": "sha1:e377370ca794c99f3f02316a81f5f3b87f42fb4a",
+      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-darwin-x64-0.1.15",
+      "lastUpdated": "2026-02-13T12:12:06+00:00"
     },
     {
       "name": "@ruvector/tiny-dancer-linux-x64-gnu",
@@ -3282,6 +3338,14 @@
       "path": "artifacts/extracted/npm/ruvector-tiny-dancer-wasm-0.1.0"
     },
     {
+      "name": "@ruvector/tiny-dancer-win32-x64-msvc",
+      "type": "npm",
+      "version": "0.1.15",
+      "checksum": "sha1:2a9d76cb3297bce893e999c80f2efa5125b732f9",
+      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-win32-x64-msvc-0.1.15",
+      "lastUpdated": "2026-02-13T12:12:07+00:00"
+    },
+    {
       "name": "@ruvector/tiny-dancer",
       "type": "npm",
       "version": "0.1.15",
@@ -3290,12 +3354,20 @@
       "path": "artifacts/extracted/npm/ruvector-tiny-dancer-0.1.15"
     },
     {
+      "name": "@ruvector/wasm-unified",
+      "type": "npm",
+      "version": "1.0.0",
+      "checksum": "sha1:dc4f9dbfd6d382e08c849bdd17b2ad96dbfb731b",
+      "path": "artifacts/extracted/npm/ruvector-wasm-unified-1.0.0",
+      "lastUpdated": "2026-02-13T12:12:07+00:00"
+    },
+    {
       "name": "@ruvector/wasm",
       "type": "npm",
-      "version": "0.1.22",
-      "checksum": "sha1:f0ddea5fd51469070f2256842f5a0462bc40a606",
-      "lastUpdated": "2026-01-31T01:12:22+00:00",
-      "path": "artifacts/extracted/npm/ruvector-wasm-0.1.22"
+      "version": "0.1.29",
+      "checksum": "sha1:785979e8e538366e5a3675f7a3b9e589bf3acef4",
+      "path": "artifacts/extracted/npm/ruvector-wasm-0.1.29",
+      "lastUpdated": "2026-02-13T12:12:08+00:00"
     },
     {
       "name": "ruvector",
@@ -3539,7 +3611,7 @@
     {
       "name": "huron-portland",
       "type": "repository",
-      "lastUpdated": "2026-02-13T00:26:55+00:00",
+      "lastUpdated": "2026-02-13T12:12:36+00:00",
       "commit": "6d9a1c6c30a9fe163be2b65bfcb86b9d63a1273f",
       "url": "https://github.com/ruvnet/huron-portland.git",
       "path": "artifacts/extracted/github/repos/huron-portland"
@@ -3591,8 +3663,8 @@
     {
       "name": "ruvector",
       "type": "repository",
-      "lastUpdated": "2026-02-13T00:26:49+00:00",
-      "commit": "7f5b39a7ef5617d3a3151585cfffbabc5ee7962f",
+      "lastUpdated": "2026-02-13T12:12:30+00:00",
+      "commit": "1c1678cf77e3a68fbbf3d6f42a3ceff8c3fe1289",
       "url": "https://github.com/ruvnet/ruvector.git",
       "path": "artifacts/extracted/github/repos/ruvector"
     },

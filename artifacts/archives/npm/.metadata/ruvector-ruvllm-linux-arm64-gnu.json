@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/ruvllm-linux-arm64-gnu",
   "type": "npm",
-  "version": "0.2.3",
-  "checksum": "sha1:cfba2b489c9979de98d32465e53cf10d91f67729",
-  "lastUpdated": "2026-01-31T01:12:15+00:00",
-  "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-arm64-gnu-0.2.3"
+  "version": "2.0.0",
+  "checksum": "sha1:031686b1e71d35d300c092a56b92db88c80aebfe",
+  "path": "artifacts/extracted/npm/ruvector-ruvllm-linux-arm64-gnu-2.0.0",
+  "lastUpdated": "2026-02-13T12:12:01+00:00"
 }

@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/ruvllm-darwin-arm64",
   "type": "npm",
-  "version": "0.2.3",
-  "checksum": "sha1:c400cb360988b6b9eecce0aaae5798c1dc30bbb0",
-  "lastUpdated": "2026-01-31T01:12:15+00:00",
-  "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-arm64-0.2.3"
+  "version": "2.0.0",
+  "checksum": "sha1:95a3dda231e88d5044bd5fa2f03099c32486a74b",
+  "path": "artifacts/extracted/npm/ruvector-ruvllm-darwin-arm64-2.0.0",
+  "lastUpdated": "2026-02-13T12:12:00+00:00"
 }
