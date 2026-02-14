@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/gnn-linux-arm64-gnu",
   "type": "npm",
-  "version": "0.1.19",
-  "checksum": "sha1:16c1726ec0d7b7d1a761e52e0144e492d7960d06",
-  "lastUpdated": "2026-01-31T01:12:03+00:00",
-  "path": "artifacts/extracted/npm/ruvector-gnn-linux-arm64-gnu-0.1.19"
+  "version": "0.1.23",
+  "checksum": "sha1:7bc5fbe8d180880d31b62d6ac6efc7c4192d0d7a",
+  "path": "artifacts/extracted/npm/ruvector-gnn-linux-arm64-gnu-0.1.23",
+  "lastUpdated": "2026-02-14T00:24:35+00:00"
 }

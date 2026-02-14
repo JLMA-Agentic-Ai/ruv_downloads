@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/gnn-win32-x64-msvc",
   "type": "npm",
-  "version": "0.1.19",
-  "checksum": "sha1:cbce5817c176c504fffe967e3a3212e53f303349",
-  "lastUpdated": "2026-01-31T01:12:04+00:00",
-  "path": "artifacts/extracted/npm/ruvector-gnn-win32-x64-msvc-0.1.19"
+  "version": "0.1.23",
+  "checksum": "sha1:4bf3db314874781e601d3111ad621a41a0e1caad",
+  "path": "artifacts/extracted/npm/ruvector-gnn-win32-x64-msvc-0.1.23",
+  "lastUpdated": "2026-02-14T00:24:37+00:00"
 }

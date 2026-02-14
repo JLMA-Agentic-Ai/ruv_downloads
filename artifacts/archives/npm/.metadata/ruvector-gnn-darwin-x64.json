@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/gnn-darwin-x64",
   "type": "npm",
-  "version": "0.1.19",
-  "checksum": "sha1:7e5998f26e4b1c1deeaf7e191f86a00da1690b27",
-  "lastUpdated": "2026-01-31T01:12:02+00:00",
-  "path": "artifacts/extracted/npm/ruvector-gnn-darwin-x64-0.1.19"
+  "version": "0.1.23",
+  "checksum": "sha1:a5eaf1310b9920a04a55fa8aa33307edbee73c59",
+  "path": "artifacts/extracted/npm/ruvector-gnn-darwin-x64-0.1.23",
+  "lastUpdated": "2026-02-14T00:24:35+00:00"
 }

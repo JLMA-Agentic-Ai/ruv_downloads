@@ -1,8 +1,8 @@
 {
   "name": "@ruvector/tiny-dancer",
   "type": "npm",
-  "version": "0.1.15",
-  "checksum": "sha1:ecba8b85c2eb4d36ff722a361b33e221dd575f0b",
-  "lastUpdated": "2026-01-31T01:12:21+00:00",
-  "path": "artifacts/extracted/npm/ruvector-tiny-dancer-0.1.15"
+  "version": "0.1.17",
+  "checksum": "sha1:2697e6a1015cc63b629cc0c5600c0727b0bfee3f",
+  "path": "artifacts/extracted/npm/ruvector-tiny-dancer-0.1.17",
+  "lastUpdated": "2026-02-14T00:24:54+00:00"
 }

@@ -1,8 +1,8 @@
 {
   "name": "@claude-flow/plugin-gastown-bridge",
   "type": "npm",
-  "version": "0.1.2",
-  "checksum": "sha1:8862e556e9a24798e9a30fdf87bf508053067f42",
-  "path": "artifacts/extracted/npm/claude-flow-plugin-gastown-bridge-0.1.2",
-  "lastUpdated": "2026-02-02T12:12:09+00:00"
+  "version": "0.1.3",
+  "checksum": "sha1:c3132d371241f5adf8057ba76e9813d5d828a723",
+  "path": "artifacts/extracted/npm/claude-flow-plugin-gastown-bridge-0.1.3",
+  "lastUpdated": "2026-02-14T00:24:09+00:00"
 }

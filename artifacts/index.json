@@ -1,5 +1,5 @@
 {
-  "last_indexed": "2026-02-13T12:13:21+00:00",
+  "last_indexed": "2026-02-14T00:26:12+00:00",
   "artifacts": [
     {
       "name": "agentic-jujutsu",
@@ -1676,10 +1676,10 @@
     {
       "name": "agentic-flow",
       "type": "npm",
-      "version": "2.0.6",
-      "checksum": "sha1:bb7dfdd8be134be22af0d6b9e01af4212af84d55",
-      "lastUpdated": "2026-01-31T01:12:24+00:00",
-      "path": "artifacts/extracted/npm/agentic-flow-2.0.6"
+      "version": "2.0.7",
+      "checksum": "sha1:a0dcf31db6bbb2ab0318f6a71ab81de305fb4f75",
+      "path": "artifacts/extracted/npm/agentic-flow-2.0.7",
+      "lastUpdated": "2026-02-14T00:24:59+00:00"
     },
     {
       "name": "agentic-jujutsu",
@@ -1828,10 +1828,10 @@
     {
       "name": "@claude-flow/cli",
       "type": "npm",
-      "version": "3.1.0-alpha.36",
-      "checksum": "sha1:000780b98da255134666a208ff9349d28468131c",
-      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.36",
-      "lastUpdated": "2026-02-13T00:25:40+00:00"
+      "version": "3.1.0-alpha.39",
+      "checksum": "sha1:995bd917522286a9ed5ee70c883c0f51f8789940",
+      "path": "artifacts/extracted/npm/claude-flow-cli-3.1.0-alpha.39",
+      "lastUpdated": "2026-02-14T00:24:06+00:00"
     },
     {
       "name": "@claude-flow/codex",
@@ -1948,10 +1948,10 @@
     {
       "name": "@claude-flow/plugin-gastown-bridge",
       "type": "npm",
-      "version": "0.1.2",
-      "checksum": "sha1:8862e556e9a24798e9a30fdf87bf508053067f42",
-      "path": "artifacts/extracted/npm/claude-flow-plugin-gastown-bridge-0.1.2",
-      "lastUpdated": "2026-02-02T12:12:09+00:00"
+      "version": "0.1.3",
+      "checksum": "sha1:c3132d371241f5adf8057ba76e9813d5d828a723",
+      "path": "artifacts/extracted/npm/claude-flow-plugin-gastown-bridge-0.1.3",
+      "lastUpdated": "2026-02-14T00:24:09+00:00"
     },
     {
       "name": "@claude-flow/plugin-healthcare-clinical",
@@ -2084,10 +2084,10 @@
     {
       "name": "claude-flow",
       "type": "npm",
-      "version": "3.1.0-alpha.36",
-      "checksum": "sha1:a4b92fc04de1c0a76886a63e956b7b9f21be3503",
-      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.36",
-      "lastUpdated": "2026-02-13T00:26:30+00:00"
+      "version": "3.1.0-alpha.39",
+      "checksum": "sha1:bb28d867c45e78ff92967f6ab7e9ea10fbb56af1",
+      "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.39",
+      "lastUpdated": "2026-02-14T00:25:01+00:00"
     },
     {
       "name": "@cognitum/gate",
@@ -2687,7 +2687,7 @@
       "version": "0.1.32",
       "checksum": "sha1:4a1bcfe0530f2ba72248b91fcc3cbe132489f832",
       "path": "artifacts/extracted/npm/ruvector-attention-wasm-0.1.32",
-      "lastUpdated": "2026-02-13T12:12:17+00:00"
+      "lastUpdated": "2026-02-14T00:25:06+00:00"
     },
     {
       "name": "@ruvector/attention-win32-x64-msvc",
@@ -2775,7 +2775,7 @@
       "version": "0.1.26",
       "checksum": "sha1:e512c0c73c231263b4c359aa35efa7e9df4cc29a",
       "path": "artifacts/extracted/npm/ruvector-core-0.1.26",
-      "lastUpdated": "2026-02-13T12:12:17+00:00"
+      "lastUpdated": "2026-02-14T00:25:07+00:00"
     },
     {
       "name": "@ruvector/economy-wasm",
@@ -2828,34 +2828,50 @@
     {
       "name": "@ruvector/gnn-darwin-arm64",
       "type": "npm",
-      "version": "0.1.19",
-      "checksum": "sha1:89ae8b7f929480665fa9ee33f86c49be66590e98",
-      "lastUpdated": "2026-01-31T01:12:01+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-darwin-arm64-0.1.19"
+      "version": "0.1.23",
+      "checksum": "sha1:24c51ce16b4057b6650943e5e96490f5fe53afe1",
+      "path": "artifacts/extracted/npm/ruvector-gnn-darwin-arm64-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:35+00:00"
     },
     {
       "name": "@ruvector/gnn-darwin-x64",
       "type": "npm",
-      "version": "0.1.19",
-      "checksum": "sha1:7e5998f26e4b1c1deeaf7e191f86a00da1690b27",
-      "lastUpdated": "2026-01-31T01:12:02+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-darwin-x64-0.1.19"
+      "version": "0.1.23",
+      "checksum": "sha1:a5eaf1310b9920a04a55fa8aa33307edbee73c59",
+      "path": "artifacts/extracted/npm/ruvector-gnn-darwin-x64-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:35+00:00"
     },
     {
       "name": "@ruvector/gnn-linux-arm64-gnu",
       "type": "npm",
-      "version": "0.1.19",
-      "checksum": "sha1:16c1726ec0d7b7d1a761e52e0144e492d7960d06",
-      "lastUpdated": "2026-01-31T01:12:03+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-linux-arm64-gnu-0.1.19"
+      "version": "0.1.23",
+      "checksum": "sha1:7bc5fbe8d180880d31b62d6ac6efc7c4192d0d7a",
+      "path": "artifacts/extracted/npm/ruvector-gnn-linux-arm64-gnu-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:35+00:00"
+    },
+    {
+      "name": "@ruvector/gnn-linux-arm64-musl",
+      "type": "npm",
+      "version": "0.1.23",
+      "checksum": "sha1:293dbdaba5e05197a29f09ca9739e0ebc37f3c73",
+      "path": "artifacts/extracted/npm/ruvector-gnn-linux-arm64-musl-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:35+00:00"
     },
     {
       "name": "@ruvector/gnn-linux-x64-gnu",
       "type": "npm",
-      "version": "0.1.22",
-      "checksum": "sha1:01e1ea5754d1e2ef3846e94375668149fd38c0da",
-      "lastUpdated": "2026-01-31T01:12:04+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-linux-x64-gnu-0.1.22"
+      "version": "0.1.23",
+      "checksum": "sha1:123317473723b20ebec9e77149f965b0e47c4ea7",
+      "path": "artifacts/extracted/npm/ruvector-gnn-linux-x64-gnu-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:36+00:00"
+    },
+    {
+      "name": "@ruvector/gnn-linux-x64-musl",
+      "type": "npm",
+      "version": "0.1.23",
+      "checksum": "sha1:8e95c2965a48e8565832e41a4b88ac08efccf433",
+      "path": "artifacts/extracted/npm/ruvector-gnn-linux-x64-musl-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:36+00:00"
     },
     {
       "name": "@ruvector/gnn-wasm",
@@ -2868,18 +2884,18 @@
     {
       "name": "@ruvector/gnn-win32-x64-msvc",
       "type": "npm",
-      "version": "0.1.19",
-      "checksum": "sha1:cbce5817c176c504fffe967e3a3212e53f303349",
-      "lastUpdated": "2026-01-31T01:12:04+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-win32-x64-msvc-0.1.19"
+      "version": "0.1.23",
+      "checksum": "sha1:4bf3db314874781e601d3111ad621a41a0e1caad",
+      "path": "artifacts/extracted/npm/ruvector-gnn-win32-x64-msvc-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:37+00:00"
     },
     {
       "name": "@ruvector/gnn",
       "type": "npm",
-      "version": "0.1.22",
-      "checksum": "sha1:fdfc8c500ca4e5e0ef6bdb4259b8e2239865a2ac",
-      "lastUpdated": "2026-01-31T01:12:00+00:00",
-      "path": "artifacts/extracted/npm/ruvector-gnn-0.1.22"
+      "version": "0.1.23",
+      "checksum": "sha1:e2d195b07ff9f4385e1e301dd841c248e276d967",
+      "path": "artifacts/extracted/npm/ruvector-gnn-0.1.23",
+      "lastUpdated": "2026-02-14T00:24:35+00:00"
     },
     {
       "name": "@ruvector/graph-data-generator",
@@ -2959,7 +2975,7 @@
       "version": "0.1.32",
       "checksum": "sha1:c0974cbdad9e4047cd9268d4fc0566d639d2ef2f",
       "path": "artifacts/extracted/npm/ruvector-math-wasm-0.1.32",
-      "lastUpdated": "2026-02-13T12:12:19+00:00"
+      "lastUpdated": "2026-02-14T00:25:09+00:00"
     },
     {
       "name": "@ruvector/nervous-system-wasm",
@@ -3295,7 +3311,7 @@
       "version": "0.1.4",
       "checksum": "sha1:07b2fabec43edf42d77a501584c3d8803cb11447",
       "path": "artifacts/extracted/npm/ruvector-sona-0.1.4",
-      "lastUpdated": "2026-02-13T12:12:20+00:00"
+      "lastUpdated": "2026-02-14T00:25:09+00:00"
     },
     {
       "name": "@ruvector/spiking-neural",
@@ -3320,6 +3336,14 @@
       "checksum": "sha1:e377370ca794c99f3f02316a81f5f3b87f42fb4a",
       "path": "artifacts/extracted/npm/ruvector-tiny-dancer-darwin-x64-0.1.15",
       "lastUpdated": "2026-02-13T12:12:06+00:00"
+    },
+    {
+      "name": "@ruvector/tiny-dancer-linux-arm64-gnu",
+      "type": "npm",
+      "version": "0.1.17",
+      "checksum": "sha1:b81d0725072659c0078f40afaf848b45c6b7e18e",
+      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-linux-arm64-gnu-0.1.17",
+      "lastUpdated": "2026-02-14T00:24:54+00:00"
     },
     {
       "name": "@ruvector/tiny-dancer-linux-x64-gnu",
@@ -3348,10 +3372,10 @@
     {
       "name": "@ruvector/tiny-dancer",
       "type": "npm",
-      "version": "0.1.15",
-      "checksum": "sha1:ecba8b85c2eb4d36ff722a361b33e221dd575f0b",
-      "lastUpdated": "2026-01-31T01:12:21+00:00",
-      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-0.1.15"
+      "version": "0.1.17",
+      "checksum": "sha1:2697e6a1015cc63b629cc0c5600c0727b0bfee3f",
+      "path": "artifacts/extracted/npm/ruvector-tiny-dancer-0.1.17",
+      "lastUpdated": "2026-02-14T00:24:54+00:00"
     },
     {
       "name": "@ruvector/wasm-unified",
@@ -3513,10 +3537,9 @@
     {
       "name": "agentic-flow",
       "type": "repository",
-      "lastUpdated": "2026-01-23T16:11:59+00:00",
-      "commit": "6a7b113f8219849acddd08074f56be374a52215e",
+      "lastUpdated": "2026-02-14T00:25:20+00:00",
+      "commit": "22043ebb5e9a6e2b6cbd82cd83d833fec5cf2707",
       "url": "https://github.com/ruvnet/agentic-flow.git",
-      "tier": "tier-1-active",
       "path": "artifacts/extracted/github/repos/agentic-flow"
     },
     {
@@ -3558,8 +3581,8 @@
     {
       "name": "claude-flow",
       "type": "repository",
-      "lastUpdated": "2026-02-08T00:30:48+00:00",
-      "commit": "22e986e829ca08f0720c79f224e6e09c8dbcfb1a",
+      "lastUpdated": "2026-02-14T00:25:37+00:00",
+      "commit": "8165576094ded3bd1558f5199b082ea7cae8e519",
       "url": "https://github.com/ruvnet/claude-flow.git",
       "path": "artifacts/extracted/github/repos/claude-flow"
     },
@@ -3611,7 +3634,7 @@
     {
       "name": "huron-portland",
       "type": "repository",
-      "lastUpdated": "2026-02-13T12:12:36+00:00",
+      "lastUpdated": "2026-02-14T00:25:42+00:00",
       "commit": "6d9a1c6c30a9fe163be2b65bfcb86b9d63a1273f",
       "url": "https://github.com/ruvnet/huron-portland.git",
       "path": "artifacts/extracted/github/repos/huron-portland"

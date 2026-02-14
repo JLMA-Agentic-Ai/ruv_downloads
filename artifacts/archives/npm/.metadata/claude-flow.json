@@ -1,8 +1,8 @@
 {
   "name": "claude-flow",
   "type": "npm",
-  "version": "3.1.0-alpha.36",
-  "checksum": "sha1:a4b92fc04de1c0a76886a63e956b7b9f21be3503",
-  "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.36",
-  "lastUpdated": "2026-02-13T00:26:30+00:00"
+  "version": "3.1.0-alpha.39",
+  "checksum": "sha1:bb28d867c45e78ff92967f6ab7e9ea10fbb56af1",
+  "path": "artifacts/extracted/npm/claude-flow-3.1.0-alpha.39",
+  "lastUpdated": "2026-02-14T00:25:01+00:00"
 }
