@@ -1,0 +1,9 @@
+{
+  "message": "Resource not accessible by integration",
+  "documentation_url": "https://docs.github.com/rest/gists/gists#get-a-gist",
+  "status": "403",
+  "type": "gist",
+  "commit": "3cb314fc51578064601d158159f84093e09cf64a",
+  "lastUpdated": "2026-02-15T00:26:28+00:00",
+  "path": "artifacts/extracted/github/gists/by-date/2026-02-14/RuVector_Format_rvf_One_file_Store_vectors_Ship_mo_(636e0daaf6e6bfd3123e87a875cc6dfe)"
+}
